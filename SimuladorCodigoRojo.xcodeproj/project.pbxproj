@@ -7,12 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C7049CB1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
+		6C7049CC1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
 		6FB2B8BE1A43389B00239486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8BD1A43389B00239486 /* AppDelegate.m */; };
 		6FB2B8C01A43389B00239486 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8BF1A43389B00239486 /* main.m */; };
 		6FB2B8C31A43389B00239486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8C21A43389B00239486 /* ViewController.m */; };
 		6FB2B8C51A43389B00239486 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FB2B8C41A43389B00239486 /* Images.xcassets */; };
 		6FB2B8C81A43389B00239486 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB2B8C61A43389B00239486 /* Main.storyboard */; };
 		6FB2B8D41A43389B00239486 /* SimuladorCodigoRojoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8D31A43389B00239486 /* SimuladorCodigoRojoTests.m */; };
+		6FBBB06B1A5C2A41008BB4BA /* menuMunecaDos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBBB06A1A5C2A41008BB4BA /* menuMunecaDos.png */; };
+		6FBBB06C1A5C2A41008BB4BA /* menuMunecaDos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBBB06A1A5C2A41008BB4BA /* menuMunecaDos.png */; };
+		6FBBB06F1A5C6B69008BB4BA /* GBCSyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB06E1A5C6B69008BB4BA /* GBCSyncViewController.m */; };
+		6FBBB0701A5C6B69008BB4BA /* GBCSyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB06E1A5C6B69008BB4BA /* GBCSyncViewController.m */; };
+		6FBBB0731A5C70D0008BB4BA /* GBCConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB0721A5C70D0008BB4BA /* GBCConfirmViewController.m */; };
+		6FBBB0741A5C70D0008BB4BA /* GBCConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB0721A5C70D0008BB4BA /* GBCConfirmViewController.m */; };
+		6FBBB0751A5C8035008BB4BA /* GBCDoctorPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC69B041A5B2CC10090234A /* GBCDoctorPanelViewController.m */; };
+		6FBBB0781A5C807C008BB4BA /* GBCResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */; };
+		6FBBB0791A5C807C008BB4BA /* GBCResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */; };
+		6FC09AB21A437E320023B3FA /* menuCreatedByGibicText.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB11A437E320023B3FA /* menuCreatedByGibicText.png */; };
+		6FC09AB41A437E3D0023B3FA /* menuTitulo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB31A437E3D0023B3FA /* menuTitulo.png */; };
+		6FC09AB61A437E450023B3FA /* menuBackgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB51A437E450023B3FA /* menuBackgroundImage.png */; };
+		6FC09AB81A437E4C0023B3FA /* menuLogoImagen.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB71A437E4C0023B3FA /* menuLogoImagen.png */; };
+		6FC09ABA1A4380860023B3FA /* monitorSeñalImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB91A4380860023B3FA /* monitorSeñalImage.png */; };
+		6FC09ABC1A43808F0023B3FA /* monitorPatica1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09ABB1A43808F0023B3FA /* monitorPatica1.png */; };
+		6FC09ABE1A43809B0023B3FA /* monitorPatica2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09ABD1A43809B0023B3FA /* monitorPatica2.png */; };
+		6FC09AC21A4380A70023B3FA /* monitorBackground0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09ABF1A4380A70023B3FA /* monitorBackground0.png */; };
+		6FC09AC31A4380A70023B3FA /* monitorBackground1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AC01A4380A70023B3FA /* monitorBackground1.png */; };
+		6FC09AC41A4380A70023B3FA /* monitorRectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AC11A4380A70023B3FA /* monitorRectangle.png */; };
+		6FC09AC61A4392200023B3FA /* monitorAddButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AC51A4392200023B3FA /* monitorAddButton.png */; };
+		6FC09ACA1A43A5170023B3FA /* configUpdateButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AC91A43A5170023B3FA /* configUpdateButton.png */; };
+		6FC09AD21A43A89E0023B3FA /* configPauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AD11A43A89E0023B3FA /* configPauseButton.png */; };
+		6FC09AD41A43A90A0023B3FA /* configPlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AD31A43A90A0023B3FA /* configPlayButton.png */; };
+		6FC3408B1A44902F0004A7DB /* GBCMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3408A1A44902F0004A7DB /* GBCMenuViewController.m */; };
+		6FC3408E1A4497820004A7DB /* GBCMonitorVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3408D1A4497820004A7DB /* GBCMonitorVIewController.m */; };
+		6FC340911A44E6CD0004A7DB /* GBCMenuWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC340901A44E6CD0004A7DB /* GBCMenuWindowController.m */; };
+		6FC340941A44EF830004A7DB /* GBCMenuWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC340931A44EF830004A7DB /* GBCMenuWindow.m */; };
+		6FC453621A6D7F250064E9F6 /* pause-97625_1280.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC453611A6D7F250064E9F6 /* pause-97625_1280.png */; };
+		6FC453631A6D7F250064E9F6 /* pause-97625_1280.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC453611A6D7F250064E9F6 /* pause-97625_1280.png */; };
+		6FC453651A6D7F300064E9F6 /* play-97626_640.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC453641A6D7F300064E9F6 /* play-97626_640.png */; };
+		6FC453661A6D7F300064E9F6 /* play-97626_640.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC453641A6D7F300064E9F6 /* play-97626_640.png */; };
+		6FC453681A6D83450064E9F6 /* clock-308938_1280.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC453671A6D83450064E9F6 /* clock-308938_1280.png */; };
+		6FC453691A6D83450064E9F6 /* clock-308938_1280.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC453671A6D83450064E9F6 /* clock-308938_1280.png */; };
+		6FC69B051A5B2CC10090234A /* GBCDoctorPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC69B041A5B2CC10090234A /* GBCDoctorPanelViewController.m */; };
+		6FCD41FF1A657A520040C76C /* GBCStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCD41FE1A657A520040C76C /* GBCStateMachine.m */; };
+		6FCD42001A6583290040C76C /* GBCStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCD41FE1A657A520040C76C /* GBCStateMachine.m */; };
+		6FCD42021A65E7930040C76C /* monitorConfig.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCD42011A65E7930040C76C /* monitorConfig.png */; };
+		6FCD42031A65E7930040C76C /* monitorConfig.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCD42011A65E7930040C76C /* monitorConfig.png */; };
+		6FCD42111A65E9600040C76C /* monitorConfig2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCD42101A65E9600040C76C /* monitorConfig2.png */; };
+		6FCD42121A65E9600040C76C /* monitorConfig2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCD42101A65E9600040C76C /* monitorConfig2.png */; };
+		6FCD42141A65E9DF0040C76C /* monitorPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCD42131A65E9DF0040C76C /* monitorPanel.png */; };
+		6FCD42151A65E9DF0040C76C /* monitorPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCD42131A65E9DF0040C76C /* monitorPanel.png */; };
+		6FCD45FF1A532CF4008162CA /* GBCSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE91C021A51C95A00E9B413 /* GBCSimulator.m */; };
+		6FE91BFF1A51B5FE00E9B413 /* GBCState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE91BFE1A51B5FE00E9B413 /* GBCState.m */; };
+		6FE91C001A51B6D100E9B413 /* GBCState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE91BFE1A51B5FE00E9B413 /* GBCState.m */; };
+		6FE91C031A51C95A00E9B413 /* GBCSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE91C021A51C95A00E9B413 /* GBCSimulator.m */; };
+		6FED8FB11A6D783700150438 /* monitorBackgroundPicture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FED8FB01A6D783700150438 /* monitorBackgroundPicture.jpg */; };
+		6FED8FB21A6D783700150438 /* monitorBackgroundPicture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FED8FB01A6D783700150438 /* monitorBackgroundPicture.jpg */; };
+		6FED8FB71A6D7B0200150438 /* monitorNotepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED8FB61A6D7B0200150438 /* monitorNotepad.png */; };
+		6FED8FB81A6D7B0200150438 /* monitorNotepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED8FB61A6D7B0200150438 /* monitorNotepad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCBluetoothManager.m; sourceTree = "<group>"; };
+		6C7049CA1A69BC8200838B48 /* GBCBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCBluetoothManager.h; sourceTree = "<group>"; };
 		6FB2B8B71A43389B00239486 /* SimuladorCodigoRojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimuladorCodigoRojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB2B8BB1A43389B00239486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB2B8BC1A43389B00239486 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -38,6 +92,51 @@
 		6FB2B8CD1A43389B00239486 /* SimuladorCodigoRojoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimuladorCodigoRojoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB2B8D21A43389B00239486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB2B8D31A43389B00239486 /* SimuladorCodigoRojoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimuladorCodigoRojoTests.m; sourceTree = "<group>"; };
+		6FBBB06A1A5C2A41008BB4BA /* menuMunecaDos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuMunecaDos.png; sourceTree = "<group>"; };
+		6FBBB06D1A5C6B69008BB4BA /* GBCSyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCSyncViewController.h; sourceTree = "<group>"; };
+		6FBBB06E1A5C6B69008BB4BA /* GBCSyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCSyncViewController.m; sourceTree = "<group>"; };
+		6FBBB0711A5C70D0008BB4BA /* GBCConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCConfirmViewController.h; sourceTree = "<group>"; };
+		6FBBB0721A5C70D0008BB4BA /* GBCConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCConfirmViewController.m; sourceTree = "<group>"; };
+		6FBBB0761A5C807C008BB4BA /* GBCResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCResultsViewController.h; sourceTree = "<group>"; };
+		6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCResultsViewController.m; sourceTree = "<group>"; };
+		6FC09AB11A437E320023B3FA /* menuCreatedByGibicText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuCreatedByGibicText.png; sourceTree = "<group>"; };
+		6FC09AB31A437E3D0023B3FA /* menuTitulo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuTitulo.png; sourceTree = "<group>"; };
+		6FC09AB51A437E450023B3FA /* menuBackgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackgroundImage.png; sourceTree = "<group>"; };
+		6FC09AB71A437E4C0023B3FA /* menuLogoImagen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuLogoImagen.png; sourceTree = "<group>"; };
+		6FC09AB91A4380860023B3FA /* monitorSeñalImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monitorSeñalImage.png"; sourceTree = "<group>"; };
+		6FC09ABB1A43808F0023B3FA /* monitorPatica1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorPatica1.png; sourceTree = "<group>"; };
+		6FC09ABD1A43809B0023B3FA /* monitorPatica2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorPatica2.png; sourceTree = "<group>"; };
+		6FC09ABF1A4380A70023B3FA /* monitorBackground0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorBackground0.png; sourceTree = "<group>"; };
+		6FC09AC01A4380A70023B3FA /* monitorBackground1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorBackground1.png; sourceTree = "<group>"; };
+		6FC09AC11A4380A70023B3FA /* monitorRectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorRectangle.png; sourceTree = "<group>"; };
+		6FC09AC51A4392200023B3FA /* monitorAddButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorAddButton.png; sourceTree = "<group>"; };
+		6FC09AC91A43A5170023B3FA /* configUpdateButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = configUpdateButton.png; sourceTree = "<group>"; };
+		6FC09AD11A43A89E0023B3FA /* configPauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = configPauseButton.png; sourceTree = "<group>"; };
+		6FC09AD31A43A90A0023B3FA /* configPlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = configPlayButton.png; sourceTree = "<group>"; };
+		6FC340891A44902F0004A7DB /* GBCMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCMenuViewController.h; sourceTree = "<group>"; };
+		6FC3408A1A44902F0004A7DB /* GBCMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCMenuViewController.m; sourceTree = "<group>"; };
+		6FC3408C1A4497820004A7DB /* GBCMonitorVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBCMonitorVIewController.h; path = ../GBCMonitorVIewController.h; sourceTree = "<group>"; };
+		6FC3408D1A4497820004A7DB /* GBCMonitorVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBCMonitorVIewController.m; path = ../GBCMonitorVIewController.m; sourceTree = "<group>"; };
+		6FC3408F1A44E6CD0004A7DB /* GBCMenuWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBCMenuWindowController.h; path = ../GBCMenuWindowController.h; sourceTree = "<group>"; };
+		6FC340901A44E6CD0004A7DB /* GBCMenuWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBCMenuWindowController.m; path = ../GBCMenuWindowController.m; sourceTree = "<group>"; };
+		6FC340921A44EF830004A7DB /* GBCMenuWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBCMenuWindow.h; path = ../GBCMenuWindow.h; sourceTree = "<group>"; };
+		6FC340931A44EF830004A7DB /* GBCMenuWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBCMenuWindow.m; path = ../GBCMenuWindow.m; sourceTree = "<group>"; };
+		6FC453611A6D7F250064E9F6 /* pause-97625_1280.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause-97625_1280.png"; sourceTree = "<group>"; };
+		6FC453641A6D7F300064E9F6 /* play-97626_640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-97626_640.png"; sourceTree = "<group>"; };
+		6FC453671A6D83450064E9F6 /* clock-308938_1280.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-308938_1280.png"; sourceTree = "<group>"; };
+		6FC69B031A5B2CC10090234A /* GBCDoctorPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCDoctorPanelViewController.h; sourceTree = "<group>"; };
+		6FC69B041A5B2CC10090234A /* GBCDoctorPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCDoctorPanelViewController.m; sourceTree = "<group>"; };
+		6FCD41FD1A657A520040C76C /* GBCStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCStateMachine.h; sourceTree = "<group>"; };
+		6FCD41FE1A657A520040C76C /* GBCStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCStateMachine.m; sourceTree = "<group>"; };
+		6FCD42011A65E7930040C76C /* monitorConfig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorConfig.png; sourceTree = "<group>"; };
+		6FCD42101A65E9600040C76C /* monitorConfig2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorConfig2.png; sourceTree = "<group>"; };
+		6FCD42131A65E9DF0040C76C /* monitorPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorPanel.png; sourceTree = "<group>"; };
+		6FE91BFD1A51B5FE00E9B413 /* GBCState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCState.h; sourceTree = "<group>"; };
+		6FE91BFE1A51B5FE00E9B413 /* GBCState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCState.m; sourceTree = "<group>"; };
+		6FE91C011A51C95A00E9B413 /* GBCSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCSimulator.h; sourceTree = "<group>"; };
+		6FE91C021A51C95A00E9B413 /* GBCSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCSimulator.m; sourceTree = "<group>"; };
+		6FED8FB01A6D783700150438 /* monitorBackgroundPicture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorBackgroundPicture.jpg; sourceTree = "<group>"; };
+		6FED8FB61A6D7B0200150438 /* monitorNotepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorNotepad.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +157,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C7049C81A69BC2F00838B48 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */,
+				6C7049CA1A69BC8200838B48 /* GBCBluetoothManager.h */,
+			);
+			name = Bluetooth;
+			sourceTree = "<group>";
+		};
+		6F78F3641A48A11B006EBCEE /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				6FC09ABF1A4380A70023B3FA /* monitorBackground0.png */,
+				6FC09AB91A4380860023B3FA /* monitorSeñalImage.png */,
+				6FC09ABB1A43808F0023B3FA /* monitorPatica1.png */,
+				6FC09ABD1A43809B0023B3FA /* monitorPatica2.png */,
+				6FC09AC01A4380A70023B3FA /* monitorBackground1.png */,
+				6FC09AC11A4380A70023B3FA /* monitorRectangle.png */,
+				6FC09AC51A4392200023B3FA /* monitorAddButton.png */,
+				6FC09AC91A43A5170023B3FA /* configUpdateButton.png */,
+				6FC09AD11A43A89E0023B3FA /* configPauseButton.png */,
+				6FC09AD31A43A90A0023B3FA /* configPlayButton.png */,
+				6FC09AB71A437E4C0023B3FA /* menuLogoImagen.png */,
+				6FC09AB11A437E320023B3FA /* menuCreatedByGibicText.png */,
+				6FC09AB31A437E3D0023B3FA /* menuTitulo.png */,
+				6FC09AB51A437E450023B3FA /* menuBackgroundImage.png */,
+				6FBBB06A1A5C2A41008BB4BA /* menuMunecaDos.png */,
+				6FCD42011A65E7930040C76C /* monitorConfig.png */,
+				6FCD42101A65E9600040C76C /* monitorConfig2.png */,
+				6FCD42131A65E9DF0040C76C /* monitorPanel.png */,
+				6FED8FB01A6D783700150438 /* monitorBackgroundPicture.jpg */,
+				6FED8FB61A6D7B0200150438 /* monitorNotepad.png */,
+				6FC453611A6D7F250064E9F6 /* pause-97625_1280.png */,
+				6FC453641A6D7F300064E9F6 /* play-97626_640.png */,
+				6FC453671A6D83450064E9F6 /* clock-308938_1280.png */,
+			);
+			name = Pictures;
+			sourceTree = "<group>";
+		};
+		6FA5B2771A49DDF40032A4FB /* Still Unusable */ = {
+			isa = PBXGroup;
+			children = (
+				6FC340931A44EF830004A7DB /* GBCMenuWindow.m */,
+				6FC340921A44EF830004A7DB /* GBCMenuWindow.h */,
+				6FC340901A44E6CD0004A7DB /* GBCMenuWindowController.m */,
+				6FC3408F1A44E6CD0004A7DB /* GBCMenuWindowController.h */,
+				6FB2B8C11A43389B00239486 /* ViewController.h */,
+				6FB2B8C21A43389B00239486 /* ViewController.m */,
+			);
+			name = "Still Unusable";
+			sourceTree = "<group>";
+		};
+		6FA5B2781A49DE730032A4FB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6FC3408A1A44902F0004A7DB /* GBCMenuViewController.m */,
+				6FC340891A44902F0004A7DB /* GBCMenuViewController.h */,
+				6FC3408D1A4497820004A7DB /* GBCMonitorVIewController.m */,
+				6FC3408C1A4497820004A7DB /* GBCMonitorVIewController.h */,
+				6FC69B041A5B2CC10090234A /* GBCDoctorPanelViewController.m */,
+				6FC69B031A5B2CC10090234A /* GBCDoctorPanelViewController.h */,
+				6FBBB06E1A5C6B69008BB4BA /* GBCSyncViewController.m */,
+				6FBBB06D1A5C6B69008BB4BA /* GBCSyncViewController.h */,
+				6FBBB0721A5C70D0008BB4BA /* GBCConfirmViewController.m */,
+				6FBBB0711A5C70D0008BB4BA /* GBCConfirmViewController.h */,
+				6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */,
+				6FBBB0761A5C807C008BB4BA /* GBCResultsViewController.h */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		6FB2B8AE1A43389B00239486 = {
 			isa = PBXGroup;
 			children = (
-				6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */,
 				6FB2B8D01A43389B00239486 /* SimuladorCodigoRojoTests */,
-				6FB2B8B81A43389B00239486 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,20 +242,30 @@
 				6FB2B8CD1A43389B00239486 /* SimuladorCodigoRojoTests.xctest */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */ = {
 			isa = PBXGroup;
 			children = (
-				6FB2B8BC1A43389B00239486 /* AppDelegate.h */,
+				6C7049C81A69BC2F00838B48 /* Bluetooth */,
+				6F78F3641A48A11B006EBCEE /* Pictures */,
+				6FA5B2771A49DDF40032A4FB /* Still Unusable */,
+				6FA5B2781A49DE730032A4FB /* ViewControllers */,
 				6FB2B8BD1A43389B00239486 /* AppDelegate.m */,
-				6FB2B8C11A43389B00239486 /* ViewController.h */,
-				6FB2B8C21A43389B00239486 /* ViewController.m */,
-				6FB2B8C41A43389B00239486 /* Images.xcassets */,
+				6FB2B8BC1A43389B00239486 /* AppDelegate.h */,
+				6FE91C021A51C95A00E9B413 /* GBCSimulator.m */,
+				6FE91C011A51C95A00E9B413 /* GBCSimulator.h */,
+				6FE91BFE1A51B5FE00E9B413 /* GBCState.m */,
+				6FE91BFD1A51B5FE00E9B413 /* GBCState.h */,
+				6FCD41FE1A657A520040C76C /* GBCStateMachine.m */,
+				6FCD41FD1A657A520040C76C /* GBCStateMachine.h */,
 				6FB2B8C61A43389B00239486 /* Main.storyboard */,
+				6FB2B8C41A43389B00239486 /* Images.xcassets */,
 				6FB2B8BA1A43389B00239486 /* Supporting Files */,
 			);
-			path = SimuladorCodigoRojo;
+			name = SimuladorCodigoRojo;
+			path = ../SimuladorCodigoRojo;
 			sourceTree = "<group>";
 		};
 		6FB2B8BA1A43389B00239486 /* Supporting Files */ = {
@@ -104,6 +282,7 @@
 			children = (
 				6FB2B8D31A43389B00239486 /* SimuladorCodigoRojoTests.m */,
 				6FB2B8D11A43389B00239486 /* Supporting Files */,
+				6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */,
 			);
 			path = SimuladorCodigoRojoTests;
 			sourceTree = "<group>";
@@ -111,6 +290,7 @@
 		6FB2B8D11A43389B00239486 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6FB2B8B81A43389B00239486 /* Products */,
 				6FB2B8D21A43389B00239486 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -196,8 +376,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FCD42111A65E9600040C76C /* monitorConfig2.png in Resources */,
+				6FBBB06B1A5C2A41008BB4BA /* menuMunecaDos.png in Resources */,
+				6FC09ACA1A43A5170023B3FA /* configUpdateButton.png in Resources */,
+				6FC09ABC1A43808F0023B3FA /* monitorPatica1.png in Resources */,
+				6FC09AB81A437E4C0023B3FA /* menuLogoImagen.png in Resources */,
+				6FCD42021A65E7930040C76C /* monitorConfig.png in Resources */,
 				6FB2B8C51A43389B00239486 /* Images.xcassets in Resources */,
+				6FC453651A6D7F300064E9F6 /* play-97626_640.png in Resources */,
+				6FC09AB61A437E450023B3FA /* menuBackgroundImage.png in Resources */,
+				6FC09AC41A4380A70023B3FA /* monitorRectangle.png in Resources */,
 				6FB2B8C81A43389B00239486 /* Main.storyboard in Resources */,
+				6FCD42141A65E9DF0040C76C /* monitorPanel.png in Resources */,
+				6FC09AD21A43A89E0023B3FA /* configPauseButton.png in Resources */,
+				6FC09AB21A437E320023B3FA /* menuCreatedByGibicText.png in Resources */,
+				6FC09AC61A4392200023B3FA /* monitorAddButton.png in Resources */,
+				6FC09ABE1A43809B0023B3FA /* monitorPatica2.png in Resources */,
+				6FC453681A6D83450064E9F6 /* clock-308938_1280.png in Resources */,
+				6FC09AC21A4380A70023B3FA /* monitorBackground0.png in Resources */,
+				6FC453621A6D7F250064E9F6 /* pause-97625_1280.png in Resources */,
+				6FC09AC31A4380A70023B3FA /* monitorBackground1.png in Resources */,
+				6FC09AB41A437E3D0023B3FA /* menuTitulo.png in Resources */,
+				6FED8FB71A6D7B0200150438 /* monitorNotepad.png in Resources */,
+				6FC09ABA1A4380860023B3FA /* monitorSeñalImage.png in Resources */,
+				6FED8FB11A6D783700150438 /* monitorBackgroundPicture.jpg in Resources */,
+				6FC09AD41A43A90A0023B3FA /* configPlayButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +408,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FCD42031A65E7930040C76C /* monitorConfig.png in Resources */,
+				6FCD42121A65E9600040C76C /* monitorConfig2.png in Resources */,
+				6FED8FB81A6D7B0200150438 /* monitorNotepad.png in Resources */,
+				6FCD42151A65E9DF0040C76C /* monitorPanel.png in Resources */,
+				6FED8FB21A6D783700150438 /* monitorBackgroundPicture.jpg in Resources */,
+				6FC453631A6D7F250064E9F6 /* pause-97625_1280.png in Resources */,
+				6FBBB06C1A5C2A41008BB4BA /* menuMunecaDos.png in Resources */,
+				6FC453691A6D83450064E9F6 /* clock-308938_1280.png in Resources */,
+				6FC453661A6D7F300064E9F6 /* play-97626_640.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,8 +427,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FCD42001A6583290040C76C /* GBCStateMachine.m in Sources */,
+				6FBBB0781A5C807C008BB4BA /* GBCResultsViewController.m in Sources */,
+				6FBBB0751A5C8035008BB4BA /* GBCDoctorPanelViewController.m in Sources */,
+				6FBBB06F1A5C6B69008BB4BA /* GBCSyncViewController.m in Sources */,
+				6FCD45FF1A532CF4008162CA /* GBCSimulator.m in Sources */,
+				6FBBB0731A5C70D0008BB4BA /* GBCConfirmViewController.m in Sources */,
+				6FE91C001A51B6D100E9B413 /* GBCState.m in Sources */,
 				6FB2B8C31A43389B00239486 /* ViewController.m in Sources */,
+				6C7049CB1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */,
 				6FB2B8C01A43389B00239486 /* main.m in Sources */,
+				6FC3408E1A4497820004A7DB /* GBCMonitorVIewController.m in Sources */,
+				6FC340911A44E6CD0004A7DB /* GBCMenuWindowController.m in Sources */,
+				6FC340941A44EF830004A7DB /* GBCMenuWindow.m in Sources */,
+				6FC3408B1A44902F0004A7DB /* GBCMenuViewController.m in Sources */,
 				6FB2B8BE1A43389B00239486 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,7 +449,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FBBB0701A5C6B69008BB4BA /* GBCSyncViewController.m in Sources */,
+				6FE91C031A51C95A00E9B413 /* GBCSimulator.m in Sources */,
 				6FB2B8D41A43389B00239486 /* SimuladorCodigoRojoTests.m in Sources */,
+				6FBBB0791A5C807C008BB4BA /* GBCResultsViewController.m in Sources */,
+				6FE91BFF1A51B5FE00E9B413 /* GBCState.m in Sources */,
+				6FBBB0741A5C70D0008BB4BA /* GBCConfirmViewController.m in Sources */,
+				6FCD41FF1A657A520040C76C /* GBCStateMachine.m in Sources */,
+				6FC69B051A5B2CC10090234A /* GBCDoctorPanelViewController.m in Sources */,
+				6C7049CC1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -296,6 +529,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -404,6 +638,7 @@
 				6FB2B8D91A43389B00239486 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6FB2B8DA1A43389B00239486 /* Build configuration list for PBXNativeTarget "SimuladorCodigoRojoTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +647,7 @@
 				6FB2B8DC1A43389B00239486 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,16 +1,13 @@
 //
-//  ViewController.h
+//  GBCMenuWindow.h
 //  SimuladorCodigoRojo
 //
-//  Created by FING140323 on 12/18/14.
+//  Created by FING140323 on 12/19/14.
 //  Copyright (c) 2014 FING140323. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
-@interface ViewController : NSViewController
-
-
+@interface GBCMenuWindow : NSWindow
 
 @end
-

@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "GBCSimulator.h"
+
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
-
 
 @end
 
