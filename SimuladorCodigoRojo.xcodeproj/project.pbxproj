@@ -231,7 +231,9 @@
 		6FB2B8AE1A43389B00239486 = {
 			isa = PBXGroup;
 			children = (
+				6FB2B8B81A43389B00239486 /* Products */,
 				6FB2B8D01A43389B00239486 /* SimuladorCodigoRojoTests */,
+				6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,7 +244,6 @@
 				6FB2B8CD1A43389B00239486 /* SimuladorCodigoRojoTests.xctest */,
 			);
 			name = Products;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */ = {
@@ -264,8 +265,7 @@
 				6FB2B8C41A43389B00239486 /* Images.xcassets */,
 				6FB2B8BA1A43389B00239486 /* Supporting Files */,
 			);
-			name = SimuladorCodigoRojo;
-			path = ../SimuladorCodigoRojo;
+			path = SimuladorCodigoRojo;
 			sourceTree = "<group>";
 		};
 		6FB2B8BA1A43389B00239486 /* Supporting Files */ = {
@@ -282,7 +282,6 @@
 			children = (
 				6FB2B8D31A43389B00239486 /* SimuladorCodigoRojoTests.m */,
 				6FB2B8D11A43389B00239486 /* Supporting Files */,
-				6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */,
 			);
 			path = SimuladorCodigoRojoTests;
 			sourceTree = "<group>";
@@ -290,7 +289,6 @@
 		6FB2B8D11A43389B00239486 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6FB2B8B81A43389B00239486 /* Products */,
 				6FB2B8D21A43389B00239486 /* Info.plist */,
 			);
 			name = "Supporting Files";
