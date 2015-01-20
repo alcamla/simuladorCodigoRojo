@@ -9,9 +9,9 @@
             <objects>
                 <windowController id="dNa-BF-ULf" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Hwl-st-tES">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="179" y="510" width="414" height="430"/>
+                        <rect key="contentRect" x="781" y="282" width="414" height="430"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
                     <connections>
@@ -671,7 +671,7 @@
                     <window key="window" title="Menú" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="529" y="476" width="620" height="341"/>
+                        <rect key="contentRect" x="585" y="330" width="620" height="341"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -680,7 +680,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-906" y="223.5"/>
+            <point key="canvasLocation" x="-875" y="94.5"/>
         </scene>
         <!--Sincronización-->
         <scene sceneID="TeV-U8-Vbh">
@@ -961,9 +961,9 @@
             <objects>
                 <windowController id="0qe-IH-gCS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Xlv-xJ-wKV">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES"/>
-                        <rect key="contentRect" x="721" y="382" width="603" height="333"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="466" y="163" width="1008" height="702"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
                     <connections>
@@ -972,7 +972,7 @@
                 </windowController>
                 <customObject id="jgU-CV-kBB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="366.5" y="715.5"/>
+            <point key="canvasLocation" x="701" y="492"/>
         </scene>
         <!--Confirmar-->
         <scene sceneID="vKX-0H-wg3">
@@ -1171,7 +1171,7 @@
                 </viewController>
                 <customObject id="4yi-EH-P5X" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121" y="1433.5"/>
+            <point key="canvasLocation" x="366" y="1385.5"/>
         </scene>
         <!--Panel Médico-->
         <scene sceneID="MYr-xn-fOQ">
@@ -1349,7 +1349,7 @@
             <objects>
                 <windowController id="l6h-Db-HdS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="M6L-TD-cMI">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="655" y="254" width="651" height="551"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
@@ -1363,31 +1363,13 @@
             <point key="canvasLocation" x="-1598.5" y="1515.5"/>
         </scene>
         <!--Window Controller-->
-        <scene sceneID="6qe-YZ-t2S">
-            <objects>
-                <windowController id="Lt8-WD-HSG" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="V3d-ZZ-R3W">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="672" y="285" width="619" height="342"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-                    </window>
-                    <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="liv-o6-iZD"/>
-                    </connections>
-                </windowController>
-                <customObject id="JLw-Pz-GOu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-841.5" y="1394"/>
-        </scene>
-        <!--Window Controller-->
         <scene sceneID="jcI-1O-TFm">
             <objects>
                 <windowController id="gNm-pR-YI9" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="2zO-aO-U27">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="718" y="255" width="586" height="525"/>
+                        <rect key="contentRect" x="691" y="255" width="586" height="525"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
                     <connections>
@@ -1697,12 +1679,12 @@
                         <outlet property="tubesLabel" destination="3PQ-3o-LAl" id="dbV-QE-trh"/>
                         <outlet property="venusLabel" destination="gbE-z3-l9x" id="D7v-PH-mbG"/>
                         <outlet property="vitalSignsLabel" destination="tdv-74-n4d" id="7sv-zS-RCs"/>
-                        <segue destination="Lt8-WD-HSG" kind="show" identifier="fromResultsToMenu" id="wnX-7b-KQq"/>
+                        <segue destination="B8D-0N-5wS" kind="show" identifier="fromResultsToMenu" id="fNi-H6-cGU"/>
                     </connections>
                 </viewController>
                 <customObject id="jaw-sY-dX8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1599" y="2270"/>
+            <point key="canvasLocation" x="-1528" y="2259"/>
         </scene>
     </scenes>
     <resources>
@@ -1717,7 +1699,4 @@
         <image name="pause-97625_1280" width="1262" height="1280"/>
         <image name="play-97626_640" width="552" height="640"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="liv-o6-iZD"/>
-    </inferredMetricsTieBreakers>
 </document>
