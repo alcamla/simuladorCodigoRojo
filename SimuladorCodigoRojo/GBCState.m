@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *arterialPresure;
 @property (strong, nonatomic) NSString *respiratoryRate;
 @property (strong, nonatomic) NSString *oxygenSaturation;
+//Este comentario está en el branch
 
 @end
 
