@@ -8,26 +8,13 @@
 
 #import "GBCSyncViewController.h"
 #import "GBCSimulator.h"
+#import "GBCRedCodeUtilities.h"
 
 @interface GBCSyncViewController ()
 
 // Bluetooth Variables Texts
 
-@property (strong) IBOutlet NSTextField *mascValueTableText;
-@property (strong) IBOutlet NSTextField *inyectionValueTableText;
-@property (strong) IBOutlet NSTextField *blanketValueTableText;
-@property (strong) IBOutlet NSTextField *probeValueTableText;
-@property (strong) IBOutlet NSTextField *massageValueText;
 
-// Bluetooth Variables Values
-
-@property (strong) IBOutlet NSTextField *signsMeasurmentValueTableText;
-@property (strong) IBOutlet NSTextField *mascTableText;
-@property (strong) IBOutlet NSTextField *inyectionTableText;
-@property (strong) IBOutlet NSTextField *blanketTableText;
-@property (strong) IBOutlet NSTextField *probeTableText;
-@property (strong) IBOutlet NSTextField *signsMeasurementTableText;
-@property (strong) IBOutlet NSTextField *massageTableText;
 
 // Others
 
@@ -38,10 +25,20 @@
 @property(strong, nonatomic) NSTimer *timerToUpdateSyncView;
 @property(strong, nonatomic) NSDictionary *vitalSignsSync;
 
+
+//Doll Indicators
+
+@property (weak) IBOutlet NSImageView *oxigenSensor;
+@property (weak) IBOutlet NSImageView *blanketSensor;
+@property (weak) IBOutlet NSImageView *vitalSignsSensor;
+@property (weak) IBOutlet NSImageView *massageSensor;
+@property (weak) IBOutlet NSImageView *urinarySensor;
+@property (weak) IBOutlet NSImageView *catheterSensor;
+@property(nonatomic, strong) NSDictionary *sensorsImagesDictionary;
+
 @end
 
 @implementation GBCSyncViewController
-
 // Local Variables Defining
 
 bool bluetoothConnectionCheckSync=NO;
@@ -215,29 +212,32 @@ int viewLoadState=0;
     // If there are are bluetooth variables, then display them
     if (vitalSignsCheck==YES) {
         
-        // Update table Values Appeareance
-        [self.mascValueTableText setStringValue:[self.vitalSignsSync objectForKey:@"Oxígeno"]];
-        [self.inyectionValueTableText setStringValue:[self.vitalSignsSync objectForKey:@"Vías Venosas"]];
-        [self.blanketValueTableText setStringValue:[self.vitalSignsSync objectForKey:@"Manta"]];
-        [self.probeValueTableText setStringValue:[self.vitalSignsSync objectForKey:@"Sonda Urinaria"]];
-        [self.signsMeasurmentValueTableText setStringValue:[self.vitalSignsSync objectForKey:@"Medición de Signos"]];
-        [self.massageValueText setStringValue:[self.vitalSignsSync objectForKey:@"Masaje"]];
-        
-        // Update table Names Appeareance
-        [self.mascTableText setStringValue:@"Oxígeno"];
-        [self.inyectionTableText setStringValue:@"Vías Venosas Garantizadas"];
-        [self.blanketTableText setStringValue:@"Temperatura/Manta"];
-        [self.probeTableText setStringValue:@"Sonda Vesical"];
-        [self.signsMeasurementTableText setStringValue:@"Medición de Signos"];
-        [self.massageTableText setStringValue:@"Masaje"];
-        
-        
         // Update endSyncProperty Button Appeareance
         self.endSyncProperty.enabled=YES;
         
+        //Update the doll sensor's indicators
+        [self.oxigenSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Oxígeno" inState:[self.vitalSignsSync objectForKey:@"Oxígeno"]]];
+        [self.catheterSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Vías Venosas" inState:[self.vitalSignsSync objectForKey:@"Vías Venosas"]]];
+        [self.blanketSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Manta" inState:[self.vitalSignsSync objectForKey:@"Manta"]]];
+        [self.urinarySensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Sonda Urinaria" inState:[self.vitalSignsSync objectForKey:@"Sonda Urinaria"]]];
+        [self.vitalSignsSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Medición de Signos" inState:[self.vitalSignsSync objectForKey:@"Medición de Signos"]]];
+        [self.massageSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Masaje" inState:[self.vitalSignsSync objectForKey:@"Masaje"]]];
     }
-    
 }
+
+
+-(NSImage *)imageForVariable:(NSString*)variable
+{
+    NSImage *image;
+    NSString *state = [self.vitalSignsSync objectForKey:variable];
+    if ([state isEqualToString:@"Yes"]) {
+        image = [NSImage imageNamed:[self.sensorsImagesDictionary objectForKey:variable][0]];
+    } else{
+        image = [NSImage imageNamed:[self.sensorsImagesDictionary objectForKey:variable][1]];
+    }
+    return  image;
+}
+
 
 // Lazy initializations
 
@@ -253,6 +253,24 @@ int viewLoadState=0;
         _vitalSignsSync = [[NSDictionary alloc] init];
     }
     return _vitalSignsSync;
+}
+
+-(NSDictionary *)sensorsImagesDictionary{
+    if (!_sensorsImagesDictionary) {
+        _sensorsImagesDictionary = @{@"Oxígeno":@[@"red_code_oxigen_sensor_active",
+                                                  @"red_code_oxigen_sensor_inactive"],
+                                     @"Vías Venosas":@[@"red_code_catheter_sensor_active",
+                                                       @"red_code_catheter_sensor_inactive"],
+                                     @"Manta":@[@"red_code_blanket_sensor_active",
+                                                @"red_code_blanket_sensor_inactive"],
+                                     @"Sonda Urinaria":@[@"red_code_urinary_catheter_sensor_active",
+                                                         @"red_code_urinary_catheter_sensor_inactive"],
+                                     @"Medición de Signos":@[@"red_code_vital_signs_sensor_active",
+                                                             @"red_code_vital_signs_sensor_inactive"],
+                                     @"Masaje":@[@"red_code_massage_sensor_active",
+                                                 @"red_code_massage_sensor_inactive"]};
+    }
+    return _sensorsImagesDictionary;
 }
 
 @end

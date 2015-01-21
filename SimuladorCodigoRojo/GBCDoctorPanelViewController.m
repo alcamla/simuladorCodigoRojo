@@ -8,16 +8,9 @@
 
 #import "GBCDoctorPanelViewController.h"
 #import "GBCSimulator.h"
+#import "GBCRedCodeUtilities.h"
 
 @interface GBCDoctorPanelViewController ()
-
-// Bluetooth and Non Editables Variables
-
-@property (strong) IBOutlet NSButton *oxygenStudentsCheck;
-@property (strong) IBOutlet NSButton *massage;
-@property (strong) IBOutlet NSButton *blanketStudentCheck;
-@property (strong) IBOutlet NSButton *probeStudentCheck;
-@property (strong) IBOutlet NSButton *vitalSignsStudentsCheck;
 
 // Editables Variables
 
@@ -38,6 +31,16 @@
 @property (strong,nonatomic) NSMutableArray *editedVariablesValues;
 @property (strong,nonatomic) NSMutableArray *editedVariablesKeys;
 @property(strong,nonatomic) NSTimer *timerToUpdatePanelView;
+
+//
+@property (weak) IBOutlet NSImageView *oxigenSensor;
+@property (weak) IBOutlet NSImageView *catheterSensor;
+@property (weak) IBOutlet NSImageView *blanketSensor;
+@property (weak) IBOutlet NSImageView *urinarySensor;
+@property (weak) IBOutlet NSImageView *vitalSignsSensor;
+@property (weak) IBOutlet NSImageView *massageSensor;
+
+
 
 
 
@@ -239,77 +242,19 @@
     // Getting dictionary with bluetooth variables
     self.bluetoothVariablesPanel=[[GBCSimulator sharedSimulator] getBluetoothVariables];
     
-    // Checking for dictionary Status
+    [self.oxigenSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Oxígeno"
+                                                                         inState:[self.bluetoothVariablesPanel objectForKey:@"Oxígeno"]]];
+    [self.catheterSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Vías Venosas"
+                                                                           inState:[self.bluetoothVariablesPanel objectForKey:@"Vías Venosas"]]];
+    [self.blanketSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Manta"
+                                                                          inState:[self.bluetoothVariablesPanel objectForKey:@"Manta"]]];
+    [self.urinarySensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Sonda Urinaria"
+                                                                          inState:[self.bluetoothVariablesPanel objectForKey:@"Sonda Urinaria"]]];
+    [self.vitalSignsSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Medición de Signos"
+                                                                             inState:[self.bluetoothVariablesPanel objectForKey:@"Medición de Signos"]]];
+    [self.massageSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Masaje"
+                                                                          inState:[self.bluetoothVariablesPanel objectForKey:@"Masaje"]]];
     
-    if([[self.bluetoothVariablesPanel objectForKey:@"Masaje"] isEqual: @"Yes"]){
-        
-        // Set it like checked
-        self.massage.state=1;
-        
-    } else if([[self.bluetoothVariablesPanel objectForKey:@"Masaje"] isEqual: @"No"]){
-        
-        // Set it unchecked
-        self.massage.state=0;
-    }
-    
-    if([[self.bluetoothVariablesPanel objectForKey:@"Oxígeno"] isEqual: @"Yes"]){
-        
-        // Set it like checked
-        self.oxygenStudentsCheck.state=1;
-        
-    } else if([[self.bluetoothVariablesPanel objectForKey:@"Oxígeno"] isEqual: @"No"]){
-        
-        // Set it unchecked
-        self.oxygenStudentsCheck.state=0;
-        
-    }
-    
-    if([[self.bluetoothVariablesPanel objectForKey:@"Sonda Urinaria"] isEqual: @"Yes"]){
-        
-        // Set it like checked
-        self.probeStudentCheck.state=1;
-        
-    } else if([[self.bluetoothVariablesPanel objectForKey:@"Sonda Urinaria"] isEqual: @"No"]){
-        
-        // Set it unchecked
-        self.probeStudentCheck.state=0;
-        
-    }
-    
-    if([[self.bluetoothVariablesPanel objectForKey:@"Manta"] isEqual: @"Yes"]){
-        
-        // Set it like checked
-        self.blanketStudentCheck.state=1;
-        
-    } else if([[self.bluetoothVariablesPanel objectForKey:@"Manta"] isEqual: @"No"]){
-        
-        // Set it unchecked
-        self.blanketStudentCheck.state=0;
-
-    }
-    
-    if([[self.bluetoothVariablesPanel objectForKey:@"Medición de Signos"] isEqual: @"Yes"]){
-        
-        // Set it like checked
-        self.vitalSignsStudentsCheck.state=1;
-        
-    } else if([[self.bluetoothVariablesPanel objectForKey:@"Medición de Signos"] isEqual: @"No"]){
-        
-        // Set it unchecked
-        self.vitalSignsStudentsCheck.state=0;
-    }
-    
-    if([[self.bluetoothVariablesPanel objectForKey:@"Vías Venosas"] isEqual: @"Yes"]){
-        
-        // Set it like checked
-        self.venousPathways.state=1;
-        
-    } else if([[self.bluetoothVariablesPanel objectForKey:@"Vías Venosas"] isEqual: @"No"]){
-        
-        // Set it unchecked
-        self.venousPathways.state=0;
-    }
-
     
 }
 
