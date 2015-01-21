@@ -1113,16 +1113,6 @@
                                     <font key="font" size="13" name="HelveticaNeue"/>
                                 </buttonCell>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AB1-J3-0fL">
-                                <rect key="frame" x="390" y="172" width="60" height="66"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pause-97625_1280" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="e3e-N5-bJK">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="pauseSimulation:" target="96v-ZO-IAM" id="ogJ-uF-UPo"/>
-                                </connections>
-                            </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bUL-CN-hit">
                                 <rect key="frame" x="39" y="228" width="170" height="19"/>
                                 <buttonCell key="cell" type="check" title="Medicamentos Aplicados" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7EF-jy-9Jz">
@@ -1164,16 +1154,6 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="13" name="HelveticaNeue"/>
                                 </buttonCell>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-ZW-OEy">
-                                <rect key="frame" x="296" y="172" width="78" height="67"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play-97626_640" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Hg7-VE-PNO">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="reanudeSimulation:" target="96v-ZO-IAM" id="0Fg-TT-pEE"/>
-                                </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EMm-Ov-fQs">
                                 <rect key="frame" x="40" y="322" width="180" height="19"/>
@@ -1239,6 +1219,16 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-ZW-OEy">
+                                <rect key="frame" x="359" y="192" width="78" height="67"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pause-97625_1280" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="Hg7-VE-PNO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="animationStateDidChange:" target="96v-ZO-IAM" id="aFQ-aN-8LX"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1253,6 +1243,7 @@
                         <outlet property="massageSensor" destination="jVb-lI-9Gb" id="fSS-tu-qSe"/>
                         <outlet property="medicineStudentsCheck" destination="bUL-CN-hit" id="fPK-K7-ISl"/>
                         <outlet property="oxigenSensor" destination="zKH-q6-bXY" id="Mod-H7-rdp"/>
+                        <outlet property="startAnimationButton" destination="7dz-ZW-OEy" id="r4e-rm-tSG"/>
                         <outlet property="tubeMarking" destination="5rG-Tm-CEn" id="REG-dR-tTf"/>
                         <outlet property="urinarySensor" destination="TAC-WO-TyW" id="8uC-Lq-8Li"/>
                         <outlet property="venousPathways" destination="EMm-Ov-fQs" id="OcK-fn-2Gp"/>
@@ -1617,7 +1608,6 @@
         <image name="monitorBackgroundPicture" width="1280" height="720"/>
         <image name="monitorNotepad" width="1202" height="1280"/>
         <image name="pause-97625_1280" width="1262" height="1280"/>
-        <image name="play-97626_640" width="552" height="640"/>
         <image name="red_code_blanket_sensor_active" width="56.639999389648438" height="7.440000057220459"/>
         <image name="red_code_catheter_sensor_inactive" width="10.560000419616699" height="10.319999694824219"/>
         <image name="red_code_massage_sensor_inactive" width="71.760002136230469" height="79.680000305175781"/>
