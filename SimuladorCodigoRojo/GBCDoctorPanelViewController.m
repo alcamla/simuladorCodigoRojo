@@ -41,6 +41,8 @@
 @property (weak) IBOutlet NSImageView *massageSensor;
 
 
+@property (weak) IBOutlet NSButton *startAnimationButton;
+@property(nonatomic) BOOL simulationIsPaused;
 
 
 
@@ -54,6 +56,9 @@
     
     // Initialize panel timer
     [self initializePanelTimer];
+    self.startAnimationButton.state = NSOnState;
+    [self.startAnimationButton setIntegerValue:1];
+    self.simulationIsPaused = NO;
     
 }
 
@@ -219,20 +224,18 @@
     
 }
 
-// Send to Main Class:Simulator Reanude Simulation Message
-
-- (IBAction)reanudeSimulation:(id)sender {
-    
-    [[GBCSimulator sharedSimulator] getReanudedMessage];
-    
-}
-
-// Send to Main Class:Simulator Pause Simulation Message
-
-- (IBAction)pauseSimulation:(id)sender {
-    
-    [[GBCSimulator sharedSimulator] getPausedMessage];
-    
+- (IBAction)animationStateDidChange:(id)sender {
+    if (sender == self.startAnimationButton) {
+        if (self.simulationIsPaused) {
+            [self.startAnimationButton setImage:[NSImage imageNamed:@"pause-97625_1280"]];
+            self.simulationIsPaused = NO;
+            [[GBCSimulator sharedSimulator] getReanudedMessage];
+        }else{
+            [self.startAnimationButton setImage:[NSImage imageNamed:@"play-97626_640"]];
+            self.simulationIsPaused = YES;
+            [[GBCSimulator sharedSimulator] getPausedMessage];
+        }
+    }
 }
 
 // Get and Update bluetooth variables from Main Class: Simulator

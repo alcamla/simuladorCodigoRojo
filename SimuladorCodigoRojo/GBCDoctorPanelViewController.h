@@ -11,9 +11,6 @@
 @interface GBCDoctorPanelViewController : NSViewController
 
 - (IBAction)finishSimulation:(id)sender;
-- (IBAction)reanudeSimulation:(id)sender;
-- (IBAction)pauseSimulation:(id)sender;
-
 - (void) sentFinalizationMessage;
 - (void) initializePanelTimer;
 - (void) interruptEventHandlingPanel;
