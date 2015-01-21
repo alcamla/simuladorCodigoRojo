@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C5A1C971A700DBE001DA461 /* GBCRedCodeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */; };
 		6C7049CB1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
 		6C7049CC1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
 		6FB2B8BE1A43389B00239486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8BD1A43389B00239486 /* AppDelegate.m */; };
@@ -78,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C5A1C951A700DBE001DA461 /* GBCRedCodeUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCRedCodeUtilities.h; sourceTree = "<group>"; };
+		6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCRedCodeUtilities.m; sourceTree = "<group>"; };
 		6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCBluetoothManager.m; sourceTree = "<group>"; };
 		6C7049CA1A69BC8200838B48 /* GBCBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCBluetoothManager.h; sourceTree = "<group>"; };
 		6FB2B8B71A43389B00239486 /* SimuladorCodigoRojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimuladorCodigoRojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +160,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C5A1C941A700D83001DA461 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6C5A1C951A700DBE001DA461 /* GBCRedCodeUtilities.h */,
+				6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		6C7049C81A69BC2F00838B48 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +261,7 @@
 		6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */ = {
 			isa = PBXGroup;
 			children = (
+				6C5A1C941A700D83001DA461 /* Utilities */,
 				6C7049C81A69BC2F00838B48 /* Bluetooth */,
 				6F78F3641A48A11B006EBCEE /* Pictures */,
 				6FA5B2771A49DDF40032A4FB /* Still Unusable */,
@@ -439,6 +452,7 @@
 				6FC340911A44E6CD0004A7DB /* GBCMenuWindowController.m in Sources */,
 				6FC340941A44EF830004A7DB /* GBCMenuWindow.m in Sources */,
 				6FC3408B1A44902F0004A7DB /* GBCMenuViewController.m in Sources */,
+				6C5A1C971A700DBE001DA461 /* GBCRedCodeUtilities.m in Sources */,
 				6FB2B8BE1A43389B00239486 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

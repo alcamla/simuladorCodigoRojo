@@ -41,7 +41,7 @@
 
 bool bluetoothConnectionCheckSimulator = YES;
 bool calibrationCheckSimulator = YES;
-bool sensorsCheckSimulator=YES;
+bool sensorsCheckSimulator= YES;
 bool finalizationCheck=NO;
 bool paussedChecked=NO;
 bool reanudedChecked=NO;
