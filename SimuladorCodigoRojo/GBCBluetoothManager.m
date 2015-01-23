@@ -213,9 +213,11 @@
 
 - (void) sendCurrentSimulationState:(NSString *)simulationState{
     NSString *simulationStateDataString;
-    if ([simulationState isEqualToString:@"Postparto"]) {
+    if ([simulationState isEqualToString:@"Postparto"] ||
+        [simulationState isEqualToString:@"Transitorio Leve"]) {
         simulationStateDataString = @"h0,";
-    } else if ([simulationState isEqualToString:@"Choque Leve"]){
+    }
+    else if ([simulationState isEqualToString:@"Choque Leve"]){
         simulationStateDataString = @"h1,";
     } else if ([simulationState isEqualToString:@"Choque Moderado"]){
         simulationStateDataString = @"h2,";
@@ -327,7 +329,8 @@
     if(autoConnect)
     {
         ///[manager retrievePeripheralsWithIdentifiers:@[(id)aPeripheral.identifier]];
-        if ([[aPeripheral.identifier UUIDString] isEqualToString:BLUETOOTH_DEVICE_1_UUID_STRING]) {
+        //TODO: cambiar cuando se conecte al prototipo final (BLUETOOTH_DEVICE_2_UUID_STRING) prototipos de pruebas:(BLUETOOTH_DEVICE_1_UUID_STRING)
+        if ([[aPeripheral.identifier UUIDString] isEqualToString:BLUETOOTH_DEVICE_2_UUID_STRING]) {
             peripheral = aPeripheral;
             [manager connectPeripheral:peripheral options:nil];
             [self stopScan];

@@ -39,9 +39,9 @@
 
 // Local DataBase
 
-bool bluetoothConnectionCheckSimulator = YES;
-bool calibrationCheckSimulator = YES;
-bool sensorsCheckSimulator= YES;
+bool bluetoothConnectionCheckSimulator = NO;
+bool calibrationCheckSimulator = NO;
+bool sensorsCheckSimulator= NO;
 bool finalizationCheck=NO;
 bool paussedChecked=NO;
 bool reanudedChecked=NO;
@@ -466,7 +466,7 @@ bool updatedBoolean=NO;
 
 - (NSMutableArray *)bluetoothInitialValuesSimulator{
     if (!_bluetoothInitialValuesSimulator) {
-        _bluetoothInitialValuesSimulator = [[NSMutableArray alloc] initWithObjects:@"Yes", @"Yes", @"Yes", @"Yes", @"Yes",@"Yes", nil];
+        _bluetoothInitialValuesSimulator = [[NSMutableArray alloc] initWithObjects:@"No", @"No", @"No", @"No", @"No",@"No", nil];
     }
     return _bluetoothInitialValuesSimulator;
 }
