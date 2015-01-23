@@ -52,21 +52,24 @@ NSInteger hoursMachine=0;
 NSInteger minutesMachine=0;
 NSInteger secondsMachine=0;
 
-/*
+// Trasition Times
 
 NSInteger initTime=0;
 NSInteger postpartoTime=2;
 NSInteger softShockTime=5;
 NSInteger softTransitoryTime=10;
 NSInteger moderedShockTime=12;
-*/
 
+
+// Initial Time Settings For Short Proofs
+/*
 NSInteger initTime=0;
 NSInteger postpartoTime=1;
 NSInteger softShockTime=2;
 NSInteger softTransitoryTime=3;
 NSInteger moderedShockTime=4;
-
+*/
+ 
 // Initialize Machine Timer to Update State
 
 - (void) initializeMachineTimer{

@@ -96,24 +96,82 @@ NSNumber *minutesResulst=0;
 
 - (void)displayResults{
     
-    // Bluetooth Variables
-    self.oxygenLabel.stringValue=[self.bluetoothVariablesResults objectForKey:@"Oxígeno"];
-    self.temperatureLabel.stringValue=[self.bluetoothVariablesResults objectForKey:@"Manta"];
-    self.probeLabel.stringValue=[self.bluetoothVariablesResults objectForKey:@"Sonda Urinaria"];
-    self.massageLabel.stringValue=[self.bluetoothVariablesResults objectForKey:@"Masaje"];
-    self.vitalSignsLabel.stringValue=[self.bluetoothVariablesResults objectForKey:@"Medición de Signos"];
+    // Display Bluetooth Variables Values
+    if ([[self.bluetoothVariablesResults objectForKey:@"Oxígeno"] isEqualToString:@"Yes"]==YES) {
+        self.oxygenLabel.stringValue=@"Si";
+    }else{
+        self.oxygenLabel.stringValue=@"No";
+    }
+    if ([[self.bluetoothVariablesResults objectForKey:@"Manta"] isEqualToString:@"Yes"]==YES) {
+        self.temperatureLabel.stringValue=@"Si";
+    }else{
+        self.temperatureLabel.stringValue=@"No";
+    }
+    if ([[self.bluetoothVariablesResults objectForKey:@"Sonda Urinaria"] isEqualToString:@"Yes"]==YES) {
+        self.probeLabel.stringValue=@"Si";
+    }else{
+        self.probeLabel.stringValue=@"No";
+    }
+    if ([[self.bluetoothVariablesResults objectForKey:@"Masaje"] isEqualToString:@"Yes"]==YES) {
+        self.massageLabel.stringValue=@"Si";
+    }else{
+        self.massageLabel.stringValue=@"No";
+    }
+    if ([[self.bluetoothVariablesResults objectForKey:@"Medición de Signos"] isEqualToString:@"Yes"]==YES) {
+        self.vitalSignsLabel.stringValue=@"Si";
+    }else{
+        self.vitalSignsLabel.stringValue=@"No";
+    }
     
-    // Editable Variables
-    self.bleedingLabel.stringValue=[self.editableVariablesResults objectForKey:@"Sangrado Observado"];
-    self.diagnosticLabel.stringValue=[self.editableVariablesResults objectForKey:@"Diagnóstico"];
-    self.medicineLabel.stringValue=[self.editableVariablesResults objectForKey:@"Medicamentos Aplicados"];
-    self.crystalloidLabel.stringValue=[self.editableVariablesResults objectForKey:@"Cristaloides"];
-    self.eventsLabel.stringValue=[self.editableVariablesResults objectForKey:@"Anotación de Eventos"];
-    self.venusLabel.stringValue=[self.editableVariablesResults objectForKey:@"Vías Venosas"];
-    self.ordersLabel.stringValue=[self.editableVariablesResults objectForKey:@"Ordenes de Laboratorio"];
-    self.liquidsLabel.stringValue=[self.editableVariablesResults objectForKey:@"Calentar Líquidos"];
-    self.tubesLabel.stringValue=[self.editableVariablesResults objectForKey:@"Marcar Tubos"];
     
+    // Display Editable Variables Values
+    if ([[self.editableVariablesResults objectForKey:@"Sangrado Observado"] isEqualToString:@"Yes"]==YES) {
+        self.bleedingLabel.stringValue=@"Si";
+    }else{
+        self.bleedingLabel.stringValue=@"No";
+    }
+    if ([[self.editableVariablesResults objectForKey:@"Diagnóstico"] isEqualToString:@"Yes"]==YES) {
+        self.diagnosticLabel.stringValue=@"Si";
+    }else{
+        self.diagnosticLabel.stringValue=@"No";
+    }
+    if ([[self.editableVariablesResults objectForKey:@"Medicamentos Aplicados"] isEqualToString:@"Yes"]==YES) {
+        self.medicineLabel.stringValue=@"Si";
+    }else{
+        self.medicineLabel.stringValue=@"No";
+    }
+    if ([[self.editableVariablesResults objectForKey:@"Cristaloides"] isEqualToString:@"Yes"]==YES) {
+        self.crystalloidLabel.stringValue=@"Si";
+    }else{
+        self.crystalloidLabel.stringValue=@"No";
+    }
+    if ([[self.editableVariablesResults objectForKey:@"Anotación de Eventos"] isEqualToString:@"Yes"]==YES) {
+        self.eventsLabel.stringValue=@"Si";
+    }else{
+        self.eventsLabel.stringValue=@"No";
+    }
+    if ([[self.editableVariablesResults objectForKey:@"Vías Venosas"] isEqualToString:@"Yes"]==YES) {
+        self.venusLabel.stringValue=@"Si";
+    }else{
+        self.venusLabel.stringValue=@"No";
+    }
+    if ([[self.editableVariablesResults objectForKey:@"Ordenes de Laboratorio"] isEqualToString:@"Yes"]==YES) {
+        self.ordersLabel.stringValue=@"Si";
+    }else{
+        self.ordersLabel.stringValue=@"No";
+    }
+    if ([[self.editableVariablesResults objectForKey:@"Calentar Líquidos"] isEqualToString:@"Yes"]==YES) {
+        self.liquidsLabel.stringValue=@"Si";
+    }else{
+        self.liquidsLabel.stringValue=@"No";
+    }
+    if ([[self.editableVariablesResults objectForKey:@"Marcar Tubos"] isEqualToString:@"Yes"]==YES) {
+        self.tubesLabel.stringValue=@"Si";
+    }else{
+        self.tubesLabel.stringValue=@"No";
+    }
+    
+
     // Calculate Score to Display
     [self calculateScore];
     
@@ -125,71 +183,71 @@ NSNumber *minutesResulst=0;
     
     // Check "Yes" to Add Unity to Score
     
-    if ([self.oxygenLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.oxygenLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.oxygenLabel setTextColor:[NSColor greenColor]];
     }
     
-    if ([self.temperatureLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.temperatureLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.temperatureLabel setTextColor:[NSColor greenColor]];
     }
 
-    if ([self.probeLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.probeLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.probeLabel setTextColor:[NSColor greenColor]];
     }
-    if ([self.massageLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.massageLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.massageLabel setTextColor:[NSColor greenColor]];
     }
 
-    if ([self.vitalSignsLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.vitalSignsLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.vitalSignsLabel setTextColor:[NSColor greenColor]];
     }
 
-    if ([self.bleedingLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.bleedingLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.bleedingLabel setTextColor:[NSColor greenColor]];
     }
 
-    if ([self.diagnosticLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.diagnosticLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.diagnosticLabel setTextColor:[NSColor greenColor]];
     }
 
-    if ([self.medicineLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.medicineLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.medicineLabel setTextColor:[NSColor greenColor]];
     }
 
-    if ([self.crystalloidLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.crystalloidLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.crystalloidLabel setTextColor:[NSColor greenColor]];
     }
 
-    if ([self.eventsLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.eventsLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.eventsLabel setTextColor:[NSColor greenColor]];
     }
 
-    if ([self.venusLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.venusLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.venusLabel setTextColor:[NSColor greenColor]];
     }
 
-    if ([self.ordersLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.ordersLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.ordersLabel setTextColor:[NSColor greenColor]];
     }
     
-    if ([self.liquidsLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.liquidsLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.liquidsLabel setTextColor:[NSColor greenColor]];
     }
     
-    if ([self.tubesLabel.stringValue isEqualToString:@"Yes"]) {
+    if ([self.tubesLabel.stringValue isEqualToString:@"Si"]) {
         scoreCounter++;
         [self.tubesLabel setTextColor:[NSColor greenColor]];
     }
