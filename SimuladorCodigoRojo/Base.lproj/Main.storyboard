@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14C99d" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14C106a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6249"/>
     </dependencies>
@@ -8,7 +8,7 @@
         <scene sceneID="H9w-kM-ZW9">
             <objects>
                 <windowController id="dNa-BF-ULf" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Hwl-st-tES">
+                    <window key="window" title="SIncronización" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Hwl-st-tES">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="781" y="282" width="414" height="430"/>
@@ -820,7 +820,7 @@
                             </comboBox>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AJQ-1F-woL">
                                 <rect key="frame" x="36" y="61" width="188" height="168"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="menuMunecaDos" id="hXj-Md-eDw"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="woman" id="hXj-Md-eDw"/>
                             </imageView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7FX-Vl-hnx">
                                 <rect key="frame" x="311" y="95" width="181" height="32"/>
@@ -860,7 +860,7 @@
         <scene sceneID="7PY-Mm-5Yf">
             <objects>
                 <windowController id="mdy-4D-Yjc" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Hf6-TK-LMw">
+                    <window key="window" title="Confirmar" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Hf6-TK-LMw">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="842" y="588" width="389" height="75"/>
@@ -878,7 +878,7 @@
         <scene sceneID="TOs-2t-QJZ">
             <objects>
                 <windowController id="0qe-IH-gCS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Xlv-xJ-wKV">
+                    <window key="window" title="Monitor de signos vitales" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Xlv-xJ-wKV">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="466" y="163" width="1008" height="702"/>
@@ -1259,7 +1259,7 @@
         <scene sceneID="dPp-5G-5HK">
             <objects>
                 <windowController id="l6h-Db-HdS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="M6L-TD-cMI">
+                    <window key="window" title="Resultados" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="M6L-TD-cMI">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="655" y="254" width="651" height="551"/>
@@ -1277,7 +1277,7 @@
         <scene sceneID="jcI-1O-TFm">
             <objects>
                 <windowController id="gNm-pR-YI9" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="2zO-aO-U27">
+                    <window key="window" title="Panel Médico" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="2zO-aO-U27">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="691" y="255" width="586" height="525"/>
@@ -1601,7 +1601,6 @@
     <resources>
         <image name="menuBackgroundImage" width="882" height="568"/>
         <image name="menuCreatedByGibicText" width="203" height="29"/>
-        <image name="menuMunecaDos" width="366" height="640"/>
         <image name="menuTitulo" width="617" height="57"/>
         <image name="monitorAddButton" width="252.63157653808594" height="252.63157653808594"/>
         <image name="monitorBackground1" width="1010" height="741"/>
@@ -1615,5 +1614,6 @@
         <image name="red_code_urinary_catheter_sensor_active" width="26.399999618530273" height="27.600000381469727"/>
         <image name="red_code_vital_signs_sensor_active" width="19.440000534057617" height="32.400001525878906"/>
         <image name="red_code_woman_front" width="246.72000122070312" height="516.239990234375"/>
+        <image name="woman" width="670" height="670"/>
     </resources>
 </document>
