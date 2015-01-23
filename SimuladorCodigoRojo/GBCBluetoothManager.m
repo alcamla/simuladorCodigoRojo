@@ -3,7 +3,8 @@
 //  HeartRateMonitor
 //
 //  Created by camacholaverde on 1/15/15.
-//  Copyright (c) 2015 Apple Inc. All rights reserved.
+//  Copyright (c) 2015 GIBIC Inc. All rights reserved.
+//
 //
 
 #import "GBCBluetoothManager.h"
@@ -13,6 +14,7 @@
 @property(nonatomic, strong)CBCharacteristic *writeCharacteristic;
 @property(nonatomic, strong) NSMutableString *readDataBuffer;
 @property(nonatomic, strong)NSTimer *reconnectingTimer;
+
 @end
 
 @implementation GBCBluetoothManager
