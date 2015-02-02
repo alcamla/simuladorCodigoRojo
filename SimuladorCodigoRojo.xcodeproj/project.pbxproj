@@ -87,8 +87,8 @@
 		6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCRedCodeUtilities.m; sourceTree = "<group>"; };
 		6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCBluetoothManager.m; sourceTree = "<group>"; };
 		6C7049CA1A69BC8200838B48 /* GBCBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCBluetoothManager.h; sourceTree = "<group>"; };
-		6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = monitorSgSignal.jpg; path = SimuladorCodigoRojo/monitorSgSignal.jpg; sourceTree = "<group>"; };
-		6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = monitorSigSignal2.jpg; path = SimuladorCodigoRojo/monitorSigSignal2.jpg; sourceTree = "<group>"; };
+		6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorSgSignal.jpg; sourceTree = "<group>"; };
+		6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorSigSignal2.jpg; sourceTree = "<group>"; };
 		6FB2B8B71A43389B00239486 /* SimuladorCodigoRojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimuladorCodigoRojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB2B8BB1A43389B00239486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB2B8BC1A43389B00239486 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -187,6 +187,8 @@
 		6F78F3641A48A11B006EBCEE /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */,
+				6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */,
 				6FC09ABF1A4380A70023B3FA /* monitorBackground0.png */,
 				6FC09AB91A4380860023B3FA /* monitorSeñalImage.png */,
 				6FC09ABB1A43808F0023B3FA /* monitorPatica1.png */,
@@ -249,8 +251,6 @@
 		6FB2B8AE1A43389B00239486 = {
 			isa = PBXGroup;
 			children = (
-				6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */,
-				6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */,
 				6FB2B8B81A43389B00239486 /* Products */,
 				6FB2B8D01A43389B00239486 /* SimuladorCodigoRojoTests */,
 				6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */,
