@@ -3,8 +3,7 @@
 //  HeartRateMonitor
 //
 //  Created by camacholaverde on 1/15/15.
-//  Copyright (c) 2015 GIBIC Inc. All rights reserved.
-//
+//  Copyright (c) 2015 Apple Inc. All rights reserved.
 //
 
 #import "GBCBluetoothManager.h"
@@ -14,13 +13,13 @@
 @property(nonatomic, strong)CBCharacteristic *writeCharacteristic;
 @property(nonatomic, strong) NSMutableString *readDataBuffer;
 @property(nonatomic, strong)NSTimer *reconnectingTimer;
-
 @end
 
 @implementation GBCBluetoothManager
 
 #define BLUETOOTH_DEVICE_1_UUID_STRING @"E9657654-2E39-4E16-B843-94FC5354A1C0"
-#define BLUETOOTH_DEVICE_2_UUID_STRING @"932CAF49-A991-4188-A5C3-C7767DDF6E85"
+//#define BLUETOOTH_DEVICE_2_UUID_STRING @"932CAF49-A991-4188-A5C3-C7767DDF6E85"
+#define BLUETOOTH_DEVICE_2_UUID_STRING @"4E1E4270-3B83-4182-B258-C2C8470A3FF0" // Daniel One Mac
 #define RED_CODE_SERVICE_UUID_STRING @"EF080D8C-C3BE-41FF-BD3F-05A5F4795D7F"
 #define GENERIC_ACCESS_SERVICE_UUID_STRING @"00001800-0000-1000-8000-00805F9B34FB"
 #define RED_CODE_READ_CHARACTERISTIC_UUID_STRING @"A1E8F5B1-696B-4E4C-87C6-69DFE0B0093B"
@@ -153,23 +152,24 @@
 {
     NSString* newStr = [NSString stringWithUTF8String:[data bytes]];
     /*Append to the data string */
-    [self.readDataBuffer appendString:newStr];
-    //NSLog(@"Received Data: %@", newStr);
-    //NSLog(@"Buffer initial State: %@", self.readDataBuffer);
-    /*find if a termination character is found in the composed string*/
-    
-    while (TRUE) {
-        NSRange aRange = [self.readDataBuffer rangeOfString:@","];
-        if (aRange.location != NSNotFound) {
-            NSString *dataToSend = [self.readDataBuffer substringToIndex:aRange.location];
-            [self sendData:dataToSend];
-            //NSLog(@"Sent data: %@", dataToSend);
-            [self.readDataBuffer deleteCharactersInRange:NSMakeRange(0, aRange.location+1)];
-            //NSLog(@"Buffer Final State: %@", self.readDataBuffer);
-        } else{
-            break;
-        }
+    if (newStr) {
+        [self.readDataBuffer appendString:newStr];
+        NSLog(@"Received Data: %@", newStr);
+        NSLog(@"Buffer initial State: %@", self.readDataBuffer);
+        /*find if a termination character is found in the composed string*/
         
+        while (TRUE) {
+            NSRange aRange = [self.readDataBuffer rangeOfString:@","];
+            if (aRange.location != NSNotFound) {
+                NSString *dataToSend = [self.readDataBuffer substringToIndex:aRange.location];
+                [self sendData:dataToSend];
+                NSLog(@"Sent data: %@", dataToSend);
+                [self.readDataBuffer deleteCharactersInRange:NSMakeRange(0, aRange.location+1)];
+                NSLog(@"Buffer Final State: %@", self.readDataBuffer);
+            } else{
+                break;
+            }
+        }
     }
 }
 
@@ -250,6 +250,14 @@
     variableStateString = [variableStateString stringByAppendingString:@","];
     [self sendStringToConnectedPeripheric:variableStateString];    
 }
+
+-(void)sendFinishMessage{
+    NSString *finishString =@"";
+    finishString=@"z";
+    finishString = [finishString stringByAppendingString:@","];
+    [self sendStringToConnectedPeripheric:finishString];
+}
+
 
 #pragma mark - Start/Stop Scan methods
 

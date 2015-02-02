@@ -37,6 +37,7 @@
 - (BOOL) isLECapableHardware;
 - (void) sendCurrentSimulationState:(NSString *)simulationState;
 - (void) sendCurrentStateOfVariable:(NSString*)variable state:(BOOL)state;
+- (void)sendFinishMessage;
 
 @end
 

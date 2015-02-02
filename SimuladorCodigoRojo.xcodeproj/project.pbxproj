@@ -10,6 +10,10 @@
 		6C5A1C971A700DBE001DA461 /* GBCRedCodeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */; };
 		6C7049CB1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
 		6C7049CC1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
+		6F54FC591A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */; };
+		6F54FC5A1A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */; };
+		6F54FC5B1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */; };
+		6F54FC5C1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */; };
 		6FB2B8BE1A43389B00239486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8BD1A43389B00239486 /* AppDelegate.m */; };
 		6FB2B8C01A43389B00239486 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8BF1A43389B00239486 /* main.m */; };
 		6FB2B8C31A43389B00239486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8C21A43389B00239486 /* ViewController.m */; };
@@ -83,6 +87,8 @@
 		6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCRedCodeUtilities.m; sourceTree = "<group>"; };
 		6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCBluetoothManager.m; sourceTree = "<group>"; };
 		6C7049CA1A69BC8200838B48 /* GBCBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCBluetoothManager.h; sourceTree = "<group>"; };
+		6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = monitorSgSignal.jpg; path = SimuladorCodigoRojo/monitorSgSignal.jpg; sourceTree = "<group>"; };
+		6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = monitorSigSignal2.jpg; path = SimuladorCodigoRojo/monitorSigSignal2.jpg; sourceTree = "<group>"; };
 		6FB2B8B71A43389B00239486 /* SimuladorCodigoRojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimuladorCodigoRojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB2B8BB1A43389B00239486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB2B8BC1A43389B00239486 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -243,6 +249,8 @@
 		6FB2B8AE1A43389B00239486 = {
 			isa = PBXGroup;
 			children = (
+				6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */,
+				6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */,
 				6FB2B8B81A43389B00239486 /* Products */,
 				6FB2B8D01A43389B00239486 /* SimuladorCodigoRojoTests */,
 				6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */,
@@ -401,6 +409,7 @@
 				6FCD42141A65E9DF0040C76C /* monitorPanel.png in Resources */,
 				6FC09AD21A43A89E0023B3FA /* configPauseButton.png in Resources */,
 				6FC09AB21A437E320023B3FA /* menuCreatedByGibicText.png in Resources */,
+				6F54FC591A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */,
 				6FC09AC61A4392200023B3FA /* monitorAddButton.png in Resources */,
 				6FC09ABE1A43809B0023B3FA /* monitorPatica2.png in Resources */,
 				6FC453681A6D83450064E9F6 /* clock-308938_1280.png in Resources */,
@@ -408,6 +417,7 @@
 				6FC453621A6D7F250064E9F6 /* pause-97625_1280.png in Resources */,
 				6FC09AC31A4380A70023B3FA /* monitorBackground1.png in Resources */,
 				6FC09AB41A437E3D0023B3FA /* menuTitulo.png in Resources */,
+				6F54FC5B1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */,
 				6FED8FB71A6D7B0200150438 /* monitorNotepad.png in Resources */,
 				6FC09ABA1A4380860023B3FA /* monitorSeñalImage.png in Resources */,
 				6FED8FB11A6D783700150438 /* monitorBackgroundPicture.jpg in Resources */,
@@ -419,6 +429,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F54FC5C1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */,
+				6F54FC5A1A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */,
 				6FCD42031A65E7930040C76C /* monitorConfig.png in Resources */,
 				6FCD42121A65E9600040C76C /* monitorConfig2.png in Resources */,
 				6FED8FB81A6D7B0200150438 /* monitorNotepad.png in Resources */,

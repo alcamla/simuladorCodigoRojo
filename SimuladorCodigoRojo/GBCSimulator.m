@@ -96,7 +96,7 @@ bool updatedBoolean=NO;
 
 - (void) stateSelectedIs: (NSString *)stateReceived{
     
-    NSLog(@"Estado Seleccionado Enviado a Simulator");
+    //NSLog(@"Estado Seleccionado Enviado a Simulator");
     self.currentState=stateReceived;
     [self.bluetoothManager sendCurrentSimulationState:self.currentState];
 }
@@ -129,7 +129,7 @@ bool updatedBoolean=NO;
 
 - (BOOL) askIfBluetoothIsConnected{
     
-    NSLog(@"Ask if bluetooth is connected..");
+    //NSLog(@"Ask if bluetooth is connected..");
     
     return bluetoothConnectionCheckSimulator;
     
@@ -139,7 +139,7 @@ bool updatedBoolean=NO;
     
 - (void)createBluetoothObject{
 
-    NSLog(@"Bluetooth object created");
+    //NSLog(@"Bluetooth object created");
     if (!_bluetoothManager) {
         self.bluetoothManager =  [[GBCBluetoothManager alloc] init];
         self.bluetoothManager.delegate = self;
@@ -151,7 +151,7 @@ bool updatedBoolean=NO;
 
 - (BOOL)isCalibrationReady{
     
-    NSLog(@"Ask if calibration is ready");
+    //NSLog(@"Ask if calibration is ready");
 
     return calibrationCheckSimulator;
 }
@@ -160,7 +160,7 @@ bool updatedBoolean=NO;
 
 - (BOOL)areSensorsReady{
     
-    NSLog(@"Ask if sensors are ready");
+    //NSLog(@"Ask if sensors are ready");
     sensorsCheckSimulator=YES;
     
     
@@ -228,6 +228,7 @@ bool updatedBoolean=NO;
 - (void) receiveFinalizationMessage{
 
     //NSLog(@"Finalization Message Received");
+    //[self.bluetoothManager sendFinishMessage];
     finalizationCheck=YES;
 
 }
@@ -375,7 +376,7 @@ bool updatedBoolean=NO;
     if (result) {
          calibrationCheckSimulator = YES;
     } else {
-        calibrationCheckSimulator = NO;
+         calibrationCheckSimulator = NO;
     }
 }
 

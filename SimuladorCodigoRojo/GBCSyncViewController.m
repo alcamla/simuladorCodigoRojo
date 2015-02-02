@@ -66,7 +66,7 @@ int viewLoadState=0;
 // View Did Dissappear Method
 
 - (void)viewDidDisappear{
-
+    
     [self stopTimer];
 }
 
@@ -85,10 +85,10 @@ int viewLoadState=0;
 // Method to stop the timer
 
 - (void) stopTimer{
-
+    
     [self.timerToUpdateSyncView invalidate];
     self.timerToUpdateSyncView = nil;
-
+    
 }
 
 // Method to ask if should stop the timer
@@ -105,8 +105,8 @@ int viewLoadState=0;
             }
         }
     }
-
-
+    
+    
 }
 
 // Ask the Main Class: Simulator to Stablish a bluetooth connection with hardware
@@ -147,7 +147,7 @@ int viewLoadState=0;
     
     // Ask to Main Class Simulator if Calibration is ready
     calibrationCheckSync=[[GBCSimulator sharedSimulator] isCalibrationReady];
-
+    
     // Ask to Main Class Simulator if Sensors are ready
     sensorsCheckSync=[[GBCSimulator sharedSimulator] areSensorsReady];
     
@@ -161,8 +161,8 @@ int viewLoadState=0;
     [self updateSyncView];
     
     // Testing when timer is running
-    NSLog(@" Timer Sync");
-
+    //NSLog(@" Timer Sync");
+    
 }
 
 // Method to update the view during this execution view process
@@ -170,41 +170,41 @@ int viewLoadState=0;
 - (void) updateSyncView{
     
     // Check Simulator Class Answer
-        if (bluetoothConnectionCheckSync==YES) {
-            
+    if (bluetoothConnectionCheckSync==YES) {
+        
         // Update Connection Check Appeareance
         [self.connectionCheck setTitle:@"Conexión Establecida"];
         [self.connectionCheck setState:1];
-            
+        
         // Update calibration Check Appeareance
         [self.calibrationCheck setTransparent:NO];
-            
+        
     }
-            
+    
     // Check Simulator Class Answer
     if (calibrationCheckSync==YES) {
-                
+        
         // Update calibration Check Appeareance
         [self.calibrationCheck setTitle:@"Equipo Calibrado"];
         [self.calibrationCheck setState:1];
-                
+        
         // Update reading sensors Check Appeareance
         [self.readingSensorsCheck setTransparent:NO];
     }
     
     // Check Simulator Class Answer
     if (sensorsCheckSync==YES) {
-            
+        
         // Update reading sensors Check Appeareance
         [self.readingSensorsCheck setTitle:@"Equipo Configurado"];
         [self.readingSensorsCheck setState:1];
-                
+        
         
     }
     
     // Check if There are bluetooth variables to Display
     if ([self.vitalSignsSync objectForKey:@"Masaje"] || [self.vitalSignsSync objectForKey:@"Oxígeno"] || [self.vitalSignsSync objectForKey:@"Sonda Urinaria"] || [self.vitalSignsSync objectForKey:@"Manta"] || [self.vitalSignsSync objectForKey:@"Medición de Signos"]!=nil) {
-     
+        
         // Flag to display
         vitalSignsCheck=YES;
     }
