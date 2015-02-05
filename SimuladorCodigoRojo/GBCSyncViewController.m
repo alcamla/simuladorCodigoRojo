@@ -12,10 +12,6 @@
 
 @interface GBCSyncViewController ()
 
-// Bluetooth Variables Texts
-
-
-
 // Others
 
 @property (strong) IBOutlet NSButton *connectionCheck;
@@ -39,13 +35,14 @@
 @end
 
 @implementation GBCSyncViewController
+
 // Local Variables Defining
 
 bool bluetoothConnectionCheckSync=NO;
 bool calibrationCheckSync=NO;
 bool sensorsCheckSync=NO;
 bool vitalSignsCheck=NO;
-int viewLoadState=0;
+BOOL activeSyncMessage=NO;
 
 
 // View Did Load Method
@@ -60,6 +57,11 @@ int viewLoadState=0;
     // Ask for bluetooth connection method
     [self askForBluetoothConnection];
     
+    // Get the correct values to initialize the view
+    self.vitalSignsSync=[[GBCSimulator sharedSimulator] getBluetoothVariables];
+    
+    // Start with correct values for sensors
+    [self updateSyncView];
     
 }
 
@@ -68,6 +70,10 @@ int viewLoadState=0;
 - (void)viewDidDisappear{
     
     [self stopTimer];
+    
+    // Tell Main Class Simulator that View is not already open
+    [[GBCSimulator sharedSimulator] isSyncViewOpened:[self.view.window isVisible]];
+    
 }
 
 // Action to End Sync Window
@@ -151,20 +157,20 @@ int viewLoadState=0;
     // Ask to Main Class Simulator if Sensors are ready
     sensorsCheckSync=[[GBCSimulator sharedSimulator] areSensorsReady];
     
-    // Ask if should stop the timer
-    //[self askIfShouldStopTimer];
-    
     // Ask to Main Class Simulator to Read Bluetooth Variables
     self.vitalSignsSync=[[GBCSimulator sharedSimulator] getBluetoothVariables];
     
     // Call Update View Method
     [self updateSyncView];
     
+    // Tell to Simulator that this View is visible or not
+    [self viewLoadedMessage];
+    
     // Testing when timer is running
     //NSLog(@" Timer Sync");
     
+    
 }
-
 // Method to update the view during this execution view process
 
 - (void) updateSyncView{
@@ -198,7 +204,6 @@ int viewLoadState=0;
         // Update reading sensors Check Appeareance
         [self.readingSensorsCheck setTitle:@"Equipo Configurado"];
         [self.readingSensorsCheck setState:1];
-        
         
     }
     
@@ -238,6 +243,29 @@ int viewLoadState=0;
     return  image;
 }
 
+// Let Main class Simulator Know that the window is already opened and receive messages to set this view controller active
+
+- (void)viewLoadedMessage{
+    
+    // Let Main class Simulator Know that the window is already opened
+    [[GBCSimulator sharedSimulator] isSyncViewOpened:[self.view.window isVisible]];
+    
+    // Ask to Main Class Simulator if i should become active
+    activeSyncMessage = [[GBCSimulator sharedSimulator] makeActiveToSync];
+    
+    // Check for answer
+    if (activeSyncMessage==YES) {
+        
+        // Make the window a key window to look like appearing
+        [self.view.window makeKeyWindow];
+        
+        // Make the window to be infront when this is tried to be opened again
+        [self.view.window orderFrontRegardless];
+    }
+    
+    // Tells Main Class Simulator that View has became active
+    [[GBCSimulator sharedSimulator] askIfSyncViewIsOpenedAndSetActive:NO];
+}
 
 // Lazy initializations
 

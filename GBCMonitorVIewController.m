@@ -37,6 +37,7 @@
 bool finalizationCheckMonitor=NO;
 bool paussedCheckMonitor=NO;
 bool reanudedCheckMonitor=NO;
+bool panelViewState=NO;
 int hours=0;
 int seconds=0;
 int minutes=0;
@@ -86,8 +87,6 @@ int minutes=0;
                                                                   repeats:YES];
 }
 
-
-
 // Interrupt Process
 
 - (void) interruptEventHandling{
@@ -97,9 +96,6 @@ int minutes=0;
     
     // Ask if simulation is paused
     [self askIfChronometerIsPaused];
-    
-    // Ask if simulation is reanuded
-    [self askIfChronometerIsReanuded];
     
     // Ask if simulation is finished
     [self askIfSimulationHasFinished];
@@ -127,9 +123,6 @@ int minutes=0;
     [self.arterialPresureValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Presión Arterial"]];
     [self.respiratoryFrecuencyValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Frecuencia Respiratoria"]];
     [self.oxigenSaturationValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Saturación de Oxígeno"]];
-    
-    // Print to Verify!
-    //NSLog(@"Signos Vitales Actuales %@ %@ %@ %@ %@", [self.conscienceValue stringValue],[self.heartRateValue stringValue],[self.oxigenSaturationValue stringValue],[self.arterialPresureValue stringValue],[self.respiratoryFrecuencyValue stringValue]);
 
 }
 
@@ -194,7 +187,7 @@ int minutes=0;
 
 - (void) askIfChronometerIsPaused{
     
-    paussedCheckMonitor=[[GBCSimulator sharedSimulator] sendPausedMessage];
+    paussedCheckMonitor=[[GBCSimulator sharedSimulator] sendPausedOrNotMessage];
 
     // Check answer from Simulator
     if (paussedCheckMonitor==YES) {
@@ -203,25 +196,14 @@ int minutes=0;
         [self.chronometer invalidate];
         self.chronometer = nil;
         
-    }
-    
-}
-
-// Ask to Main Class: Simulator if Chronometer has been paused
-
-- (void) askIfChronometerIsReanuded{
-    
-    reanudedCheckMonitor=[[GBCSimulator sharedSimulator] sendReanudedMessage];
-    
-    // Check answer from Simulator
-    if (reanudedCheckMonitor==YES) {
+    }else{
+        if (self.chronometer.valid==NO) {
+            
+            // Reinitializite Timer and Chronometer
+            [self initializeChronometer];
+            
+        }
         
-        // Tell to Main Class Simulator that simulation has been reanuded
-        [[GBCSimulator sharedSimulator] simulationReanudedConfirmation];
-        
-        // Reinitializite Timer and Chronometer
-        [self initializeChronometer];
-      
     }
     
 }
@@ -268,6 +250,21 @@ int minutes=0;
     [[GBCSimulator sharedSimulator] receiveStartedChronometerMessage];
 
 }
+
+// Method called when panel button is pressed
+
+- (IBAction)goToPanel:(id)sender {
+    
+    // Ask to Main Class Simulator if the panel view is already opened
+    panelViewState =[[GBCSimulator sharedSimulator] askIfPanelViewIsOpenedAndSetActive:YES];
+    
+    // Perform segue or not if should
+    if (panelViewState==NO) {
+        [self performSegueWithIdentifier:@"fromMonitorToPanel" sender:sender];
+    }
+    
+}
+
 
 // Lazy Initializations
 

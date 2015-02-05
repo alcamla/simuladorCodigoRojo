@@ -20,6 +20,8 @@
 - (void) UpdateAndGetBluetoothVariablesFromSimulator;
 - (void) finishPanelTimer;
 - (IBAction)changeVenous:(id)sender;
+- (void) panelLoadedMessage;
+- (void) refreshPlayPauseButton;
 
 @end
 

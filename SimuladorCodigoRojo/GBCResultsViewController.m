@@ -171,7 +171,6 @@ NSNumber *minutesResulst=0;
         self.tubesLabel.stringValue=@"No";
     }
     
-
     // Calculate Score to Display
     [self calculateScore];
     

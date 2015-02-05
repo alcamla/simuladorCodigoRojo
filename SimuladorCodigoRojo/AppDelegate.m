@@ -83,3 +83,12 @@
  
  NSLog(@"Imprimir esto de nuevo %@ %@ %@ %@ %@", kGBC_conscienceValue,kGBC_presureValue,kGBC_arterialPresureValue,kGBC_respiratoryFrecuencyValue,kGBC_oxigenSaturationValue);
  */
+
+/*
+ int userInput;
+ scanf("%i", &userInput);
+ if (userInput==5) {
+ NSLog(@"You typed %i.", userInput);
+ [self.view.window setIsVisible:YES];
+ }
+ */

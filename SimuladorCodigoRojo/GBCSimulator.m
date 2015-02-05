@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSString *updatedValue;
 @property (strong, nonatomic) GBCBluetoothManager *bluetoothManager;
 
+
 @end
 
 
@@ -39,14 +40,17 @@
 
 // Local DataBase
 
-bool bluetoothConnectionCheckSimulator = NO;
-bool calibrationCheckSimulator = NO;
-bool sensorsCheckSimulator= NO;
+bool bluetoothConnectionCheckSimulator = YES;
+bool calibrationCheckSimulator = YES;
+bool sensorsCheckSimulator= YES;
+bool paussedChecked = NO;
 bool finalizationCheck=NO;
-bool paussedChecked=NO;
-bool reanudedChecked=NO;
 bool startedInitializationMessage=NO;
 bool updatedBoolean=NO;
+bool syncViewState=NO;
+bool orderToSetSyncActive=NO;
+bool orderToSetPanelActive=NO;
+bool panelViewStateSimulator=NO;
 
 // Define as a Singleton and call Init when a GBCSimulator object is created by other classes
 
@@ -163,17 +167,7 @@ bool updatedBoolean=NO;
     //NSLog(@"Ask if sensors are ready");
     sensorsCheckSimulator=YES;
     
-    
     return sensorsCheckSimulator;
-}
-
-// Method to ask bluetooth class for bluetooth variables
-
-- (void) readBluetoothVariables{
-    
-    //self.bluetoothVariablesSimulator=bluetoothVariables;
-    //NSLog(@"Reading Bluetooth Variables ..");
-
 }
 
 // Method to return to View controllers bluetooth variables
@@ -217,8 +211,9 @@ bool updatedBoolean=NO;
 - (void) simulationHasFinished{
     
     finalizationCheck=NO;
-    reanudedChecked=NO;
     paussedChecked=NO;
+    panelViewStateSimulator=NO;
+    syncViewState=NO;
     self.editedVariablesSimulator=self.initialEditedVariablesSimulator;
     
 }
@@ -287,44 +282,17 @@ bool updatedBoolean=NO;
 
 // Get message from Panel to know that Simulation has been paussed and return it to whoever needs it
 
-- (void) getPausedMessage{
+- (void) receivePausedOrNotMessage: (BOOL) pausedOrNotMessage{
 
-    paussedChecked=YES;
-    reanudedChecked=NO;
+    paussedChecked=pausedOrNotMessage;
     
 }
 
 // Tell View Controllers to Pause the Chronometer
 
-- (BOOL) sendPausedMessage{
+- (BOOL) sendPausedOrNotMessage{
 
     return paussedChecked;
-}
-
-// Get message from Panel to know that Simulation has been reanuded and return it to whoever needs it
-
-- (void) getReanudedMessage{
-    
-    reanudedChecked=YES;
-    paussedChecked=NO;
-    
-}
-
-// Tell View Controllers to Reanude the Chronometer
-
-- (BOOL) sendReanudedMessage{
-    
-    return reanudedChecked;
-    
-    
-}
-
-// Method to receive confirmation from Monitor View to Change this bool status
-
-- (void) simulationReanudedConfirmation{
-    
-    reanudedChecked=NO;
-    
 }
 
 // Method to Receive the message about started Choronometer from Monitor View Controller
@@ -372,12 +340,64 @@ bool updatedBoolean=NO;
     [self.bluetoothVariablesSimulator setValue:self.updatedValue forKey:self.updatedKey];
 }
 
+// Method to check if calibration is ready or not
+
 -(void)redCodeSensorsCheckedByBluetoothManager:(GBCBluetoothManager *)bluetoothManager result:(BOOL)result{
     if (result) {
          calibrationCheckSimulator = YES;
     } else {
          calibrationCheckSimulator = NO;
     }
+}
+
+# pragma mark - Only One Window Opened and Active Messages
+
+// Method where Menu View Controller asks me if there's already an opened Sync View and I listen the Sync Active Status from View Controllers
+
+-(BOOL) askIfSyncViewIsOpenedAndSetActive: (BOOL) SyncActiveMessage{
+    
+    // Receive click message from Menu
+    orderToSetSyncActive = SyncActiveMessage;
+    
+    return syncViewState;
+}
+
+// Method where Sync View Controller tells Simulator if there's already an open window
+
+- (void) isSyncViewOpened:(BOOL)isSyncOpenedMessage {
+    
+    syncViewState=isSyncOpenedMessage;
+}
+
+// Tell to Sync View Controller to set its self as Active
+
+- (BOOL) makeActiveToSync{
+
+    return orderToSetSyncActive;
+}
+
+// Method where Monitor View Controller asks me if there's already an opened Panel View and I listen the Panel Active Status from View Controllers
+
+- (BOOL) askIfPanelViewIsOpenedAndSetActive: (BOOL) panelActiveMessage {
+
+    // Receive click message from Monitor
+    orderToSetPanelActive= panelActiveMessage;
+    
+    return panelViewStateSimulator;
+}
+
+// Method where Panel View Controller tells Simulator if there's already an open window
+
+- (void) isPanelViewOpened:(BOOL)isPanelOpenedMessage {
+    
+    panelViewStateSimulator=isPanelOpenedMessage;
+}
+
+// Tell to Panel View Controller to set its self as Active
+
+- (BOOL) makeActiveToPanel{
+    
+    return orderToSetPanelActive;
 }
 
 # pragma mark - Lazy Initializers

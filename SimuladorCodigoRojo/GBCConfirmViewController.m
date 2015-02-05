@@ -19,9 +19,7 @@
     [super viewDidLoad];
     
     // Do view setup here.
-    
-    // Ask to Simulator to read bluetooth Variables
-    [[GBCSimulator sharedSimulator] readBluetoothVariables];
+
 }
 
 - (IBAction)goToMenu:(id)sender {

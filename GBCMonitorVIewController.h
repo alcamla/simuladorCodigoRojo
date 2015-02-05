@@ -20,7 +20,6 @@
 - (void) interruptEventHandling;
 - (void) askIfSimulationHasFinished;
 - (void) simulationHasFinishedMonitor;
-- (void) askIfChronometerIsReanuded;
 - (void) initializeChronometer;
 - (void) finishTimerToUpdate;
 - (void) sendMessageOfStartedChronometer;

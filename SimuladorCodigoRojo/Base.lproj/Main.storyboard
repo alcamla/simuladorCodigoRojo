@@ -802,7 +802,7 @@
                             </imageView>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5c6-wc-Nky">
                                 <rect key="frame" x="269" y="177" width="267" height="29"/>
-                                <comboBoxCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="-- Seleccione el Estado del Paciente --" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="7Ww-aT-0YL">
+                                <comboBoxCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="-- Seleccione el Estado del Paciente --" completes="NO" numberOfVisibleItems="4" id="7Ww-aT-0YL">
                                     <font key="font" size="14" name="HelveticaNeue"/>
                                     <color key="textColor" red="0.49210858585858586" green="0.49210858585858586" blue="0.49210858585858586" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -943,6 +943,9 @@
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5E-Y1-AX5">
                                 <rect key="frame" x="-528" y="0.0" width="2748" height="959"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="monitorSigSignal2" id="M7W-Pl-gxc"/>
+                                <connections>
+                                    <segue destination="gNm-pR-YI9" kind="show" identifier="fromMonitorToPanel" id="4fb-Nk-MNb"/>
+                                </connections>
                             </imageView>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQU-Mg-gPs">
                                 <rect key="frame" x="1485" y="89" width="216" height="89"/>
@@ -1032,7 +1035,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="gNm-pR-YI9" kind="show" id="nNY-uw-qaB"/>
+                                    <action selector="goToPanel:" target="l7x-RM-x2c" id="lqd-d2-I56"/>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZGr-jn-hI0">

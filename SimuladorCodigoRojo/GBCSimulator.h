@@ -12,6 +12,7 @@
 
 @interface GBCSimulator : NSObject <GBCRedCodeBluetoothDelegate>
 
+
 + (instancetype)sharedSimulator;
 - (NSDictionary *) getCurrentVitalSigns;
 - (void) stateSelectedIs:(NSString *)stateReceived;
@@ -19,17 +20,13 @@
 - (void)createBluetoothObject;
 - (BOOL)isCalibrationReady;
 - (BOOL)areSensorsReady;
-- (void) readBluetoothVariables;
 - (NSDictionary *) getBluetoothVariables;
 - (void) getChronometerValue:(NSArray *)chronometer;
 - (void) receiveFinalizationMessage;
 - (BOOL) sentFinalizationMessageFromSimulator;
 - (void) getEditedVariablesValues:(NSMutableDictionary *) editedVariablesDictionaryFromPanel;
-- (void) getPausedMessage;
-- (BOOL) sendPausedMessage;
-- (void) getReanudedMessage;
-- (BOOL) sendReanudedMessage;
-- (void) simulationReanudedConfirmation;
+- (void) receivePausedOrNotMessage: (BOOL) pausedOrNotMessage;
+- (BOOL) sendPausedOrNotMessage;
 - (NSMutableDictionary *) sendEditableVariables;
 - (void) receiveStartedChronometerMessage;
 - (NSMutableArray *) sendChronometerValue;
@@ -39,7 +36,12 @@
 - (void) simulationHasFinished;
 - (void) modifyReadWriteVariables;
 - (NSString *) sendCurrentState;
-
-
+- (BOOL) askIfSyncViewIsOpenedAndSetActive: (BOOL) SyncActiveMessage;
+- (void) isSyncViewOpened:(BOOL)isSyncOpenedMessage;
+- (BOOL) makeActiveToSync;
+- (BOOL) askIfPanelViewIsOpenedAndSetActive: (BOOL) panelActiveMessage;
+- (void) isPanelViewOpened:(BOOL)isPanelOpenedMessage;
+- (BOOL) makeActiveToPanel;
 
 @end
+

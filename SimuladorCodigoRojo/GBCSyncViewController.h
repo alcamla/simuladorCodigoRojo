@@ -17,5 +17,6 @@
 - (void) interruptWithTimerToUpdateView;
 - (void) stopTimer;
 - (void) askIfShouldStopTimer;
+- (void)viewLoadedMessage;
 
 @end

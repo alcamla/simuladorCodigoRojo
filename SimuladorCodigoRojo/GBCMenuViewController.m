@@ -19,10 +19,10 @@
 
 @implementation GBCMenuViewController
 
-
 bool bluetoothConnectionCheckMenu=NO;
 bool sensorsReadyCheckMenu=NO;
 bool calibrationReadyCheckMenu=NO;
+bool syncViewIsOpened=NO;
 
 
 - (void)viewDidLoad {
@@ -108,8 +108,15 @@ bool calibrationReadyCheckMenu=NO;
 
 - (IBAction)goToSync:(id)sender {
     
-    // Call Segue to go to next view controller
-    [self performSegueWithIdentifier:@"fromMenuToSync" sender:(id)sender];
+    // Ask to simulator is Sync View Is Already Opened (Active)
+    syncViewIsOpened=[[GBCSimulator sharedSimulator] askIfSyncViewIsOpenedAndSetActive:YES];
+    
+    // Perform segue if should
+    if (syncViewIsOpened==NO) {
+        
+        // Call Segue to go to next view controller
+        [self performSegueWithIdentifier:@"fromMenuToSync" sender:(id)sender];
+    }
     
 }
 
@@ -159,7 +166,7 @@ bool calibrationReadyCheckMenu=NO;
     
     }
     
-    NSLog(@" Timer Menu");
+    //NSLog(@" Timer Menu");
 
 }
 

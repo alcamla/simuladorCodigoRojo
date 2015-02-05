@@ -42,13 +42,17 @@
 
 
 @property (weak) IBOutlet NSButton *startAnimationButton;
-@property(nonatomic) BOOL simulationIsPaused;
-
-
+//@property(nonatomic) BOOL simulationIsPaused;
 
 @end
 
 @implementation GBCDoctorPanelViewController
+
+// Local declarations
+
+bool simulationIsPaused=NO;
+
+// View did load
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,9 +60,27 @@
     
     // Initialize panel timer
     [self initializePanelTimer];
-    self.startAnimationButton.state = NSOnState;
-    [self.startAnimationButton setIntegerValue:1];
-    self.simulationIsPaused = NO;
+    
+    // Get the state of the simulation
+    simulationIsPaused=[[GBCSimulator sharedSimulator] sendPausedOrNotMessage];
+    
+    // Refresh the view with correct initial values, specifically the button appearence
+    [self refreshPlayPauseButton];
+    
+    // Refresh the view with correct initial values for sensors
+    [self updatePanelView];
+    
+}
+
+// Method called when view did disappear
+
+- (void)viewDidDisappear{
+    
+    // Stop the Local Panel Timer
+    [self finishPanelTimer];
+    
+    // Tell to main class simulator that view is now hidden
+    [[GBCSimulator sharedSimulator] isPanelViewOpened:[self.view.window isVisible]];
     
 }
 
@@ -113,8 +135,22 @@
     // Send to Main Class:Simulator Changed or Edited Items for Updating States Machine
     [self sendEditedVariables];
     
+    // Tell to Main Class:Simulator if this view is loaded
+    [self panelLoadedMessage];
+    
+    // Send Status of Simulation to main class simulator
+    [self sendSimulationState];
+    
     //NSLog(@"Panel timer");
     
+}
+
+// Send Status of Simulation to main class simulator
+
+- (void) sendSimulationState{
+    
+    [[GBCSimulator sharedSimulator] receivePausedOrNotMessage:simulationIsPaused];
+
 }
 
 // Method to update Panel view Controller
@@ -224,20 +260,31 @@
     
 }
 
+// Action when pause-reanude button is pressed
+
 - (IBAction)animationStateDidChange:(id)sender {
-    if (sender == self.startAnimationButton) {
-        if (self.simulationIsPaused) {
-            [self.startAnimationButton setImage:[NSImage imageNamed:@"pause-97625_1280"]];
-            self.simulationIsPaused = NO;
-            [[GBCSimulator sharedSimulator] getReanudedMessage];
-        }else{
-            [self.startAnimationButton setImage:[NSImage imageNamed:@"play-97626_640"]];
-            self.simulationIsPaused = YES;
-            [[GBCSimulator sharedSimulator] getPausedMessage];
-        }
-    }
+    
+    // Change the state of simulation
+    simulationIsPaused=!simulationIsPaused;
+    
+    // Refresh the Icon of that button
+    [self refreshPlayPauseButton];
+    
+    
 }
 
+// Refresh the appearence of the Play_Pause Button
+
+- (void) refreshPlayPauseButton{
+    
+    // Check if simulation is paussed or not to set the Icon
+    if (simulationIsPaused==YES) {
+        [self.startAnimationButton setImage:[NSImage imageNamed:@"play-97626_640"]];
+    }else{
+        [self.startAnimationButton setImage:[NSImage imageNamed:@"pause-97625_1280"]];
+    }
+
+}
 // Get and Update bluetooth variables from Main Class: Simulator
 
 - (void) UpdateAndGetBluetoothVariablesFromSimulator{
@@ -277,6 +324,26 @@
     
     [self readEditedVariables];
     [[GBCSimulator sharedSimulator] getEditedVariablesValues:self.editedVariables];
+}
+
+// Tell to main class simulator if panel has been already loaded and ask if Simulator wants me to be active
+
+- (void) panelLoadedMessage{
+    
+    [[GBCSimulator sharedSimulator] isPanelViewOpened:[self.view.window isVisible]];
+
+    // Ask if this view controller should become active
+    if ([[GBCSimulator sharedSimulator] makeActiveToPanel]==YES) {
+        
+        // Make the window a key window to look like appearing
+        [self.view.window makeKeyWindow];
+        
+        // Make the window to be infront when this is tried to be opened again
+        [self.view.window orderFrontRegardless];
+    }
+    
+    // Tells Simulator that view is active now
+    [[GBCSimulator sharedSimulator] askIfPanelViewIsOpenedAndSetActive:NO];
 }
 
 // Lazy Initializations
