@@ -7,10 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "GBCMenuViewController.h"
+#import "GBCMenuWindowController.h"
+#import "GBCSimulator.h"
 
 
 @interface AppDelegate ()
 
+@property NSWindowController *menuController;
+@property NSStoryboard *storyboard;
 
 @end
 
@@ -18,11 +23,42 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-  
+    
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+// Close the app when the last window is closed
+
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSNotification *)aNotification {
+
+    // When all windows are closed, i restart values
+    [[GBCSimulator sharedSimulator] simulationHasFinished];
+    
+    return NO;
+}
+
+// When all windows are closed and the user try to open the app again, the app starts at menu window controller
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication
+                    hasVisibleWindows:(BOOL)flag{
+    
+    if (!flag){
+    
+        // Create a story board object
+        self.storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        // Initialize the menu window controller object
+        self.menuController = [self.storyboard instantiateInitialController];
+    
+        // Show the window
+        [self.menuController showWindow:self];
+    
+    }
+    
+    return YES;
 }
 
 @end

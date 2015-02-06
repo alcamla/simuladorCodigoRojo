@@ -56,6 +56,12 @@ NSNumber *minutesResulst=0;
     [self readVariablesStatusToDisplay];
 }
 
+- (void) viewDidDisappear{
+    
+    // Reinit variable values
+    scoreCounter=0;
+}
+
 // Action to go to a new Simulation
 
 - (IBAction)goToNewSimulation:(id)sender {

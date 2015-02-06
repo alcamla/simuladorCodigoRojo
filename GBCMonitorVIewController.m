@@ -63,6 +63,12 @@ int minutes=0;
     
 }
 
+- (void) viewDidDisappear{
+
+    // Reset variables
+    [self simulationHasFinishedMonitor];
+
+}
 // Initialize the timer to update Monitor View and Hold the Chronometer
 
 - (void) initializeMonitorTimer{

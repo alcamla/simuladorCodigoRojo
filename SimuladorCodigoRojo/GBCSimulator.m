@@ -199,7 +199,6 @@ bool panelViewStateSimulator=NO;
 // Method to receive the started of the Simulation message
 
 - (void) receiveStartedInitializationMessage{
-    
     startedInitializationMessage=YES;
     if (startedInitializationMessage==YES) {
         [self simulationHasFinished];

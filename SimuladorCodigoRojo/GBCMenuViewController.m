@@ -14,6 +14,7 @@
 @property (strong) IBOutlet NSButton *goToConfirmProperty;
 @property (strong) IBOutlet NSButton *goToSyncProperty;
 @property (strong,nonatomic) NSTimer *timerToUpdateMenuView;
+@property(assign) Class<NSWindowRestoration> restorationClass;
 
 @end
 
@@ -32,6 +33,16 @@ bool syncViewIsOpened=NO;
     // Initialize the timer to update view
     [self initializeMenuTimer];
     
+    // Load in view initial and correct values
+    [self updateMenuView];
+    
+}
+
+- (void)viewDidDisappear{
+    
+    // Stop Timer
+    [self stopTimer];
+
 }
 
 // Method to Go to Confirm View, Close the Current Menu View and Send State to Main Class: Simulator
@@ -74,6 +85,7 @@ bool syncViewIsOpened=NO;
 - (void) sendStartedMessage{
     
     [[GBCSimulator sharedSimulator] receiveStartedInitializationMessage];
+   
 
 }
 
