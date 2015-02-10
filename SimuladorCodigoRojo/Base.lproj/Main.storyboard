@@ -1150,14 +1150,14 @@
                                 <rect key="frame" x="751" y="341" width="354" height="33"/>
                                 <buttonCell key="cell" type="check" title="Cristaloides Infundidos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RTw-ai-cbc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="29" name="HelveticaNeue"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gfc-4d-ndg">
                                 <rect key="frame" x="750" y="282" width="340" height="37"/>
                                 <buttonCell key="cell" type="check" title="Anotación de Eventos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="iXL-ay-SjM">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="29" name="HelveticaNeue"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8re-h1-7RQ">

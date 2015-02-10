@@ -70,6 +70,8 @@ bool simulationIsPaused=NO;
     // Refresh the view with correct initial values for sensors
     [self updatePanelView];
     
+    // Refres the view with the correct initial values for Checkboxes
+    [self reloadCheckBoxesValues];
 }
 
 // Method called when view did disappear
@@ -117,7 +119,7 @@ bool simulationIsPaused=NO;
     self.timerToUpdatePanelView = [[NSTimer alloc] init];
     
     // Describing a timer which allows us to update the Menu View every 1s
-    self.timerToUpdatePanelView=[NSTimer scheduledTimerWithTimeInterval:0.5
+    self.timerToUpdatePanelView=[NSTimer scheduledTimerWithTimeInterval:0.3
                                                                 target:self
                                                               selector:@selector(interruptEventHandlingPanel)
                                                               userInfo:nil
@@ -182,7 +184,7 @@ bool simulationIsPaused=NO;
     // Ask for state and fill the Array of values
     
     if (self.bleeding.state==0) {
-       self.editedVariablesValues[0]=@"No";
+        self.editedVariablesValues[0]=@"No";
         
         [[self.bleeding cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Sangrado Observado"
                                                                                  attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
@@ -190,7 +192,7 @@ bool simulationIsPaused=NO;
         
     }else{
         self.editedVariablesValues[0]=@"Yes";
-       
+      
         [[self.bleeding cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Sangrado Observado"
                                                                                  attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
                                                                                              NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
@@ -419,6 +421,45 @@ bool simulationIsPaused=NO;
     
     // Tells Simulator that view is active now
     [[GBCSimulator sharedSimulator] askIfPanelViewIsOpenedAndSetActive:NO];
+}
+
+// Refres the view with the correct initial values for Checkboxes
+
+- (void) reloadCheckBoxesValues{
+    
+    // Ask to main class simulator for the values of editable variables to update their values as should
+    self.editedVariables=[[GBCSimulator sharedSimulator] sendEditableVariables];
+    
+    // Update CheckBoxes Values
+    
+    if ([[self.editedVariables objectForKey:@"Sangrado Observado"] isEqualToString:@"Yes"]==YES) {
+        self.bleeding.state=1;
+    }
+    if ([[self.editedVariables objectForKey:@"Diagnóstico"] isEqualToString:@"Yes"]==YES) {
+        self.diagnostic.state=1;
+    }
+    if ([[self.editedVariables objectForKey:@"Medicamentos Aplicados"] isEqualToString:@"Yes"]==YES) {
+        self.medicineStudentsCheck.state=1;
+    }
+    if ([[self.editedVariables objectForKey:@"Cristaloides"] isEqualToString:@"Yes"]==YES) {
+        self.crystalloidCheck.state=1;
+    }
+    if ([[self.editedVariables objectForKey:@"Anotación de Eventos"] isEqualToString:@"Yes"]==YES) {
+        self.eventsAnnotation.state=1;
+    }
+    if ([[self.editedVariables objectForKey:@"Vías Venosas"] isEqualToString:@"Yes"]==YES) {
+        self.venousPathways.state=1;
+    }
+    if ([[self.editedVariables objectForKey:@"Ordenes de Laboratorio"] isEqualToString:@"Yes"]==YES) {
+        self.laboratoryOrdersCheck.state=1;
+    }
+    if ([[self.editedVariables objectForKey:@"Calentar Líquidos"] isEqualToString:@"Yes"]==YES) {
+        self.liquidWarming.state=1;
+    }
+    if ([[self.editedVariables objectForKey:@"Marcar Tubos"] isEqualToString:@"Yes"]==YES) {
+        self.tubeMarking.state=1;
+    }
+    
 }
 
 // Lazy Initializations

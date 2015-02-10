@@ -22,6 +22,7 @@
 - (IBAction)changeVenous:(id)sender;
 - (void) panelLoadedMessage;
 - (void) refreshPlayPauseButton;
+- (void) reloadCheckBoxesValues;
 
 @end
 

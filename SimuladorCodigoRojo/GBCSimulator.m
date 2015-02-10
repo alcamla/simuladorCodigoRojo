@@ -249,7 +249,7 @@ bool panelViewStateSimulator=NO;
 // Send Editable Variables to other classes
 
 - (NSMutableDictionary *) sendEditableVariables{
-
+    
     return self.editedVariablesSimulator;
 }
 
