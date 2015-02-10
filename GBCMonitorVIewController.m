@@ -74,7 +74,7 @@ int minutes=0;
 - (void) initializeMonitorTimer{
     
     // Describing a timer which allows us to update the Menu View every 1s
-    self.timerToUpdateMonitorView=[NSTimer scheduledTimerWithTimeInterval:1.0
+    self.timerToUpdateMonitorView=[NSTimer scheduledTimerWithTimeInterval:0.5
                                                                 target:self
                                                               selector:@selector(interruptEventHandling)
                                                               userInfo:nil

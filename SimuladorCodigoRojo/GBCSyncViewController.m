@@ -179,7 +179,9 @@ BOOL activeSyncMessage=NO;
     if (bluetoothConnectionCheckSync==YES) {
         
         // Update Connection Check Appeareance
-        [self.connectionCheck setTitle:@"Conexión Establecida"];
+        [[self.connectionCheck cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Conexión Establecida"
+                                                                                 attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                             NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
         [self.connectionCheck setState:1];
         
         // Update calibration Check Appeareance
@@ -191,7 +193,9 @@ BOOL activeSyncMessage=NO;
     if (calibrationCheckSync==YES) {
         
         // Update calibration Check Appeareance
-        [self.calibrationCheck setTitle:@"Equipo Calibrado"];
+        [[self.calibrationCheck cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Equipo Calibrado"
+                                                                                        attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                    NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
         [self.calibrationCheck setState:1];
         
         // Update reading sensors Check Appeareance
@@ -202,7 +206,9 @@ BOOL activeSyncMessage=NO;
     if (sensorsCheckSync==YES) {
         
         // Update reading sensors Check Appeareance
-        [self.readingSensorsCheck setTitle:@"Equipo Configurado"];
+        [[self.readingSensorsCheck cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Equipo Configurado"
+                                                                                        attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                    NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
         [self.readingSensorsCheck setState:1];
         
     }

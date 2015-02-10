@@ -117,7 +117,7 @@ bool simulationIsPaused=NO;
     self.timerToUpdatePanelView = [[NSTimer alloc] init];
     
     // Describing a timer which allows us to update the Menu View every 1s
-    self.timerToUpdatePanelView=[NSTimer scheduledTimerWithTimeInterval:1.0
+    self.timerToUpdatePanelView=[NSTimer scheduledTimerWithTimeInterval:0.5
                                                                 target:self
                                                               selector:@selector(interruptEventHandlingPanel)
                                                               userInfo:nil
@@ -175,7 +175,7 @@ bool simulationIsPaused=NO;
 
 }
 
-// Read editables variables status
+// Read editables variables status and Update CheckBox Tittle Appearence
 
 - (void) readEditedVariables{
     
@@ -184,66 +184,141 @@ bool simulationIsPaused=NO;
     if (self.bleeding.state==0) {
        self.editedVariablesValues[0]=@"No";
         
+        [[self.bleeding cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Sangrado Observado"
+                                                                                 attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                             NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
+        
     }else{
         self.editedVariablesValues[0]=@"Yes";
+       
+        [[self.bleeding cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Sangrado Observado"
+                                                                                 attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                             NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
+        
     }
     
     if (self.diagnostic.state==0) {
         self.editedVariablesValues[1]=@"No";
         
+        [[self.diagnostic cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Establecer Causa Diagnóstica"
+                                                                                 attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                             NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
+        
     }else{
         self.editedVariablesValues[1]=@"Yes";
+        
+        [[self.diagnostic cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Establecer Causa Diagnóstica"
+                                                                                   attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                               NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
     }
     
     if (self.medicineStudentsCheck.state==0) {
         self.editedVariablesValues[2]=@"No";
+        
+        [[self.medicineStudentsCheck cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Medicamentos Aplicados"
+                                                                                   attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                               NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
     
     }else{
         self.editedVariablesValues[2]=@"Yes";
+        
+        [[self.medicineStudentsCheck cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Medicamentos Aplicados"
+                                                                                              attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                          NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
         
     }
     
     if (self.crystalloidCheck.state==0) {
         self.editedVariablesValues[3]=@"No";
         
+        [[self.crystalloidCheck cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Cristaloides Infundidos"
+                                                                                              attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                          NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
+        
     }else{
         self.editedVariablesValues[3]=@"Yes";
+        
+        [[self.crystalloidCheck cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Cristaloides Infundidos"
+                                                                                         attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                     NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
+        
+        
        
     }
     
     if (self.eventsAnnotation.state==0) {
         self.editedVariablesValues[4]=@"No";
         
+        [[self.eventsAnnotation cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Anotación de Eventos"
+                                                                                         attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                     NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
+        
     }else{
         self.editedVariablesValues[4]=@"Yes";
+        
+        [[self.eventsAnnotation cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Anotación de Eventos"
+                                                                                         attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                     NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
     }
     
     if (self.venousPathways.state==0) {
         self.editedVariablesValues[5]=@"No";
         
+        [[self.venousPathways cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Vías Venosas Garantizadas"
+                                                                                         attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                     NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
+        
     }else{
         self.editedVariablesValues[5]=@"Yes";
+        
+        [[self.venousPathways cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Vías Venosas Garantizadas"
+                                                                                       attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                   NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
     }
     
     if (self.laboratoryOrdersCheck.state==0) {
         self.editedVariablesValues[6]=@"No";
         
+        [[self.laboratoryOrdersCheck cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Realizar Órdenes de Laboratorio"
+                                                                                       attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                   NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
+        
     }else{
        self.editedVariablesValues[6]=@"Yes";
+        
+       [[self.laboratoryOrdersCheck cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Realizar Órdenes de Laboratorio"
+                                                                                              attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                          NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
     }
     
     if (self.liquidWarming.state==0) {
         self.editedVariablesValues[7]=@"No";
         
+        [[self.liquidWarming cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Calentar Líquidos"
+                                                                                              attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                          NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
+        
     }else{
         self.editedVariablesValues[7]=@"Yes";
+        
+        [[self.liquidWarming cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Calentar Líquidos"
+                                                                                      attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                  NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
     }
     
     if (self.tubeMarking.state==0) {
         self.editedVariablesValues[8]=@"No";
         
+        [[self.tubeMarking cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Marcar Tubos"
+                                                                                      attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                  NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
+        
     }else{
         self.editedVariablesValues[8]=@"Yes";
+        
+        [[self.tubeMarking cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Marcar Tubos"
+                                                                                    attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
+                                                                                                NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
     }
 
     // Build and Update dictionary

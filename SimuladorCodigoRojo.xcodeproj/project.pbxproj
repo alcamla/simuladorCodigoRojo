@@ -10,6 +10,32 @@
 		6C5A1C971A700DBE001DA461 /* GBCRedCodeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */; };
 		6C7049CB1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
 		6C7049CC1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
+		6F2D180B1A8A72A90048281D /* menuFrontground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D180A1A8A72A90048281D /* menuFrontground.png */; };
+		6F2D180C1A8A72A90048281D /* menuFrontground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D180A1A8A72A90048281D /* menuFrontground.png */; };
+		6F2D180E1A8A72B20048281D /* menuPregnant.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D180D1A8A72B20048281D /* menuPregnant.png */; };
+		6F2D180F1A8A72B20048281D /* menuPregnant.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D180D1A8A72B20048281D /* menuPregnant.png */; };
+		6F2D18111A8A72CD0048281D /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18101A8A72CD0048281D /* menuBackground.png */; };
+		6F2D18121A8A72CD0048281D /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18101A8A72CD0048281D /* menuBackground.png */; };
+		6F2D18141A8A75E40048281D /* monitorChronometer.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18131A8A75E40048281D /* monitorChronometer.png */; };
+		6F2D18151A8A75E40048281D /* monitorChronometer.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18131A8A75E40048281D /* monitorChronometer.png */; };
+		6F2D18171A8A75FB0048281D /* monitorNotepadNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18161A8A75FB0048281D /* monitorNotepadNew.png */; };
+		6F2D18181A8A75FB0048281D /* monitorNotepadNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18161A8A75FB0048281D /* monitorNotepadNew.png */; };
+		6F2D181D1A8A76050048281D /* monitor3GraphsLines.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D181C1A8A76050048281D /* monitor3GraphsLines.png */; };
+		6F2D181E1A8A76050048281D /* monitor3GraphsLines.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D181C1A8A76050048281D /* monitor3GraphsLines.png */; };
+		6F2D18231A8A761C0048281D /* monitorWoman.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18221A8A761C0048281D /* monitorWoman.png */; };
+		6F2D18241A8A761C0048281D /* monitorWoman.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18221A8A761C0048281D /* monitorWoman.png */; };
+		6F2D18261A8A76A40048281D /* monitorGraph.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18251A8A76A40048281D /* monitorGraph.png */; };
+		6F2D18271A8A76A40048281D /* monitorGraph.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18251A8A76A40048281D /* monitorGraph.png */; };
+		6F2D18291A8A76A70048281D /* monitorBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18281A8A76A70048281D /* monitorBackGround.png */; };
+		6F2D182A1A8A76A70048281D /* monitorBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18281A8A76A70048281D /* monitorBackGround.png */; };
+		6F2D182C1A8A7CA10048281D /* panelFrontground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D182B1A8A7CA10048281D /* panelFrontground.png */; };
+		6F2D182D1A8A7CA10048281D /* panelFrontground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D182B1A8A7CA10048281D /* panelFrontground.png */; };
+		6F2D182F1A8A7CA50048281D /* panelBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D182E1A8A7CA50048281D /* panelBackground.png */; };
+		6F2D18301A8A7CA50048281D /* panelBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D182E1A8A7CA50048281D /* panelBackground.png */; };
+		6F2D18321A8A80930048281D /* resultsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18311A8A80930048281D /* resultsBackground.png */; };
+		6F2D18331A8A80930048281D /* resultsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18311A8A80930048281D /* resultsBackground.png */; };
+		6F2D18351A8A80970048281D /* resultsFrontground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18341A8A80970048281D /* resultsFrontground.png */; };
+		6F2D18361A8A80970048281D /* resultsFrontground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18341A8A80970048281D /* resultsFrontground.png */; };
 		6F54FC591A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */; };
 		6F54FC5A1A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */; };
 		6F54FC5B1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */; };
@@ -87,6 +113,19 @@
 		6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCRedCodeUtilities.m; sourceTree = "<group>"; };
 		6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCBluetoothManager.m; sourceTree = "<group>"; };
 		6C7049CA1A69BC8200838B48 /* GBCBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCBluetoothManager.h; sourceTree = "<group>"; };
+		6F2D180A1A8A72A90048281D /* menuFrontground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuFrontground.png; sourceTree = "<group>"; };
+		6F2D180D1A8A72B20048281D /* menuPregnant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuPregnant.png; sourceTree = "<group>"; };
+		6F2D18101A8A72CD0048281D /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
+		6F2D18131A8A75E40048281D /* monitorChronometer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorChronometer.png; sourceTree = "<group>"; };
+		6F2D18161A8A75FB0048281D /* monitorNotepadNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorNotepadNew.png; sourceTree = "<group>"; };
+		6F2D181C1A8A76050048281D /* monitor3GraphsLines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitor3GraphsLines.png; sourceTree = "<group>"; };
+		6F2D18221A8A761C0048281D /* monitorWoman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorWoman.png; sourceTree = "<group>"; };
+		6F2D18251A8A76A40048281D /* monitorGraph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorGraph.png; sourceTree = "<group>"; };
+		6F2D18281A8A76A70048281D /* monitorBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorBackGround.png; sourceTree = "<group>"; };
+		6F2D182B1A8A7CA10048281D /* panelFrontground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = panelFrontground.png; sourceTree = "<group>"; };
+		6F2D182E1A8A7CA50048281D /* panelBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = panelBackground.png; sourceTree = "<group>"; };
+		6F2D18311A8A80930048281D /* resultsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resultsBackground.png; sourceTree = "<group>"; };
+		6F2D18341A8A80970048281D /* resultsFrontground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resultsFrontground.png; sourceTree = "<group>"; };
 		6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorSgSignal.jpg; sourceTree = "<group>"; };
 		6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorSigSignal2.jpg; sourceTree = "<group>"; };
 		6FB2B8B71A43389B00239486 /* SimuladorCodigoRojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimuladorCodigoRojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +226,16 @@
 		6F78F3641A48A11B006EBCEE /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				6F2D18341A8A80970048281D /* resultsFrontground.png */,
+				6F2D18311A8A80930048281D /* resultsBackground.png */,
+				6F2D182E1A8A7CA50048281D /* panelBackground.png */,
+				6F2D182B1A8A7CA10048281D /* panelFrontground.png */,
+				6F2D18281A8A76A70048281D /* monitorBackGround.png */,
+				6F2D18251A8A76A40048281D /* monitorGraph.png */,
+				6F2D18221A8A761C0048281D /* monitorWoman.png */,
+				6F2D181C1A8A76050048281D /* monitor3GraphsLines.png */,
+				6F2D18161A8A75FB0048281D /* monitorNotepadNew.png */,
+				6F2D18131A8A75E40048281D /* monitorChronometer.png */,
 				6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */,
 				6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */,
 				6FC09ABF1A4380A70023B3FA /* monitorBackground0.png */,
@@ -199,6 +248,9 @@
 				6FC09AC91A43A5170023B3FA /* configUpdateButton.png */,
 				6FC09AD11A43A89E0023B3FA /* configPauseButton.png */,
 				6FC09AD31A43A90A0023B3FA /* configPlayButton.png */,
+				6F2D18101A8A72CD0048281D /* menuBackground.png */,
+				6F2D180D1A8A72B20048281D /* menuPregnant.png */,
+				6F2D180A1A8A72A90048281D /* menuFrontground.png */,
 				6FC09AB71A437E4C0023B3FA /* menuLogoImagen.png */,
 				6FC09AB11A437E320023B3FA /* menuCreatedByGibicText.png */,
 				6FC09AB31A437E3D0023B3FA /* menuTitulo.png */,
@@ -400,18 +452,29 @@
 				6FC09ACA1A43A5170023B3FA /* configUpdateButton.png in Resources */,
 				6FC09ABC1A43808F0023B3FA /* monitorPatica1.png in Resources */,
 				6FC09AB81A437E4C0023B3FA /* menuLogoImagen.png in Resources */,
+				6F2D18171A8A75FB0048281D /* monitorNotepadNew.png in Resources */,
+				6F2D182F1A8A7CA50048281D /* panelBackground.png in Resources */,
 				6FCD42021A65E7930040C76C /* monitorConfig.png in Resources */,
 				6FB2B8C51A43389B00239486 /* Images.xcassets in Resources */,
 				6FC453651A6D7F300064E9F6 /* play-97626_640.png in Resources */,
 				6FC09AB61A437E450023B3FA /* menuBackgroundImage.png in Resources */,
 				6FC09AC41A4380A70023B3FA /* monitorRectangle.png in Resources */,
 				6FB2B8C81A43389B00239486 /* Main.storyboard in Resources */,
+				6F2D18141A8A75E40048281D /* monitorChronometer.png in Resources */,
+				6F2D180B1A8A72A90048281D /* menuFrontground.png in Resources */,
 				6FCD42141A65E9DF0040C76C /* monitorPanel.png in Resources */,
 				6FC09AD21A43A89E0023B3FA /* configPauseButton.png in Resources */,
+				6F2D18111A8A72CD0048281D /* menuBackground.png in Resources */,
+				6F2D181D1A8A76050048281D /* monitor3GraphsLines.png in Resources */,
 				6FC09AB21A437E320023B3FA /* menuCreatedByGibicText.png in Resources */,
 				6F54FC591A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */,
+				6F2D18291A8A76A70048281D /* monitorBackGround.png in Resources */,
 				6FC09AC61A4392200023B3FA /* monitorAddButton.png in Resources */,
+				6F2D182C1A8A7CA10048281D /* panelFrontground.png in Resources */,
+				6F2D18231A8A761C0048281D /* monitorWoman.png in Resources */,
+				6F2D18321A8A80930048281D /* resultsBackground.png in Resources */,
 				6FC09ABE1A43809B0023B3FA /* monitorPatica2.png in Resources */,
+				6F2D180E1A8A72B20048281D /* menuPregnant.png in Resources */,
 				6FC453681A6D83450064E9F6 /* clock-308938_1280.png in Resources */,
 				6FC09AC21A4380A70023B3FA /* monitorBackground0.png in Resources */,
 				6FC453621A6D7F250064E9F6 /* pause-97625_1280.png in Resources */,
@@ -419,8 +482,10 @@
 				6FC09AB41A437E3D0023B3FA /* menuTitulo.png in Resources */,
 				6F54FC5B1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */,
 				6FED8FB71A6D7B0200150438 /* monitorNotepad.png in Resources */,
+				6F2D18351A8A80970048281D /* resultsFrontground.png in Resources */,
 				6FC09ABA1A4380860023B3FA /* monitorSeñalImage.png in Resources */,
 				6FED8FB11A6D783700150438 /* monitorBackgroundPicture.jpg in Resources */,
+				6F2D18261A8A76A40048281D /* monitorGraph.png in Resources */,
 				6FC09AD41A43A90A0023B3FA /* configPlayButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,14 +494,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F2D182A1A8A76A70048281D /* monitorBackGround.png in Resources */,
 				6F54FC5C1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */,
+				6F2D18301A8A7CA50048281D /* panelBackground.png in Resources */,
 				6F54FC5A1A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */,
+				6F2D182D1A8A7CA10048281D /* panelFrontground.png in Resources */,
 				6FCD42031A65E7930040C76C /* monitorConfig.png in Resources */,
+				6F2D180C1A8A72A90048281D /* menuFrontground.png in Resources */,
 				6FCD42121A65E9600040C76C /* monitorConfig2.png in Resources */,
+				6F2D18181A8A75FB0048281D /* monitorNotepadNew.png in Resources */,
+				6F2D18331A8A80930048281D /* resultsBackground.png in Resources */,
+				6F2D181E1A8A76050048281D /* monitor3GraphsLines.png in Resources */,
+				6F2D18361A8A80970048281D /* resultsFrontground.png in Resources */,
 				6FED8FB81A6D7B0200150438 /* monitorNotepad.png in Resources */,
 				6FCD42151A65E9DF0040C76C /* monitorPanel.png in Resources */,
 				6FED8FB21A6D783700150438 /* monitorBackgroundPicture.jpg in Resources */,
+				6F2D180F1A8A72B20048281D /* menuPregnant.png in Resources */,
 				6FC453631A6D7F250064E9F6 /* pause-97625_1280.png in Resources */,
+				6F2D18121A8A72CD0048281D /* menuBackground.png in Resources */,
+				6F2D18151A8A75E40048281D /* monitorChronometer.png in Resources */,
+				6F2D18241A8A761C0048281D /* monitorWoman.png in Resources */,
+				6F2D18271A8A76A40048281D /* monitorGraph.png in Resources */,
 				6FBBB06C1A5C2A41008BB4BA /* menuMunecaDos.png in Resources */,
 				6FC453691A6D83450064E9F6 /* clock-308938_1280.png in Resources */,
 				6FC453661A6D7F300064E9F6 /* play-97626_640.png in Resources */,

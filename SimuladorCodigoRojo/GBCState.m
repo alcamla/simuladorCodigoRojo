@@ -64,42 +64,42 @@
             self.heartRate=@"84";
             self.arterialPresure=@"110/70";
             self.respiratoryRate=@"18";
-            self.oxygenSaturation=@"96%";
+            self.oxygenSaturation=@"96";
             break;
         case 1:
-            self.conscience=@"Exitada";
+            self.conscience=@"Excitada";
             self.heartRate=@"96";
             self.arterialPresure=@"86/50";
             self.respiratoryRate=@"20";
-            self.oxygenSaturation=@"95%";
+            self.oxygenSaturation=@"95";
             break;
         case 2:
             self.conscience=@"NI";
             self.heartRate=@"84";
             self.arterialPresure=@"110/70";
             self.respiratoryRate=@"18";
-            self.oxygenSaturation=@"96%";
+            self.oxygenSaturation=@"96";
             break;
         case 3:
             self.conscience=@"Obnubilada";
             self.heartRate=@"110";
             self.arterialPresure=@"74/50";
             self.respiratoryRate=@"22";
-            self.oxygenSaturation=@"90%";
+            self.oxygenSaturation=@"90";
             break;
         case 4:
             self.conscience=@"Estupor";
             self.heartRate=@"124";
             self.arterialPresure=@"60/40";
             self.respiratoryRate=@"30";
-            self.oxygenSaturation=@"85%";
+            self.oxygenSaturation=@"85";
             break;
         case 5:
             self.conscience=@"NI";
             self.heartRate=@"84";
             self.arterialPresure=@"110/70";
             self.respiratoryRate=@"18";
-            self.oxygenSaturation=@"96%";
+            self.oxygenSaturation=@"96";
             break;
             
         default:
