@@ -30,7 +30,7 @@
 @property (strong, nonatomic) NSString *bluetoothVenousValue;
 @property (strong, nonatomic) NSString *updatedKey;
 @property (strong, nonatomic) NSString *updatedValue;
-@property (strong, nonatomic) GBCBluetoothManager *bluetoothManager;
+
 
 
 @end
@@ -40,9 +40,9 @@
 
 // Local DataBase
 
-bool bluetoothConnectionCheckSimulator = YES;
-bool calibrationCheckSimulator = YES;
-bool sensorsCheckSimulator= YES;
+bool bluetoothConnectionCheckSimulator = NO;
+bool calibrationCheckSimulator = NO;
+bool sensorsCheckSimulator= NO;
 bool paussedChecked = NO;
 bool finalizationCheck=NO;
 bool startedInitializationMessage=NO;
@@ -147,6 +147,16 @@ bool panelViewStateSimulator=NO;
     if (!_bluetoothManager) {
         self.bluetoothManager =  [[GBCBluetoothManager alloc] init];
         self.bluetoothManager.delegate = self;
+    }
+    [self.bluetoothManager startScan];
+}
+
+-(void)forgetBluetoothDevice{
+    if ([self.bluetoothManager peripheral]) {
+        [[self.bluetoothManager manager] cancelPeripheralConnection:[self.bluetoothManager peripheral]];
+        NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:@"GBCBluetoothDeviceIdentifier"];
+        self.bluetoothManager = nil;
     }
 }
 

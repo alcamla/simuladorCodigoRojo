@@ -54,15 +54,18 @@ BOOL activeSyncMessage=NO;
     // Call initialize Timer
     [self initializeSyncTimer];
     
-    // Ask for bluetooth connection method
-    [self askForBluetoothConnection];
-    
     // Get the correct values to initialize the view
     self.vitalSignsSync=[[GBCSimulator sharedSimulator] getBluetoothVariables];
     
     // Start with correct values for sensors
     [self updateSyncView];
     
+}
+
+-(void)viewDidAppear{
+    
+    // Ask for bluetooth connection method
+    [self askForBluetoothConnection];
 }
 
 // View Did Dissappear Method
@@ -119,6 +122,7 @@ BOOL activeSyncMessage=NO;
 
 - (void) askForBluetoothConnection{
     
+    bluetoothConnectionCheckSync=[[GBCSimulator sharedSimulator] askIfBluetoothIsConnected];
     // Only execute it if there is not a conexion
     if (bluetoothConnectionCheckSync==NO) {
         

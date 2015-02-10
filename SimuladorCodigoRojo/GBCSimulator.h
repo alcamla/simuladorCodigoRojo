@@ -12,6 +12,7 @@
 
 @interface GBCSimulator : NSObject <GBCRedCodeBluetoothDelegate>
 
+@property (strong, nonatomic) GBCBluetoothManager *bluetoothManager;
 
 + (instancetype)sharedSimulator;
 - (NSDictionary *) getCurrentVitalSigns;
@@ -42,6 +43,7 @@
 - (BOOL) askIfPanelViewIsOpenedAndSetActive: (BOOL) panelActiveMessage;
 - (void) isPanelViewOpened:(BOOL)isPanelOpenedMessage;
 - (BOOL) makeActiveToPanel;
+-(void)forgetBluetoothDevice;
 
 @end
 
