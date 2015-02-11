@@ -136,6 +136,9 @@ int minutes=0;
 
 - (void) updateChronometer{
     
+    // Set a beep sound to the simulation
+    NSBeep();
+    
     // Update Seconds, minutes and hours
     seconds++;
     
