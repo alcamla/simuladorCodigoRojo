@@ -56,6 +56,7 @@
 		6FBBB0751A5C8035008BB4BA /* GBCDoctorPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC69B041A5B2CC10090234A /* GBCDoctorPanelViewController.m */; };
 		6FBBB0781A5C807C008BB4BA /* GBCResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */; };
 		6FBBB0791A5C807C008BB4BA /* GBCResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */; };
+		6FC057751A8C0D22006B3605 /* GBCDoctorPanelWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC057741A8C0D22006B3605 /* GBCDoctorPanelWindowController.m */; };
 		6FC09AB21A437E320023B3FA /* menuCreatedByGibicText.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB11A437E320023B3FA /* menuCreatedByGibicText.png */; };
 		6FC09AB41A437E3D0023B3FA /* menuTitulo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB31A437E3D0023B3FA /* menuTitulo.png */; };
 		6FC09AB61A437E450023B3FA /* menuBackgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB51A437E450023B3FA /* menuBackgroundImage.png */; };
@@ -114,8 +115,8 @@
 		6C44EF4C1A895A7800C81D68 /* GBCBluetoothSelectorSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCBluetoothSelectorSheetController.m; sourceTree = "<group>"; };
 		6C5A1C951A700DBE001DA461 /* GBCRedCodeUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCRedCodeUtilities.h; sourceTree = "<group>"; };
 		6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCRedCodeUtilities.m; sourceTree = "<group>"; };
-        6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GBCBluetoothManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-        6C7049CA1A69BC8200838B48 /* GBCBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GBCBluetoothManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GBCBluetoothManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		6C7049CA1A69BC8200838B48 /* GBCBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GBCBluetoothManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6F2D180A1A8A72A90048281D /* menuFrontground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuFrontground.png; sourceTree = "<group>"; };
 		6F2D180D1A8A72B20048281D /* menuPregnant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuPregnant.png; sourceTree = "<group>"; };
 		6F2D18101A8A72CD0048281D /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
@@ -150,6 +151,8 @@
 		6FBBB0721A5C70D0008BB4BA /* GBCConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCConfirmViewController.m; sourceTree = "<group>"; };
 		6FBBB0761A5C807C008BB4BA /* GBCResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCResultsViewController.h; sourceTree = "<group>"; };
 		6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCResultsViewController.m; sourceTree = "<group>"; };
+		6FC057731A8C0D22006B3605 /* GBCDoctorPanelWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCDoctorPanelWindowController.h; sourceTree = "<group>"; };
+		6FC057741A8C0D22006B3605 /* GBCDoctorPanelWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCDoctorPanelWindowController.m; sourceTree = "<group>"; };
 		6FC09AB11A437E320023B3FA /* menuCreatedByGibicText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuCreatedByGibicText.png; sourceTree = "<group>"; };
 		6FC09AB31A437E3D0023B3FA /* menuTitulo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuTitulo.png; sourceTree = "<group>"; };
 		6FC09AB51A437E450023B3FA /* menuBackgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackgroundImage.png; sourceTree = "<group>"; };
@@ -276,10 +279,10 @@
 		6FA5B2771A49DDF40032A4FB /* Still Unusable */ = {
 			isa = PBXGroup;
 			children = (
-				6FC340931A44EF830004A7DB /* GBCMenuWindow.m */,
-				6FC340921A44EF830004A7DB /* GBCMenuWindow.h */,
 				6FC340901A44E6CD0004A7DB /* GBCMenuWindowController.m */,
 				6FC3408F1A44E6CD0004A7DB /* GBCMenuWindowController.h */,
+				6FC340931A44EF830004A7DB /* GBCMenuWindow.m */,
+				6FC340921A44EF830004A7DB /* GBCMenuWindow.h */,
 				6FB2B8C11A43389B00239486 /* ViewController.h */,
 				6FB2B8C21A43389B00239486 /* ViewController.m */,
 			);
@@ -326,6 +329,7 @@
 		6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */ = {
 			isa = PBXGroup;
 			children = (
+				6FC057721A8C0C3D006B3605 /* WindowControllers */,
 				6C5A1C941A700D83001DA461 /* Utilities */,
 				6C7049C81A69BC2F00838B48 /* Bluetooth */,
 				6F78F3641A48A11B006EBCEE /* Pictures */,
@@ -370,6 +374,15 @@
 				6FB2B8D21A43389B00239486 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6FC057721A8C0C3D006B3605 /* WindowControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6FC057741A8C0D22006B3605 /* GBCDoctorPanelWindowController.m */,
+				6FC057731A8C0D22006B3605 /* GBCDoctorPanelWindowController.h */,
+			);
+			name = WindowControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,6 +548,7 @@
 			files = (
 				6FCD42001A6583290040C76C /* GBCStateMachine.m in Sources */,
 				6C44EF4D1A895A7800C81D68 /* GBCBluetoothSelectorSheetController.m in Sources */,
+				6FC057751A8C0D22006B3605 /* GBCDoctorPanelWindowController.m in Sources */,
 				6FBBB0781A5C807C008BB4BA /* GBCResultsViewController.m in Sources */,
 				6FBBB0751A5C8035008BB4BA /* GBCDoctorPanelViewController.m in Sources */,
 				6FBBB06F1A5C6B69008BB4BA /* GBCSyncViewController.m in Sources */,
