@@ -61,6 +61,12 @@
     return YES;
 }
 
+
+- (IBAction)forgetCurrentBluetoothDevice:(id)sender {
+    [[GBCSimulator sharedSimulator] forgetBluetoothDevice];
+}
+
+
 @end
 
 // Add Observer to Notification Center

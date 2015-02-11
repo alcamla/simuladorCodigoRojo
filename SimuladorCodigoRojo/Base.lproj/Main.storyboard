@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14D72i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6249"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
@@ -21,6 +21,109 @@
                 <customObject id="IZm-KA-HuA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-166" y="-415"/>
+        </scene>
+        <!--Bluetooth Manager-->
+        <scene sceneID="84P-9K-VAN">
+            <objects>
+                <customObject id="uqD-IM-5sq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="GBCBluetoothManager" id="N56-Xg-5ft" customClass="GBCBluetoothManager" sceneMemberID="viewController">
+                    <view key="view" id="guM-Iz-LiF">
+                        <rect key="frame" x="0.0" y="0.0" width="370" height="205"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srf-k1-Tyc">
+                                <rect key="frame" x="20" y="75" width="330" height="110"/>
+                                <clipView key="contentView" id="g4A-xo-HMT">
+                                    <rect key="frame" x="1" y="0.0" width="238" height="134"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" id="8RN-6l-LZ2">
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="325" minWidth="40" maxWidth="1000" id="AtN-D3-WzS">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="TNO-Ez-SCo">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="JP2-eW-9iT" name="value" keyPath="arrangedObjects.name" id="NBN-Bo-Nfv"/>
+                                                    </connections>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ZD2-Ad-dtE">
+                                    <rect key="frame" x="1" y="31" width="46" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="lcu-1T-Hlv">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3s6-Pd-jMC">
+                                <rect key="frame" x="143" y="27" width="182" height="32"/>
+                                <buttonCell key="cell" type="push" title="Seleccionar Dispositivo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zov-Vd-g2n">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="selectDevice:" target="N56-Xg-5ft" id="hYX-Th-ck2"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YeE-uH-gyJ">
+                                <rect key="frame" x="14" y="27" width="94" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancelar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cel-GX-lKo">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeSheet:" target="N56-Xg-5ft" id="qm1-A6-UCg"/>
+                                </connections>
+                            </button>
+                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Wax-TW-Eki">
+                                <rect key="frame" x="334" y="36" width="16" height="16"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Srf-k1-Tyc" firstAttribute="top" secondItem="guM-Iz-LiF" secondAttribute="top" constant="20" id="5xU-dD-TsE"/>
+                            <constraint firstAttribute="bottom" secondItem="Srf-k1-Tyc" secondAttribute="bottom" constant="75" id="Dtm-lE-FdW"/>
+                            <constraint firstItem="Srf-k1-Tyc" firstAttribute="leading" secondItem="guM-Iz-LiF" secondAttribute="leading" constant="20" id="Koh-zn-vht"/>
+                            <constraint firstAttribute="trailing" secondItem="Srf-k1-Tyc" secondAttribute="trailing" constant="20" id="kfc-ES-BmR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="arrayController" destination="JP2-eW-9iT" id="jK2-45-8bc"/>
+                        <outlet property="progressIndicator" destination="Wax-TW-Eki" id="Orw-f6-DZY"/>
+                    </connections>
+                </viewController>
+                <userDefaultsController representsSharedInstance="YES" id="Jaf-z9-LpK"/>
+                <arrayController objectClassName="CBPeripheral" id="JP2-eW-9iT">
+                    <connections>
+                        <binding destination="N56-Xg-5ft" name="contentArray" keyPath="redCodeBluetoothDevices" id="kgu-sc-6Cl"/>
+                    </connections>
+                </arrayController>
+            </objects>
+            <point key="canvasLocation" x="192" y="5.5"/>
         </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
@@ -131,6 +234,19 @@
                                         <menuItem title="Print…" keyEquivalent="p" id="aTl-1u-JFS">
                                             <connections>
                                                 <action selector="print:" target="Ady-hI-5gd" id="qaZ-4w-aoO"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Bluetooth" id="O1h-YL-0DK" userLabel="Bluetooth">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Bluetooth" id="XC8-u2-3dh">
+                                    <items>
+                                        <menuItem title="Forget Device" id="ia8-PM-FLX">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="forgetCurrentBluetoothDevice:" target="Voe-Tx-rLC" id="52S-DE-U8N"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -690,30 +806,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="750" height="872"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3zC-oL-KqG">
-                                <rect key="frame" x="0.0" y="0.0" width="750" height="872"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="resultsBackground" id="lRv-V4-Zjo"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VI5-Mr-oD4">
-                                <rect key="frame" x="0.0" y="-28" width="750" height="919"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="resultsFrontground" id="0Y7-dr-ClC"/>
-                            </imageView>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W69-B4-ICf">
-                                <rect key="frame" x="111" y="759" width="528" height="34"/>
+                                <rect key="frame" x="106" y="765" width="528" height="34"/>
                                 <buttonCell key="cell" type="check" title="Estableciendo conexión con el paciente ...." bezelStyle="regularSquare" imagePosition="left" inset="2" id="nZA-5E-k00">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="28" name="HelveticaNeue"/>
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BrN-Kf-m5Y">
-                                <rect key="frame" x="111" y="713" width="484" height="34"/>
+                                <rect key="frame" x="106" y="719" width="484" height="34"/>
                                 <buttonCell key="cell" type="check" title="Calibrando el equipo ...." bezelStyle="regularSquare" imagePosition="left" transparent="YES" inset="2" id="nFx-xb-WVf">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="28" name="HelveticaNeue"/>
                                 </buttonCell>
                             </button>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b8K-Cc-c54">
-                                <rect key="frame" x="91" y="37" width="568" height="622"/>
+                                <rect key="frame" x="86" y="42" width="568" height="622"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdO-Qg-yOe">
                                         <rect key="frame" x="62" y="29" width="447" height="573"/>
@@ -748,23 +856,8 @@
                                     </imageView>
                                 </subviews>
                             </customView>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJA-Tb-b0X">
-                                <rect key="frame" x="111" y="665" width="431" height="34"/>
-                                <buttonCell key="cell" type="check" title="Configurando equipo ...." bezelStyle="regularSquare" imagePosition="left" transparent="YES" inset="2" id="8PF-af-fjS">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtA-b5-TBT">
-                                <rect key="frame" x="247" y="819" width="256" height="39"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Sincronización" id="BP6-ST-fEI">
-                                    <font key="font" size="32" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VOA-Yl-b3G">
-                                <rect key="frame" x="340" y="-1" width="71" height="32"/>
+                                <rect key="frame" x="340" y="3" width="71" height="32"/>
                                 <buttonCell key="cell" type="push" title="Listo" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Dv-Et-pqj">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="14" name="HelveticaNeue"/>
@@ -773,6 +866,21 @@
                                     <action selector="endSync:" target="QHI-Ye-tGO" id="VC8-BH-Xax"/>
                                 </connections>
                             </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJA-Tb-b0X">
+                                <rect key="frame" x="106" y="671" width="431" height="34"/>
+                                <buttonCell key="cell" type="check" title="Configurando equipo ...." bezelStyle="regularSquare" imagePosition="left" transparent="YES" inset="2" id="8PF-af-fjS">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtA-b5-TBT">
+                                <rect key="frame" x="242" y="826" width="256" height="39"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Sincronización" id="BP6-ST-fEI">
+                                    <font key="font" size="32" name="HelveticaNeue-Bold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -800,24 +908,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="562" height="320"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xu-Li-pbm">
-                                <rect key="frame" x="0.0" y="0.0" width="562" height="320"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="menuBackground" id="52Y-eN-fj1"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FQo-ZA-jUF">
+                                <rect key="frame" x="-26" y="-16" width="609" height="417"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="menuBackgroundImage" id="ns3-WF-sOb"/>
+                                <connections>
+                                    <segue destination="N56-Xg-5ft" kind="sheet" identifier="goToBluetoothSelector" id="bWM-Yb-lsW"/>
+                                </connections>
                             </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qBI-9X-k0w">
-                                <rect key="frame" x="0.0" y="-8" width="562" height="333"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="menuFrontground" id="nGG-MY-Rpd"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9bD-u5-cBc">
+                                <rect key="frame" x="223" y="-10" width="117" height="72"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="menuCreatedByGibicText" id="Vh3-cU-MKO"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Qd-e4-aQs">
-                                <rect key="frame" x="108" y="252" width="363" height="37"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Simulador de Código Rojo" id="Alq-Xf-2Vp">
-                                    <font key="font" size="30" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5c6-wc-Nky">
-                                <rect key="frame" x="157" y="159" width="267" height="29"/>
+                                <rect key="frame" x="269" y="177" width="267" height="29"/>
                                 <comboBoxCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="-- Seleccione el Estado del Paciente --" completes="NO" numberOfVisibleItems="4" id="7Ww-aT-0YL">
                                     <font key="font" size="14" name="HelveticaNeue"/>
                                     <color key="textColor" red="0.49210858585858586" green="0.49210858585858586" blue="0.49210858585858586" alpha="1" colorSpace="calibratedRGB"/>
@@ -830,8 +933,12 @@
                                     </objectValues>
                                 </comboBoxCell>
                             </comboBox>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AJQ-1F-woL">
+                                <rect key="frame" x="36" y="61" width="188" height="168"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="woman" id="hXj-Md-eDw"/>
+                            </imageView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7FX-Vl-hnx">
-                                <rect key="frame" x="199" y="120" width="181" height="32"/>
+                                <rect key="frame" x="311" y="122" width="181" height="32"/>
                                 <buttonCell key="cell" type="push" title="Conectar con Paciente" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tcz-JU-qPp">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="14" name="HelveticaNeue"/>
@@ -840,8 +947,16 @@
                                     <action selector="goToSync:" target="XfG-lQ-9wD" id="wQt-4a-lBl"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Qd-e4-aQs">
+                                <rect key="frame" x="128" y="244" width="307" height="37"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Simulador de Código Rojo" id="Alq-Xf-2Vp">
+                                    <font key="font" size="22" name="HelveticaNeue"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5V9-aI-CV7">
-                                <rect key="frame" x="237" y="87" width="88" height="32"/>
+                                <rect key="frame" x="357" y="89" width="88" height="32"/>
                                 <buttonCell key="cell" type="push" title="Simular" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wxJ-t2-c37">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="14" name="HelveticaNeue"/>
@@ -850,14 +965,16 @@
                                     <action selector="goToConfirm:" target="XfG-lQ-9wD" id="lIw-Tk-EC1"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9bD-u5-cBc">
-                                <rect key="frame" x="223" y="-7" width="117" height="72"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="menuCreatedByGibicText" id="Vh3-cU-MKO"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AJQ-1F-woL">
-                                <rect key="frame" x="236" y="53" width="346" height="274"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="menuPregnant" id="hXj-Md-eDw"/>
-                            </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqT-Dw-K3t">
+                                <rect key="frame" x="358" y="54" width="86" height="32"/>
+                                <buttonCell key="cell" type="push" title="testing!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dah-tf-jBM">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="testModalViewPresentation:" target="XfG-lQ-9wD" id="G7N-Vk-bdz"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -870,7 +987,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-314" y="113"/>
+            <point key="canvasLocation" x="-364" y="162"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="7PY-Mm-5Yf">
@@ -879,7 +996,7 @@
                     <window key="window" title="Confirmar" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Hf6-TK-LMw">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="734" y="547" width="389" height="75"/>
+                        <rect key="contentRect" x="842" y="588" width="389" height="75"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
                     <connections>
@@ -897,7 +1014,7 @@
                     <window key="window" title="Monitor de signos vitales" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Xlv-xJ-wKV">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="478" y="147" width="1008" height="702"/>
+                        <rect key="contentRect" x="265" y="149" width="1008" height="702"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
                     <connections>
@@ -906,7 +1023,7 @@
                 </windowController>
                 <customObject id="jgU-CV-kBB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="701" y="492"/>
+            <point key="canvasLocation" x="965" y="639"/>
         </scene>
         <!--Confirmar-->
         <scene sceneID="vKX-0H-wg3">
@@ -952,6 +1069,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="1692" height="959"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5E-Y1-AX5">
+                                <rect key="frame" x="-528" y="0.0" width="2748" height="959"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="monitorSigSignal2" id="M7W-Pl-gxc"/>
+                                <connections>
+                                    <segue destination="gNm-pR-YI9" kind="show" identifier="fromMonitorToPanel" id="4fb-Nk-MNb"/>
+                                </connections>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQU-Mg-gPs">
+                                <rect key="frame" x="1485" y="89" width="216" height="89"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="96%" id="LZ3-c9-fBS">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="percent" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="NX0-Vt-wGp">
+                                        <integer key="multiplier" value="100"/>
+                                    </numberFormatter>
+                                    <font key="font" size="80" name="HelveticaNeue"/>
+                                    <color key="textColor" red="1" green="0.1107546368" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-Cf-3kf">
                                 <rect key="frame" x="2205" y="839" width="230" height="71"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="110/70" id="S8i-2f-gNj">
@@ -969,17 +1104,62 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jd4-5I-5ei">
-                                <rect key="frame" x="0.0" y="0.0" width="1692" height="959"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="monitorBackGround" id="4fJ-2P-bme"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S0D-hM-Sr9">
-                                <rect key="frame" x="0.0" y="125" width="1754" height="768"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="monitorGraph" id="tI5-wy-sMI"/>
-                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Les-sh-n6f">
+                                <rect key="frame" x="1418" y="20" width="338" height="56"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Sat Ox" id="h0F-IY-6KO">
+                                    <font key="font" size="50" name="HelveticaNeue-Italic"/>
+                                    <color key="textColor" red="1" green="0.33067830139947252" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxY-rj-gXk">
+                                <rect key="frame" x="705" y="885" width="143" height="48"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Tiempo" id="W5M-M1-zcO">
+                                    <font key="font" size="40" name="HelveticaNeue-Italic"/>
+                                    <color key="textColor" red="0.0" green="1" blue="0.70539818840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRn-Uo-QAH">
+                                <rect key="frame" x="600" y="806" width="352" height="82"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="00:00:00" id="9qs-hW-OGf">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Cxs-jv-se9"/>
+                                    <font key="font" size="75" name="HelveticaNeue"/>
+                                    <color key="textColor" red="0.0" green="1" blue="0.70539818840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <levelIndicator hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gRI-9j-kuf">
+                                <rect key="frame" x="1163" y="837" width="130" height="18"/>
+                                <levelIndicatorCell key="cell" alignment="left" doubleValue="2" maxValue="3" warningValue="1" id="CGO-YL-BqX"/>
+                            </levelIndicator>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="msJ-ov-52B">
+                                <rect key="frame" x="1158" y="878" width="140" height="20"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Status Medicamentos" id="TOL-I2-auX">
+                                    <font key="font" size="14" name="HelveticaNeue-Italic"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2o5-Pw-0ZS">
+                                <rect key="frame" x="1493" y="801" width="183" height="39"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Consciencia" id="0xP-Ty-g1j">
+                                    <font key="font" size="32" name="HelveticaNeue-Italic"/>
+                                    <color key="textColor" red="1" green="0.77615591341248313" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4O-jL-5XK">
+                                <rect key="frame" x="1459" y="499" width="245" height="71"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="R C" id="YSx-ch-2wH">
+                                    <font key="font" size="55" name="HelveticaNeue-Italic"/>
+                                    <color key="textColor" red="0.12557993780000001" green="0.50301561309999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6U-Sf-stT">
-                                <rect key="frame" x="0.0" y="784" width="232" height="175"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="monitorNotepadNew" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="YTh-TL-hBn">
+                                <rect key="frame" x="5" y="792" width="203" height="147"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="monitorNotepad" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="YTh-TL-hBn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -987,109 +1167,37 @@
                                     <action selector="goToPanel:" target="l7x-RM-x2c" id="lqd-d2-I56"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i3G-cu-thq">
-                                <rect key="frame" x="0.0" y="125" width="1754" height="763"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="monitor3GraphsLines" id="6RL-Q5-bXO"/>
-                            </imageView>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5C-nb-NW7">
-                                <rect key="frame" x="1472" y="668" width="185" height="119"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="78" id="Lf9-2C-fsp">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Hy4-qe-FCU"/>
-                                    <font key="font" size="105" name="HelveticaNeue"/>
-                                    <color key="textColor" red="0.62496142450000003" green="1" blue="0.42853705959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4O-jL-5XK">
-                                <rect key="frame" x="1442" y="596" width="245" height="71"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="BPM" id="YSx-ch-2wH">
-                                    <font key="font" size="40" name="HelveticaNeue-Italic"/>
-                                    <color key="textColor" red="0.62496142450000003" green="1" blue="0.42853705959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZGr-jn-hI0">
-                                <rect key="frame" x="1460" y="302" width="203" height="120"/>
+                                <rect key="frame" x="1478" y="314" width="203" height="120"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="18" id="daf-ls-SPM">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="v8x-Ph-niw"/>
-                                    <font key="font" size="105" name="HelveticaNeue"/>
-                                    <color key="textColor" red="0.90592321070000004" green="1" blue="0.35738511439999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="font" size="115" name="HelveticaNeue"/>
+                                    <color key="textColor" red="0.33149320236007063" green="1" blue="0.98308539384504723" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQU-Mg-gPs">
-                                <rect key="frame" x="1453" y="487" width="222" height="123"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="96%" id="LZ3-c9-fBS">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="percent" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="NX0-Vt-wGp">
-                                        <integer key="multiplier" value="100"/>
-                                    </numberFormatter>
-                                    <font key="font" size="105" name="HelveticaNeue"/>
-                                    <color key="textColor" red="0.1718475642" green="1" blue="0.92990373719999997" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Les-sh-n6f">
-                                <rect key="frame" x="1395" y="440" width="338" height="60"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="% Spo" id="h0F-IY-6KO">
-                                    <font key="font" size="40" name="HelveticaNeue-Italic"/>
-                                    <color key="textColor" red="0.17111028588382549" green="1" blue="0.92572173624760223" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHM-Dt-vvs">
-                                <rect key="frame" x="1606" y="449" width="46" height="31"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="2" id="OHt-uY-sUQ">
-                                    <font key="font" size="20" name="HelveticaNeue-Italic"/>
-                                    <color key="textColor" red="0.17111028588382549" green="1" blue="0.92572173624760223" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GX4-ul-MKx">
-                                <rect key="frame" x="1533" y="251" width="89" height="60"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="R R" id="cza-YZ-rIg">
-                                    <font key="font" size="40" name="HelveticaNeue-Italic"/>
-                                    <color key="textColor" red="0.90491477741148385" green="1" blue="0.35453319850117804" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="1545" y="228" width="89" height="60"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="F R" id="cza-YZ-rIg">
+                                    <font key="font" size="55" name="HelveticaNeue-Italic"/>
+                                    <color key="textColor" red="0.4916280285789334" green="1" blue="0.99485730628984148" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5C-nb-NW7">
+                                <rect key="frame" x="1484" y="594" width="185" height="119"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="78" id="Lf9-2C-fsp">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Hy4-qe-FCU"/>
+                                    <font key="font" size="115" name="HelveticaNeue"/>
+                                    <color key="textColor" red="0.1310684097" green="0.35849363049999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRz-cc-wS9">
-                                <rect key="frame" x="203" y="96" width="560" height="86"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Excitada" id="0nS-D6-oen">
-                                    <font key="font" size="65" name="HelveticaNeue"/>
-                                    <color key="textColor" red="0.053957410779999999" green="0.3080619141" blue="0.93442234850000006" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2o5-Pw-0ZS">
-                                <rect key="frame" x="203" y="65" width="183" height="39"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Consciencia" id="0xP-Ty-g1j">
-                                    <font key="font" size="32" name="HelveticaNeue-Italic"/>
-                                    <color key="textColor" red="0.053957410779999999" green="0.3080619141" blue="0.93442234850000006" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRn-Uo-QAH">
-                                <rect key="frame" x="1342" y="839" width="352" height="82"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="00:00:00" id="9qs-hW-OGf">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Cxs-jv-se9"/>
-                                    <font key="font" size="75" name="HelveticaNeue"/>
-                                    <color key="textColor" red="0.5372474747474747" green="0.0" blue="0.01991362600555634" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R4J-eZ-rkP">
-                                <rect key="frame" x="3" y="-7" width="196" height="247"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="monitorWoman" id="6u1-7S-WzR"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dt5-9J-ckK">
-                                <rect key="frame" x="1195" y="803" width="172" height="137"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="monitorChronometer" id="PrF-1q-lKO"/>
-                            </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sb2-x7-Sjc">
-                                <rect key="frame" x="65" y="705" width="76" height="44"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ECG" id="979-oh-7lt">
-                                    <font key="font" size="30" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="0.62496142450000003" green="1" blue="0.42853705959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="1453" y="848" width="268" height="86"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Excitada" id="0nS-D6-oen">
+                                    <font key="font" size="50" name="HelveticaNeue"/>
+                                    <color key="textColor" red="1" green="0.72451605810394681" blue="0.14824683686750084" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -1102,7 +1210,6 @@
                         <outlet property="heartRateValue" destination="f5C-nb-NW7" id="6aD-yX-p4r"/>
                         <outlet property="oxigenSaturationValue" destination="LQU-Mg-gPs" id="Zw7-YR-IIl"/>
                         <outlet property="respiratoryFrecuencyValue" destination="ZGr-jn-hI0" id="GVy-XS-WiJ"/>
-                        <segue destination="gNm-pR-YI9" kind="show" identifier="fromMonitorToPanel" id="XuR-Rq-xVt"/>
                     </connections>
                 </viewController>
                 <customObject id="4yi-EH-P5X" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1117,100 +1224,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1231" height="856"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G0O-fv-Qy3">
-                                <rect key="frame" x="0.0" y="0.0" width="1231" height="856"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="panelBackground" id="dC4-9f-cyc"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gc4-Yp-yLd">
-                                <rect key="frame" x="-7" y="-21" width="1238" height="897"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="panelFrontground" id="b5j-iT-q6G"/>
-                            </imageView>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1GC-KR-Mul">
-                                <rect key="frame" x="751" y="522" width="339" height="34"/>
-                                <buttonCell key="cell" type="check" title="Sangrado Observado" bezelStyle="regularSquare" imagePosition="left" inset="2" id="rjX-aa-GVr">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NuZ-ja-VqS">
-                                <rect key="frame" x="751" y="460" width="425" height="40"/>
-                                <buttonCell key="cell" type="check" title="Establecer Causa Diagnóstica" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Zbj-jM-7xx">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bUL-CN-hit">
-                                <rect key="frame" x="752" y="403" width="381" height="34"/>
-                                <buttonCell key="cell" type="check" title="Medicamentos Aplicados" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7EF-jy-9Jz">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5C6-hb-R9G">
-                                <rect key="frame" x="751" y="341" width="354" height="33"/>
-                                <buttonCell key="cell" type="check" title="Cristaloides Infundidos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RTw-ai-cbc">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gfc-4d-ndg">
-                                <rect key="frame" x="750" y="282" width="340" height="37"/>
-                                <buttonCell key="cell" type="check" title="Anotación de Eventos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="iXL-ay-SjM">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8re-h1-7RQ">
-                                <rect key="frame" x="750" y="219" width="434" height="50"/>
-                                <buttonCell key="cell" type="check" title="Realizar Órdenes de Laboratorio" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0Zu-EI-oqB">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zFF-fA-xPG">
-                                <rect key="frame" x="751" y="163" width="442" height="49"/>
-                                <buttonCell key="cell" type="check" title="Calentar Líquidos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CXB-43-p61">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5rG-Tm-CEn">
-                                <rect key="frame" x="750" y="112" width="254" height="41"/>
-                                <buttonCell key="cell" type="check" title="Marcar Tubos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fNk-5J-r51">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EMm-Ov-fQs">
-                                <rect key="frame" x="750" y="579" width="401" height="40"/>
-                                <buttonCell key="cell" type="check" title="Vías Venosas Garantizadas" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zxg-Th-miz">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="28" name="HelveticaNeue"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeVenous:" target="96v-ZO-IAM" id="5JW-w3-S94"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-ZW-OEy">
-                                <rect key="frame" x="933" y="682" width="78" height="67"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pause-97625_1280" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="Hg7-VE-PNO">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="animationStateDidChange:" target="96v-ZO-IAM" id="aFQ-aN-8LX"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nsf-na-7Rb">
-                                <rect key="frame" x="193" y="797" width="845" height="39"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Pasos del Protocolo Seguido y Control de Tiempo" id="RAX-h5-RF2">
-                                    <font key="font" size="32" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J2p-FO-1hM">
-                                <rect key="frame" x="88" y="12" width="587" height="717"/>
+                                <rect key="frame" x="45" y="33" width="587" height="717"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39T-vy-4pr">
                                         <rect key="frame" x="6" y="15" width="581" height="702"/>
@@ -1245,8 +1260,92 @@
                                     </imageView>
                                 </subviews>
                             </customView>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-ZW-OEy">
+                                <rect key="frame" x="884" y="683" width="78" height="67"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pause-97625_1280" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="Hg7-VE-PNO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="animationStateDidChange:" target="96v-ZO-IAM" id="aFQ-aN-8LX"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1GC-KR-Mul">
+                                <rect key="frame" x="720" y="533" width="339" height="34"/>
+                                <buttonCell key="cell" type="check" title="Sangrado Observado" bezelStyle="regularSquare" imagePosition="left" inset="2" id="rjX-aa-GVr">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NuZ-ja-VqS">
+                                <rect key="frame" x="720" y="471" width="425" height="40"/>
+                                <buttonCell key="cell" type="check" title="Establecer Causa Diagnóstica" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Zbj-jM-7xx">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bUL-CN-hit">
+                                <rect key="frame" x="721" y="414" width="381" height="34"/>
+                                <buttonCell key="cell" type="check" title="Medicamentos Aplicados" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7EF-jy-9Jz">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5C6-hb-R9G">
+                                <rect key="frame" x="720" y="352" width="354" height="33"/>
+                                <buttonCell key="cell" type="check" title="Cristaloides Infundidos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RTw-ai-cbc">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="29" name="HelveticaNeue"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gfc-4d-ndg">
+                                <rect key="frame" x="719" y="293" width="340" height="37"/>
+                                <buttonCell key="cell" type="check" title="Anotación de Eventos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="iXL-ay-SjM">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="29" name="HelveticaNeue"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8re-h1-7RQ">
+                                <rect key="frame" x="719" y="230" width="434" height="50"/>
+                                <buttonCell key="cell" type="check" title="Realizar Órdenes de Laboratorio" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0Zu-EI-oqB">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zFF-fA-xPG">
+                                <rect key="frame" x="720" y="174" width="442" height="49"/>
+                                <buttonCell key="cell" type="check" title="Calentar Líquidos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CXB-43-p61">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5rG-Tm-CEn">
+                                <rect key="frame" x="719" y="123" width="254" height="41"/>
+                                <buttonCell key="cell" type="check" title="Marcar Tubos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fNk-5J-r51">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EMm-Ov-fQs">
+                                <rect key="frame" x="719" y="590" width="401" height="40"/>
+                                <buttonCell key="cell" type="check" title="Vías Venosas Garantizadas" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zxg-Th-miz">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeVenous:" target="96v-ZO-IAM" id="5JW-w3-S94"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nsf-na-7Rb">
+                                <rect key="frame" x="193" y="797" width="845" height="39"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Pasos del Protocolo Seguido y Control de Tiempo" id="RAX-h5-RF2">
+                                    <font key="font" size="32" name="HelveticaNeue-Bold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sI2-ss-mCk">
-                                <rect key="frame" x="917" y="26" width="110" height="32"/>
+                                <rect key="frame" x="864" y="46" width="110" height="32"/>
                                 <buttonCell key="cell" type="push" title="Terminar" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="cXG-ie-qBw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="14" name="HelveticaNeue"/>
@@ -1325,248 +1424,270 @@
                         <rect key="frame" x="0.0" y="0.0" width="648" height="745"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tqu-dd-Mvd">
-                                <rect key="frame" x="0.0" y="0.0" width="648" height="745"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="resultsBackground" id="2Af-lL-JNP"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="be8-OW-Sfv">
-                                <rect key="frame" x="0.0" y="-17" width="648" height="775"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="resultsFrontground" id="QOu-aF-sfH"/>
-                            </imageView>
+                            <progressIndicator fixedFrame="YES" maxValue="100" doubleValue="48" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="A5e-rk-ag0">
+                                <rect key="frame" x="313" y="19" width="116" height="20"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HX8-0x-VmV">
+                                <rect key="frame" x="215" y="34" width="102" height="29"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Puntaje" id="e71-bf-mce">
+                                    <font key="font" size="24" name="HelveticaNeue"/>
+                                    <color key="textColor" red="0.11872561779063129" green="0.42510970131111914" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffc-RB-8lG">
+                                <rect key="frame" x="308" y="34" width="126" height="39"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="48%" id="xaw-3z-kyS">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="percent" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="uBG-ae-qHJ">
+                                        <integer key="multiplier" value="100"/>
+                                    </numberFormatter>
+                                    <font key="font" size="28" name="HelveticaNeue"/>
+                                    <color key="textColor" red="0.12557993781980359" green="0.50301561312563714" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CQW-XN-78Q">
+                                <rect key="frame" x="83" y="667" width="45" height="23"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Paso" id="B21-VU-xNJ">
+                                    <font key="font" size="18" name="HelveticaNeue-Bold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWm-zp-rYI">
-                                <rect key="frame" x="85" y="570" width="186" height="25"/>
+                                <rect key="frame" x="83" y="574" width="186" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temperatura/Manta" id="qKm-IH-CM0">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ouV-h5-gjr">
-                                <rect key="frame" x="85" y="605" width="79" height="25"/>
+                                <rect key="frame" x="83" y="609" width="79" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Oxígeno" id="9uM-9I-20q">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nid-ia-5yS">
-                                <rect key="frame" x="85" y="460" width="219" height="27"/>
+                                <rect key="frame" x="83" y="464" width="219" height="27"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Medición de Signos Vitales" id="M9M-q3-ahC">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBK-ec-kfj">
-                                <rect key="frame" x="85" y="499" width="129" height="25"/>
+                                <rect key="frame" x="83" y="503" width="129" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Masaje Uterino" id="QQO-Z6-301">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b4F-DG-868">
-                                <rect key="frame" x="85" y="534" width="129" height="25"/>
+                                <rect key="frame" x="83" y="538" width="129" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sonda Vesical" id="te6-s7-UzZ">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="clT-pQ-qdd">
-                                <rect key="frame" x="85" y="379" width="219" height="31"/>
+                                <rect key="frame" x="83" y="383" width="219" height="31"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sangrado Observado" id="h5e-fH-jUT">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfR-Sg-Tee">
+                                <rect key="frame" x="501" y="667" width="100" height="23"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resultado" id="VBX-Uq-wbm">
+                                    <font key="font" size="18" name="HelveticaNeue-Bold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DvN-jV-oQc">
-                                <rect key="frame" x="85" y="312" width="239" height="25"/>
+                                <rect key="frame" x="83" y="316" width="239" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Medicamentos Aplicados" id="jTn-yI-55n">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6y-MV-XyZ">
-                                <rect key="frame" x="85" y="349" width="248" height="25"/>
+                                <rect key="frame" x="83" y="353" width="248" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Establecer Causa Diagnóstica" id="efa-WF-ir8">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lxD-ed-kyh">
-                                <rect key="frame" x="85" y="232" width="194" height="31"/>
+                                <rect key="frame" x="83" y="236" width="194" height="31"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Anotación de Eventos" id="Pr6-uv-0sG">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6po-Z3-WdK">
-                                <rect key="frame" x="85" y="268" width="186" height="32"/>
+                                <rect key="frame" x="83" y="272" width="186" height="32"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cristales Infundidos" id="7bs-Qt-qNK">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVW-la-TD9">
-                                <rect key="frame" x="85" y="203" width="277" height="25"/>
+                                <rect key="frame" x="83" y="207" width="277" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Realizar Órdenes de Laboratorio" id="b7G-Oq-oEi">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="870-Ma-iYs">
-                                <rect key="frame" x="85" y="422" width="225" height="25"/>
+                                <rect key="frame" x="83" y="426" width="225" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vías Venosas Garantizadas" id="JnZ-d6-d3q">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnf-n5-qXK">
-                                <rect key="frame" x="85" y="125" width="129" height="31"/>
+                                <rect key="frame" x="83" y="129" width="129" height="31"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Marcar Tubos" id="nw9-KV-4Jb">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i17-30-RZy">
-                                <rect key="frame" x="85" y="160" width="167" height="32"/>
+                                <rect key="frame" x="83" y="164" width="167" height="32"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Calentar Líquidos" id="0i1-iQ-GWU">
                                     <font key="font" size="17" name="HelveticaNeue"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMm-So-7oW">
-                                <rect key="frame" x="525" y="565" width="72" height="26"/>
+                                <rect key="frame" x="523" y="569" width="72" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="g20-HU-JVU">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0K-66-jgU">
-                                <rect key="frame" x="525" y="600" width="57" height="26"/>
+                                <rect key="frame" x="523" y="604" width="57" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="0Xd-7i-Ud8">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdv-74-n4d">
-                                <rect key="frame" x="525" y="460" width="62" height="26"/>
+                                <rect key="frame" x="523" y="464" width="62" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="FKw-d3-Zbw">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FVS-Du-JUQ">
-                                <rect key="frame" x="525" y="494" width="57" height="26"/>
+                                <rect key="frame" x="523" y="498" width="57" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="whb-Mq-QMT">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8x1-kH-oME">
-                                <rect key="frame" x="525" y="529" width="57" height="26"/>
+                                <rect key="frame" x="523" y="533" width="57" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="flI-fh-kj7">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9j-5r-Po2">
-                                <rect key="frame" x="525" y="379" width="57" height="31"/>
+                                <rect key="frame" x="523" y="383" width="57" height="31"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="9jM-m5-gZX">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoN-3a-kri">
-                                <rect key="frame" x="525" y="344" width="62" height="32"/>
+                                <rect key="frame" x="523" y="348" width="62" height="32"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="ZzV-GL-bwJ">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U3c-rD-pBF">
-                                <rect key="frame" x="525" y="232" width="62" height="33"/>
+                                <rect key="frame" x="523" y="236" width="62" height="33"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="bZC-ia-5KK">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qmq-Xz-fgs">
-                                <rect key="frame" x="525" y="276" width="62" height="26"/>
+                                <rect key="frame" x="523" y="280" width="62" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="XWq-Nb-x21">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaY-NH-xJN">
-                                <rect key="frame" x="525" y="203" width="57" height="26"/>
+                                <rect key="frame" x="523" y="207" width="57" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="D3j-Ty-bhc">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gbE-z3-l9x">
-                                <rect key="frame" x="525" y="422" width="62" height="27"/>
+                                <rect key="frame" x="523" y="426" width="62" height="27"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="7lA-ay-1Rc">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3PQ-3o-LAl">
-                                <rect key="frame" x="525" y="125" width="57" height="31"/>
+                                <rect key="frame" x="523" y="129" width="57" height="31"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="48m-1v-jwm">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wVT-iN-6eY">
-                                <rect key="frame" x="525" y="165" width="57" height="26"/>
+                                <rect key="frame" x="523" y="169" width="57" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Oxu-EK-lZj">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGG-HO-FsP">
-                                <rect key="frame" x="525" y="311" width="57" height="26"/>
+                                <rect key="frame" x="523" y="315" width="57" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Cpk-3S-ulY">
                                     <font key="font" size="17" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CQW-XN-78Q">
-                                <rect key="frame" x="85" y="683" width="74" height="27"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Paso" id="B21-VU-xNJ">
-                                    <font key="font" size="22" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tNW-tr-CH6">
-                                <rect key="frame" x="451" y="20" width="151" height="32"/>
+                                <rect key="frame" x="476" y="75" width="151" height="32"/>
                                 <buttonCell key="cell" type="push" title="Nueva Simulación" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZM4-By-jpB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="14" name="HelveticaNeue"/>
@@ -1575,36 +1696,6 @@
                                     <action selector="goToNewSimulation:" target="ciM-Qi-5jB" id="TXg-IN-qpV"/>
                                 </connections>
                             </button>
-                            <progressIndicator fixedFrame="YES" maxValue="100" doubleValue="48" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="A5e-rk-ag0">
-                                <rect key="frame" x="362" y="26" width="32" height="32"/>
-                            </progressIndicator>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HX8-0x-VmV">
-                                <rect key="frame" x="139" y="12" width="134" height="50"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Puntaje" id="e71-bf-mce">
-                                    <font key="font" size="30" name="HelveticaNeue"/>
-                                    <color key="textColor" red="0.1718475642" green="1" blue="0.92990373719999997" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffc-RB-8lG">
-                                <rect key="frame" x="245" y="23" width="126" height="39"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="48%" id="xaw-3z-kyS">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="percent" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="uBG-ae-qHJ">
-                                        <integer key="multiplier" value="100"/>
-                                    </numberFormatter>
-                                    <font key="font" size="33" name="HelveticaNeue"/>
-                                    <color key="textColor" red="0.1718475642" green="1" blue="0.92990373719999997" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfR-Sg-Tee">
-                                <rect key="frame" x="495" y="683" width="127" height="27"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resultado" id="VBX-Uq-wbm">
-                                    <font key="font" size="22" name="HelveticaNeue-Bold"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -1631,51 +1722,12 @@
             </objects>
             <point key="canvasLocation" x="-1701" y="2887.5"/>
         </scene>
-        <!--Window Controller-->
-        <scene sceneID="5ah-HG-maM">
-            <objects>
-                <windowController id="zQV-7Y-VXw" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="eYd-XB-Kwo">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-                    </window>
-                    <connections>
-                        <segue destination="kgj-fR-SUo" kind="relationship" relationship="window.shadowedContentViewController" id="zON-7d-9oK"/>
-                    </connections>
-                </windowController>
-                <customObject id="kFd-AP-D9k" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1045" y="3523"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ogQ-Jw-oMs">
-            <objects>
-                <viewController id="kgj-fR-SUo" sceneMemberID="viewController">
-                    <view key="view" id="GhO-Wj-dTN">
-                        <rect key="frame" x="0.0" y="0.0" width="829" height="756"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="h32-XU-Rcg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-771.5" y="2887"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="menuBackground" width="2048" height="1536"/>
+        <image name="menuBackgroundImage" width="882" height="568"/>
         <image name="menuCreatedByGibicText" width="203" height="29"/>
-        <image name="menuFrontground" width="2048" height="1536"/>
-        <image name="menuPregnant" width="2048" height="1536"/>
-        <image name="monitor3GraphsLines" width="2048" height="1536"/>
-        <image name="monitorBackGround" width="2048" height="1536"/>
-        <image name="monitorChronometer" width="189" height="189"/>
-        <image name="monitorGraph" width="2048" height="1536"/>
-        <image name="monitorNotepadNew" width="171" height="170"/>
-        <image name="monitorWoman" width="224" height="323"/>
-        <image name="panelBackground" width="2048" height="1536"/>
-        <image name="panelFrontground" width="2048" height="1536"/>
+        <image name="monitorNotepad" width="1202" height="1280"/>
+        <image name="monitorSigSignal2" width="2130" height="1076"/>
         <image name="pause-97625_1280" width="1262" height="1280"/>
         <image name="red_code_blanket_sensor_active" width="56.639999389648438" height="7.440000057220459"/>
         <image name="red_code_catheter_sensor_inactive" width="10.560000419616699" height="10.319999694824219"/>
@@ -1684,7 +1736,6 @@
         <image name="red_code_urinary_catheter_sensor_active" width="26.399999618530273" height="27.600000381469727"/>
         <image name="red_code_vital_signs_sensor_active" width="19.440000534057617" height="32.400001525878906"/>
         <image name="red_code_woman_front" width="246.72000122070312" height="516.239990234375"/>
-        <image name="resultsBackground" width="2048" height="1536"/>
-        <image name="resultsFrontground" width="2048" height="1536"/>
+        <image name="woman" width="670" height="670"/>
     </resources>
 </document>

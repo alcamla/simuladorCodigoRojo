@@ -8,6 +8,7 @@
 #import "GBCMenuViewController.h"
 #import "GBCSimulator.h"
 
+
 @interface GBCMenuViewController ()
 
 @property (strong) IBOutlet NSComboBox *stateComboBox;
@@ -120,16 +121,48 @@ bool syncViewIsOpened=NO;
 
 - (IBAction)goToSync:(id)sender {
     
-    // Ask to simulator is Sync View Is Already Opened (Active)
-    syncViewIsOpened=[[GBCSimulator sharedSimulator] askIfSyncViewIsOpenedAndSetActive:YES];
-    
-    // Perform segue if should
-    if (syncViewIsOpened==NO) {
+    //Ask if there is an stored device for autoconnect
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //[defaults removeObjectForKey:@"GBCBluetoothDeviceIdentifier"];
+    NSString  *deviceID = [defaults stringForKey:@"GBCBluetoothDeviceIdentifier"];
+    if (!deviceID){
+        //No stored device, open the selector
+        [self performSegueWithIdentifier:@"goToBluetoothSelector" sender:self];
+    } else{
+        // Ask to simulator is Sync View Is Already Opened (Active)
+        syncViewIsOpened=[[GBCSimulator sharedSimulator] askIfSyncViewIsOpenedAndSetActive:YES];
         
-        // Call Segue to go to next view controller
-        [self performSegueWithIdentifier:@"fromMenuToSync" sender:(id)sender];
+        // Perform segue if should
+        if (syncViewIsOpened==NO) {
+            
+            // Call Segue to go to next view controller
+            [self performSegueWithIdentifier:@"fromMenuToSync" sender:(id)sender];
+        }
     }
+}
+
+-(void)navigateToSynchronizeViewControllerFromRedCodeBluetoothManager:(GBCBluetoothManager *)bluetoothManager{
+    [self performSegueWithIdentifier:@"fromMenuToSync" sender:self];
+}
+
+- (IBAction)testModalViewPresentation:(id)sender {
+    //Check if there is a bluetooth device set in the userPreferences. If there isn't, prompt the user to set a bluetooth device.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //[defaults removeObjectForKey:@"GBCBluetoothDeviceIdentifier"];
+    NSString  *deviceID = [defaults stringForKey:@"GBCBluetoothDeviceIdentifier"];
+    if (!deviceID) {
+        [self performSegueWithIdentifier:@"goToBluetoothSelector" sender:self];
+    }
+
+}
+
+-(void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString: @"goToBluetoothSelector"]) {
+        [(GBCBluetoothManager*)segue.destinationController setPresenter:self];
+        [(GBCBluetoothManager*)segue.destinationController setDelegate:[GBCSimulator sharedSimulator]];
+    } else if ([segue.identifier isEqualToString:@"fromMenuToSync"] ){
     
+    }
 }
 
 // Initialize timer to update the Menu View

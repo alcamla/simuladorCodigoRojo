@@ -10,27 +10,27 @@
 #import <Cocoa/Cocoa.h>
 #import <IOBluetooth/IOBluetooth.h>
 
-@protocol GBCRedCodeBluetoothDelegate;
 
-@interface GBCBluetoothManager : NSObject<CBCentralManagerDelegate, CBPeripheralDelegate> {
-    CBCentralManager *manager;
-    CBPeripheral *peripheral;
-    
-    IBOutlet NSButton* connectButton;
-    BOOL autoConnect;
+@class GBCBluetoothSelectorSheetController;
+@protocol GBCRedCodeBluetoothDelegate;
+@protocol GBCRedCodeBluetoothPresenterDelegate;
+
+@interface GBCBluetoothManager : NSViewController <CBCentralManagerDelegate, CBPeripheralDelegate> {
     
     // Progress Indicator
     IBOutlet NSButton * indicatorButton;
     IBOutlet NSProgressIndicator *progressIndicator;
 }
 
-@property (nonatomic, weak) IBOutlet NSWindow *scanSheet;
-@property (nonatomic, weak) IBOutlet NSWindow *window;
-@property (nonatomic,weak) IBOutlet NSArrayController *arrayController;
-@property (nonatomic, strong) NSMutableArray *heartRateMonitors;
+//@property (nonatomic, weak) IBOutlet NSWindow *scanSheet;
+@property(nonatomic, strong)CBCentralManager *manager;
+@property(nonatomic)BOOL autoConnect;
 @property (copy) NSString *manufacturer;
 @property (copy) NSString *connected;
+@property(nonatomic, strong)CBPeripheral *peripheral;
 @property (nonatomic, strong)id <GBCRedCodeBluetoothDelegate> delegate;
+@property(nonatomic, strong)id <GBCRedCodeBluetoothPresenterDelegate> presenter;
+@property (nonatomic, strong) GBCBluetoothSelectorSheetController *bluetoothSelectorViewController;
 
 - (void) startScan;
 - (void) stopScan;
@@ -47,4 +47,11 @@
 -(void)redCodeSensorsConnectionEstablishedByBluetoothManager:(GBCBluetoothManager *)bluetoothManager;
 -(void)redCodeSensorsConnectionLostByBluetoothManager:(GBCBluetoothManager *)bluetoothManager;
 -(void)redCodeSensorsCheckedByBluetoothManager:(GBCBluetoothManager *)bluetoothManager result:(BOOL)result;
+@end
+
+
+@protocol GBCRedCodeBluetoothPresenterDelegate <NSObject>
+
+-(void)navigateToSynchronizeViewControllerFromRedCodeBluetoothManager:(GBCBluetoothManager*)bluetoothManager;
+
 @end

@@ -8,11 +8,14 @@
 
 #import "GBCBluetoothManager.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GBCBluetoothSelectorSheetController.h"
 
 @interface GBCBluetoothManager()
 @property(nonatomic, strong)CBCharacteristic *writeCharacteristic;
 @property(nonatomic, strong) NSMutableString *readDataBuffer;
 @property(nonatomic, strong)NSTimer *reconnectingTimer;
+@property (nonatomic,weak) IBOutlet NSArrayController *arrayController;
+@property(nonatomic, strong) NSMutableArray *redCodeBluetoothDevices;
 @end
 
 @implementation GBCBluetoothManager
@@ -25,29 +28,86 @@
 #define RED_CODE_READ_CHARACTERISTIC_UUID_STRING @"A1E8F5B1-696B-4E4C-87C6-69DFE0B0093B"
 #define RED_CODE_WRITE_CHARACTERISTIC_UUID_STRING @"1494440E-9A58-4CC0-81E4-DDEA7F74F623"
 
--(instancetype)init{
-    if(self = [super init]){
-        self.readDataBuffer = [NSMutableString stringWithCapacity:2];
-        self.heartRateMonitors = [NSMutableArray array];
-        autoConnect = TRUE;
-        manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-        if( autoConnect )
-        {
-            [self startScan];
-            self.reconnectingTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(bluetoothFailedConnectionToSelectedDevice) userInfo:nil repeats:NO];
-        }
-    }
-    return  self;
-}
 
 - (void) dealloc
 {
     /*Disconnect the peripheral when dealloc*/
-    if (peripheral) {
-        [manager cancelPeripheralConnection:peripheral];
+    if (_peripheral) {
+        [self.manager cancelPeripheralConnection:_peripheral];
     }
     [self stopScan];
 }
+
+
+-(void)viewDidAppear{
+    [self startScan];
+}
+
+#pragma mark - Lazy Initializers
+
+-(NSMutableString *)readDataBuffer{
+    if (!_readDataBuffer) {
+        _readDataBuffer = [NSMutableString stringWithCapacity:2];
+    }
+    return _readDataBuffer;
+}
+
+-(BOOL)autoConnect{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults  stringForKey:@"GBCBluetoothDeviceIdentifier"]) {
+        _autoConnect = TRUE;
+    } else{
+        _autoConnect = FALSE;
+        [self performSegueWithIdentifier:@"goToBluetoothSelector" sender:self];
+    }
+    return _autoConnect;
+}
+
+-(CBCentralManager*)manager{
+    if (!_manager) {
+        _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    }
+    return _manager;
+}
+
+-(NSMutableArray*)redCodeBluetoothDevices{
+    if (!_redCodeBluetoothDevices) {
+        _redCodeBluetoothDevices = [NSMutableArray array];
+    }
+    return _redCodeBluetoothDevices;
+}
+
+
+#pragma mark - User Interactions
+
+- (IBAction)closeSheet:(id)sender {
+    [self stopScan];
+    [self dismissViewController:self];
+}
+
+- (IBAction)selectDevice:(id)sender {
+    [(NSButton*)sender setTitle:@"Connecting"];
+    [self stopScan];
+    NSIndexSet *indexes = [self.arrayController selectionIndexes];
+    if ([indexes count] != 0)
+    {
+        NSIndexSet *indexes = [self.arrayController selectionIndexes];
+        if ([indexes count] != 0)
+        {
+            NSUInteger anIndex = [indexes firstIndex];
+            _peripheral = [self.redCodeBluetoothDevices objectAtIndex:anIndex];
+            [indicatorButton setHidden:FALSE];
+            [progressIndicator setHidden:FALSE];
+            [progressIndicator startAnimation:self];
+            [self.manager connectPeripheral:_peripheral options:nil];
+        }
+    }
+}
+
+- (IBAction)forgetDevice:(id)sender {
+    NSLog(@"Delete the current Connected device");
+}
+
 
 #pragma mark - Bluetooth Timed connection Failure
 
@@ -55,68 +115,12 @@
  Called when the connection to selected device fails
  */
 -(void)bluetoothFailedConnectionToSelectedDevice{
-    if (!peripheral) {
+    if (!_peripheral) {
         [self stopScan];
         [self.delegate redCodeSensorsConnectionLostByBluetoothManager:self];
     }
 }
 
-
-#pragma mark - Scan sheet methods
-
-/*
- Open scan sheet to discover heart rate peripherals if it is LE capable hardware
- */
-- (IBAction)openScanSheet:(id)sender
-{
-    if( [self isLECapableHardware] )
-    {
-        autoConnect = FALSE;
-        [self.arrayController removeObjects:self.heartRateMonitors];
-        [NSApp beginSheet:self.scanSheet modalForWindow:self.window modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
-        [self startScan];
-    }
-}
-
-/*
- Close scan sheet once device is selected
- */
-- (IBAction)closeScanSheet:(id)sender
-{
-    [NSApp endSheet:self.scanSheet returnCode:NSAlertFirstButtonReturn];
-    [self.scanSheet orderOut:self];
-}
-
-/*
- Close scan sheet without choosing any device
- */
-- (IBAction)cancelScanSheet:(id)sender
-{
-    [NSApp endSheet:self.scanSheet returnCode:NSAlertFirstButtonReturn];
-    [self.scanSheet orderOut:self];
-}
-
-/*
- This method is called when Scan sheet is closed. Initiate connection to selected heart rate peripheral
- */
-- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
-{
-    [self stopScan];
-    if( returnCode == NSAlertFirstButtonReturn )
-    {
-        NSIndexSet *indexes = [self.arrayController selectionIndexes];
-        if ([indexes count] != 0)
-        {
-            NSUInteger anIndex = [indexes firstIndex];
-            peripheral = [self.heartRateMonitors objectAtIndex:anIndex];
-            [indicatorButton setHidden:FALSE];
-            [progressIndicator setHidden:FALSE];
-            [progressIndicator startAnimation:self];
-            [connectButton setTitle:@"Cancel"];
-            [manager connectPeripheral:peripheral options:nil];
-        }
-    }
-}
 
 #pragma mark - Connect Button
 
@@ -125,26 +129,24 @@
  */
 - (IBAction)connectButtonPressed:(id)sender
 {
-    if(peripheral && ([peripheral state] == CBPeripheralStateConnected))
+    if(_peripheral && ([_peripheral state] == CBPeripheralStateConnected))
     {
         /* Disconnect if it's already connected */
-        [manager cancelPeripheralConnection:peripheral];
+        [self.manager cancelPeripheralConnection:_peripheral];
     }
-    else if (peripheral)
+    else if (_peripheral)
     {
         /* Device is not connected, cancel pendig connection */
         [indicatorButton setHidden:TRUE];
         [progressIndicator setHidden:TRUE];
         [progressIndicator stopAnimation:self];
-        [connectButton setTitle:@"Connect"];
-        [manager cancelPeripheralConnection:peripheral];
-        [self openScanSheet:nil];
+        [self.manager cancelPeripheralConnection:_peripheral];
     }
     else
     {   /* No outstanding connection, open scan sheet */
-        [self openScanSheet:nil];
     }
 }
+
 
 #pragma mark  - Red Code Data Handling
 
@@ -268,7 +270,7 @@
 {
     NSString * state = nil;
     
-    switch ([manager state])
+    switch ([self.manager state])
     {
         case CBCentralManagerStateUnsupported:
             state = @"The platform/hardware doesn't support Bluetooth Low Energy.";
@@ -289,13 +291,12 @@
     
     NSLog(@"Central manager state: %@", state);
     
-    [self cancelScanSheet:nil];
     
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:state];
     [alert addButtonWithTitle:@"OK"];
     [alert setIcon:[[NSImage alloc] initWithContentsOfFile:@"AppIcon"]];
-    [alert beginSheetModalForWindow:[self window] completionHandler:nil];
+    //[alert beginSheetModalForWindow:[self window] completionHandler:nil];
     return FALSE;
 }
 
@@ -305,8 +306,13 @@
 - (void) startScan
 {
     NSArray * services = @[[CBUUID UUIDWithString:RED_CODE_SERVICE_UUID_STRING]];
-    [manager scanForPeripheralsWithServices:services
+    [self.manager scanForPeripheralsWithServices:services
                                     options:nil];
+    if (self.autoConnect) {
+        self.reconnectingTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(bluetoothFailedConnectionToSelectedDevice) userInfo:nil repeats:NO];
+        
+    }
+    NSLog(@"Started scanning for devices");
 }
 
 /*
@@ -314,7 +320,7 @@
  */
 - (void) stopScan
 {
-    [manager stopScan];
+    [self.manager stopScan];
 }
 
 #pragma mark - CBCentralManager delegate methods
@@ -330,19 +336,25 @@
  Invoked when the central discovers heart rate peripheral while scanning.
  */
 - (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)aPeripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
-{
-//    NSMutableArray *peripherals = [self mutableArrayValueForKey:@"heartRateMonitors"];
-//    if( ![self.heartRateMonitors containsObject:aPeripheral] )
-//        [peripherals addObject:aPeripheral];
+{    
+    //NSMutableArray *peripherals = [self mutableArrayValueForKey:@"redCodeBluetoothDevices"];
+    NSMutableArray *peripherals =  [self mutableArrayValueForKey:@"redCodeBluetoothDevices"];
+    
+    if (![self.redCodeBluetoothDevices containsObject:aPeripheral]) {
+        [peripherals addObject:aPeripheral];
+    }
+    
     
     /* Retreive already known devices */
-    if(autoConnect)
+    if(self.autoConnect)
     {
         ///[manager retrievePeripheralsWithIdentifiers:@[(id)aPeripheral.identifier]];
         //TODO: cambiar cuando se conecte al prototipo final (BLUETOOTH_DEVICE_2_UUID_STRING) prototipos de pruebas:(BLUETOOTH_DEVICE_1_UUID_STRING)
-        if ([[aPeripheral.identifier UUIDString] isEqualToString:BLUETOOTH_DEVICE_2_UUID_STRING]) {
-            peripheral = aPeripheral;
-            [manager connectPeripheral:peripheral options:nil];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *deviceIdentifier = [defaults stringForKey:@"GBCBluetoothDeviceIdentifier"];
+        if ([[aPeripheral.identifier UUIDString] isEqualToString:deviceIdentifier]) {
+            _peripheral = aPeripheral;
+            [self.manager connectPeripheral:_peripheral options:nil];
             [self stopScan];
         }
     }
@@ -364,9 +376,8 @@
         [indicatorButton setHidden:FALSE];
         [progressIndicator setHidden:FALSE];
         [progressIndicator startAnimation:self];
-        peripheral = [peripherals objectAtIndex:0];
-        [connectButton setTitle:@"Cancel"];
-        [manager connectPeripheral:peripheral options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
+        _peripheral = [peripherals objectAtIndex:0];
+        [self.manager connectPeripheral:_peripheral options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
     }
 }
 
@@ -380,11 +391,25 @@
     [aPeripheral discoverServices:nil];
     
     self.connected = @"Connected";
-    [connectButton setTitle:@"Disconnect"];
     [indicatorButton setHidden:TRUE];
     [progressIndicator setHidden:TRUE];
     [progressIndicator stopAnimation:self];
     [self.delegate redCodeSensorsConnectionEstablishedByBluetoothManager:self];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //Check if this is the first time the app connects to the device
+    if (![[defaults stringForKey:@"GBCBluetoothDeviceIdentifier"] isEqualToString:[aPeripheral.identifier UUIDString]]) {
+        //Update the device identifier
+        [defaults setObject:[aPeripheral.identifier UUIDString] forKey:@"GBCBluetoothDeviceIdentifier"];
+        [self closeSheet:nil];
+        //Go to synchronization view
+        [self.presenter navigateToSynchronizeViewControllerFromRedCodeBluetoothManager:self];
+        
+    }
+    
+    
+    
+    
 }
 
 /*
@@ -394,12 +419,11 @@
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
 {
     self.connected = @"Not connected";
-    [connectButton setTitle:@"Connect"];
     self.manufacturer = @"";
-    if( peripheral )
+    if( _peripheral )
     {
-        [peripheral setDelegate:nil];
-        peripheral = nil;
+        [_peripheral setDelegate:nil];
+        _peripheral = nil;
     }
 }
 
@@ -409,11 +433,10 @@
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
 {
     NSLog(@"Fail to connect to peripheral: %@ with error = %@", aPeripheral, [error localizedDescription]);
-    [connectButton setTitle:@"Connect"];
-    if( peripheral )
+    if( _peripheral )
     {
-        [peripheral setDelegate:nil];
-        peripheral = nil;
+        [_peripheral setDelegate:nil];
+        _peripheral = nil;
     }
 }
 
@@ -461,7 +484,7 @@
             }
             /* Set notification on data measurement */
             if ([[[aChar UUID] UUIDString] isEqualToString:RED_CODE_READ_CHARACTERISTIC_UUID_STRING]) {
-                [peripheral setNotifyValue:YES forCharacteristic:aChar];
+                [_peripheral setNotifyValue:YES forCharacteristic:aChar];
                 NSLog(@"Found a Measurement Characteristic to read from");
             }
         }
@@ -508,9 +531,9 @@
 }
 
 -(void) sendStringToConnectedPeripheric:(NSString *)stringToSend{
-    if (peripheral) {
+    if (_peripheral) {
         NSData *startingFlagAsData = [stringToSend dataUsingEncoding:NSUTF8StringEncoding];
-        [peripheral writeValue:startingFlagAsData forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+        [_peripheral writeValue:startingFlagAsData forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
     
 }
