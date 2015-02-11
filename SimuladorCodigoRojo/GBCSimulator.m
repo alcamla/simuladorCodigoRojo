@@ -152,12 +152,14 @@ bool panelViewStateSimulator=NO;
 }
 
 -(void)forgetBluetoothDevice{
+    //Check if there is a current connection. If there is, end it
     if ([self.bluetoothManager peripheral]) {
         [[self.bluetoothManager manager] cancelPeripheralConnection:[self.bluetoothManager peripheral]];
-        NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
-        [defaults removeObjectForKey:@"GBCBluetoothDeviceIdentifier"];
         self.bluetoothManager = nil;
     }
+    //Delete the Device from User Defaults
+    NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"GBCBluetoothDeviceIdentifier"];
 }
 
 

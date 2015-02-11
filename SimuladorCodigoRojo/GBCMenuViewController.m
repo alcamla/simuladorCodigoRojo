@@ -160,6 +160,7 @@ bool syncViewIsOpened=NO;
     if ([segue.identifier isEqualToString: @"goToBluetoothSelector"]) {
         [(GBCBluetoothManager*)segue.destinationController setPresenter:self];
         [(GBCBluetoothManager*)segue.destinationController setDelegate:[GBCSimulator sharedSimulator]];
+        [[GBCSimulator sharedSimulator]setBluetoothManager:(GBCBluetoothManager*)segue.destinationController];
     } else if ([segue.identifier isEqualToString:@"fromMenuToSync"] ){
     
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14D72i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6249"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
@@ -67,6 +67,19 @@
                                         <menuItem title="Quit SimuladorCodigoRojo" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Bluetooth" id="se3-m3-IGt" userLabel="Bluetooth">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Bluetooth" id="JzN-VZ-ndk">
+                                    <items>
+                                        <menuItem title="Forget Device" id="wVO-I0-4bS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="forgetCurrentBluetoothDevice:" target="Voe-Tx-rLC" id="82j-Xt-fbK"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -855,8 +868,11 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="menuCreatedByGibicText" id="Vh3-cU-MKO"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AJQ-1F-woL">
-                                <rect key="frame" x="236" y="53" width="346" height="274"/>
+                                <rect key="frame" x="236" y="51" width="346" height="274"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="menuPregnant" id="hXj-Md-eDw"/>
+                                <connections>
+                                    <segue destination="lUQ-MB-04C" kind="sheet" identifier="goToBluetoothSelector" id="3fq-nr-Y20"/>
+                                </connections>
                             </imageView>
                         </subviews>
                     </view>
@@ -1661,6 +1677,109 @@
                 <customObject id="h32-XU-Rcg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-771.5" y="2887"/>
+        </scene>
+        <!--Bluetooth Manager-->
+        <scene sceneID="IsI-Ow-mwv">
+            <objects>
+                <customObject id="yQR-dP-9mo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController id="lUQ-MB-04C" customClass="GBCBluetoothManager" sceneMemberID="viewController">
+                    <view key="view" id="OhI-zb-5Eq">
+                        <rect key="frame" x="0.0" y="0.0" width="370" height="205"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ob-Ln-Cud">
+                                <rect key="frame" x="20" y="75" width="330" height="110"/>
+                                <clipView key="contentView" id="fL1-wE-h1k">
+                                    <rect key="frame" x="1" y="0.0" width="238" height="134"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" id="Yfu-MW-ah8">
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="325" minWidth="40" maxWidth="1000" id="EGe-C3-wmp">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="kZz-cl-Ve9">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="VGu-7E-Sxf" name="value" keyPath="arrangedObjects.name" id="GFo-td-f8s"/>
+                                                    </connections>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="c4Z-Qy-jgT">
+                                    <rect key="frame" x="1" y="31" width="46" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="SJV-c9-mjc">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZH-SW-a4l">
+                                <rect key="frame" x="143" y="27" width="182" height="32"/>
+                                <buttonCell key="cell" type="push" title="Seleccionar Dispositivo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hGc-Q0-xPn">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="selectDevice:" target="lUQ-MB-04C" id="KGA-I8-8I9"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ikQ-iH-nOF">
+                                <rect key="frame" x="14" y="27" width="94" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancelar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gJ9-XE-pTe">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeSheet:" target="lUQ-MB-04C" id="muR-lU-Ezi"/>
+                                </connections>
+                            </button>
+                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="caL-ZK-n97">
+                                <rect key="frame" x="334" y="36" width="16" height="16"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6ob-Ln-Cud" firstAttribute="top" secondItem="OhI-zb-5Eq" secondAttribute="top" constant="20" id="NbV-gi-UTu"/>
+                            <constraint firstItem="6ob-Ln-Cud" firstAttribute="leading" secondItem="OhI-zb-5Eq" secondAttribute="leading" constant="20" id="SP3-0F-tPG"/>
+                            <constraint firstAttribute="trailing" secondItem="6ob-Ln-Cud" secondAttribute="trailing" constant="20" id="adQ-DN-HfX"/>
+                            <constraint firstAttribute="bottom" secondItem="6ob-Ln-Cud" secondAttribute="bottom" constant="75" id="ba5-4A-hGa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="arrayController" destination="VGu-7E-Sxf" id="huk-uM-1HP"/>
+                        <outlet property="progressIndicator" destination="caL-ZK-n97" id="AEA-rs-o1b"/>
+                    </connections>
+                </viewController>
+                <userDefaultsController representsSharedInstance="YES" id="VhO-Ox-1wI"/>
+                <arrayController objectClassName="CBPeripheral" id="VGu-7E-Sxf">
+                    <connections>
+                        <binding destination="lUQ-MB-04C" name="contentArray" keyPath="redCodeBluetoothDevices" id="nrr-KF-vrn"/>
+                    </connections>
+                </arrayController>
+            </objects>
+            <point key="canvasLocation" x="340" y="-88.5"/>
         </scene>
     </scenes>
     <resources>
