@@ -40,9 +40,9 @@
 
 // Local DataBase
 
-bool bluetoothConnectionCheckSimulator = NO;
-bool calibrationCheckSimulator = NO;
-bool sensorsCheckSimulator= NO;
+bool bluetoothConnectionCheckSimulator = YES;
+bool calibrationCheckSimulator = YES;
+bool sensorsCheckSimulator= YES;
 bool paussedChecked = NO;
 bool finalizationCheck=NO;
 bool startedInitializationMessage=NO;

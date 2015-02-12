@@ -34,6 +34,7 @@
 @property (strong, nonatomic) NSString *hoursString;
 @property (strong, nonatomic) NSString *minutesString;
 @property (strong, nonatomic) NSString *secondsString;
+@property (strong, nonatomic) NSSound *beepSound;
 
 
 @end
@@ -141,6 +142,12 @@ int minutes=0;
 // Update Chronometer
 
 - (void) updateChronometer{
+    
+    // Set a beep sound to the simulation
+    self.beepSound=[NSSound soundNamed:@"ECGbeep.mp3"];
+    //self.beepSound=[NSSound soundNamed:@"Tink.aiff"];
+    [self.beepSound play];
+    //NSBeep();
     
     // Update Seconds, minutes and hours
     seconds++;
@@ -307,6 +314,14 @@ int minutes=0;
     }
     return _chronometer;
 }
+
+-(NSSound *)beepSound{
+    if (!_beepSound) {
+        _beepSound = [[NSSound alloc] init];
+    }
+    return _beepSound;
+}
+
 
 
 @end

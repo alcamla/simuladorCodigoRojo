@@ -72,6 +72,7 @@ bool simulationIsPaused=NO;
     
     // Refres the view with the correct initial values for Checkboxes
     [self reloadCheckBoxesValues];
+    
 }
 
 // Method called when view did disappear

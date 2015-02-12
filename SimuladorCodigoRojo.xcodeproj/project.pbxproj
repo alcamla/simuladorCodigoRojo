@@ -49,6 +49,8 @@
 		6F54FC5A1A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */; };
 		6F54FC5B1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */; };
 		6F54FC5C1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */; };
+		6F6D95E71A8D10EA00E9A958 /* ECGbeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */; };
+		6F6D95E81A8D10EA00E9A958 /* ECGbeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */; };
 		6FB2B8BE1A43389B00239486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8BD1A43389B00239486 /* AppDelegate.m */; };
 		6FB2B8C01A43389B00239486 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8BF1A43389B00239486 /* main.m */; };
 		6FB2B8C31A43389B00239486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8C21A43389B00239486 /* ViewController.m */; };
@@ -64,6 +66,10 @@
 		6FBBB0751A5C8035008BB4BA /* GBCDoctorPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC69B041A5B2CC10090234A /* GBCDoctorPanelViewController.m */; };
 		6FBBB0781A5C807C008BB4BA /* GBCResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */; };
 		6FBBB0791A5C807C008BB4BA /* GBCResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */; };
+		6FC057751A8C0D22006B3605 /* GBCDoctorPanelWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC057741A8C0D22006B3605 /* GBCDoctorPanelWindowController.m */; };
+		6FC057781A8C13AF006B3605 /* GBCResultsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC057771A8C13AF006B3605 /* GBCResultsWindowController.m */; };
+		6FC0577B1A8C15A6006B3605 /* GBCSyncWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0577A1A8C15A6006B3605 /* GBCSyncWindowController.m */; };
+		6FC0577E1A8C15E1006B3605 /* GBCConfirmWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0577D1A8C15E1006B3605 /* GBCConfirmWindowController.m */; };
 		6FC09AB21A437E320023B3FA /* menuCreatedByGibicText.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB11A437E320023B3FA /* menuCreatedByGibicText.png */; };
 		6FC09AB41A437E3D0023B3FA /* menuTitulo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB31A437E3D0023B3FA /* menuTitulo.png */; };
 		6FC09AB61A437E450023B3FA /* menuBackgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09AB51A437E450023B3FA /* menuBackgroundImage.png */; };
@@ -175,6 +181,7 @@
 		6F2D18341A8A80970048281D /* resultsFrontground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resultsFrontground.png; sourceTree = "<group>"; };
 		6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorSgSignal.jpg; sourceTree = "<group>"; };
 		6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorSigSignal2.jpg; sourceTree = "<group>"; };
+		6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ECGbeep.mp3; sourceTree = "<group>"; };
 		6FB2B8B71A43389B00239486 /* SimuladorCodigoRojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimuladorCodigoRojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB2B8BB1A43389B00239486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB2B8BC1A43389B00239486 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -194,6 +201,14 @@
 		6FBBB0721A5C70D0008BB4BA /* GBCConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCConfirmViewController.m; sourceTree = "<group>"; };
 		6FBBB0761A5C807C008BB4BA /* GBCResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCResultsViewController.h; sourceTree = "<group>"; };
 		6FBBB0771A5C807C008BB4BA /* GBCResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCResultsViewController.m; sourceTree = "<group>"; };
+		6FC057731A8C0D22006B3605 /* GBCDoctorPanelWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCDoctorPanelWindowController.h; sourceTree = "<group>"; };
+		6FC057741A8C0D22006B3605 /* GBCDoctorPanelWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCDoctorPanelWindowController.m; sourceTree = "<group>"; };
+		6FC057761A8C13AF006B3605 /* GBCResultsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCResultsWindowController.h; sourceTree = "<group>"; };
+		6FC057771A8C13AF006B3605 /* GBCResultsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCResultsWindowController.m; sourceTree = "<group>"; };
+		6FC057791A8C15A6006B3605 /* GBCSyncWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCSyncWindowController.h; sourceTree = "<group>"; };
+		6FC0577A1A8C15A6006B3605 /* GBCSyncWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCSyncWindowController.m; sourceTree = "<group>"; };
+		6FC0577C1A8C15E1006B3605 /* GBCConfirmWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCConfirmWindowController.h; sourceTree = "<group>"; };
+		6FC0577D1A8C15E1006B3605 /* GBCConfirmWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCConfirmWindowController.m; sourceTree = "<group>"; };
 		6FC09AB11A437E320023B3FA /* menuCreatedByGibicText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuCreatedByGibicText.png; sourceTree = "<group>"; };
 		6FC09AB31A437E3D0023B3FA /* menuTitulo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuTitulo.png; sourceTree = "<group>"; };
 		6FC09AB51A437E450023B3FA /* menuBackgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackgroundImage.png; sourceTree = "<group>"; };
@@ -274,6 +289,14 @@
 			name = Bluetooth;
 			sourceTree = "<group>";
 		};
+        6F6D95E51A8D10DE00E9A958 /* Sounds */ = {
+            isa = PBXGroup;
+            children = (
+                6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */,
+            );
+            name = Sounds;
+            sourceTree = "<group>";
+        };
 		6CF863B71A8D3B9200CDF001 /* CorePlot */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,10 +384,12 @@
 		6FA5B2771A49DDF40032A4FB /* Still Unusable */ = {
 			isa = PBXGroup;
 			children = (
-				6FC340931A44EF830004A7DB /* GBCMenuWindow.m */,
-				6FC340921A44EF830004A7DB /* GBCMenuWindow.h */,
+				6FC0577D1A8C15E1006B3605 /* GBCConfirmWindowController.m */,
+				6FC0577C1A8C15E1006B3605 /* GBCConfirmWindowController.h */,
 				6FC340901A44E6CD0004A7DB /* GBCMenuWindowController.m */,
 				6FC3408F1A44E6CD0004A7DB /* GBCMenuWindowController.h */,
+				6FC340931A44EF830004A7DB /* GBCMenuWindow.m */,
+				6FC340921A44EF830004A7DB /* GBCMenuWindow.h */,
 				6FB2B8C11A43389B00239486 /* ViewController.h */,
 				6FB2B8C21A43389B00239486 /* ViewController.m */,
 			);
@@ -414,6 +439,8 @@
 			isa = PBXGroup;
 			children = (
 				6CFC4CE21A8C091E0022370F /* ECGSignal */,
+				6F6D95E51A8D10DE00E9A958 /* Sounds */,
+				6FC057721A8C0C3D006B3605 /* WindowControllers */,
 				6C5A1C941A700D83001DA461 /* Utilities */,
 				6C7049C81A69BC2F00838B48 /* Bluetooth */,
 				6F78F3641A48A11B006EBCEE /* Pictures */,
@@ -458,6 +485,19 @@
 				6FB2B8D21A43389B00239486 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6FC057721A8C0C3D006B3605 /* WindowControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6FC057741A8C0D22006B3605 /* GBCDoctorPanelWindowController.m */,
+				6FC057731A8C0D22006B3605 /* GBCDoctorPanelWindowController.h */,
+				6FC057771A8C13AF006B3605 /* GBCResultsWindowController.m */,
+				6FC057761A8C13AF006B3605 /* GBCResultsWindowController.h */,
+				6FC0577A1A8C15A6006B3605 /* GBCSyncWindowController.m */,
+				6FC057791A8C15A6006B3605 /* GBCSyncWindowController.h */,
+			);
+			name = WindowControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -573,6 +613,7 @@
 				6F2D182F1A8A7CA50048281D /* panelBackground.png in Resources */,
 				6FCD42021A65E7930040C76C /* monitorConfig.png in Resources */,
 				6FB2B8C51A43389B00239486 /* Images.xcassets in Resources */,
+				6F6D95E71A8D10EA00E9A958 /* ECGbeep.mp3 in Resources */,
 				6FC453651A6D7F300064E9F6 /* play-97626_640.png in Resources */,
 				6FC09AB61A437E450023B3FA /* menuBackgroundImage.png in Resources */,
 				6FC09AC41A4380A70023B3FA /* monitorRectangle.png in Resources */,
@@ -635,6 +676,7 @@
 				6F2D18241A8A761C0048281D /* monitorWoman.png in Resources */,
 				6F2D18271A8A76A40048281D /* monitorGraph.png in Resources */,
 				6FBBB06C1A5C2A41008BB4BA /* menuMunecaDos.png in Resources */,
+				6F6D95E81A8D10EA00E9A958 /* ECGbeep.mp3 in Resources */,
 				6FC453691A6D83450064E9F6 /* clock-308938_1280.png in Resources */,
 				6FC453661A6D7F300064E9F6 /* play-97626_640.png in Resources */,
 			);
@@ -651,6 +693,8 @@
 				6CF863C01A8D3C2600CDF001 /* PlotView.m in Sources */,
 				6C44EF4D1A895A7800C81D68 /* GBCBluetoothSelectorSheetController.m in Sources */,
 				6C4F3DF51A8D59B7001F5099 /* PlotItem.m in Sources */,
+				6FC0577E1A8C15E1006B3605 /* GBCConfirmWindowController.m in Sources */,
+				6FC057751A8C0D22006B3605 /* GBCDoctorPanelWindowController.m in Sources */,
 				6FBBB0781A5C807C008BB4BA /* GBCResultsViewController.m in Sources */,
 				6FBBB0751A5C8035008BB4BA /* GBCDoctorPanelViewController.m in Sources */,
 				6FBBB06F1A5C6B69008BB4BA /* GBCSyncViewController.m in Sources */,
@@ -662,8 +706,10 @@
 				6C7049CB1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */,
 				6FB2B8C01A43389B00239486 /* main.m in Sources */,
 				6FC3408E1A4497820004A7DB /* GBCMonitorVIewController.m in Sources */,
+				6FC0577B1A8C15A6006B3605 /* GBCSyncWindowController.m in Sources */,
 				6FC340911A44E6CD0004A7DB /* GBCMenuWindowController.m in Sources */,
 				6FC340941A44EF830004A7DB /* GBCMenuWindow.m in Sources */,
+				6FC057781A8C13AF006B3605 /* GBCResultsWindowController.m in Sources */,
 				6FC3408B1A44902F0004A7DB /* GBCMenuViewController.m in Sources */,
 				6C5A1C971A700DBE001DA461 /* GBCRedCodeUtilities.m in Sources */,
 				6FB2B8BE1A43389B00239486 /* AppDelegate.m in Sources */,
