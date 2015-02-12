@@ -10,6 +10,8 @@
 
 @interface GBCMonitorVIewController : NSViewController
 
+
+
 - (void) updateMonitorViewController;
 - (void) updateVitalSignsInMonitor;
 - (void) updateChronometer;

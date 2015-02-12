@@ -8,6 +8,10 @@
 
 #import "GBCMonitorVIewController.h"
 #import "GBCSimulator.h"
+#import "PlotItem.h"
+
+
+
 
 @interface GBCMonitorVIewController ()
 
@@ -19,6 +23,8 @@
 @property (strong) IBOutlet NSTextField *respiratoryFrecuencyValue;
 @property (strong) IBOutlet NSTextField *arterialPresureValue;
 @property (strong) IBOutlet NSTextField *chronometerTextField;
+
+@property (nonatomic, strong) PlotItem *plotItem;
 
 
 @property (strong, nonatomic) NSDictionary *vitalSingsMonitor;
