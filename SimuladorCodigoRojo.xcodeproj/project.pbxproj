@@ -41,6 +41,8 @@
 		6F54FC5A1A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */; };
 		6F54FC5B1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */; };
 		6F54FC5C1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */; };
+		6F6D95E71A8D10EA00E9A958 /* ECGbeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */; };
+		6F6D95E81A8D10EA00E9A958 /* ECGbeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */; };
 		6FB2B8BE1A43389B00239486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8BD1A43389B00239486 /* AppDelegate.m */; };
 		6FB2B8C01A43389B00239486 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8BF1A43389B00239486 /* main.m */; };
 		6FB2B8C31A43389B00239486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB2B8C21A43389B00239486 /* ViewController.m */; };
@@ -135,6 +137,7 @@
 		6F2D18341A8A80970048281D /* resultsFrontground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resultsFrontground.png; sourceTree = "<group>"; };
 		6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorSgSignal.jpg; sourceTree = "<group>"; };
 		6F54FC581A802DE6004B81E3 /* monitorSigSignal2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorSigSignal2.jpg; sourceTree = "<group>"; };
+		6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ECGbeep.mp3; sourceTree = "<group>"; };
 		6FB2B8B71A43389B00239486 /* SimuladorCodigoRojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimuladorCodigoRojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB2B8BB1A43389B00239486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB2B8BC1A43389B00239486 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -240,6 +243,14 @@
 			name = Bluetooth;
 			sourceTree = "<group>";
 		};
+		6F6D95E51A8D10DE00E9A958 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		6F78F3641A48A11B006EBCEE /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +351,7 @@
 		6FB2B8B91A43389B00239486 /* SimuladorCodigoRojo */ = {
 			isa = PBXGroup;
 			children = (
+				6F6D95E51A8D10DE00E9A958 /* Sounds */,
 				6FC057721A8C0C3D006B3605 /* WindowControllers */,
 				6C5A1C941A700D83001DA461 /* Utilities */,
 				6C7049C81A69BC2F00838B48 /* Bluetooth */,
@@ -489,6 +501,7 @@
 				6F2D182F1A8A7CA50048281D /* panelBackground.png in Resources */,
 				6FCD42021A65E7930040C76C /* monitorConfig.png in Resources */,
 				6FB2B8C51A43389B00239486 /* Images.xcassets in Resources */,
+				6F6D95E71A8D10EA00E9A958 /* ECGbeep.mp3 in Resources */,
 				6FC453651A6D7F300064E9F6 /* play-97626_640.png in Resources */,
 				6FC09AB61A437E450023B3FA /* menuBackgroundImage.png in Resources */,
 				6FC09AC41A4380A70023B3FA /* monitorRectangle.png in Resources */,
@@ -549,6 +562,7 @@
 				6F2D18241A8A761C0048281D /* monitorWoman.png in Resources */,
 				6F2D18271A8A76A40048281D /* monitorGraph.png in Resources */,
 				6FBBB06C1A5C2A41008BB4BA /* menuMunecaDos.png in Resources */,
+				6F6D95E81A8D10EA00E9A958 /* ECGbeep.mp3 in Resources */,
 				6FC453691A6D83450064E9F6 /* clock-308938_1280.png in Resources */,
 				6FC453661A6D7F300064E9F6 /* play-97626_640.png in Resources */,
 			);
