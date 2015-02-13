@@ -18,12 +18,15 @@
 - (void) sendChronometerValue;
 - (void) initializeMonitorTimer;
 - (void) finishChoronometer;
-- (void) askIfChronometerIsPaused;
+- (void) askIfSimulationIsPaused;
 - (void) interruptEventHandling;
 - (void) askIfSimulationHasFinished;
 - (void) simulationHasFinishedMonitor;
 - (void) initializeChronometer;
 - (void) finishTimerToUpdate;
 - (void) sendMessageOfStartedChronometer;
+- (void) askForStateToSetBeepFrecuency;
+- (void) askForInitialStateAndSetInitialFrecuency;
+- (void) playBeep;
 
 @end
