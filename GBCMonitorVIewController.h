@@ -23,5 +23,8 @@
 - (void) initializeChronometer;
 - (void) finishTimerToUpdate;
 - (void) sendMessageOfStartedChronometer;
+- (void) askForStateToSetBeepFrecuency;
+- (void) askForInitialStateAndSetInitialFrecuency;
+- (void) playBeep;
 
 @end
