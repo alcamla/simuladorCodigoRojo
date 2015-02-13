@@ -30,10 +30,12 @@
 @property (strong, nonatomic) NSDictionary *vitalSingsMonitor;
 @property (strong, nonatomic) NSTimer * timerToUpdateMonitorView;
 @property (strong, nonatomic) NSTimer * chronometer;
+@property (strong, nonatomic) NSTimer * beepTimer;
 @property (strong, nonatomic) NSMutableArray *chronometerArray;
 @property (strong, nonatomic) NSString *hoursString;
 @property (strong, nonatomic) NSString *minutesString;
 @property (strong, nonatomic) NSString *secondsString;
+@property (strong, nonatomic) NSString *currentStateMonitor;
 @property (strong, nonatomic) NSSound *beepSound;
 
 
@@ -67,6 +69,12 @@ int minutes=0;
     
     // Send Init Chronometer Started Message to Main Class: Simulator
     [self sendMessageOfStartedChronometer];
+    
+    // Ask for initial state
+    [self askForInitialStateAndSetInitialFrecuency];
+    
+    // Set the frecuency for the beep
+    [self setBeepFrecuency];
     
 }
 
@@ -103,7 +111,7 @@ int minutes=0;
 // Interrupt Process
 
 - (void) interruptEventHandling{
-
+    
     // Update Monitor View every Timer interrupt
     [self updateMonitorViewController];
     
@@ -112,6 +120,9 @@ int minutes=0;
     
     // Ask if simulation is finished
     [self askIfSimulationHasFinished];
+    
+    // Ask to Simulator for current state to set beep frecuecy
+    [self askForStateToSetBeepFrecuency];
 }
 
 // Update View Controller
@@ -126,7 +137,7 @@ int minutes=0;
 // Update Vital Signs
 
 - (void) updateVitalSignsInMonitor{
-
+    
     // Ask Simulator to send the vital signs and alloc them in monitor dictionary
     self.vitalSingsMonitor= [[GBCSimulator sharedSimulator] getCurrentVitalSigns];
     
@@ -142,12 +153,6 @@ int minutes=0;
 // Update Chronometer
 
 - (void) updateChronometer{
-    
-    // Set a beep sound to the simulation
-    self.beepSound=[NSSound soundNamed:@"ECGbeep.mp3"];
-    //self.beepSound=[NSSound soundNamed:@"Tink.aiff"];
-    [self.beepSound play];
-    //NSBeep();
     
     // Update Seconds, minutes and hours
     seconds++;
@@ -188,6 +193,15 @@ int minutes=0;
     // Stop Timer
     [self.chronometer invalidate];
     self.chronometer = nil;
+}
+
+// Stop Beep timer
+
+- (void) finishBeepTimer{
+    
+    // Stop Timer
+    [self.beepTimer invalidate];
+    self.beepTimer = nil;
 }
 
 // Finish Timer to update
@@ -249,13 +263,21 @@ int minutes=0;
 
 }
 
+// End the Simulation Activity for this monitor
+
 - (void) simulationHasFinishedMonitor{
+    
+    // Send Finalization Message to Main Class Simulator
+    
     
     // Finish Chronometer and Timer
     [self finishChoronometer];
     
     // Finish Timer to update
     [self finishTimerToUpdate];
+    
+    // Finish Beep Timer
+    [self finishBeepTimer];
     
     // Close this View
     [self.view.window setIsVisible:NO];
@@ -284,6 +306,75 @@ int minutes=0;
     
 }
 
+// Method to ask to main class simulator for the state initial
+
+- (void) askForInitialStateAndSetInitialFrecuency{
+
+    self.currentStateMonitor=[[GBCSimulator sharedSimulator] sendCurrentState];
+    
+}
+
+// Method to ask to main class simulator for the state to set beep frecuency
+
+- (void) askForStateToSetBeepFrecuency{
+    
+    // Ask if state has changed
+    if (self.currentStateMonitor !=[[GBCSimulator sharedSimulator] sendCurrentState]) {
+        
+        // Update current state
+        self.currentStateMonitor = [[GBCSimulator sharedSimulator] sendCurrentState];
+        
+        // Set timer frecuency according to the state heart rate
+        [self setBeepFrecuency];
+        
+    }
+    
+}
+
+// Set beep frecuency acording to the state
+
+- (void) setBeepFrecuency{
+    
+    [self finishBeepTimer];
+    
+    if ([self.currentStateMonitor isEqualToString:@"Postparto"]==YES) {
+        
+        self.beepTimer=[NSTimer scheduledTimerWithTimeInterval:(0.7) target:self selector:@selector(playBeep) userInfo:nil repeats:YES];
+    };
+    if ([self.currentStateMonitor isEqualToString:@"Choque Leve"]==YES) {
+        
+        self.beepTimer=[NSTimer scheduledTimerWithTimeInterval:(0.6) target:self selector:@selector(playBeep) userInfo:nil repeats:YES];
+    };
+    if ([self.currentStateMonitor isEqualToString:@"Transitorio Leve"]==YES) {
+        
+        self.beepTimer=[NSTimer scheduledTimerWithTimeInterval:(0.7) target:self selector:@selector(playBeep) userInfo:nil repeats:YES];
+    };
+    if ([self.currentStateMonitor isEqualToString:@"Choque Moderado"]==YES) {
+        
+        self.beepTimer=[NSTimer scheduledTimerWithTimeInterval:(0.5) target:self selector:@selector(playBeep) userInfo:nil repeats:YES];
+    };
+    if ([self.currentStateMonitor isEqualToString:@"Choque Grave"]==YES) {
+        
+        self.beepTimer=[NSTimer scheduledTimerWithTimeInterval:(0.4) target:self selector:@selector(playBeep) userInfo:nil repeats:YES];
+        
+    };
+    if ([self.currentStateMonitor  isEqualToString:@"Estable"]==YES) {
+        
+        self.beepTimer=[NSTimer scheduledTimerWithTimeInterval:(0.7) target:self selector:@selector(playBeep) userInfo:nil repeats:YES];
+    };
+
+}
+
+// Play the beep for the Simulation
+
+- (void) playBeep{
+    
+    // Set a beep sound to the simulation
+    //self.beepSound=[NSSound soundNamed:@"ECGbeep.mp3"];
+    self.beepSound=[NSSound soundNamed:@"Tink.aiff"];
+    [self.beepSound play];
+
+}
 
 // Lazy Initializations
 
@@ -315,13 +406,18 @@ int minutes=0;
     return _chronometer;
 }
 
+-(NSTimer *)beepTimer{
+    if (!_beepTimer) {
+        _beepTimer = [[NSTimer alloc] init];
+    }
+    return _beepTimer;
+}
+
 -(NSSound *)beepSound{
     if (!_beepSound) {
         _beepSound = [[NSSound alloc] init];
     }
     return _beepSound;
 }
-
-
 
 @end

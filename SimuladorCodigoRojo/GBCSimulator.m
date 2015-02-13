@@ -100,7 +100,6 @@ bool panelViewStateSimulator=NO;
 
 - (void) stateSelectedIs: (NSString *)stateReceived{
     
-    //NSLog(@"Estado Seleccionado Enviado a Simulator");
     self.currentState=stateReceived;
     [self.bluetoothManager sendCurrentSimulationState:self.currentState];
 }
@@ -108,7 +107,8 @@ bool panelViewStateSimulator=NO;
 // Method to send to Machine Class the initial State
 
 - (NSString *) sendInitialStateSelected{
-
+    
+    
     return self.currentState;
 }
 
@@ -225,6 +225,9 @@ bool panelViewStateSimulator=NO;
     paussedChecked=NO;
     panelViewStateSimulator=NO;
     syncViewState=NO;
+    self.chronometerSimulator[0]=@"0";
+    self.chronometerSimulator[1]=@"0";
+    self.chronometerSimulator[2]=@"0";
     self.editedVariablesSimulator=self.initialEditedVariablesSimulator;
     
 }
@@ -234,6 +237,7 @@ bool panelViewStateSimulator=NO;
 - (void) receiveFinalizationMessage{
 
     //NSLog(@"Finalization Message Received");
+    // TODO: Uncomment this line
     //[self.bluetoothManager sendFinishMessage];
     finalizationCheck=YES;
 

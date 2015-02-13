@@ -54,21 +54,22 @@ NSInteger secondsMachine=0;
 
 // Trasition Times
 
+/*
 NSInteger initTime=0;
 NSInteger postpartoTime=2;
 NSInteger softShockTime=5;
 NSInteger softTransitoryTime=10;
 NSInteger moderedShockTime=12;
-
+*/
 
 // Initial Time Settings For Short Proofs
-/*
+
 NSInteger initTime=0;
 NSInteger postpartoTime=1;
 NSInteger softShockTime=2;
 NSInteger softTransitoryTime=3;
 NSInteger moderedShockTime=4;
-*/
+
  
 // Initialize Machine Timer to Update State
 
@@ -89,7 +90,7 @@ NSInteger moderedShockTime=4;
 // Method to Receive Initial State From Main Class: Simulator
 
 - (void) getInitialStateSelected{
-
+    
     self.currentStateMachine=[[GBCSimulator sharedSimulator] sendInitialStateSelected];
     [self setInitialTimerValues];
 }
@@ -325,6 +326,10 @@ NSInteger moderedShockTime=4;
     
     // Stop the Machine timer
     [self finishMachineTimer];
+    initTime = 0;
+    hoursMachine =0;
+    secondsMachine=0;
+    minutesMachine=0;
 
 }
 
