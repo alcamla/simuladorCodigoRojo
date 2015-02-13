@@ -116,7 +116,7 @@ int minutes=0;
     [self updateMonitorViewController];
     
     // Ask if simulation is paused
-    [self askIfChronometerIsPaused];
+    [self askIfSimulationIsPaused];
     
     // Ask if simulation is finished
     [self askIfSimulationHasFinished];
@@ -216,18 +216,24 @@ int minutes=0;
     hours=0;
     
 }
+
 // Ask to Main Class: Simulator if Chronometer has been paused
 
-- (void) askIfChronometerIsPaused{
+- (void) askIfSimulationIsPaused{
     
     paussedCheckMonitor=[[GBCSimulator sharedSimulator] sendPausedOrNotMessage];
 
     // Check answer from Simulator
     if (paussedCheckMonitor==YES) {
        
-        // Stop Timer
+        // Stop Chronometer Timer
         [self.chronometer invalidate];
         self.chronometer = nil;
+        
+        // Stop Beep Timer
+        [self.beepTimer invalidate];
+        self.beepTimer = nil;
+
         
     }else{
         if (self.chronometer.valid==NO) {
@@ -236,6 +242,13 @@ int minutes=0;
             [self initializeChronometer];
             
         }
+        if (self.beepTimer.valid==NO) {
+            
+            // Reinitializite Beep Timer 
+            [self setBeepFrecuency];
+            
+        }
+
         
     }
     

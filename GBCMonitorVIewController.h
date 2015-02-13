@@ -18,7 +18,7 @@
 - (void) sendChronometerValue;
 - (void) initializeMonitorTimer;
 - (void) finishChoronometer;
-- (void) askIfChronometerIsPaused;
+- (void) askIfSimulationIsPaused;
 - (void) interruptEventHandling;
 - (void) askIfSimulationHasFinished;
 - (void) simulationHasFinishedMonitor;
