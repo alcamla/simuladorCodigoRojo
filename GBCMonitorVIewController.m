@@ -261,6 +261,9 @@ int minutes=0;
 
 - (void) simulationHasFinishedMonitor{
     
+    // Send Finalization Message to Main Class Simulator
+    
+    
     // Finish Chronometer and Timer
     [self finishChoronometer];
     

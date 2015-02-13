@@ -225,6 +225,9 @@ bool panelViewStateSimulator=NO;
     paussedChecked=NO;
     panelViewStateSimulator=NO;
     syncViewState=NO;
+    self.chronometerSimulator[0]=@"0";
+    self.chronometerSimulator[1]=@"0";
+    self.chronometerSimulator[2]=@"0";
     self.editedVariablesSimulator=self.initialEditedVariablesSimulator;
     
 }

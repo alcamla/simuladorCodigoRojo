@@ -90,7 +90,7 @@ NSInteger moderedShockTime=4;
 // Method to Receive Initial State From Main Class: Simulator
 
 - (void) getInitialStateSelected{
-
+    
     self.currentStateMachine=[[GBCSimulator sharedSimulator] sendInitialStateSelected];
     [self setInitialTimerValues];
 }
@@ -326,6 +326,10 @@ NSInteger moderedShockTime=4;
     
     // Stop the Machine timer
     [self finishMachineTimer];
+    initTime = 0;
+    hoursMachine =0;
+    secondsMachine=0;
+    minutesMachine=0;
 
 }
 
