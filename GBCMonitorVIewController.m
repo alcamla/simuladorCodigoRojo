@@ -9,6 +9,8 @@
 #import "GBCMonitorVIewController.h"
 #import "GBCSimulator.h"
 #import "PlotItem.h"
+#import "RealTimePlot.h"
+#import "PlotView.h"
 
 
 
@@ -25,6 +27,7 @@
 @property (strong) IBOutlet NSTextField *chronometerTextField;
 
 @property (nonatomic, strong) PlotItem *plotItem;
+@property (weak) IBOutlet PlotView *plotView;
 
 
 @property (strong, nonatomic) NSDictionary *vitalSingsMonitor;
@@ -70,12 +73,30 @@ int minutes=0;
     
 }
 
+-(void)viewDidAppear{
+    self.plotItem = [[RealTimePlot alloc] init];
+    
+}
+
 - (void) viewDidDisappear{
 
     // Reset variables
     [self simulationHasFinishedMonitor];
 
 }
+
+-(void)setPlotItem:(PlotItem *)item
+{
+    if ( _plotItem != item ) {
+        [_plotItem killGraph];
+        
+        _plotItem = item;
+        
+        [_plotItem renderInView:self.plotView withTheme:nil animated:YES];
+    }
+}
+
+
 // Initialize the timer to update Monitor View and Hold the Chronometer
 
 - (void) initializeMonitorTimer{

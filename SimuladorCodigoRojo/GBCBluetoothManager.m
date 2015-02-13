@@ -20,9 +20,6 @@
 
 @implementation GBCBluetoothManager
 
-#define BLUETOOTH_DEVICE_1_UUID_STRING @"E9657654-2E39-4E16-B843-94FC5354A1C0"
-//#define BLUETOOTH_DEVICE_2_UUID_STRING @"932CAF49-A991-4188-A5C3-C7767DDF6E85"
-#define BLUETOOTH_DEVICE_2_UUID_STRING @"4E1E4270-3B83-4182-B258-C2C8470A3FF0" // Daniel One Mac
 #define RED_CODE_SERVICE_UUID_STRING @"EF080D8C-C3BE-41FF-BD3F-05A5F4795D7F"
 #define GENERIC_ACCESS_SERVICE_UUID_STRING @"00001800-0000-1000-8000-00805F9B34FB"
 #define RED_CODE_READ_CHARACTERISTIC_UUID_STRING @"A1E8F5B1-696B-4E4C-87C6-69DFE0B0093B"
@@ -104,11 +101,6 @@
     }
 }
 
-- (IBAction)forgetDevice:(id)sender {
-    NSLog(@"Delete the current Connected device");
-}
-
-
 #pragma mark - Bluetooth Timed connection Failure
 
 /*
@@ -120,7 +112,6 @@
         [self.delegate redCodeSensorsConnectionLostByBluetoothManager:self];
     }
 }
-
 
 #pragma mark - Connect Button
 
