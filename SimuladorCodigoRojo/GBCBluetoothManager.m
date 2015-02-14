@@ -155,8 +155,18 @@
             NSRange aRange = [self.readDataBuffer rangeOfString:@","];
             if (aRange.location != NSNotFound) {
                 NSString *dataToSend = [self.readDataBuffer substringToIndex:aRange.location];
-                [self sendData:dataToSend];
-                NSLog(@"Sent data: %@", dataToSend);
+                //Find a * in dataToSend, start the dataToSend from the character following the *
+                 NSRange subRange = [self.readDataBuffer rangeOfString:@"*"];
+                if (subRange.location != NSNotFound) {
+                    NSLog(@"original dataToSend, before substringing: %@", dataToSend);
+                    dataToSend = [dataToSend substringFromIndex:subRange.location +1];
+                    if ([dataToSend length] != 2) {
+                        NSLog(@"ERROR EN LA CADENA RECIBIDA!!!!!");
+                    } else{
+                        [self sendData:dataToSend];
+                        NSLog(@"Sent data: %@", dataToSend);
+                    }
+                }
                 [self.readDataBuffer deleteCharactersInRange:NSMakeRange(0, aRange.location+1)];
                 NSLog(@"Buffer Final State: %@", self.readDataBuffer);
             } else{
@@ -210,16 +220,16 @@
     NSString *simulationStateDataString;
     if ([simulationState isEqualToString:@"Postparto"] ||
         [simulationState isEqualToString:@"Transitorio Leve"]) {
-        simulationStateDataString = @"h0,";
+        simulationStateDataString = @"*h0,";
     }
     else if ([simulationState isEqualToString:@"Choque Leve"]){
-        simulationStateDataString = @"h1,";
+        simulationStateDataString = @"*h1,";
     } else if ([simulationState isEqualToString:@"Choque Moderado"]){
-        simulationStateDataString = @"h2,";
+        simulationStateDataString = @"*h2,";
     } else if ([simulationState isEqualToString:@"Choque Grave"]){
-        simulationStateDataString = @"h3,";
+        simulationStateDataString = @"*h3,";
     } else if ([simulationState isEqualToString:@"Estable"]){
-        simulationStateDataString = @"h4,";
+        simulationStateDataString = @"*h4,";
     }
     [self sendStringToConnectedPeripheric:simulationStateDataString];
 }
@@ -227,17 +237,17 @@
 -(void)sendCurrentStateOfVariable:(NSString *)variable state:(BOOL)state{
     NSString *variableStateString =@"";
     if ([variable isEqualToString:@"Vías Venosas"]) {
-        variableStateString = @"a";
+        variableStateString = @"*a";
     } else if ([variable isEqualToString:@"Masaje"]){
-        variableStateString = @"b";
+        variableStateString = @"*b";
     } else if ([variable isEqualToString:@"Manta"]){
-        variableStateString = @"c";
+        variableStateString = @"*c";
     } else if ([variable isEqualToString:@"Oxígeno"]){
-        variableStateString = @"d";
+        variableStateString = @"*d";
     } else if ([variable isEqualToString:@"Sonda Urinaria"]){
-        variableStateString = @"e";
+        variableStateString = @"*e";
     } else if (@"Medición de Signos"){
-        variableStateString = @"f";
+        variableStateString = @"*f";
     }
     variableStateString = [variableStateString stringByAppendingString:[[NSNumber numberWithBool:state] stringValue]];
     variableStateString = [variableStateString stringByAppendingString:@","];
@@ -246,7 +256,7 @@
 
 -(void)sendFinishMessage{
     NSString *finishString =@"";
-    finishString=@"z";
+    finishString=@"*z";
     finishString = [finishString stringByAppendingString:@","];
     [self sendStringToConnectedPeripheric:finishString];
 }
@@ -518,7 +528,7 @@
 }
 
 -(void)sendCalibrationFlagToConnectedPeripheric{
-    [self sendStringToConnectedPeripheric:@"start,"];
+    [self sendStringToConnectedPeripheric:@"*start,"];
 }
 
 -(void) sendStringToConnectedPeripheric:(NSString *)stringToSend{

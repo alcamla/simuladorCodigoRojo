@@ -159,6 +159,8 @@ int minutes=0;
 
 - (void) updateVitalSignsInMonitor{
     
+    //TODO: 
+    
     // Ask Simulator to send the vital signs and alloc them in monitor dictionary
     self.vitalSingsMonitor= [[GBCSimulator sharedSimulator] getCurrentVitalSigns];
     
