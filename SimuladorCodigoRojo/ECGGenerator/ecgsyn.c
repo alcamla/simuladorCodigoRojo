@@ -649,6 +649,216 @@ double * calculateECG(int heartBeats, int samplingFrequency, int heartRate)
     return zts;
 }
 
+/*--------------------------------------------------------------------------*/
+/*   CALCULATE ECG RETURNING PEAK LOCATIONS VECTOR                          */
+/*--------------------------------------------------------------------------*/
+
+
+double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int heartRate, int *totalSamples)
+{
+    int i,j,k,q,Nrr,Nt,Nts;
+    double *x,tecg,rrmean,qd,hrfact,hrfact2;
+    double *xt,*yt,*zt,*xts,*yts,*zts;
+    double timev,*ipeak,zmin,zmax,zrange;
+    void (*derivs)(double, double [], double []);
+    
+    N= heartBeats;
+    sf = 256;
+    sfecg = samplingFrequency;
+    hrmean = heartRate;
+    
+    /* perform some checks on input values */
+    q = (int)rint(sf/sfecg);
+    qd = (double)sf/(double)sfecg;
+    if(q != qd) {
+        printf("Internal sampling frequency must be an integer multiple of the \n");
+        printf("ECG sampling frequency!\n");
+        printf("Your current choices are:\n");
+        printf("ECG sampling frequency: %d Hertz\n",sfecg);
+        printf("Internal sampling frequency: %d Hertz\n",sf);
+        exit(1);}
+    
+    
+    /* declare and initialise the state vector */
+    x=mallocVect(1,mstate);
+    x[1] = xinitial;
+    x[2] = yinitial;
+    x[3] = zinitial;
+    
+    /* declare and define the ECG morphology vectors (PQRST extrema parameters) */
+    ti=mallocVect(1,5);
+    ai=mallocVect(1,5);
+    bi=mallocVect(1,5);
+    /* P            Q            R           S           T        */
+    ti[1]=-60.0; ti[2]=-15.0; ti[3]=0.0;  ti[4]=15.0; ti[5]=90.0;
+    ai[1]=1.2;   ai[2]=-5.0;  ai[3]=30.0; ai[4]=-7.5; ai[5]=0.75;
+    bi[1]=0.25;  bi[2]=0.1;   bi[3]=0.1;  bi[4]=0.1;  bi[5]=0.4;
+    
+    /* convert angles from degrees to radians */
+    for(i=1;i<=5;i++) ti[i] *= M_PI/180.0;
+    
+    /* adjust extrema parameters for mean heart rate */
+    hrfact = sqrt(hrmean/60.0);
+    hrfact2 = sqrt(hrfact);
+    for(i=1;i<=5;i++) bi[i] *= hrfact;
+    ti[1]*=hrfact2;  ti[2]*=hrfact; ti[3]*=1.0; ti[4]*=hrfact; ti[5]*=1.0;
+    
+    
+    /* calculate time scales */
+    h = 1.0/sf;
+    
+    
+    printf("Approximate number of heart beats: %d\n",N);
+    printf("ECG sampling frequency: %d Hertz\n",sfecg);
+    printf("Internal sampling frequency: %d Hertz\n",sf);
+    printf("Amplitude of additive uniformly distributed noise: %g mV\n",Anoise);
+    printf("Heart rate mean: %g beats per minute\n",hrmean);
+    printf("Heart rate std: %g beats per minute\n",hrstd);
+    printf("Low frequency: %g Hertz\n",flo);
+    printf("High frequency std: %g Hertz\n",fhistd);
+    printf("Low frequency std: %g Hertz\n",flostd);
+    printf("High frequency: %g Hertz\n",fhi);
+    printf("LF/HF ratio: %g\n",lfhfratio);
+    
+    /* initialise seed */
+    rseed = -seed;
+    
+    
+    /* select the derivs to use */
+    derivs = derivspqrst;
+    
+    /* calculate length of RR time series */
+    rrmean = (60/hrmean);
+    Nrr = (int)pow(2.0, ceil(log10(N*rrmean*sf)/log10(2.0)));
+    printf("Using %d = 2^%d samples for calculating RR intervals\n",
+           Nrr,(int)(log10(1.0*Nrr)/log10(2.0)));
+    
+    
+    /* create rrprocess with required spectrum */
+    rr = mallocVect(1,Nrr);
+    rrprocess(rr, flo, fhi, flostd, fhistd, lfhfratio, hrmean, hrstd, sf, Nrr);
+    
+    /* create piecewise constant rr */
+    rrpc = mallocVect(1,2*Nrr);
+    tecg = 0.0;
+    i = 1;
+    j = 1;
+    while(i <= Nrr)
+    {
+        tecg += rr[j];
+        j = (int)rint(tecg/h);
+        for(k=i;k<=j;k++) rrpc[k] = rr[i];
+        i = j+1;
+    }
+    Nt = j;
+    
+    //printf("Printing ECG signal to file: %s\n",outfile);
+    
+    /* integrate dynamical system using fourth order Runge-Kutta*/
+    xt = mallocVect(1,Nt);
+    yt = mallocVect(1,Nt);
+    zt = mallocVect(1,Nt);
+    
+    timev = 0.0;
+    for(i=1;i<=Nt;i++)
+    {
+        xt[i] = x[1];
+        yt[i] = x[2];
+        zt[i] = x[3];
+        drk4(x, mstate, timev, h, x, derivs);
+        timev += h;
+    }
+    
+    
+    /* downsample to ECG sampling frequency */
+    xts = mallocVect(1,Nt);
+    yts = mallocVect(1,Nt);
+    zts = mallocVect(1,Nt);
+    
+    j=0;
+    for(i=1;i<=Nt;i+=q)
+    {
+        j++;
+        xts[j] = xt[i];
+        yts[j] = yt[i];
+        zts[j] = zt[i];
+    }
+    Nts = j;
+    
+    
+    /* do peak detection using angle */
+    ipeak = mallocVect(1,Nts);
+    detectpeaks(ipeak, xts, yts, zts, Nts);
+    
+    /* scale signal to lie between -0.4 and 1.2 mV */
+    zmin = zts[1];
+    zmax = zts[1];
+    for(i=2;i<=Nts;i++)
+    {
+        if(zts[i] < zmin)       zmin = zts[i];
+        else if(zts[i] > zmax)  zmax = zts[i];
+    }
+    zrange = zmax-zmin;
+    for(i=1;i<=Nts;i++) zts[i] = (zts[i]-zmin)*(1.6)/zrange - 0.4;
+    
+    /* include additive uniformly distributed measurement noise */
+    for(i=1;i<=Nts;i++) zts[i] += Anoise*(2.0*ran1(&rseed) - 1.0);
+    
+    
+    int firstPPeakIndex = 0;
+    int lastPPeakIndex = 0;
+    int isSaving = 0;
+    int counter = 0;
+    for (int jj = 1; jj<=Nts; jj++) {
+        if (ipeak[jj]==3) {
+            //This data corresponds to a R Peak.
+            if (isSaving == 0) {
+                //If was not saving, start saving
+                isSaving = 1;
+                firstPPeakIndex =  jj;
+            }
+            if (isSaving ==1 && counter ==3) {
+                //Enough samples for 10 seconds of signal at given sampling frequency
+                //keep the last saved peak, break the cycle
+                break;
+            }
+            counter++;
+            lastPPeakIndex = jj;
+        }
+    }
+    //Shift the signal segment by half of the typical duration of the P wave: 120ms
+
+    int totalSamplesLoc = lastPPeakIndex - firstPPeakIndex;
+    double *ecg2PeaksSegment = mallocVect(1, totalSamplesLoc);
+    counter = 0;
+    for (int kk =firstPPeakIndex; kk<=lastPPeakIndex; kk ++) {
+        ecg2PeaksSegment[counter] = zts[kk];
+        counter++;
+    }
+    
+    *totalSamples = totalSamplesLoc;
+
+    
+    //Free memory
+    freeVect(x,1,mstate);
+    freeVect(rr,1,Nrr);
+    freeVect(rrpc,1,2*Nrr);
+    freeVect(ti,1,5);
+    freeVect(ai,1,5);
+    freeVect(bi,1,5);
+    freeVect(xt,1,Nt);
+    freeVect(yt,1,Nt);
+    freeVect(zt,1,Nt);
+    freeVect(xts,1,Nt);
+    freeVect(yts,1,Nt);
+    freeVect(zts,1,Nt);
+    freeVect(ipeak,1,Nts);
+    freeVect(ecg2PeaksSegment, 1, totalSamplesLoc);
+    
+    return ecg2PeaksSegment;
+}
+
+
 
 
 

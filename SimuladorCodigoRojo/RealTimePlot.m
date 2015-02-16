@@ -4,11 +4,11 @@
 //
 
 #import "RealTimePlot.h"
+#import "ecgsyn.h"
 
-static const double kFrameRate = 5.0;  // frames per second
-static const double kAlpha     = 0.25; // smoothing constant
+static const double kFrameRate = 2;  // frames per second
 
-static const NSUInteger kMaxDataPoints = 52;
+static const NSUInteger kMaxDataPoints = 1536 +256+256;
 static NSString *const kPlotIdentifier = @"Data Source Plot";
 
 @interface RealTimePlot()
@@ -16,6 +16,9 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 @property (nonatomic, readwrite, strong) NSMutableArray *plotData;
 @property (nonatomic, readwrite, assign) NSUInteger currentIndex;
 @property (nonatomic, readwrite, strong) NSTimer *dataTimer;
+@property (nonatomic) NSInteger currentIndexOfECGVector;
+@property (nonatomic, strong) NSMutableArray *ecgVector;
+@property(nonatomic)NSUInteger deletedSamples;
 
 @end
 
@@ -126,8 +129,8 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 
     // Plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromUnsignedInteger(0) length:CPTDecimalFromUnsignedInteger(kMaxDataPoints - 2)];
-    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromUnsignedInteger(0) length:CPTDecimalFromUnsignedInteger(1)];
+    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromUnsignedInteger(0) length:CPTDecimalFromUnsignedInteger(kMaxDataPoints - 256)];
+    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(-0.5) length:CPTDecimalFromDouble(2.0)];
 
     [self.dataTimer invalidate];
 
@@ -159,28 +162,51 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 
     if ( thePlot ) {
         if ( self.plotData.count >= kMaxDataPoints ) {
-            [self.plotData removeObjectAtIndex:0];
-            [thePlot deleteDataInIndexRange:NSMakeRange(0, 1)];
+            [self.plotData removeObjectsInRange:NSMakeRange(0, 128)];
+            [thePlot deleteDataInIndexRange:NSMakeRange(0, 128)];
+            self.deletedSamples +=128;
         }
 
         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)theGraph.defaultPlotSpace;
-        NSUInteger location       = (self.currentIndex >= kMaxDataPoints ? self.currentIndex - kMaxDataPoints + 2 : 0);
+                double simRangeLocation = self.currentIndex*(256/2) >= kMaxDataPoints ? ((self.currentIndex*128  - kMaxDataPoints + 256)/256) : 0;
+        double simRangeLength = (kMaxDataPoints - 256)/256;
+        CPTPlotRange *newRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(simRangeLocation)
+                                                               length:CPTDecimalFromDouble(simRangeLength)];
 
-        CPTPlotRange *oldRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromUnsignedInteger( (location > 0) ? (location - 1) : 0 )
-                                                              length:CPTDecimalFromUnsignedInteger(kMaxDataPoints - 2)];
-        CPTPlotRange *newRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromUnsignedInteger(location)
-                                                              length:CPTDecimalFromUnsignedInteger(kMaxDataPoints - 2)];
 
+
+        
+        
+        [self.plotData addObjectsFromArray: [self nextECGValue]];
+        [thePlot insertDataAtIndex:self.plotData.count - 128 numberOfRecords:128];
+        self.currentIndex++;
+        
         [CPTAnimation animate:plotSpace
                      property:@"xRange"
-                fromPlotRange:oldRange
+                fromPlotRange:plotSpace.xRange
                   toPlotRange:newRange
-                     duration:CPTFloat(1.0 / kFrameRate)];
-
-        self.currentIndex++;
-        [self.plotData addObject:@( (1.0 - kAlpha) * [[self.plotData lastObject] doubleValue] + kAlpha * arc4random() / (double)UINT32_MAX )];
-        [thePlot insertDataAtIndex:self.plotData.count - 1 numberOfRecords:1];
+                     duration:CPTFloat(1.0 / 128.8)];
     }
+}
+
+-(NSArray*)nextECGValue{
+    //NSNumber *nextValue = self.ecgVector[self.currentIndexOfECGVector];
+    NSArray *nextSegment = [self.ecgVector subarrayWithRange:NSMakeRange(self.currentIndexOfECGVector, 128)];
+    self.currentIndexOfECGVector  += 128;
+    return nextSegment;
+}
+
+-(NSMutableArray*)ecgVector{
+    if (!_ecgVector || (self.currentIndexOfECGVector +128 >= [_ecgVector count])) {
+         self.currentIndexOfECGVector = 0;
+        _ecgVector = [NSMutableArray new];
+         int ecgVectorSize = 0;
+        double *ecgVectorC = calculateEcgAndPeaksLocation(40, 256, 60,&ecgVectorSize);
+        for (int i = 0; i<ecgVectorSize; i++ ) {
+            [_ecgVector addObject: [NSNumber numberWithDouble:ecgVectorC[i]]];
+        }
+    }
+    return _ecgVector;
 }
 
 #pragma mark -
@@ -191,13 +217,13 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     return self.plotData.count;
 }
 
--(id)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
+-(NSNumber*)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
     NSNumber *num = nil;
 
     switch ( fieldEnum ) {
         case CPTScatterPlotFieldX:
-            num = @(index + self.currentIndex - self.plotData.count);
+            num = @((index+self.deletedSamples)/(256.0));
             break;
 
         case CPTScatterPlotFieldY:

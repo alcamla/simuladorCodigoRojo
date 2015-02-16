@@ -11,9 +11,7 @@
 #import "PlotItem.h"
 #import "RealTimePlot.h"
 #import "PlotView.h"
-
-
-
+#import "ecgsyn.h"
 
 @interface GBCMonitorVIewController ()
 
@@ -28,6 +26,8 @@
 
 @property (nonatomic, strong) PlotItem *plotItem;
 @property (weak) IBOutlet PlotView *plotView;
+
+@property(nonatomic, strong) NSMutableArray *ecgVector;
 
 
 @property (strong, nonatomic) NSDictionary *vitalSingsMonitor;
@@ -155,14 +155,20 @@ int minutes=0;
     
 }
 
+
+
 // Update Vital Signs
 
 - (void) updateVitalSignsInMonitor{
+    
+    //Update the ECG signal based on the current heart rate.
+    
     
     //TODO: 
     
     // Ask Simulator to send the vital signs and alloc them in monitor dictionary
     self.vitalSingsMonitor= [[GBCSimulator sharedSimulator] getCurrentVitalSigns];
+    
     
     // Assing vital signs values variables from local dictionary to local variables
     [self.conscienceValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Consciencia"]];
@@ -454,6 +460,13 @@ int minutes=0;
         _beepSound = [[NSSound alloc] init];
     }
     return _beepSound;
+}
+
+-(NSMutableArray*)ecgVector{
+    if (!_ecgVector) {
+        _ecgVector = [NSMutableArray new];
+    }
+    return _ecgVector;
 }
 
 @end

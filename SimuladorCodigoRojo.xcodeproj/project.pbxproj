@@ -17,8 +17,6 @@
 		6CFC4CDB1A8C08320022370F /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFC4CD81A8C081E0022370F /* CorePlot.framework */; };
 		6CFC4CDD1A8C08540022370F /* CorePlot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CFC4CD81A8C081E0022370F /* CorePlot.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6CFC4CDF1A8C08620022370F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFC4CDE1A8C08620022370F /* QuartzCore.framework */; };
-		6CFC4CE41A8C09550022370F /* ECGGenerator in Resources */ = {isa = PBXBuildFile; fileRef = 6CFC4CE31A8C09550022370F /* ECGGenerator */; };
-		6CFC4CE51A8C09550022370F /* ECGGenerator in Resources */ = {isa = PBXBuildFile; fileRef = 6CFC4CE31A8C09550022370F /* ECGGenerator */; };
 		6F2D180B1A8A72A90048281D /* menuFrontground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D180A1A8A72A90048281D /* menuFrontground.png */; };
 		6F2D180C1A8A72A90048281D /* menuFrontground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D180A1A8A72A90048281D /* menuFrontground.png */; };
 		6F2D180E1A8A72B20048281D /* menuPregnant.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D180D1A8A72B20048281D /* menuPregnant.png */; };
@@ -111,6 +109,9 @@
 		6FED8FB21A6D783700150438 /* monitorBackgroundPicture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FED8FB01A6D783700150438 /* monitorBackgroundPicture.jpg */; };
 		6FED8FB71A6D7B0200150438 /* monitorNotepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED8FB61A6D7B0200150438 /* monitorNotepad.png */; };
 		6FED8FB81A6D7B0200150438 /* monitorNotepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED8FB61A6D7B0200150438 /* monitorNotepad.png */; };
+		C58F97321A9138AC0082F25D /* dfour1.c in Sources */ = {isa = PBXBuildFile; fileRef = C58F972D1A9138AC0082F25D /* dfour1.c */; };
+		C58F97331A9138AC0082F25D /* ecgsyn.c in Sources */ = {isa = PBXBuildFile; fileRef = C58F972E1A9138AC0082F25D /* ecgsyn.c */; };
+		C58F97351A9138AC0082F25D /* ran1.c in Sources */ = {isa = PBXBuildFile; fileRef = C58F97311A9138AC0082F25D /* ran1.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,7 +166,6 @@
 		6CF863BE1A8D3C2600CDF001 /* PlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotView.m; sourceTree = "<group>"; };
 		6CFC4CD11A8C081D0022370F /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = "../../repos/core-plot/framework/CorePlot.xcodeproj"; sourceTree = "<group>"; };
 		6CFC4CDE1A8C08620022370F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6CFC4CE31A8C09550022370F /* ECGGenerator */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ECGGenerator; sourceTree = "<group>"; };
 		6F2D180A1A8A72A90048281D /* menuFrontground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuFrontground.png; sourceTree = "<group>"; };
 		6F2D180D1A8A72B20048281D /* menuPregnant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuPregnant.png; sourceTree = "<group>"; };
 		6F2D18101A8A72CD0048281D /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
@@ -247,6 +247,10 @@
 		6FE91C021A51C95A00E9B413 /* GBCSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCSimulator.m; sourceTree = "<group>"; };
 		6FED8FB01A6D783700150438 /* monitorBackgroundPicture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monitorBackgroundPicture.jpg; sourceTree = "<group>"; };
 		6FED8FB61A6D7B0200150438 /* monitorNotepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorNotepad.png; sourceTree = "<group>"; };
+		C58F972D1A9138AC0082F25D /* dfour1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dfour1.c; path = ECGGenerator/dfour1.c; sourceTree = "<group>"; };
+		C58F972E1A9138AC0082F25D /* ecgsyn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ecgsyn.c; path = ECGGenerator/ecgsyn.c; sourceTree = "<group>"; };
+		C58F972F1A9138AC0082F25D /* ecgsyn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecgsyn.h; path = ECGGenerator/ecgsyn.h; sourceTree = "<group>"; };
+		C58F97311A9138AC0082F25D /* ran1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ran1.c; path = ECGGenerator/ran1.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,14 +293,6 @@
 			name = Bluetooth;
 			sourceTree = "<group>";
 		};
-        6F6D95E51A8D10DE00E9A958 /* Sounds */ = {
-            isa = PBXGroup;
-            children = (
-                6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */,
-            );
-            name = Sounds;
-            sourceTree = "<group>";
-        };
 		6CF863B71A8D3B9200CDF001 /* CorePlot */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,10 +326,21 @@
 		6CFC4CE21A8C091E0022370F /* ECGSignal */ = {
 			isa = PBXGroup;
 			children = (
+				C58F972D1A9138AC0082F25D /* dfour1.c */,
+				C58F972E1A9138AC0082F25D /* ecgsyn.c */,
+				C58F972F1A9138AC0082F25D /* ecgsyn.h */,
+				C58F97311A9138AC0082F25D /* ran1.c */,
 				6CF863B71A8D3B9200CDF001 /* CorePlot */,
-				6CFC4CE31A8C09550022370F /* ECGGenerator */,
 			);
 			name = ECGSignal;
+			sourceTree = "<group>";
+		};
+		6F6D95E51A8D10DE00E9A958 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		6F78F3641A48A11B006EBCEE /* Pictures */ = {
@@ -623,7 +630,6 @@
 				6FCD42141A65E9DF0040C76C /* monitorPanel.png in Resources */,
 				6FC09AD21A43A89E0023B3FA /* configPauseButton.png in Resources */,
 				6F2D18111A8A72CD0048281D /* menuBackground.png in Resources */,
-				6CFC4CE41A8C09550022370F /* ECGGenerator in Resources */,
 				6F2D181D1A8A76050048281D /* monitor3GraphsLines.png in Resources */,
 				6FC09AB21A437E320023B3FA /* menuCreatedByGibicText.png in Resources */,
 				6F54FC591A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */,
@@ -655,7 +661,6 @@
 			files = (
 				6F2D182A1A8A76A70048281D /* monitorBackGround.png in Resources */,
 				6F54FC5C1A802DE6004B81E3 /* monitorSigSignal2.jpg in Resources */,
-				6CFC4CE51A8C09550022370F /* ECGGenerator in Resources */,
 				6F2D18301A8A7CA50048281D /* panelBackground.png in Resources */,
 				6F54FC5A1A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */,
 				6F2D182D1A8A7CA10048281D /* panelFrontground.png in Resources */,
@@ -690,10 +695,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FCD42001A6583290040C76C /* GBCStateMachine.m in Sources */,
+				C58F97351A9138AC0082F25D /* ran1.c in Sources */,
+				C58F97321A9138AC0082F25D /* dfour1.c in Sources */,
 				6CF863C01A8D3C2600CDF001 /* PlotView.m in Sources */,
 				6C44EF4D1A895A7800C81D68 /* GBCBluetoothSelectorSheetController.m in Sources */,
 				6C4F3DF51A8D59B7001F5099 /* PlotItem.m in Sources */,
 				6FC0577E1A8C15E1006B3605 /* GBCConfirmWindowController.m in Sources */,
+				C58F97331A9138AC0082F25D /* ecgsyn.c in Sources */,
 				6FC057751A8C0D22006B3605 /* GBCDoctorPanelWindowController.m in Sources */,
 				6FBBB0781A5C807C008BB4BA /* GBCResultsViewController.m in Sources */,
 				6FBBB0751A5C8035008BB4BA /* GBCDoctorPanelViewController.m in Sources */,
