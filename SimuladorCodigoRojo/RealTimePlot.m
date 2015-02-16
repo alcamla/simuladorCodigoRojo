@@ -5,10 +5,12 @@
 
 #import "RealTimePlot.h"
 #import "ecgsyn.h"
+#import "GBCSimulator.h"
 
 static const double kFrameRate = 2;  // frames per second
 
-static const NSUInteger kMaxDataPoints = 1536 +256+256;
+static const NSUInteger kMaxDataPoints = 384 +64+64;
+static const NSUInteger kECGSamplingFrequency = 64;
 static NSString *const kPlotIdentifier = @"Data Source Plot";
 
 @interface RealTimePlot()
@@ -18,7 +20,8 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 @property (nonatomic, readwrite, strong) NSTimer *dataTimer;
 @property (nonatomic) NSInteger currentIndexOfECGVector;
 @property (nonatomic, strong) NSMutableArray *ecgVector;
-@property(nonatomic)NSUInteger deletedSamples;
+@property (nonatomic) NSUInteger deletedSamples;
+@property (nonatomic) NSInteger currentHeartRate;
 
 @end
 
@@ -34,9 +37,11 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     if ( (self = [super init]) ) {
         plotData  = [[NSMutableArray alloc] initWithCapacity:kMaxDataPoints];
         dataTimer = nil;
+        
+        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
 
-        self.title   = @"Real Time Plot";
-        self.section = kLinePlots;
+        //self.title   = @"Real Time Plot";
     }
 
     return self;
@@ -66,7 +71,7 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 
     CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:bounds];
     [self addGraph:graph toHostingView:hostingView];
-    [self applyTheme:theme toGraph:graph withDefault:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
+    [self applyTheme:theme toGraph:graph withDefault:nil];
 
     graph.plotAreaFrame.paddingTop    = self.titleSize * CPTFloat(0.5);
     graph.plotAreaFrame.paddingRight  = self.titleSize * CPTFloat(0.5);
@@ -76,12 +81,16 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 
     // Grid line styles
     CPTMutableLineStyle *majorGridLineStyle = [CPTMutableLineStyle lineStyle];
-    majorGridLineStyle.lineWidth = 0.75;
-    majorGridLineStyle.lineColor = [[CPTColor colorWithGenericGray:CPTFloat(0.2)] colorWithAlphaComponent:CPTFloat(0.75)];
+    //majorGridLineStyle.lineWidth = 0.75;
+    majorGridLineStyle.lineWidth = 0;
+    //majorGridLineStyle.lineColor = [[CPTColor colorWithGenericGray:CPTFloat(0.2)] colorWithAlphaComponent:CPTFloat(0.75)];
+    majorGridLineStyle.lineColor = [[CPTColor colorWithGenericGray:CPTFloat(0.2)] colorWithAlphaComponent:CPTFloat(0.0)];
 
     CPTMutableLineStyle *minorGridLineStyle = [CPTMutableLineStyle lineStyle];
-    minorGridLineStyle.lineWidth = 0.25;
-    minorGridLineStyle.lineColor = [[CPTColor whiteColor] colorWithAlphaComponent:CPTFloat(0.1)];
+    //minorGridLineStyle.lineWidth = 0.25;
+    minorGridLineStyle.lineWidth = 0;
+    //minorGridLineStyle.lineColor = [[CPTColor whiteColor] colorWithAlphaComponent:CPTFloat(0.1)];
+    minorGridLineStyle.lineColor = [[CPTColor whiteColor] colorWithAlphaComponent:CPTFloat(0.0)];
 
     // Axes
     // X axis
@@ -91,10 +100,10 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     x.orthogonalCoordinateDecimal = CPTDecimalFromUnsignedInteger(0);
     x.majorGridLineStyle          = majorGridLineStyle;
     x.minorGridLineStyle          = minorGridLineStyle;
-    x.minorTicksPerInterval       = 9;
-    x.labelOffset                 = self.titleSize * CPTFloat(0.25);
-    x.title                       = @"X Axis";
-    x.titleOffset                 = self.titleSize * CPTFloat(1.5);
+    x.minorTicksPerInterval       = 0;
+    //x.labelOffset                 = self.titleSize * CPTFloat(0.25);
+    //x.title                       = @"X Axis";
+    //x.titleOffset                 = self.titleSize * CPTFloat(1.5);
     NSNumberFormatter *labelFormatter = [[NSNumberFormatter alloc] init];
     labelFormatter.numberStyle = NSNumberFormatterNoStyle;
     x.labelFormatter           = labelFormatter;
@@ -105,10 +114,10 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     y.orthogonalCoordinateDecimal = CPTDecimalFromUnsignedInteger(0);
     y.majorGridLineStyle          = majorGridLineStyle;
     y.minorGridLineStyle          = minorGridLineStyle;
-    y.minorTicksPerInterval       = 3;
-    y.labelOffset                 = self.titleSize * CPTFloat(0.25);
-    y.title                       = @"Y Axis";
-    y.titleOffset                 = self.titleSize * CPTFloat(1.25);
+    y.minorTicksPerInterval       = 0;
+    //y.labelOffset                 = self.titleSize * CPTFloat(0.25);
+    //y.title                       = @"Y Axis";
+    //y.titleOffset                 = self.titleSize * CPTFloat(1.25);
     y.axisConstraints             = [CPTConstraints constraintWithLowerOffset:0.0];
 
     // Rotate the labels by 45 degrees, just to show it can be done.
@@ -123,13 +132,15 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     lineStyle.lineWidth              = 3.0;
     lineStyle.lineColor              = [CPTColor greenColor];
     dataSourceLinePlot.dataLineStyle = lineStyle;
+    dataSourceLinePlot.interpolation =CPTScatterPlotInterpolationCurved;
+
 
     dataSourceLinePlot.dataSource = self;
     [graph addPlot:dataSourceLinePlot];
 
     // Plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromUnsignedInteger(0) length:CPTDecimalFromUnsignedInteger(kMaxDataPoints - 256)];
+    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromUnsignedInteger(0) length:CPTDecimalFromUnsignedInteger(kMaxDataPoints - kECGSamplingFrequency)];
     plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(-0.5) length:CPTDecimalFromDouble(2.0)];
 
     [self.dataTimer invalidate];
@@ -162,14 +173,14 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 
     if ( thePlot ) {
         if ( self.plotData.count >= kMaxDataPoints ) {
-            [self.plotData removeObjectsInRange:NSMakeRange(0, 128)];
-            [thePlot deleteDataInIndexRange:NSMakeRange(0, 128)];
-            self.deletedSamples +=128;
+            [self.plotData removeObjectsInRange:NSMakeRange(0, kECGSamplingFrequency/kFrameRate)];
+            [thePlot deleteDataInIndexRange:NSMakeRange(0, kECGSamplingFrequency/kFrameRate)];
+            self.deletedSamples += kECGSamplingFrequency/kFrameRate;
         }
 
         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)theGraph.defaultPlotSpace;
-                double simRangeLocation = self.currentIndex*(256/2) >= kMaxDataPoints ? ((self.currentIndex*128  - kMaxDataPoints + 256)/256) : 0;
-        double simRangeLength = (kMaxDataPoints - 256)/256;
+                double simRangeLocation = self.currentIndex*( kECGSamplingFrequency/kFrameRate) >= kMaxDataPoints ? ((self.currentIndex* kECGSamplingFrequency/kFrameRate  - kMaxDataPoints + kECGSamplingFrequency)/kECGSamplingFrequency) : 0;
+        double simRangeLength = (kMaxDataPoints - kECGSamplingFrequency)/kECGSamplingFrequency;
         CPTPlotRange *newRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(simRangeLocation)
                                                                length:CPTDecimalFromDouble(simRangeLength)];
 
@@ -178,34 +189,46 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
         
         
         [self.plotData addObjectsFromArray: [self nextECGValue]];
-        [thePlot insertDataAtIndex:self.plotData.count - 128 numberOfRecords:128];
+        [thePlot insertDataAtIndex:self.plotData.count - kECGSamplingFrequency/kFrameRate numberOfRecords: kECGSamplingFrequency/kFrameRate];
         self.currentIndex++;
         
         [CPTAnimation animate:plotSpace
                      property:@"xRange"
                 fromPlotRange:plotSpace.xRange
                   toPlotRange:newRange
-                     duration:CPTFloat(1.0 / 128.8)];
+                     duration:CPTFloat(1.0 /kFrameRate)];
     }
 }
 
 -(NSArray*)nextECGValue{
     //NSNumber *nextValue = self.ecgVector[self.currentIndexOfECGVector];
-    NSArray *nextSegment = [self.ecgVector subarrayWithRange:NSMakeRange(self.currentIndexOfECGVector, 128)];
-    self.currentIndexOfECGVector  += 128;
+    NSArray *nextSegment = [self.ecgVector subarrayWithRange:NSMakeRange(self.currentIndexOfECGVector,  kECGSamplingFrequency/kFrameRate)];
+    self.currentIndexOfECGVector  +=  kECGSamplingFrequency/kFrameRate;
     return nextSegment;
 }
 
 -(NSMutableArray*)ecgVector{
-    if (!_ecgVector || (self.currentIndexOfECGVector +128 >= [_ecgVector count])) {
+    //Get the current heartRate from the Simulation Model
+    NSString *heartRate = [[[GBCSimulator sharedSimulator] getCurrentVitalSigns] objectForKey:@"Ritmo Cardiaco"];
+    BOOL mustRecalculateECGVector = NO;
+    NSInteger simulationHeartRate = [heartRate integerValue];
+    if (self.currentHeartRate != simulationHeartRate) {
+        self.currentHeartRate = simulationHeartRate;
+        mustRecalculateECGVector = YES;
+    }
+    //if (!_ecgVector || mustRecalculateECGVector){ //|| (self.currentIndexOfECGVector +128 >= [_ecgVector count])) {
+    if (!_ecgVector || (self.currentIndexOfECGVector + kECGSamplingFrequency/kFrameRate >= [_ecgVector count])) {
          self.currentIndexOfECGVector = 0;
         _ecgVector = [NSMutableArray new];
          int ecgVectorSize = 0;
-        double *ecgVectorC = calculateEcgAndPeaksLocation(40, 256, 60,&ecgVectorSize);
+        double *ecgVectorC = calculateEcgAndPeaksLocation(40, kECGSamplingFrequency, (int)self.currentHeartRate, &ecgVectorSize);
         for (int i = 0; i<ecgVectorSize; i++ ) {
             [_ecgVector addObject: [NSNumber numberWithDouble:ecgVectorC[i]]];
         }
     }
+//    } else if (self.currentIndexOfECGVector +128 >= [_ecgVector count]){
+//        self.currentIndexOfECGVector =0;
+//    }
     return _ecgVector;
 }
 
@@ -223,7 +246,7 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 
     switch ( fieldEnum ) {
         case CPTScatterPlotFieldX:
-            num = @((index+self.deletedSamples)/(256.0));
+            num = @((index+self.deletedSamples)/(64.0));
             break;
 
         case CPTScatterPlotFieldY:
