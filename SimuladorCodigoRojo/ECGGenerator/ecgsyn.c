@@ -804,7 +804,12 @@ double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int
     /* include additive uniformly distributed measurement noise */
     for(i=1;i<=Nts;i++) zts[i] += Anoise*(2.0*ran1(&rseed) - 1.0);
     
-    
+    /*Scale the ECG signal by a factor of 100*/
+    for (i=1; i<=Nts; i++) {
+        zts[i] = 100*zts[i];
+    }
+
+    /*Get the ECG segment to be used */
     int firstPPeakIndex = 0;
     int lastPPeakIndex = 0;
     int isSaving = 0;
@@ -812,12 +817,12 @@ double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int
     for (int jj = 1; jj<=Nts; jj++) {
         if (ipeak[jj]==3) {
             //This data corresponds to a R Peak.
-            if (isSaving == 0) {
+            if (isSaving == 0 && counter == 6) {
                 //If was not saving, start saving
                 isSaving = 1;
                 firstPPeakIndex =  jj;
             }
-            if (isSaving ==1 && counter ==3) {
+            if (isSaving ==1 && counter == 10) {
                 //Enough samples for 10 seconds of signal at given sampling frequency
                 //keep the last saved peak, break the cycle
                 break;
@@ -826,7 +831,7 @@ double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int
             lastPPeakIndex = jj;
         }
     }
-    //Shift the signal segment by half of the typical duration of the P wave: 120ms
+    //Get the corresponding segment, with three R peaks in it
 
     int totalSamplesLoc = lastPPeakIndex - firstPPeakIndex;
     double *ecg2PeaksSegment = mallocVect(1, totalSamplesLoc);
@@ -1031,8 +1036,6 @@ double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int
     for(i=1;i<=Nts;i++){
         //fprintf(fp,"%f %f %d\n",(i-1)*tstep,zts[i],(int)ipeak[i]);
         printf("%f %f %d\n",(i-1)*tstep,zts[i],(int)ipeak[i]);
-        
-        
     }
     fclose(fp);
 

@@ -22,7 +22,9 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 @property (nonatomic, strong) NSMutableArray *ecgVector;
 @property (nonatomic) NSUInteger deletedSamples;
 @property (nonatomic) NSInteger currentHeartRate;
-
+@property (nonatomic, strong) NSDictionary *ecgVectors;
+@property (nonatomic, strong) NSDictionary *simulationStatesDictionary;
+@property (nonatomic, strong) NSNumber *simulationState;
 @end
 
 @implementation RealTimePlot
@@ -38,12 +40,52 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
         plotData  = [[NSMutableArray alloc] initWithCapacity:kMaxDataPoints];
         dataTimer = nil;
         
-        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        BOOL updateECGVectors = NO;
         
-
-        //self.title   = @"Real Time Plot";
+        //Create the ECG vectors as part of the User Defaults
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults objectForKey:@"ecgVectors"]|| updateECGVectors) {
+            //Create a dictinary for each simulation state
+            NSMutableDictionary *ecgVectorsMutDic= [NSMutableDictionary new];
+            NSDictionary *statesHeartRatesDic = @{@0:@84,@1:@96, @2:@84, @3:@110, @4:@124, @5:@84};
+            NSNumber *heartRate;
+            NSMutableArray *localEcgVector;
+            for (NSNumber *key in statesHeartRatesDic) {
+                heartRate = (NSNumber*)statesHeartRatesDic[key];
+                localEcgVector = [NSMutableArray new];
+                int ecgVectorSize = 0;
+                double *ecgVectorC = calculateEcgAndPeaksLocation(40, kECGSamplingFrequency, (int)[heartRate integerValue], &ecgVectorSize);
+                for (int i = 0; i<ecgVectorSize; i++ ) {
+                    double sample = ecgVectorC[i];
+                    if (sample != sample) {
+                        NSLog(@"We have a NaN");
+                    }
+                    //Downscale the signal
+                    sample = sample/100;
+                    [localEcgVector addObject: [NSNumber numberWithDouble:sample]];
+                    
+                }
+                [ecgVectorsMutDic setObject:localEcgVector forKey:key];
+            }
+//            NSError *error;
+//            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ecgVectorsMutDic
+//                                                               options:NSJSONWritingPrettyPrinted
+//                                                                 error:&error];
+//            if (! jsonData) {
+//                NSLog(@"Got an error: %@", error);
+//            } else {
+//                //NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//                [defaults setObject:jsonData forKey:@"ecgVectors"];
+//            }
+            NSData *ecgVectorsAsData = [NSKeyedArchiver archivedDataWithRootObject:ecgVectorsMutDic];
+            [defaults setObject:ecgVectorsAsData forKey:@"ecgVectors"];
+        }
+        //Get the ECG vectors from UserDefaults
+        NSData *ecgVectorsAsData = [defaults objectForKey: @"ecgVectors"];
+        NSMutableDictionary *ecgVectors = (NSMutableDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:ecgVectorsAsData];
+        self.ecgVectors = ecgVectors;
     }
-
+    //self.title   = @"Real Time Plot";
     return self;
 }
 
@@ -209,26 +251,20 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 
 -(NSMutableArray*)ecgVector{
     //Get the current heartRate from the Simulation Model
-    NSString *heartRate = [[[GBCSimulator sharedSimulator] getCurrentVitalSigns] objectForKey:@"Ritmo Cardiaco"];
+    NSString *simulationStateString =[[GBCSimulator sharedSimulator] sendCurrentState];
+    NSNumber *currentSimulationState = self.simulationStatesDictionary[simulationStateString];
     BOOL mustRecalculateECGVector = NO;
-    NSInteger simulationHeartRate = [heartRate integerValue];
-    if (self.currentHeartRate != simulationHeartRate) {
-        self.currentHeartRate = simulationHeartRate;
+    if (self.simulationState != currentSimulationState) {
+        self.simulationState = currentSimulationState;
         mustRecalculateECGVector = YES;
     }
-    //if (!_ecgVector || mustRecalculateECGVector){ //|| (self.currentIndexOfECGVector +128 >= [_ecgVector count])) {
-    if (!_ecgVector || (self.currentIndexOfECGVector + kECGSamplingFrequency/kFrameRate >= [_ecgVector count])) {
+    if (!_ecgVector || mustRecalculateECGVector){ //|| (self.currentIndexOfECGVector +128 >= [_ecgVector count])) {
+    //if (!_ecgVector || (self.currentIndexOfECGVector + kECGSamplingFrequency/kFrameRate >= [_ecgVector count])) {
          self.currentIndexOfECGVector = 0;
-        _ecgVector = [NSMutableArray new];
-         int ecgVectorSize = 0;
-        double *ecgVectorC = calculateEcgAndPeaksLocation(40, kECGSamplingFrequency, (int)self.currentHeartRate, &ecgVectorSize);
-        for (int i = 0; i<ecgVectorSize; i++ ) {
-            [_ecgVector addObject: [NSNumber numberWithDouble:ecgVectorC[i]]];
-        }
+        _ecgVector = self.ecgVectors[self.simulationState];
+    }else if (self.currentIndexOfECGVector +128 >= [_ecgVector count]){
+    self.currentIndexOfECGVector =0;
     }
-//    } else if (self.currentIndexOfECGVector +128 >= [_ecgVector count]){
-//        self.currentIndexOfECGVector =0;
-//    }
     return _ecgVector;
 }
 
@@ -258,6 +294,18 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     }
 
     return num;
+}
+
+-(NSDictionary*)simulationStatesDictionary{
+    if (!_simulationStatesDictionary) {
+        _simulationStatesDictionary = @{@"Postparto":@0,
+                                        @"Choque Leve":@1,
+                                        @"Transitorio Leve":@2,
+                                        @"Choque Moderado":@3,
+                                        @"Choque Grave":@4,
+                                        @"Estable":@5};
+    }
+    return _simulationStatesDictionary;
 }
 
 @end
