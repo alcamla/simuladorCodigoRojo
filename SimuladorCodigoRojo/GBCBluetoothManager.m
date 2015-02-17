@@ -158,10 +158,9 @@
                 //Find a * in dataToSend, start the dataToSend from the character following the *
                  NSRange subRange = [self.readDataBuffer rangeOfString:@"*"];
                 if (subRange.location != NSNotFound) {
-                    NSLog(@"original dataToSend, before substringing: %@", dataToSend);
-                    dataToSend = [dataToSend substringFromIndex:subRange.location +1];
-                    if ([dataToSend length] != 2) {
-                        NSLog(@"ERROR EN LA CADENA RECIBIDA!!!!!");
+                    if ([dataToSend length] != 3) {
+                        NSLog(@"THERE IS DATA MISSING IN THE STRING!!! : %@", dataToSend);
+                        dataToSend = [dataToSend substringFromIndex: subRange.location +1];
                     } else{
                         [self sendData:dataToSend];
                         NSLog(@"Sent data: %@", dataToSend);
