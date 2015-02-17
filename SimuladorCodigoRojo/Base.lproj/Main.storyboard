@@ -9,7 +9,7 @@
             <objects>
                 <windowController id="dNa-BF-ULf" customClass="GBCSyncWindowController" sceneMemberID="viewController">
                     <window key="window" title="SIncronización" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Hwl-st-tES">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="740" y="281" width="414" height="430"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
@@ -682,7 +682,7 @@
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="GBCMenuWindowController" sceneMemberID="viewController">
                     <window key="window" title="Menú" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="596" y="388" width="620" height="341"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -701,7 +701,7 @@
                 <viewController title="Sincronización" id="QHI-Ye-tGO" customClass="GBCSyncViewController" sceneMemberID="viewController">
                     <view key="view" id="Hm3-iN-5rS">
                         <rect key="frame" x="0.0" y="0.0" width="750" height="872"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VI5-Mr-oD4">
                                 <rect key="frame" x="0.0" y="-28" width="750" height="919"/>
@@ -889,7 +889,7 @@
             <objects>
                 <windowController id="mdy-4D-Yjc" customClass="GBCConfirmWindowController" sceneMemberID="viewController">
                     <window key="window" title="Confirmar" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Hf6-TK-LMw">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="734" y="547" width="389" height="75"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
@@ -907,7 +907,7 @@
             <objects>
                 <windowController id="0qe-IH-gCS" sceneMemberID="viewController">
                     <window key="window" title="Monitor de signos vitales" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Xlv-xJ-wKV">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="478" y="147" width="1008" height="702"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
@@ -1131,7 +1131,7 @@
                 <viewController title="Panel Médico" id="96v-ZO-IAM" customClass="GBCDoctorPanelViewController" sceneMemberID="viewController">
                     <view key="view" id="qC2-K5-R9Z">
                         <rect key="frame" x="0.0" y="0.0" width="1231" height="856"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gc4-Yp-yLd">
                                 <rect key="frame" x="-7" y="-21" width="1238" height="897"/>
@@ -1233,27 +1233,27 @@
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red_code_oxigen_sensor_active" id="621-Hb-zWz"/>
                                     </imageView>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gT1-Xc-Gba">
-                                        <rect key="frame" x="258" y="593" width="76" height="26"/>
+                                        <rect key="frame" x="258" y="579" width="76" height="26"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red_code_blanket_sensor_active" id="pkQ-kS-Oze"/>
                                         <connections>
                                             <action selector="blanketSensor:" target="QHI-Ye-tGO" id="3SO-Dg-ewi"/>
                                         </connections>
                                     </imageView>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYk-HN-7XA">
-                                        <rect key="frame" x="373" y="467" width="29" height="32"/>
+                                        <rect key="frame" x="367" y="513" width="29" height="32"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red_code_vital_signs_sensor_active" id="YLi-c4-z1f"/>
                                     </imageView>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TAC-WO-TyW">
                                         <rect key="frame" x="276" y="347" width="40" height="38"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red_code_urinary_catheter_sensor_active" id="siT-FB-rZL"/>
                                     </imageView>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVb-lI-9Gb">
-                                        <rect key="frame" x="245" y="408" width="101" height="77"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red_code_massage_sensor_inactive" id="rsy-Vh-nC3"/>
-                                    </imageView>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mci-Px-q8B">
                                         <rect key="frame" x="195" y="460" width="18" height="17"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red_code_catheter_sensor_inactive" id="egy-fK-1HG"/>
+                                    </imageView>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVb-lI-9Gb">
+                                        <rect key="frame" x="223" y="393" width="147" height="103"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red_code_massage_sensor_inactive" id="rsy-Vh-nC3"/>
                                     </imageView>
                                 </subviews>
                             </customView>
@@ -1298,7 +1298,7 @@
             <objects>
                 <windowController id="l6h-Db-HdS" customClass="GBCResultsWindowController" sceneMemberID="viewController">
                     <window key="window" title="Resultados" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="M6L-TD-cMI">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="655" y="254" width="651" height="551"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
@@ -1316,7 +1316,7 @@
             <objects>
                 <windowController id="gNm-pR-YI9" customClass="GBCDoctorPanelWindowController" sceneMemberID="viewController">
                     <window key="window" title="Panel Médico" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="2zO-aO-U27">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="691" y="255" width="586" height="525"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>

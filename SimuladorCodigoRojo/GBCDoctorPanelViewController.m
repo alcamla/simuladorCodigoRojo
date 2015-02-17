@@ -266,7 +266,6 @@ bool simulationIsPaused=NO;
     
     if (self.venousPathways.state==0) {
         self.editedVariablesValues[5]=@"No";
-        
         [[self.venousPathways cell] setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Vías Venosas Garantizadas"
                                                                                          attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
                                                                                                      NSFontAttributeName, [NSColor blackColor],NSForegroundColorAttributeName, nil]]];
@@ -323,6 +322,16 @@ bool simulationIsPaused=NO;
                                                                                     attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
                                                                                                 NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
     }
+    
+    // Special situation for 
+    if ([[self.bluetoothVariablesPanel objectForKey:@"Vías Venosas"] isEqualToString:@"Yes"]==YES) {
+        self.venousPathways.state=1;
+        
+    }
+    if ([[self.bluetoothVariablesPanel objectForKey:@"Vías Venosas"] isEqualToString:@"No"]==YES) {
+        self.venousPathways.state=0;
+        
+    }
 
     // Build and Update dictionary
     [self.editedVariables setObject:self.editedVariablesValues[0] forKey:@"Sangrado Observado"];
@@ -335,6 +344,7 @@ bool simulationIsPaused=NO;
     [self.editedVariables setObject:self.editedVariablesValues[7] forKey:@"Calentar Líquidos"];
     [self.editedVariables setObject:self.editedVariablesValues[8] forKey:@"Marcar Tubos"];
     
+    [[GBCSimulator sharedSimulator] getEditedVariablesValues:self.editedVariables];
     
 }
 
@@ -401,7 +411,14 @@ bool simulationIsPaused=NO;
 - (IBAction)changeVenous:(id)sender {
     
     [self readEditedVariables];
-    [[GBCSimulator sharedSimulator] getEditedVariablesValues:self.editedVariables];
+    [[GBCSimulator sharedSimulator] modifyReadWriteVariables];
+    if (self.venousPathways.state==1) {
+        self.venousPathways.state=0;
+
+    }else if (self.venousPathways.state==0){
+        self.venousPathways.state=1;
+    }
+    [self UpdateAndGetBluetoothVariablesFromSimulator];
 }
 
 // Tell to main class simulator if panel has been already loaded and ask if Simulator wants me to be active

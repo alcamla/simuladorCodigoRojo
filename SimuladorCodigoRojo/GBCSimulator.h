@@ -43,7 +43,8 @@
 - (BOOL) askIfPanelViewIsOpenedAndSetActive: (BOOL) panelActiveMessage;
 - (void) isPanelViewOpened:(BOOL)isPanelOpenedMessage;
 - (BOOL) makeActiveToPanel;
--(void)forgetBluetoothDevice;
+- (void)forgetBluetoothDevice;
+- (void) sendStateToDoll;
 
 @end
 

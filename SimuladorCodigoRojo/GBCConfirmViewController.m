@@ -29,6 +29,9 @@
     
     // Call Segue to go to next view controller
     [self performSegueWithIdentifier:@"fromConfirmToMonitor" sender:sender];
+    
+    // Send state message
+    [[GBCSimulator sharedSimulator] sendStateToDoll];
 }
 
 @end

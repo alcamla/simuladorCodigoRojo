@@ -40,9 +40,9 @@
 
 // Local DataBase
 
-bool bluetoothConnectionCheckSimulator = YES;
-bool calibrationCheckSimulator = YES;
-bool sensorsCheckSimulator= YES;
+bool bluetoothConnectionCheckSimulator = NO;
+bool calibrationCheckSimulator = NO;
+bool sensorsCheckSimulator= NO;
 bool paussedChecked = NO;
 bool finalizationCheck=NO;
 bool startedInitializationMessage=NO;
@@ -101,7 +101,7 @@ bool panelViewStateSimulator=NO;
 - (void) stateSelectedIs: (NSString *)stateReceived{
     
     self.currentState=stateReceived;
-    [self.bluetoothManager sendCurrentSimulationState:self.currentState];
+    
 }
 
 // Method to send to Machine Class the initial State
@@ -124,9 +124,16 @@ bool panelViewStateSimulator=NO;
 - (void) receiveCurrentState: (NSString *)currentStateFromMachine{
     
     self.currentState=currentStateFromMachine;
-    
+    [self sendStateToDoll];
+}
+
+// Method to send state to the doll
+
+- (void) sendStateToDoll{
+
     // Send the new State to Muñeca
     [self.bluetoothManager sendCurrentSimulationState:self.currentState];
+
 }
 
 // Other Class ask to me if bluetooth is connected
@@ -213,6 +220,9 @@ bool panelViewStateSimulator=NO;
 - (void) receiveStartedInitializationMessage{
     startedInitializationMessage=YES;
     if (startedInitializationMessage==YES) {
+        
+        // Send finalization message to the doll for it to reset
+        [self.bluetoothManager sendFinishMessage];
         [self simulationHasFinished];
     }
 }
@@ -237,7 +247,6 @@ bool panelViewStateSimulator=NO;
 - (void) receiveFinalizationMessage{
 
     //NSLog(@"Finalization Message Received");
-    // TODO: Uncomment this line
     //[self.bluetoothManager sendFinishMessage];
     finalizationCheck=YES;
 
@@ -256,9 +265,6 @@ bool panelViewStateSimulator=NO;
     
     // Receive dictionary from Panel View
     self.editedVariablesSimulator=editedVariablesDictionaryFromPanel;
-    
-    // Modify Read/Write Variables
-    [self modifyReadWriteVariables];
     
 }
 

@@ -190,6 +190,9 @@ BOOL activeSyncMessage=NO;
         
         // Update calibration Check Appeareance
         [self.calibrationCheck setTransparent:NO];
+    
+       
+
         
     }
     
@@ -204,6 +207,9 @@ BOOL activeSyncMessage=NO;
         
         // Update reading sensors Check Appeareance
         [self.readingSensorsCheck setTransparent:NO];
+        
+        // Update endSyncProperty Button Appeareance
+        self.endSyncProperty.enabled=YES;
     }
     
     // Check Simulator Class Answer
@@ -214,6 +220,7 @@ BOOL activeSyncMessage=NO;
                                                                                         attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica Neue" size:28],
                                                                                                     NSFontAttributeName, [NSColor whiteColor],NSForegroundColorAttributeName, nil]]];
         [self.readingSensorsCheck setState:1];
+        
         
     }
     
@@ -226,9 +233,6 @@ BOOL activeSyncMessage=NO;
     
     // If there are are bluetooth variables, then display them
     if (vitalSignsCheck==YES) {
-        
-        // Update endSyncProperty Button Appeareance
-        self.endSyncProperty.enabled=YES;
         
         //Update the doll sensor's indicators
         [self.oxigenSensor setImage:[GBCRedCodeUtilities sensorStateImageForVariable:@"Oxígeno" inState:[self.vitalSignsSync objectForKey:@"Oxígeno"]]];
