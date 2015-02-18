@@ -14,7 +14,9 @@ static const NSUInteger kECGSamplingFrequency = 64;
 static NSString *const kPlotIdentifier = @"Data Source Plot";
 
 
-@interface RealTimePlot()
+@interface RealTimePlot(){
+    dispatch_source_t _timer;
+}
 
 @property (nonatomic, readwrite, strong) NSMutableArray *plotData;
 @property (nonatomic, readwrite, assign) NSUInteger currentIndex;
@@ -28,7 +30,22 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 @property (nonatomic, strong) NSDictionary *statesHeartRatesDictionary;
 @property (nonatomic, strong) NSNumber *simulationState;
 @property (nonatomic, strong) NSSound *ecgBeep;
+@property (nonatomic, strong)NSTimer *beepTimer;
+
 @end
+
+
+dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, dispatch_block_t block)
+{
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    if (timer)
+    {
+        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_SEC), interval * NSEC_PER_SEC, (1ull * NSEC_PER_SEC) / 10);
+        dispatch_source_set_event_handler(timer, block);
+        dispatch_resume(timer);
+    }
+    return timer;
+}
 
 @implementation RealTimePlot
 
@@ -43,7 +60,7 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
         plotData  = [[NSMutableArray alloc] initWithCapacity:kMaxDataPoints];
         dataTimer = nil;
         
-        BOOL updateECGVectors = YES;
+        BOOL updateECGVectors = NO;
         
         //Create the ECG vectors as part of the User Defaults
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -263,8 +280,14 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     BOOL mustRecalculateECGVector = NO;
     if (self.simulationState != currentSimulationState) {
         self.simulationState = currentSimulationState;
-        NSTimeInterval heartSoundPeriod = 60.0/[self.statesHeartRatesDictionary[self.simulationState] doubleValue];
-        [self performSelector:@selector(ecgBeepWithTimeInterval:) withObject:[NSNumber numberWithDouble:heartSoundPeriod] afterDelay:heartSoundPeriod];
+        double heartSoundPeriod = 60.0/[self.statesHeartRatesDictionary[self.simulationState] doubleValue];
+        //[self performSelector:@selector(ecgBeepWithTimeInterval:) withObject:[NSNumber numberWithDouble:heartSoundPeriod] afterDelay:heartSoundPeriod];
+        [self cancelTimer];
+        [self startTimerWithSecondsToFire:heartSoundPeriod];
+        //self.beepTimer = [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(playEcgBeep) userInfo:nil repeats:YES];
+        //[[NSRunLoop currentRunLoop] addTimer:self.beepTimer forMode:NSDefaultRunLoopMode];
+        
+
         mustRecalculateECGVector = YES;
     }
     if (!_ecgVector || mustRecalculateECGVector){ //|| (self.currentIndexOfECGVector +128 >= [_ecgVector count])) {
@@ -276,6 +299,11 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     }
     return _ecgVector;
 }
+
+-(void)playEcgBeep{
+    [self.ecgBeep play];
+}
+
 
 -(void)ecgBeepWithTimeInterval:(NSNumber*)interval{
     [self.ecgBeep play];
@@ -341,10 +369,35 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 
 -(NSSound*)ecgBeep{
     if (!_ecgBeep) {
-        _ecgBeep=[NSSound soundNamed:@"Tink.aiff"];
+        _ecgBeep=[NSSound soundNamed:@"ECGbeep_edited_2.mp3"];
     }
     return _ecgBeep;
 }
+
+#pragma mark -
+#pragma mark ECG Beep timer
+
+- (void)startTimerWithSecondsToFire:(double)seconds
+{
+    //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    //dispatch_queue_t queue = dispatch_get_main_queue();
+    dispatch_queue_t queue = dispatch_queue_create("com.gibicgroup.ECGBeep", NULL);
+    _timer = CreateDispatchTimer(seconds, queue, ^{
+        // Do something
+        [self.ecgBeep play];
+    });
+}
+
+- (void)cancelTimer
+{
+    if (_timer) {
+        dispatch_source_cancel(_timer);
+        _timer = nil;
+    }
+}
+
+
+
 
 
 @end

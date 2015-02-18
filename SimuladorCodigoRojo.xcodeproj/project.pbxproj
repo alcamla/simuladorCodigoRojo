@@ -12,6 +12,7 @@
 		6C5A1C971A700DBE001DA461 /* GBCRedCodeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */; };
 		6C7049CB1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
 		6C7049CC1A69BC8200838B48 /* GBCBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */; };
+		6C9729251A95399000CFAB2E /* ECGbeep_edited_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C9729241A95399000CFAB2E /* ECGbeep_edited_2.mp3 */; };
 		6CF863BF1A8D3C2600CDF001 /* RealTimePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF863BC1A8D3C2600CDF001 /* RealTimePlot.m */; };
 		6CF863C01A8D3C2600CDF001 /* PlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF863BE1A8D3C2600CDF001 /* PlotView.m */; };
 		6CFC4CDB1A8C08320022370F /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFC4CD81A8C081E0022370F /* CorePlot.framework */; };
@@ -160,6 +161,7 @@
 		6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCRedCodeUtilities.m; sourceTree = "<group>"; };
 		6C7049C91A69BC8200838B48 /* GBCBluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GBCBluetoothManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6C7049CA1A69BC8200838B48 /* GBCBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GBCBluetoothManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		6C9729241A95399000CFAB2E /* ECGbeep_edited_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ECGbeep_edited_2.mp3; sourceTree = "<group>"; };
 		6CF863BB1A8D3C2600CDF001 /* RealTimePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealTimePlot.h; sourceTree = "<group>"; };
 		6CF863BC1A8D3C2600CDF001 /* RealTimePlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealTimePlot.m; sourceTree = "<group>"; };
 		6CF863BD1A8D3C2600CDF001 /* PlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotView.h; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 		6F6D95E51A8D10DE00E9A958 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				6C9729241A95399000CFAB2E /* ECGbeep_edited_2.mp3 */,
 				6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */,
 			);
 			name = Sounds;
@@ -639,6 +642,7 @@
 				6F2D18231A8A761C0048281D /* monitorWoman.png in Resources */,
 				6F2D18321A8A80930048281D /* resultsBackground.png in Resources */,
 				6FC09ABE1A43809B0023B3FA /* monitorPatica2.png in Resources */,
+				6C9729251A95399000CFAB2E /* ECGbeep_edited_2.mp3 in Resources */,
 				6F2D180E1A8A72B20048281D /* menuPregnant.png in Resources */,
 				6FC453681A6D83450064E9F6 /* clock-308938_1280.png in Resources */,
 				6FC09AC21A4380A70023B3FA /* monitorBackground0.png in Resources */,
