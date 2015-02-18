@@ -93,7 +93,7 @@ NSNumber *minutesResulst=0;
         self.bluetoothVariablesResults=[[GBCSimulator sharedSimulator] getBluetoothVariablesWhenStable];
         
         //Ask to Simulator for editable Variables
-        self.editableVariablesResults=[[GBCSimulator sharedSimulator] sendEditableVariablesWhenStable];
+        self.editableVariablesResults=[[GBCSimulator sharedSimulator] sendEditableVariables];
         
         
     }else{

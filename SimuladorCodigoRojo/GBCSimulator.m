@@ -132,9 +132,11 @@ bool panelViewStateSimulator=NO;
     // Save the last conditions when pacient is stable to score correctly
     if ([self.currentState isEqualToString:@"Estable"]==YES) {
         
-        self.bluetoothVariablesSimulatorWhenStable=self.bluetoothVariablesSimulator;
-        self.editedVariablesSimulatorWhenStable=self.editedVariablesSimulator;
-        self.chronometerSimulatorWhenStable=self.chronometerSimulator;
+        self.bluetoothVariablesSimulatorWhenStable=[[NSMutableDictionary alloc] initWithDictionary:self.bluetoothVariablesSimulator copyItems:YES];
+        self.editedVariablesSimulatorWhenStable= [[NSMutableDictionary alloc] initWithDictionary:self.editedVariablesSimulator copyItems:YES];
+        //self.chronometerSimulatorWhenStable=self.chronometerSimulator;
+        self.chronometerSimulatorWhenStable = [[NSMutableArray alloc] initWithArray:self.chronometerSimulator copyItems:YES];
+     
     }
 }
 
@@ -465,10 +467,10 @@ bool panelViewStateSimulator=NO;
 }
 
 - (NSMutableArray *)chronometerSimulatorWhenStable{
-    if (!_chronometerSimulator) {
-        _chronometerSimulator = [[NSMutableArray alloc] init];
+    if (!_chronometerSimulatorWhenStable) {
+        _chronometerSimulatorWhenStable = [[NSMutableArray alloc] init];
     }
-    return _chronometerSimulator;
+    return _chronometerSimulatorWhenStable;
 }
 
 //Create a Provitional Dictionary for edited variables
