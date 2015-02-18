@@ -654,7 +654,7 @@ double * calculateECG(int heartBeats, int samplingFrequency, int heartRate)
 /*--------------------------------------------------------------------------*/
 
 
-double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int heartRate, int *totalSamples)
+double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int heartRate, int *totalSamples)//, double **peaksVector)
 {
     int i,j,k,q,Nrr,Nt,Nts;
     double *x,tecg,rrmean,qd,hrfact,hrfact2;
@@ -835,9 +835,15 @@ double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int
 
     int totalSamplesLoc = lastPPeakIndex - firstPPeakIndex;
     double *ecg2PeaksSegment = mallocVect(1, totalSamplesLoc);
+    double *peaksInSegment = mallocVect(1, totalSamplesLoc);
+    //free (*peaksVector);
+    //*peaksVector = mallocVect(1, totalSamplesLoc);
     counter = 0;
     for (int kk =firstPPeakIndex; kk<=lastPPeakIndex; kk ++) {
         ecg2PeaksSegment[counter] = zts[kk];
+        peaksInSegment[counter] = ipeak[kk];
+        //peaksVector[counter]= &ipeak[kk];
+        //*peaksVector[counter] = ipeak[kk];
         counter++;
     }
     
@@ -859,6 +865,7 @@ double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int
     freeVect(zts,1,Nt);
     freeVect(ipeak,1,Nts);
     freeVect(ecg2PeaksSegment, 1, totalSamplesLoc);
+    //freeVect(*peaksVector, 1, totalSamplesLoc);
     
     return ecg2PeaksSegment;
 }

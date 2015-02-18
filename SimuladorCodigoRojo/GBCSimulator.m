@@ -19,8 +19,11 @@
 @property (strong,nonatomic) NSDictionary *vitalSignsSimulator;
 @property (strong,nonatomic) NSString *currentState;
 @property (strong,nonatomic) NSMutableDictionary *bluetoothVariablesSimulator;
+@property (strong,nonatomic) NSMutableDictionary *bluetoothVariablesSimulatorWhenStable;
 @property (strong, nonatomic) NSMutableArray *chronometerSimulator;
+@property (strong, nonatomic) NSMutableArray *chronometerSimulatorWhenStable;
 @property (strong, nonatomic) NSMutableDictionary *editedVariablesSimulator;
+@property (strong, nonatomic) NSMutableDictionary *editedVariablesSimulatorWhenStable;
 @property (strong, nonatomic) NSMutableDictionary *initialEditedVariablesSimulator;
 @property (strong, nonatomic) NSMutableArray *editableInitialVariablesKeysSimulator;
 @property (strong, nonatomic) NSMutableArray *editableInitialVariablesValuesSimulator;
@@ -40,9 +43,9 @@
 
 // Local DataBase
 
-bool bluetoothConnectionCheckSimulator = NO;
-bool calibrationCheckSimulator = NO;
-bool sensorsCheckSimulator= NO;
+bool bluetoothConnectionCheckSimulator = YES;
+bool calibrationCheckSimulator = YES;
+bool sensorsCheckSimulator= YES;
 bool paussedChecked = NO;
 bool finalizationCheck=NO;
 bool startedInitializationMessage=NO;
@@ -125,6 +128,14 @@ bool panelViewStateSimulator=NO;
     
     self.currentState=currentStateFromMachine;
     [self sendStateToDoll];
+    
+    // Save the last conditions when pacient is stable to score correctly
+    if ([self.currentState isEqualToString:@"Estable"]==YES) {
+        
+        self.bluetoothVariablesSimulatorWhenStable=self.bluetoothVariablesSimulator;
+        self.editedVariablesSimulatorWhenStable=self.editedVariablesSimulator;
+        self.chronometerSimulatorWhenStable=self.chronometerSimulator;
+    }
 }
 
 // Method to send state to the doll
@@ -197,6 +208,14 @@ bool panelViewStateSimulator=NO;
     return self.bluetoothVariablesSimulator;
 }
 
+// Method to return to View controllers bluetooth variables when the doll got stable
+
+- (NSDictionary *) getBluetoothVariablesWhenStable{
+    
+    //NSLog(@"Getting Bluetooth Variables from Simulator..");
+    return self.bluetoothVariablesSimulatorWhenStable;
+}
+
 // Get Chronometer Value from Monitor View Controller Class
 
 - (void) getChronometerValue:(NSMutableArray *)chronometer{
@@ -213,6 +232,13 @@ bool panelViewStateSimulator=NO;
 - (NSMutableArray *) sendChronometerValue{
     
     return self.chronometerSimulator;
+}
+
+// Method to send state to Results the last value of the chronometer when pacient got stable
+
+- (NSMutableArray *) sendChronometerValueWhenStable{
+    
+    return self.chronometerSimulatorWhenStable;
 }
 
 // Method to receive the started of the Simulation message
@@ -239,6 +265,7 @@ bool panelViewStateSimulator=NO;
     self.chronometerSimulator[1]=@"0";
     self.chronometerSimulator[2]=@"0";
     self.editedVariablesSimulator=self.initialEditedVariablesSimulator;
+    self.editedVariablesSimulatorWhenStable=self.initialEditedVariablesSimulator;
     
 }
 
@@ -273,6 +300,13 @@ bool panelViewStateSimulator=NO;
 - (NSMutableDictionary *) sendEditableVariables{
     
     return self.editedVariablesSimulator;
+}
+
+// Send Editable Variables to other classes when the doll got stable
+
+- (NSMutableDictionary *) sendEditableVariablesWhenStable{
+    
+    return self.editedVariablesSimulatorWhenStable;
 }
 
 // Modify read-write Variables whose were just sent from Panel View Controller
@@ -430,6 +464,13 @@ bool panelViewStateSimulator=NO;
     return _chronometerSimulator;
 }
 
+- (NSMutableArray *)chronometerSimulatorWhenStable{
+    if (!_chronometerSimulator) {
+        _chronometerSimulator = [[NSMutableArray alloc] init];
+    }
+    return _chronometerSimulator;
+}
+
 //Create a Provitional Dictionary for edited variables
 
 - (NSMutableDictionary *)editedVariablesSimulator{
@@ -439,6 +480,15 @@ bool panelViewStateSimulator=NO;
         _editedVariablesSimulator = [[NSMutableDictionary alloc] initWithObjects:self.editableInitialVariablesValuesSimulator forKeys: self.editableInitialVariablesKeysSimulator];
     }
     return _editedVariablesSimulator;
+}
+
+- (NSMutableDictionary *)editedVariablesSimulatorWhenStable{
+    
+    if (!_editedVariablesSimulatorWhenStable) {
+        
+        _editedVariablesSimulatorWhenStable = [[NSMutableDictionary alloc] initWithObjects:self.editableInitialVariablesValuesSimulator forKeys: self.editableInitialVariablesKeysSimulator];
+    }
+    return _editedVariablesSimulatorWhenStable;
 }
 
 // Create the initial dictionary for edited variables
@@ -463,7 +513,17 @@ bool panelViewStateSimulator=NO;
     
     return _bluetoothVariablesSimulator;
 }
+
+- (NSMutableDictionary *) bluetoothVariablesSimulatorWhenStable{
     
+    if (!_bluetoothVariablesSimulatorWhenStable) {
+        
+        _bluetoothVariablesSimulatorWhenStable= [[NSMutableDictionary alloc] initWithObjects:self.bluetoothInitialValuesSimulator forKeys:self.bluetoothInitialKeysSimulator];
+    }
+    
+    return _bluetoothVariablesSimulatorWhenStable;
+}
+
 - (NSDictionary *)vitalSignsSimulator{
     if (!_vitalSignsSimulator) {
         _vitalSignsSimulator = [[NSDictionary alloc] init];
@@ -508,10 +568,16 @@ bool panelViewStateSimulator=NO;
 
 - (NSMutableArray *)bluetoothInitialValuesSimulator{
     if (!_bluetoothInitialValuesSimulator) {
-        _bluetoothInitialValuesSimulator = [[NSMutableArray alloc] initWithObjects:@"No", @"No", @"No", @"No", @"No",@"No", nil];
+        _bluetoothInitialValuesSimulator = [[NSMutableArray alloc] initWithObjects:@"Yes", @"Yes", @"Yes", @"Yes", @"Yes",@"Yes", nil];
     }
     return _bluetoothInitialValuesSimulator;
 }
+
+#pragma mark SimulationState
+-(void)simulationStateDidChange:(BOOL)newState{
+    [self.animationDelegate animationDidChangeState:newState];
+}
+
 
 @end
 

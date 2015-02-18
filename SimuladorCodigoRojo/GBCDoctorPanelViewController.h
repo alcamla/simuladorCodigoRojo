@@ -24,5 +24,12 @@
 - (void) refreshPlayPauseButton;
 - (void) reloadCheckBoxesValues;
 
+
+@end
+
+@protocol GBCDoctorPanelViewControllerDelegate <NSObject>
+
+-(void)simulationDidChangeToState:(BOOL)state;
+
 @end
 

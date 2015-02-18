@@ -160,8 +160,8 @@
                 if (subRange.location != NSNotFound) {
                     if ([dataToSend length] != 3) {
                         NSLog(@"THERE IS DATA MISSING IN THE STRING!!! : %@", dataToSend);
-                        dataToSend = [dataToSend substringFromIndex: subRange.location +1];
                     } else{
+                        dataToSend = [dataToSend substringFromIndex: subRange.location +1];
                         [self sendData:dataToSend];
                         NSLog(@"Sent data: %@", dataToSend);
                     }

@@ -81,11 +81,33 @@ NSNumber *minutesResulst=0;
 
 - (void)readVariablesStatusToDisplay{
     
-    // Ask to Simulator the last time registered for checking the duration
-    self.lastTimeRegistered=[[GBCSimulator sharedSimulator] sendChronometerValue];
-    
     // Ask to Simulator for last state registered
     self.lastStateResults=[[GBCSimulator sharedSimulator] sendCurrentState];
+    
+    if ([self.lastStateResults isEqualToString:@"Estable"]==YES) {
+        
+        // Ask to Simulator the last time registered for checking the duration
+        self.lastTimeRegistered=[[GBCSimulator sharedSimulator] sendChronometerValueWhenStable];
+        
+        //Ask to Simulator for bluetooth Variables
+        self.bluetoothVariablesResults=[[GBCSimulator sharedSimulator] getBluetoothVariablesWhenStable];
+        
+        //Ask to Simulator for editable Variables
+        self.editableVariablesResults=[[GBCSimulator sharedSimulator] sendEditableVariablesWhenStable];
+        
+        
+    }else{
+        
+        // Ask to Simulator the last time registered for checking the duration
+        self.lastTimeRegistered=[[GBCSimulator sharedSimulator] sendChronometerValue];
+        
+        //Ask to Simulator for bluetooth Variables
+        self.bluetoothVariablesResults=[[GBCSimulator sharedSimulator] getBluetoothVariables];
+        
+        //Ask to Simulator for editable Variables
+        self.editableVariablesResults=[[GBCSimulator sharedSimulator] sendEditableVariables];
+    
+    }
     
     //Ask to Simulator for bluetooth Variables
     self.bluetoothVariablesResults=[[GBCSimulator sharedSimulator] getBluetoothVariables];

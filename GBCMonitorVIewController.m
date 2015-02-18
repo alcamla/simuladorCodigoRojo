@@ -11,7 +11,6 @@
 #import "PlotItem.h"
 #import "RealTimePlot.h"
 #import "PlotView.h"
-#import "ecgsyn.h"
 
 @interface GBCMonitorVIewController ()
 
@@ -27,7 +26,7 @@
 @property (nonatomic, strong) PlotItem *plotItem;
 @property (weak) IBOutlet PlotView *plotView;
 
-@property(nonatomic, strong) NSMutableArray *ecgVector;
+
 
 
 @property (strong, nonatomic) NSDictionary *vitalSingsMonitor;
@@ -77,13 +76,13 @@ int minutes=0;
     [self askForInitialStateAndSetInitialFrecuency];
     
     // Set the frecuency for the beep
-    [self setBeepFrecuency];
+    //[self setBeepFrecuency];
     
 }
 
 -(void)viewDidAppear{
     self.plotItem = [[RealTimePlot alloc] init];
-    
+    [[GBCSimulator sharedSimulator] setAnimationDelegate:(RealTimePlot *)self.plotItem];
 }
 
 - (void) viewDidDisappear{
@@ -274,7 +273,7 @@ int minutes=0;
         if (self.beepTimer.valid==NO) {
             
             // Reinitializite Beep Timer 
-            [self setBeepFrecuency];
+            //[self setBeepFrecuency];
             
         }
 
@@ -367,7 +366,7 @@ int minutes=0;
         self.currentStateMonitor = [[GBCSimulator sharedSimulator] sendCurrentState];
         
         // Set timer frecuency according to the state heart rate
-        [self setBeepFrecuency];
+        //[self setBeepFrecuency];
         
     }
     
@@ -460,13 +459,6 @@ int minutes=0;
         _beepSound = [[NSSound alloc] init];
     }
     return _beepSound;
-}
-
--(NSMutableArray*)ecgVector{
-    if (!_ecgVector) {
-        _ecgVector = [NSMutableArray new];
-    }
-    return _ecgVector;
 }
 
 @end

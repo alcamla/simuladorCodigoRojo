@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "GBCState.h"
 #import "GBCBluetoothManager.h"
+#import "PlotItem.h"
+
+@protocol GBCSimulatorECGAnimationDelegate;
 
 @interface GBCSimulator : NSObject <GBCRedCodeBluetoothDelegate>
 
 @property (strong, nonatomic) GBCBluetoothManager *bluetoothManager;
+@property (strong, nonatomic) id<GBCSimulatorECGAnimationDelegate> animationDelegate;
 
 + (instancetype)sharedSimulator;
 - (NSDictionary *) getCurrentVitalSigns;
@@ -45,6 +49,16 @@
 - (BOOL) makeActiveToPanel;
 - (void)forgetBluetoothDevice;
 - (void) sendStateToDoll;
+- (void) simulationStateDidChange:(BOOL)newState;
+- (NSMutableArray *) sendChronometerValueWhenStable;
+- (NSDictionary *) getBluetoothVariablesWhenStable;
+- (NSMutableDictionary *) sendEditableVariablesWhenStable;
+
+@end
+
+@protocol GBCSimulatorECGAnimationDelegate <NSObject>
+
+-(void)animationDidChangeState:(BOOL)newState;
 
 @end
 

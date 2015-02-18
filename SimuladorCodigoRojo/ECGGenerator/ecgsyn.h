@@ -14,4 +14,4 @@
 
 double * dorun();
 double * calculateECG(int heartBeats, int samplingFrequency, int heartRate);
-double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int heartRate, int *totalSamples);
+double * calculateEcgAndPeaksLocation(int heartBeats, int samplingFrequency, int heartRate, int *totalSamples);//, double **peaksVector);

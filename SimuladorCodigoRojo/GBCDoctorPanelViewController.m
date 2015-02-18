@@ -350,15 +350,18 @@ bool simulationIsPaused=NO;
 
 // Action when pause-reanude button is pressed
 
+
+
 - (IBAction)animationStateDidChange:(id)sender {
-    
+    // TODO:fas
     // Change the state of simulation
     simulationIsPaused=!simulationIsPaused;
     
+    //Tell the simulator
+    [[GBCSimulator sharedSimulator] simulationStateDidChange:simulationIsPaused];
+    
     // Refresh the Icon of that button
     [self refreshPlayPauseButton];
-    
-    
 }
 
 // Refresh the appearence of the Play_Pause Button

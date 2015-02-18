@@ -13,6 +13,7 @@ static const NSUInteger kMaxDataPoints = 384 +64+64;
 static const NSUInteger kECGSamplingFrequency = 64;
 static NSString *const kPlotIdentifier = @"Data Source Plot";
 
+
 @interface RealTimePlot()
 
 @property (nonatomic, readwrite, strong) NSMutableArray *plotData;
@@ -24,7 +25,9 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 @property (nonatomic) NSInteger currentHeartRate;
 @property (nonatomic, strong) NSDictionary *ecgVectors;
 @property (nonatomic, strong) NSDictionary *simulationStatesDictionary;
+@property (nonatomic, strong) NSDictionary *statesHeartRatesDictionary;
 @property (nonatomic, strong) NSNumber *simulationState;
+@property (nonatomic, strong) NSSound *ecgBeep;
 @end
 
 @implementation RealTimePlot
@@ -40,43 +43,38 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
         plotData  = [[NSMutableArray alloc] initWithCapacity:kMaxDataPoints];
         dataTimer = nil;
         
-        BOOL updateECGVectors = NO;
+        BOOL updateECGVectors = YES;
         
         //Create the ECG vectors as part of the User Defaults
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if (![defaults objectForKey:@"ecgVectors"]|| updateECGVectors) {
             //Create a dictinary for each simulation state
             NSMutableDictionary *ecgVectorsMutDic= [NSMutableDictionary new];
-            NSDictionary *statesHeartRatesDic = @{@0:@84,@1:@96, @2:@84, @3:@110, @4:@124, @5:@84};
+            self.statesHeartRatesDictionary = @{@0:@84,@1:@96, @2:@84, @3:@110, @4:@124, @5:@84};
             NSNumber *heartRate;
             NSMutableArray *localEcgVector;
-            for (NSNumber *key in statesHeartRatesDic) {
-                heartRate = (NSNumber*)statesHeartRatesDic[key];
+            NSMutableArray *localPeaksLocationVector;
+            for (NSNumber *key in self.statesHeartRatesDictionary) {
+                heartRate = (NSNumber*)self.statesHeartRatesDictionary[key];
                 localEcgVector = [NSMutableArray new];
+                localPeaksLocationVector = [NSMutableArray new];
                 int ecgVectorSize = 0;
-                double *ecgVectorC = calculateEcgAndPeaksLocation(40, kECGSamplingFrequency, (int)[heartRate integerValue], &ecgVectorSize);
+                double *peaksLocationVector=malloc(14);
+                double *ecgVectorC = calculateEcgAndPeaksLocation(40, kECGSamplingFrequency, (int)[heartRate integerValue], &ecgVectorSize);//, &peaksLocationVector);
                 for (int i = 0; i<ecgVectorSize; i++ ) {
                     double sample = ecgVectorC[i];
+                    double peakSample = peaksLocationVector[i];
                     if (sample != sample) {
                         NSLog(@"We have a NaN");
                     }
                     //Downscale the signal
                     sample = sample/100;
                     [localEcgVector addObject: [NSNumber numberWithDouble:sample]];
-                    
+                    [localPeaksLocationVector addObject:[NSNumber numberWithDouble:peakSample]];
                 }
                 [ecgVectorsMutDic setObject:localEcgVector forKey:key];
             }
-//            NSError *error;
-//            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ecgVectorsMutDic
-//                                                               options:NSJSONWritingPrettyPrinted
-//                                                                 error:&error];
-//            if (! jsonData) {
-//                NSLog(@"Got an error: %@", error);
-//            } else {
-//                //NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//                [defaults setObject:jsonData forKey:@"ecgVectors"];
-//            }
+
             NSData *ecgVectorsAsData = [NSKeyedArchiver archivedDataWithRootObject:ecgVectorsMutDic];
             [defaults setObject:ecgVectorsAsData forKey:@"ecgVectors"];
         }
@@ -188,12 +186,8 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     [self.dataTimer invalidate];
 
     if ( animated ) {
-        self.dataTimer = [NSTimer timerWithTimeInterval:1.0 / kFrameRate
-                                                 target:self
-                                               selector:@selector(newData:)
-                                               userInfo:nil
-                                                repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:self.dataTimer forMode:NSRunLoopCommonModes];
+        [self configureAnimationTimer];
+
     }
     else {
         self.dataTimer = nil;
@@ -204,6 +198,19 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 {
     [dataTimer invalidate];
 }
+
+#pragma mark -
+#pragma mark Animation Timer
+
+-(void)configureAnimationTimer{
+    self.dataTimer = [NSTimer timerWithTimeInterval:1.0 / kFrameRate
+                                             target:self
+                                           selector:@selector(newData:)
+                                           userInfo:nil
+                                            repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.dataTimer forMode:NSRunLoopCommonModes];
+}
+
 
 #pragma mark -
 #pragma mark Timer callback
@@ -256,6 +263,8 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     BOOL mustRecalculateECGVector = NO;
     if (self.simulationState != currentSimulationState) {
         self.simulationState = currentSimulationState;
+        NSTimeInterval heartSoundPeriod = 60.0/[self.statesHeartRatesDictionary[self.simulationState] doubleValue];
+        [self performSelector:@selector(ecgBeepWithTimeInterval:) withObject:[NSNumber numberWithDouble:heartSoundPeriod] afterDelay:heartSoundPeriod];
         mustRecalculateECGVector = YES;
     }
     if (!_ecgVector || mustRecalculateECGVector){ //|| (self.currentIndexOfECGVector +128 >= [_ecgVector count])) {
@@ -266,6 +275,11 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     self.currentIndexOfECGVector =0;
     }
     return _ecgVector;
+}
+
+-(void)ecgBeepWithTimeInterval:(NSNumber*)interval{
+    [self.ecgBeep play];
+    [self performSelector:@selector(ecgBeepWithTimeInterval:) withObject:interval afterDelay:[interval doubleValue]];
 }
 
 #pragma mark -
@@ -283,6 +297,7 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     switch ( fieldEnum ) {
         case CPTScatterPlotFieldX:
             num = @((index+self.deletedSamples)/(64.0));
+            //NSBeep();
             break;
 
         case CPTScatterPlotFieldY:
@@ -307,5 +322,29 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     }
     return _simulationStatesDictionary;
 }
+
+#pragma mark GBCSimulatorECGAnimationDelegate protocol conformance
+
+-(void)animationDidChangeState:(BOOL)newState{
+    BOOL simulationIsPaused = newState;
+    if (!simulationIsPaused) {
+        //Turn on the animation
+        [self configureAnimationTimer];
+        
+    } else{
+        //Turn off the animation
+        [self.dataTimer invalidate];
+        self.dataTimer = nil;
+    }
+    
+}
+
+-(NSSound*)ecgBeep{
+    if (!_ecgBeep) {
+        _ecgBeep=[NSSound soundNamed:@"Tink.aiff"];
+    }
+    return _ecgBeep;
+}
+
 
 @end
