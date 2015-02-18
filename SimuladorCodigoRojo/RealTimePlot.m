@@ -164,6 +164,11 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     NSNumberFormatter *labelFormatter = [[NSNumberFormatter alloc] init];
     labelFormatter.numberStyle = NSNumberFormatterNoStyle;
     x.labelFormatter           = labelFormatter;
+    x.labelFormatter = nil;
+    x.hidden = YES;
+    for (CPTAxisLabel *axisLabel in x.axisLabels) {
+        axisLabel.contentLayer.hidden = YES;
+    }
 
     // Y axis
     CPTXYAxis *y = axisSet.yAxis;
@@ -176,6 +181,10 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     //y.title                       = @"Y Axis";
     //y.titleOffset                 = self.titleSize * CPTFloat(1.25);
     y.axisConstraints             = [CPTConstraints constraintWithLowerOffset:0.0];
+    y.hidden = YES;
+    for (CPTAxisLabel *axisLabel in y.axisLabels) {
+        axisLabel.contentLayer.hidden = YES;
+    }
 
     // Rotate the labels by 45 degrees, just to show it can be done.
     x.labelRotation = CPTFloat(M_PI_4);
