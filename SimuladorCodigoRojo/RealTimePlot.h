@@ -9,7 +9,7 @@
 #import "PlotItem.h"
 #import "GBCSimulator.h"
 
-@interface RealTimePlot : PlotItem<CPTPlotDataSource, GBCSimulatorECGAnimationDelegate>
+@interface RealTimePlot : PlotItem<CPTPlotDataSource, GBCSimulatorECGAnimationDelegate, NSSoundDelegate>
 
 -(void)newData:(NSTimer *)theTimer;
 

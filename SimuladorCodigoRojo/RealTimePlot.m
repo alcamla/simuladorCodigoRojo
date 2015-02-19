@@ -28,24 +28,12 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 @property (nonatomic, strong) NSDictionary *ecgVectors;
 @property (nonatomic, strong) NSDictionary *simulationStatesDictionary;
 @property (nonatomic, strong) NSDictionary *statesHeartRatesDictionary;
+@property (nonatomic, strong) NSDictionary *heartRatesSoundsFilesDictionary;
 @property (nonatomic, strong) NSNumber *simulationState;
 @property (nonatomic, strong) NSSound *ecgBeep;
 @property (nonatomic, strong)NSTimer *beepTimer;
 
 @end
-
-
-dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, dispatch_block_t block)
-{
-    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    if (timer)
-    {
-        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_SEC), interval * NSEC_PER_SEC, (1ull * NSEC_PER_SEC) / 10);
-        dispatch_source_set_event_handler(timer, block);
-        dispatch_resume(timer);
-    }
-    return timer;
-}
 
 @implementation RealTimePlot
 
@@ -70,24 +58,19 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
             self.statesHeartRatesDictionary = @{@0:@84,@1:@96, @2:@84, @3:@110, @4:@124, @5:@84};
             NSNumber *heartRate;
             NSMutableArray *localEcgVector;
-            NSMutableArray *localPeaksLocationVector;
             for (NSNumber *key in self.statesHeartRatesDictionary) {
                 heartRate = (NSNumber*)self.statesHeartRatesDictionary[key];
                 localEcgVector = [NSMutableArray new];
-                localPeaksLocationVector = [NSMutableArray new];
                 int ecgVectorSize = 0;
-                double *peaksLocationVector=malloc(14);
                 double *ecgVectorC = calculateEcgAndPeaksLocation(40, kECGSamplingFrequency, (int)[heartRate integerValue], &ecgVectorSize);//, &peaksLocationVector);
                 for (int i = 0; i<ecgVectorSize; i++ ) {
                     double sample = ecgVectorC[i];
-                    double peakSample = peaksLocationVector[i];
                     if (sample != sample) {
                         NSLog(@"We have a NaN");
                     }
                     //Downscale the signal
                     sample = sample/100;
                     [localEcgVector addObject: [NSNumber numberWithDouble:sample]];
-                    [localPeaksLocationVector addObject:[NSNumber numberWithDouble:peakSample]];
                 }
                 [ecgVectorsMutDic setObject:localEcgVector forKey:key];
             }
@@ -108,7 +91,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 {
     [self.dataTimer invalidate];
     self.dataTimer = nil;
-
+    [self.ecgBeep stop];
     [super killGraph];
 }
 
@@ -289,14 +272,8 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     BOOL mustRecalculateECGVector = NO;
     if (self.simulationState != currentSimulationState) {
         self.simulationState = currentSimulationState;
-        double heartSoundPeriod = 60.0/[self.statesHeartRatesDictionary[self.simulationState] doubleValue];
-        //[self performSelector:@selector(ecgBeepWithTimeInterval:) withObject:[NSNumber numberWithDouble:heartSoundPeriod] afterDelay:heartSoundPeriod];
-        [self cancelTimer];
-        [self startTimerWithSecondsToFire:heartSoundPeriod];
-        //self.beepTimer = [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(playEcgBeep) userInfo:nil repeats:YES];
-        //[[NSRunLoop currentRunLoop] addTimer:self.beepTimer forMode:NSDefaultRunLoopMode];
-        
-
+        //Change the sound that is being played
+        [self playECGBeepForCurrentSimulationState];
         mustRecalculateECGVector = YES;
     }
     if (!_ecgVector || mustRecalculateECGVector){ //|| (self.currentIndexOfECGVector +128 >= [_ecgVector count])) {
@@ -360,6 +337,23 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     return _simulationStatesDictionary;
 }
 
+-(NSDictionary*) heartRatesSoundsFilesDictionary{
+    if (!_heartRatesSoundsFilesDictionary) {
+        _heartRatesSoundsFilesDictionary = @{@0:@"ECG_beeps_84Hz.m4a",
+                                             @1:@"ECG_beeps_96Hz.m4a",
+                                             @2:@"ECG_beeps_84Hz.m4a",
+                                             @3:@"ECG_beeps_110Hz.m4a",
+                                             @4:@"ECG_beeps_124Hz.m4a",
+                                             @5:@"ECG_beeps_84Hz.m4a"
+                                             };
+        
+        
+      //  @{@0:@84,@1:@96, @2:@84, @3:@110, @4:@124, @5:@84
+        
+    }
+    return _heartRatesSoundsFilesDictionary;
+}
+
 #pragma mark GBCSimulatorECGAnimationDelegate protocol conformance
 
 -(void)animationDidChangeState:(BOOL)newState{
@@ -367,11 +361,13 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     if (!simulationIsPaused) {
         //Turn on the animation
         [self configureAnimationTimer];
+        [self.ecgBeep resume];
         
     } else{
         //Turn off the animation
         [self.dataTimer invalidate];
         self.dataTimer = nil;
+        [self.ecgBeep pause];
     }
     
 }
@@ -379,6 +375,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 -(NSSound*)ecgBeep{
     if (!_ecgBeep) {
         _ecgBeep=[NSSound soundNamed:@"ECGbeep_edited_2.mp3"];
+        [_ecgBeep setLoops:YES];
     }
     return _ecgBeep;
 }
@@ -386,27 +383,15 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 #pragma mark -
 #pragma mark ECG Beep timer
 
-- (void)startTimerWithSecondsToFire:(double)seconds
-{
-    //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    //dispatch_queue_t queue = dispatch_get_main_queue();
-    dispatch_queue_t queue = dispatch_queue_create("com.gibicgroup.ECGBeep", NULL);
-    _timer = CreateDispatchTimer(seconds, queue, ^{
-        // Do something
-        [self.ecgBeep play];
-    });
-}
 
-- (void)cancelTimer
-{
-    if (_timer) {
-        dispatch_source_cancel(_timer);
-        _timer = nil;
+-(void)playECGBeepForCurrentSimulationState{
+    if (self.ecgBeep.name != self.heartRatesSoundsFilesDictionary[self.simulationState]) {
+        [self.ecgBeep stop];
+        self.ecgBeep = [NSSound soundNamed:self.heartRatesSoundsFilesDictionary[self.simulationState]];
+        [self.ecgBeep setLoops:YES];
     }
+    [self.ecgBeep play];
 }
-
-
-
 
 
 @end

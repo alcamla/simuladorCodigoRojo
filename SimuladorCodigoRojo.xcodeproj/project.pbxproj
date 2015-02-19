@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C29E07C1A96A10600B68FC4 /* ECG_beeps_124Hz.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6C29E0751A96A10600B68FC4 /* ECG_beeps_124Hz.m4a */; };
+		6C29E07D1A96A10600B68FC4 /* ECG_beeps_110Hz.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6C29E0761A96A10600B68FC4 /* ECG_beeps_110Hz.m4a */; };
+		6C29E07E1A96A10600B68FC4 /* ECG_beeps_96Hz.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6C29E0771A96A10600B68FC4 /* ECG_beeps_96Hz.m4a */; };
+		6C29E07F1A96A10600B68FC4 /* ECG_beeps_84Hz.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6C29E0781A96A10600B68FC4 /* ECG_beeps_84Hz.m4a */; };
+		6C29E0801A96A10600B68FC4 /* ECG_beeps_60Hz.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6C29E0791A96A10600B68FC4 /* ECG_beeps_60Hz.m4a */; };
+		6C29E0811A96A10600B68FC4 /* ECG_beeps_72Hz.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6C29E07A1A96A10600B68FC4 /* ECG_beeps_72Hz.m4a */; };
+		6C29E0821A96A10600B68FC4 /* ECG_beeps_40Hz.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6C29E07B1A96A10600B68FC4 /* ECG_beeps_40Hz.m4a */; };
 		6C44EF4D1A895A7800C81D68 /* GBCBluetoothSelectorSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C44EF4C1A895A7800C81D68 /* GBCBluetoothSelectorSheetController.m */; };
 		6C4F3DF51A8D59B7001F5099 /* PlotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F3DF41A8D59B7001F5099 /* PlotItem.m */; };
 		6C5A1C971A700DBE001DA461 /* GBCRedCodeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A1C961A700DBE001DA461 /* GBCRedCodeUtilities.m */; };
@@ -153,6 +160,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6C29E0751A96A10600B68FC4 /* ECG_beeps_124Hz.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ECG_beeps_124Hz.m4a; sourceTree = "<group>"; };
+		6C29E0761A96A10600B68FC4 /* ECG_beeps_110Hz.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ECG_beeps_110Hz.m4a; sourceTree = "<group>"; };
+		6C29E0771A96A10600B68FC4 /* ECG_beeps_96Hz.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ECG_beeps_96Hz.m4a; sourceTree = "<group>"; };
+		6C29E0781A96A10600B68FC4 /* ECG_beeps_84Hz.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ECG_beeps_84Hz.m4a; sourceTree = "<group>"; };
+		6C29E0791A96A10600B68FC4 /* ECG_beeps_60Hz.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ECG_beeps_60Hz.m4a; sourceTree = "<group>"; };
+		6C29E07A1A96A10600B68FC4 /* ECG_beeps_72Hz.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ECG_beeps_72Hz.m4a; sourceTree = "<group>"; };
+		6C29E07B1A96A10600B68FC4 /* ECG_beeps_40Hz.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ECG_beeps_40Hz.m4a; sourceTree = "<group>"; };
 		6C44EF4B1A895A7800C81D68 /* GBCBluetoothSelectorSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCBluetoothSelectorSheetController.h; sourceTree = "<group>"; };
 		6C44EF4C1A895A7800C81D68 /* GBCBluetoothSelectorSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCBluetoothSelectorSheetController.m; sourceTree = "<group>"; };
 		6C4F3DF31A8D59B7001F5099 /* PlotItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotItem.h; sourceTree = "<group>"; };
@@ -340,6 +354,13 @@
 		6F6D95E51A8D10DE00E9A958 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				6C29E0751A96A10600B68FC4 /* ECG_beeps_124Hz.m4a */,
+				6C29E0761A96A10600B68FC4 /* ECG_beeps_110Hz.m4a */,
+				6C29E0771A96A10600B68FC4 /* ECG_beeps_96Hz.m4a */,
+				6C29E0781A96A10600B68FC4 /* ECG_beeps_84Hz.m4a */,
+				6C29E0791A96A10600B68FC4 /* ECG_beeps_60Hz.m4a */,
+				6C29E07A1A96A10600B68FC4 /* ECG_beeps_72Hz.m4a */,
+				6C29E07B1A96A10600B68FC4 /* ECG_beeps_40Hz.m4a */,
 				6C9729241A95399000CFAB2E /* ECGbeep_edited_2.mp3 */,
 				6F6D95E61A8D10EA00E9A958 /* ECGbeep.mp3 */,
 			);
@@ -639,8 +660,11 @@
 				6F2D18291A8A76A70048281D /* monitorBackGround.png in Resources */,
 				6FC09AC61A4392200023B3FA /* monitorAddButton.png in Resources */,
 				6F2D182C1A8A7CA10048281D /* panelFrontground.png in Resources */,
+				6C29E0821A96A10600B68FC4 /* ECG_beeps_40Hz.m4a in Resources */,
+				6C29E0811A96A10600B68FC4 /* ECG_beeps_72Hz.m4a in Resources */,
 				6F2D18231A8A761C0048281D /* monitorWoman.png in Resources */,
 				6F2D18321A8A80930048281D /* resultsBackground.png in Resources */,
+				6C29E07D1A96A10600B68FC4 /* ECG_beeps_110Hz.m4a in Resources */,
 				6FC09ABE1A43809B0023B3FA /* monitorPatica2.png in Resources */,
 				6C9729251A95399000CFAB2E /* ECGbeep_edited_2.mp3 in Resources */,
 				6F2D180E1A8A72B20048281D /* menuPregnant.png in Resources */,
@@ -653,8 +677,12 @@
 				6FED8FB71A6D7B0200150438 /* monitorNotepad.png in Resources */,
 				6F2D18351A8A80970048281D /* resultsFrontground.png in Resources */,
 				6FC09ABA1A4380860023B3FA /* monitorSeñalImage.png in Resources */,
+				6C29E0801A96A10600B68FC4 /* ECG_beeps_60Hz.m4a in Resources */,
 				6FED8FB11A6D783700150438 /* monitorBackgroundPicture.jpg in Resources */,
+				6C29E07C1A96A10600B68FC4 /* ECG_beeps_124Hz.m4a in Resources */,
 				6F2D18261A8A76A40048281D /* monitorGraph.png in Resources */,
+				6C29E07E1A96A10600B68FC4 /* ECG_beeps_96Hz.m4a in Resources */,
+				6C29E07F1A96A10600B68FC4 /* ECG_beeps_84Hz.m4a in Resources */,
 				6FC09AD41A43A90A0023B3FA /* configPlayButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

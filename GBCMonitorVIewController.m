@@ -89,6 +89,7 @@ int minutes=0;
 
     // Reset variables
     [self simulationHasFinishedMonitor];
+    self.plotItem = nil;
 
 }
 
