@@ -9,8 +9,10 @@
 
 static const double kFrameRate = 2;  // frames per second
 
-static const NSUInteger kMaxDataPoints = 384 +64+64;
-static const NSUInteger kECGSamplingFrequency = 64;
+//static const NSUInteger kMaxDataPoints = 384 +64+64;  //Visualize 6 seconds of ECG signal at sampling frequency
+static const NSUInteger kMaxDataPoints = 192 +32+32;
+//static const NSUInteger kECGSamplingFrequency = 64;
+static const NSUInteger kECGSamplingFrequency = 32;
 static NSString *const kPlotIdentifier = @"Data Source Plot";
 
 
@@ -48,7 +50,7 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
         plotData  = [[NSMutableArray alloc] initWithCapacity:kMaxDataPoints];
         dataTimer = nil;
         
-        BOOL updateECGVectors = NO;
+        BOOL updateECGVectors = YES;
         
         //Create the ECG vectors as part of the User Defaults
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -310,7 +312,7 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
 
     switch ( fieldEnum ) {
         case CPTScatterPlotFieldX:
-            num = @((index+self.deletedSamples)/(64.0));
+            num = @((index+self.deletedSamples)/((double)kECGSamplingFrequency));
             //NSBeep();
             break;
 
