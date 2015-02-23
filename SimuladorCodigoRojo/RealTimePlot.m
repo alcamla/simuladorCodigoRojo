@@ -356,6 +356,7 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
     return _heartRatesSoundsFilesDictionary;
 }
 
+#pragma mark -
 #pragma mark GBCSimulatorECGAnimationDelegate protocol conformance
 
 -(void)animationDidChangeState:(BOOL)newState{
@@ -372,6 +373,9 @@ static NSString *const kPlotIdentifier = @"Data Source Plot";
         [self.ecgBeep pause];
     }
     
+}
+-(void)killAnimation{
+    [self killGraph];
 }
 
 -(NSSound*)ecgBeep{

@@ -10,6 +10,7 @@
 #import "GBCState.h"
 #import "GBCBluetoothManager.h"
 #import "PlotItem.h"
+#import "GBCMonitorVIewController.h"
 
 @protocol GBCSimulatorECGAnimationDelegate;
 
@@ -17,6 +18,7 @@
 
 @property (strong, nonatomic) GBCBluetoothManager *bluetoothManager;
 @property (strong, nonatomic) id<GBCSimulatorECGAnimationDelegate> animationDelegate;
+@property(strong, nonatomic) GBCMonitorVIewController *monitorViewController;
 
 + (instancetype)sharedSimulator;
 - (NSDictionary *) getCurrentVitalSigns;
@@ -58,17 +60,13 @@
 -(BOOL)sendArterialPressureVisibility;
 -(BOOL)sendRespiratoryFrecuencyVisibility;
 -(BOOL)sendOxygenVisibility;
--(void)getConscienceVisibility:(BOOL)conscienceVisibility;
--(void)getHeartRateVisibility:(BOOL)heartRateVisibility;
--(void)getArterialPressureVisibility:(BOOL)pressureVisibility;
--(void)getRespiratoryFrecuencyVisibility:(BOOL)respiratoryFrecuency;
--(void)getOxygenVisibility:(BOOL)oxygenVisibility;
-
+-(void)monitoredVariableWithTag:(NSInteger)variableTag changedVisibilityToState:(BOOL)state;
 @end
 
 @protocol GBCSimulatorECGAnimationDelegate <NSObject>
 
 -(void)animationDidChangeState:(BOOL)newState;
+-(void)killAnimation;
 
 @end
 

@@ -8,7 +8,6 @@
 
 #import "GBCMonitorVIewController.h"
 #import "GBCSimulator.h"
-#import "PlotItem.h"
 #import "RealTimePlot.h"
 #import "PlotView.h"
 
@@ -23,7 +22,7 @@
 @property (strong) IBOutlet NSTextField *arterialPresureValue;
 @property (strong) IBOutlet NSTextField *chronometerTextField;
 
-@property (nonatomic, strong) PlotItem *plotItem;
+
 @property (weak) IBOutlet PlotView *plotView;
 
 
@@ -87,8 +86,7 @@ int minutes=0;
 }
 
 -(void)viewDidAppear{
-    self.plotItem = [[RealTimePlot alloc] init];
-    [[GBCSimulator sharedSimulator] setAnimationDelegate:(RealTimePlot *)self.plotItem];
+    //self.plotItem = [[RealTimePlot alloc] init];
 }
 
 - (void) viewDidDisappear{
@@ -114,6 +112,7 @@ int minutes=0;
         _plotItem = item;
         
         [_plotItem renderInView:self.plotView withTheme:nil animated:YES];
+        [[GBCSimulator sharedSimulator] setAnimationDelegate:(RealTimePlot*)_plotItem];
     }
 }
 

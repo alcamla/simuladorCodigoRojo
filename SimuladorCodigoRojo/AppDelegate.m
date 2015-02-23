@@ -12,6 +12,7 @@
 #import "GBCSimulator.h"
 
 
+
 @interface AppDelegate ()
 
 @property NSWindowController *menuController;
@@ -25,6 +26,8 @@
 @end
 
 @implementation AppDelegate
+
+
 
 bool conscienceIsVisibleAppDelegate=NO;
 bool heartRateIsVisibleAppDelegate=NO;
@@ -92,56 +95,30 @@ bool arterialPressureIsVisibleAppDelegate=NO;
     [[GBCSimulator sharedSimulator] forgetBluetoothDevice];
 }
 
+
+-(IBAction)variableChangedState:(id)sender{
+    NSMenuItem *item = (NSMenuItem *)sender;
+    NSInteger tag = [(NSMenuItem*)sender tag];
+    switch (tag) {
+        case GBC_ARTERIAL_PRESSURE_MENU_TAG:
+            break;
+        case GBC_CONSCIENCE_MENU_TAG:
+            break;
+        case GBC_HEART_RATE_MENU_TAG:
+            break;
+        case GBC_OXIGEN_SATURATION_MENU_TAG:
+            break;
+        case GBC_RESPIRATORY_FREQUENCY_MENU_TAG:
+            break;
+        default:
+            break;
+    }
+    [item setState:!item.state];
+    [[GBCSimulator sharedSimulator] monitoredVariableWithTag:tag changedVisibilityToState:[item state]];
+}
+
 // Button to enable or unable views
 
-- (IBAction)displayPressure:(id)sender {
-    
-    // Switch state variables
-    [self.arterialPressureButton setState:![self.arterialPressureButton state]];
-    arterialPressureIsVisibleAppDelegate=!arterialPressureIsVisibleAppDelegate;
-    
-    // Send variable to Simulator
-    [[GBCSimulator sharedSimulator] getArterialPressureVisibility:arterialPressureIsVisibleAppDelegate];
-}
-
-- (IBAction)displayHeartRate:(id)sender {
-    
-    // Switch state variables
-    [self.heartRateButton setState:![self.heartRateButton state]];
-    heartRateIsVisibleAppDelegate=!heartRateIsVisibleAppDelegate;
-    
-    // Send variable to Simulator
-    [[GBCSimulator sharedSimulator] getHeartRateVisibility:heartRateIsVisibleAppDelegate];
-}
-- (IBAction)displayOxygen:(id)sender {
-    
-    // Switch state variables
-    [self.oxygenButton setState:![self.oxygenButton state]];
-    oxygenIsVisibleAppDelegate=!oxygenIsVisibleAppDelegate;
-    
-    // Send variable to Simulator
-    [[GBCSimulator sharedSimulator] getOxygenVisibility:oxygenIsVisibleAppDelegate];
-}
-
-- (IBAction)displayRespiratoryFrecuency:(id)sender {
-    
-    // Switch state variables
-    [self.respiratoryRateButton setState:![self.respiratoryRateButton state]];
-    respiratoryRateIsVisibleAppDelegate=!respiratoryRateIsVisibleAppDelegate;
-    
-    // Send variable to Simulator
-    [[GBCSimulator sharedSimulator] getRespiratoryFrecuencyVisibility:respiratoryRateIsVisibleAppDelegate];
-}
-
-- (IBAction)displayConscience:(id)sender {
-    
-    // Switch state variables
-    [self.conscienceButton setState:![self.conscienceButton state]];
-    conscienceIsVisibleAppDelegate=!conscienceIsVisibleAppDelegate;
-    
-    // Send variable to Simulator
-    [[GBCSimulator sharedSimulator] getConscienceVisibility:conscienceIsVisibleAppDelegate];
-}
 
 @end
 

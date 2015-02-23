@@ -8,6 +8,7 @@
 
 #import "GBCConfirmViewController.h"
 #import "GBCSimulator.h"
+#import "GBCMonitorVIewController.h"
 
 @interface GBCConfirmViewController ()
 
@@ -30,8 +31,17 @@
     // Call Segue to go to next view controller
     [self performSegueWithIdentifier:@"fromConfirmToMonitor" sender:sender];
     
+    
     // Send state message
     [[GBCSimulator sharedSimulator] sendStateToDoll];
+}
+
+-(void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"fromConfirmToMonitor"]) {
+        NSWindowController *wController = (NSWindowController*)segue.destinationController;
+        GBCMonitorVIewController *monitor = (GBCMonitorVIewController *)wController.contentViewController;
+        [[GBCSimulator sharedSimulator] setMonitorViewController:monitor];
+    }
 }
 
 @end

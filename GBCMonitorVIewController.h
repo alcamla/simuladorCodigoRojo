@@ -7,10 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PlotItem.h"
+
 
 @interface GBCMonitorVIewController : NSViewController
 
-
+@property (nonatomic, strong) PlotItem *plotItem;
 
 - (void) updateMonitorViewController;
 - (void) updateVitalSignsInMonitor;

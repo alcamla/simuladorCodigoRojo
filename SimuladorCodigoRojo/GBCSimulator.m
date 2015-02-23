@@ -10,6 +10,9 @@
 #import "GBCState.h"
 #import "GBCStateMachine.h"
 #import "GBCBluetoothManager.h"
+#import "AppDelegate.h"
+#import "RealTimePlot.h"
+#import "PlotItem.h"
 
 
 @interface GBCSimulator ()
@@ -419,29 +422,31 @@ bool arterialPressureIsVisibleSimulator=NO;
 
 # pragma mark - Save the visibility state of Vital Signs
 
--(void)getConscienceVisibility:(BOOL)conscienceVisibility{
-    conscienceIsVisibleSimulator=conscienceVisibility;
-    
-}
-
--(void)getHeartRateVisibility:(BOOL)heartRateVisibility{
-    heartRateIsVisibleSimulator=heartRateVisibility;
-    
-}
-
--(void)getArterialPressureVisibility:(BOOL)arterialPressureVisibility{
-    arterialPressureIsVisibleSimulator=arterialPressureVisibility;
-    
-}
-
--(void)getRespiratoryFrecuencyVisibility:(BOOL)respiratoryFrecuency{
-    respiratoryRateIsVisibleSimulator=respiratoryFrecuency;
-    
-}
-
--(void)getOxygenVisibility:(BOOL)oxygenVisibility{
-    oxygenIsVisibleSimulator=oxygenVisibility;
-    
+-(void)monitoredVariableWithTag:(NSInteger)variableTag changedVisibilityToState:(BOOL)state{
+    switch (variableTag) {
+        case GBC_ARTERIAL_PRESSURE_MENU_TAG:
+            arterialPressureIsVisibleSimulator = state;
+            break;
+        case GBC_CONSCIENCE_MENU_TAG:
+            conscienceIsVisibleSimulator = state;
+            break;
+        case GBC_HEART_RATE_MENU_TAG:
+            heartRateIsVisibleSimulator = state;
+            if (!state) {
+                [self.animationDelegate killAnimation];
+            } else{
+                [self.monitorViewController setPlotItem: [[RealTimePlot alloc] init]];
+            }
+            break;
+        case GBC_OXIGEN_SATURATION_MENU_TAG:
+            oxygenIsVisibleSimulator = state;
+            break;
+        case GBC_RESPIRATORY_FREQUENCY_MENU_TAG:
+            respiratoryRateIsVisibleSimulator = state;
+            break;
+        default:
+            break;
+    }        
 }
 
 
