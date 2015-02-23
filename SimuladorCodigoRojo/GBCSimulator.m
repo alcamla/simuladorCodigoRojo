@@ -54,6 +54,11 @@ bool syncViewState=NO;
 bool orderToSetSyncActive=NO;
 bool orderToSetPanelActive=NO;
 bool panelViewStateSimulator=NO;
+bool conscienceIsVisibleSimulator=NO;
+bool heartRateIsVisibleSimulator=NO;
+bool respiratoryRateIsVisibleSimulator=NO;
+bool oxygenIsVisibleSimulator=NO;
+bool arterialPressureIsVisibleSimulator=NO;
 
 // Define as a Singleton and call Init when a GBCSimulator object is created by other classes
 
@@ -136,17 +141,17 @@ bool panelViewStateSimulator=NO;
         self.editedVariablesSimulatorWhenStable= [[NSMutableDictionary alloc] initWithDictionary:self.editedVariablesSimulator copyItems:YES];
         //self.chronometerSimulatorWhenStable=self.chronometerSimulator;
         self.chronometerSimulatorWhenStable = [[NSMutableArray alloc] initWithArray:self.chronometerSimulator copyItems:YES];
-     
+        
     }
 }
 
 // Method to send state to the doll
 
 - (void) sendStateToDoll{
-
+    
     // Send the new State to Muñeca
     [self.bluetoothManager sendCurrentSimulationState:self.currentState];
-
+    
 }
 
 // Other Class ask to me if bluetooth is connected
@@ -160,9 +165,9 @@ bool panelViewStateSimulator=NO;
 }
 
 // Ask to bluetooth class to make a bluetooth connection
-    
-- (void)createBluetoothObject{
 
+- (void)createBluetoothObject{
+    
     //NSLog(@"Bluetooth object created");
     if (!_bluetoothManager) {
         self.bluetoothManager =  [[GBCBluetoothManager alloc] init];
@@ -188,7 +193,7 @@ bool panelViewStateSimulator=NO;
 - (BOOL)isCalibrationReady{
     
     //NSLog(@"Ask if calibration is ready");
-
+    
     return calibrationCheckSimulator;
 }
 
@@ -226,7 +231,7 @@ bool panelViewStateSimulator=NO;
     
     // Assing Local Chronometer to Incoming Chorometer
     self.chronometerSimulator=chronometer;
-
+    
 }
 
 // Method to send state to Statemachine the current value of the chronometer
@@ -268,23 +273,28 @@ bool panelViewStateSimulator=NO;
     self.chronometerSimulator[2]=@"0";
     self.editedVariablesSimulator=self.initialEditedVariablesSimulator;
     self.editedVariablesSimulatorWhenStable=self.initialEditedVariablesSimulator;
+    conscienceIsVisibleSimulator=NO;
+    heartRateIsVisibleSimulator=NO;
+    respiratoryRateIsVisibleSimulator=NO;
+    oxygenIsVisibleSimulator=NO;
+    arterialPressureIsVisibleSimulator=NO;
     
 }
 
 // Method to receive the finalization of the Simulation message
 
 - (void) receiveFinalizationMessage{
-
+    
     //NSLog(@"Finalization Message Received");
     //[self.bluetoothManager sendFinishMessage];
     finalizationCheck=YES;
-
+    
 }
 
 // Send finalization message to View Controllers
 
 - (BOOL) sentFinalizationMessageFromSimulator{
-
+    
     return finalizationCheck;
 }
 
@@ -340,7 +350,7 @@ bool panelViewStateSimulator=NO;
 // Get message from Panel to know that Simulation has been paussed and return it to whoever needs it
 
 - (void) receivePausedOrNotMessage: (BOOL) pausedOrNotMessage{
-
+    
     paussedChecked=pausedOrNotMessage;
     
 }
@@ -348,7 +358,7 @@ bool panelViewStateSimulator=NO;
 // Tell View Controllers to Pause the Chronometer
 
 - (BOOL) sendPausedOrNotMessage{
-
+    
     return paussedChecked;
 }
 
@@ -374,9 +384,9 @@ bool panelViewStateSimulator=NO;
 // Method to verify if there was a connection lost
 
 -(void)redCodeSensorsConnectionLostByBluetoothManager:(GBCBluetoothManager *)bluetoothManager{
-
+    
     bluetoothConnectionCheckSimulator=NO;
-
+    
 }
 
 // Method to receive new updated variables
@@ -393,7 +403,7 @@ bool panelViewStateSimulator=NO;
     }else{
         self.updatedValue=@"No";
     }
-    //The value is updated in the dictionary 
+    //The value is updated in the dictionary
     [self.bluetoothVariablesSimulator setValue:self.updatedValue forKey:self.updatedKey];
 }
 
@@ -401,10 +411,65 @@ bool panelViewStateSimulator=NO;
 
 -(void)redCodeSensorsCheckedByBluetoothManager:(GBCBluetoothManager *)bluetoothManager result:(BOOL)result{
     if (result) {
-         calibrationCheckSimulator = YES;
+        calibrationCheckSimulator = YES;
     } else {
-         calibrationCheckSimulator = NO;
+        calibrationCheckSimulator = NO;
     }
+}
+
+# pragma mark - Save the visibility state of Vital Signs
+
+-(void)getConscienceVisibility:(BOOL)conscienceVisibility{
+    conscienceIsVisibleSimulator=conscienceVisibility;
+    
+}
+
+-(void)getHeartRateVisibility:(BOOL)heartRateVisibility{
+    heartRateIsVisibleSimulator=heartRateVisibility;
+    
+}
+
+-(void)getArterialPressureVisibility:(BOOL)arterialPressureVisibility{
+    arterialPressureIsVisibleSimulator=arterialPressureVisibility;
+    
+}
+
+-(void)getRespiratoryFrecuencyVisibility:(BOOL)respiratoryFrecuency{
+    respiratoryRateIsVisibleSimulator=respiratoryFrecuency;
+    
+}
+
+-(void)getOxygenVisibility:(BOOL)oxygenVisibility{
+    oxygenIsVisibleSimulator=oxygenVisibility;
+    
+}
+
+
+# pragma mark - Send the visibility state of Vital Signs
+
+-(BOOL)sendConscienceVisibility{
+    
+    return conscienceIsVisibleSimulator;
+}
+
+-(BOOL)sendHeartRateVisibility{
+    
+    return heartRateIsVisibleSimulator;
+}
+
+-(BOOL)sendArterialPressureVisibility{
+    
+    return arterialPressureIsVisibleSimulator;
+}
+
+-(BOOL)sendRespiratoryFrecuencyVisibility{
+    
+    return respiratoryRateIsVisibleSimulator;
+}
+
+-(BOOL)sendOxygenVisibility{
+    
+    return oxygenIsVisibleSimulator;
 }
 
 # pragma mark - Only One Window Opened and Active Messages
@@ -429,14 +494,14 @@ bool panelViewStateSimulator=NO;
 // Tell to Sync View Controller to set its self as Active
 
 - (BOOL) makeActiveToSync{
-
+    
     return orderToSetSyncActive;
 }
 
 // Method where Monitor View Controller asks me if there's already an opened Panel View and I listen the Panel Active Status from View Controllers
 
 - (BOOL) askIfPanelViewIsOpenedAndSetActive: (BOOL) panelActiveMessage {
-
+    
     // Receive click message from Monitor
     orderToSetPanelActive= panelActiveMessage;
     
@@ -494,11 +559,11 @@ bool panelViewStateSimulator=NO;
 }
 
 // Create the initial dictionary for edited variables
-    
+
 - (NSMutableDictionary *)initialEditedVariablesSimulator{
-        
+    
     if (!_editedVariablesSimulator) {
-            
+        
         _editedVariablesSimulator = [[NSMutableDictionary alloc] initWithObjects:self.editableInitialVariablesValuesSimulator forKeys: self.editableInitialVariablesKeysSimulator];
     }
     return _initialEditedVariablesSimulator;

@@ -53,6 +53,16 @@
 - (NSMutableArray *) sendChronometerValueWhenStable;
 - (NSDictionary *) getBluetoothVariablesWhenStable;
 - (NSMutableDictionary *) sendEditableVariablesWhenStable;
+-(BOOL)sendConscienceVisibility;
+-(BOOL)sendHeartRateVisibility;
+-(BOOL)sendArterialPressureVisibility;
+-(BOOL)sendRespiratoryFrecuencyVisibility;
+-(BOOL)sendOxygenVisibility;
+-(void)getConscienceVisibility:(BOOL)conscienceVisibility;
+-(void)getHeartRateVisibility:(BOOL)heartRateVisibility;
+-(void)getArterialPressureVisibility:(BOOL)pressureVisibility;
+-(void)getRespiratoryFrecuencyVisibility:(BOOL)respiratoryFrecuency;
+-(void)getOxygenVisibility:(BOOL)oxygenVisibility;
 
 @end
 

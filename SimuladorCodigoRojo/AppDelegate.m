@@ -16,10 +16,21 @@
 
 @property NSWindowController *menuController;
 @property NSStoryboard *storyboard;
+@property (weak) IBOutlet NSMenuItem *arterialPressureButton;
+@property (weak) IBOutlet NSMenuItem *heartRateButton;
+@property (weak) IBOutlet NSMenuItem *oxygenButton;
+@property (weak) IBOutlet NSMenuItem *respiratoryRateButton;
+@property (weak) IBOutlet NSMenuItem *conscienceButton;
 
 @end
 
 @implementation AppDelegate
+
+bool conscienceIsVisibleAppDelegate=NO;
+bool heartRateIsVisibleAppDelegate=NO;
+bool respiratoryRateIsVisibleAppDelegate=NO;
+bool oxygenIsVisibleAppDelegate=NO;
+bool arterialPressureIsVisibleAppDelegate=NO;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
@@ -33,7 +44,7 @@
 // Close the app when the last window is closed
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSNotification *)aNotification {
-
+    
     // When all windows are closed, i restart values
     [[GBCSimulator sharedSimulator] simulationHasFinished];
     
@@ -46,28 +57,94 @@
                     hasVisibleWindows:(BOOL)flag{
     
     if (!flag){
-    
+        
         // Create a story board object
         self.storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
         
         // Initialize the menu window controller object
         self.menuController = [self.storyboard instantiateInitialController];
-    
+        
         // Show the window
         [self.menuController showWindow:self];
-    
+        
     }
+    
+    // Reinit visible state variables
+    conscienceIsVisibleAppDelegate=NO;
+    heartRateIsVisibleAppDelegate=NO;
+    respiratoryRateIsVisibleAppDelegate=NO;
+    oxygenIsVisibleAppDelegate=NO;
+    arterialPressureIsVisibleAppDelegate=NO;
+    
+    // Reset the state
+    [self.arterialPressureButton setState:0];
+    [self.heartRateButton setState:0];
+    [self.oxygenButton setState:0];
+    [self.respiratoryRateButton setState:0];
+    [self.conscienceButton setState:0];
     
     return YES;
 }
 
+// Button to forget the bluetooth device identifier
 
 - (IBAction)forgetCurrentBluetoothDevice:(id)sender {
     [[GBCSimulator sharedSimulator] forgetBluetoothDevice];
 }
 
+// Button to enable or unable views
+
+- (IBAction)displayPressure:(id)sender {
+    
+    // Switch state variables
+    [self.arterialPressureButton setState:![self.arterialPressureButton state]];
+    arterialPressureIsVisibleAppDelegate=!arterialPressureIsVisibleAppDelegate;
+    
+    // Send variable to Simulator
+    [[GBCSimulator sharedSimulator] getArterialPressureVisibility:arterialPressureIsVisibleAppDelegate];
+}
+
+- (IBAction)displayHeartRate:(id)sender {
+    
+    // Switch state variables
+    [self.heartRateButton setState:![self.heartRateButton state]];
+    heartRateIsVisibleAppDelegate=!heartRateIsVisibleAppDelegate;
+    
+    // Send variable to Simulator
+    [[GBCSimulator sharedSimulator] getHeartRateVisibility:heartRateIsVisibleAppDelegate];
+}
+- (IBAction)displayOxygen:(id)sender {
+    
+    // Switch state variables
+    [self.oxygenButton setState:![self.oxygenButton state]];
+    oxygenIsVisibleAppDelegate=!oxygenIsVisibleAppDelegate;
+    
+    // Send variable to Simulator
+    [[GBCSimulator sharedSimulator] getOxygenVisibility:oxygenIsVisibleAppDelegate];
+}
+
+- (IBAction)displayRespiratoryFrecuency:(id)sender {
+    
+    // Switch state variables
+    [self.respiratoryRateButton setState:![self.respiratoryRateButton state]];
+    respiratoryRateIsVisibleAppDelegate=!respiratoryRateIsVisibleAppDelegate;
+    
+    // Send variable to Simulator
+    [[GBCSimulator sharedSimulator] getRespiratoryFrecuencyVisibility:respiratoryRateIsVisibleAppDelegate];
+}
+
+- (IBAction)displayConscience:(id)sender {
+    
+    // Switch state variables
+    [self.conscienceButton setState:![self.conscienceButton state]];
+    conscienceIsVisibleAppDelegate=!conscienceIsVisibleAppDelegate;
+    
+    // Send variable to Simulator
+    [[GBCSimulator sharedSimulator] getConscienceVisibility:conscienceIsVisibleAppDelegate];
+}
 
 @end
+
 
 // Add Observer to Notification Center
 /*

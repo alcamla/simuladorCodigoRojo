@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14D72i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6249"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
@@ -80,6 +80,43 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="forgetCurrentBluetoothDevice:" target="Voe-Tx-rLC" id="82j-Xt-fbK"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Monitor" id="Lbn-r4-upc">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Monitor" id="E7b-vh-8IC">
+                                    <items>
+                                        <menuItem title="Presión Arterial" id="7fL-rR-J2b">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="displayPressure:" target="Voe-Tx-rLC" id="Fm0-EE-Rxl"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Ritmo Cardiaco" id="Ud2-vu-FVS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="displayHeartRate:" target="Voe-Tx-rLC" id="0O1-tX-bmQ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Saturación de Oxígeno" id="V8m-Rm-4gW">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="displayOxygen:" target="Voe-Tx-rLC" id="0xw-Ov-v6U"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Frecuencia Respiratoria" id="AUW-FV-mnV">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="displayRespiratoryFrecuency:" target="Voe-Tx-rLC" id="3Ki-CG-k0h"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Consciencia" id="fMr-tS-Sif">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="displayConscience:" target="Voe-Tx-rLC" id="fKx-VM-TGK"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -672,7 +709,15 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
+                    <connections>
+                        <outlet property="arterialPressureButton" destination="7fL-rR-J2b" id="Mae-cn-IUq"/>
+                        <outlet property="conscienceButton" destination="fMr-tS-Sif" id="uhI-9e-Ucu"/>
+                        <outlet property="heartRateButton" destination="Ud2-vu-FVS" id="CO1-US-jex"/>
+                        <outlet property="oxygenButton" destination="V8m-Rm-4gW" id="hgz-tc-cg6"/>
+                        <outlet property="respiratoryRateButton" destination="AUW-FV-mnV" id="sXJ-DE-3wx"/>
+                    </connections>
+                </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1349.5" y="-172"/>
@@ -827,7 +872,7 @@
                             </textField>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5c6-wc-Nky">
                                 <rect key="frame" x="157" y="159" width="267" height="29"/>
-                                <comboBoxCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="-- Seleccione el Estado del Paciente --" completes="NO" numberOfVisibleItems="4" id="7Ww-aT-0YL">
+                                <comboBoxCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="-- Seleccione el Estado del Paciente --" completes="NO" numberOfVisibleItems="4" id="7Ww-aT-0YL">
                                     <font key="font" size="14" name="HelveticaNeue"/>
                                     <color key="textColor" red="0.49210858585858586" green="0.49210858585858586" blue="0.49210858585858586" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -964,23 +1009,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1692" height="959"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-Cf-3kf">
-                                <rect key="frame" x="2205" y="839" width="230" height="71"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="110/70" id="S8i-2f-gNj">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Ycl-Dv-GvR"/>
-                                    <font key="font" size="60" name="HelveticaNeue"/>
-                                    <color key="textColor" red="0.0" green="0.7278857748239167" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ZF-8p-CeB">
-                                <rect key="frame" x="2217" y="801" width="232" height="39"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Presión Arterial" id="Ikj-aP-KEc">
-                                    <font key="font" size="32" name="HelveticaNeue-Italic"/>
-                                    <color key="textColor" red="0.28207737980128544" green="0.66866316363250178" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jd4-5I-5ei">
                                 <rect key="frame" x="0.0" y="0.0" width="1692" height="959"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="monitorBackGround" id="4fJ-2P-bme"/>
@@ -1026,6 +1054,15 @@
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="v8x-Ph-niw"/>
                                     <font key="font" size="105" name="HelveticaNeue"/>
                                     <color key="textColor" red="0.90592321070000004" green="1" blue="0.35738511439999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xh8-dH-ror">
+                                <rect key="frame" x="1394" y="68" width="335" height="123"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="110/70" id="RNc-kp-RRE">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="26x-dc-nxK"/>
+                                    <font key="font" size="70" name="HelveticaNeue"/>
+                                    <color key="textColor" red="1" green="0.37516554892522858" blue="0.064642889200315801" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -1108,10 +1145,18 @@
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i2h-Z8-j22" customClass="PlotView">
                                 <rect key="frame" x="20" y="273" width="1404" height="431"/>
                             </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7QH-bt-WKd">
+                                <rect key="frame" x="1502" y="43" width="124" height="60"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="mmHg" id="VDE-H0-L2R">
+                                    <font key="font" size="40" name="HelveticaNeue-Italic"/>
+                                    <color key="textColor" red="1" green="0.37516554889999998" blue="0.064642889199999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="arterialPresureValue" destination="Tkc-Cf-3kf" id="AbH-ID-TPi"/>
+                        <outlet property="arterialPresureValue" destination="xh8-dH-ror" id="4KE-o9-rHo"/>
                         <outlet property="chronometerTextField" destination="DRn-Uo-QAH" id="V6I-Np-quG"/>
                         <outlet property="conscienceValue" destination="qRz-cc-wS9" id="gM0-3C-qPp"/>
                         <outlet property="heartRateValue" destination="f5C-nb-NW7" id="6aD-yX-p4r"/>

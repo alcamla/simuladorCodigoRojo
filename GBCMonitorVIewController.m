@@ -49,6 +49,12 @@ bool finalizationCheckMonitor=NO;
 bool paussedCheckMonitor=NO;
 bool reanudedCheckMonitor=NO;
 bool panelViewState=NO;
+bool conscienceIsVisible=NO;
+bool heartRateIsVisible=NO;
+bool respiratoryRateIsVisible=NO;
+bool oxygenIsVisible=NO;
+bool arterialPressureIsVisible=NO;
+
 int hours=0;
 int seconds=0;
 int minutes=0;
@@ -86,11 +92,18 @@ int minutes=0;
 }
 
 - (void) viewDidDisappear{
-
+    
     // Reset variables
     [self simulationHasFinishedMonitor];
     self.plotItem = nil;
-
+    
+    // Reinit visible state variables
+    conscienceIsVisible=NO;
+    heartRateIsVisible=NO;
+    respiratoryRateIsVisible=NO;
+    oxygenIsVisible=NO;
+    arterialPressureIsVisible=NO;
+    
 }
 
 -(void)setPlotItem:(PlotItem *)item
@@ -111,10 +124,10 @@ int minutes=0;
     
     // Describing a timer which allows us to update the Menu View every 1s
     self.timerToUpdateMonitorView=[NSTimer scheduledTimerWithTimeInterval:0.5
-                                                                target:self
-                                                              selector:@selector(interruptEventHandling)
-                                                              userInfo:nil
-                                                               repeats:YES];
+                                                                   target:self
+                                                                 selector:@selector(interruptEventHandling)
+                                                                 userInfo:nil
+                                                                  repeats:YES];
 }
 
 // Initialize the Chronometer Timer
@@ -123,10 +136,10 @@ int minutes=0;
     
     // Describing a timer which allows us to update the Menu View every 1s
     self.chronometer=[NSTimer scheduledTimerWithTimeInterval:1.0
-                                                                   target:self
-                                                                 selector:@selector(updateChronometer)
-                                                                 userInfo:nil
-                                                                  repeats:YES];
+                                                      target:self
+                                                    selector:@selector(updateChronometer)
+                                                    userInfo:nil
+                                                     repeats:YES];
 }
 
 // Interrupt Process
@@ -161,14 +174,16 @@ int minutes=0;
 
 - (void) updateVitalSignsInMonitor{
     
-    //Update the ECG signal based on the current heart rate.
-    
-    
-    //TODO: 
     
     // Ask Simulator to send the vital signs and alloc them in monitor dictionary
     self.vitalSingsMonitor= [[GBCSimulator sharedSimulator] getCurrentVitalSigns];
     
+    // Ask to Main Class Simulator if Monitor should display vital Signs or not
+    conscienceIsVisible=[[GBCSimulator sharedSimulator] sendConscienceVisibility];
+    heartRateIsVisible=[[GBCSimulator sharedSimulator] sendHeartRateVisibility];
+    arterialPressureIsVisible=[[GBCSimulator sharedSimulator] sendArterialPressureVisibility];
+    respiratoryRateIsVisible=[[GBCSimulator sharedSimulator] sendRespiratoryFrecuencyVisibility];
+    oxygenIsVisible=[[GBCSimulator sharedSimulator] sendOxygenVisibility];
     
     // Assing vital signs values variables from local dictionary to local variables
     [self.conscienceValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Consciencia"]];
@@ -176,7 +191,36 @@ int minutes=0;
     [self.arterialPresureValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Presión Arterial"]];
     [self.respiratoryFrecuencyValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Frecuencia Respiratoria"]];
     [self.oxigenSaturationValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Saturación de Oxígeno"]];
-
+    
+    // Set it or Not Visible
+    
+    if (conscienceIsVisible==YES) {
+        [self.conscienceValue setHidden:NO];
+    }else{
+        [self.conscienceValue setHidden:YES];
+    }
+    if (heartRateIsVisible==YES) {
+        [self.heartRateValue setHidden:NO];
+    }else{
+        [self.heartRateValue setHidden:YES];
+    }
+    if (arterialPressureIsVisible==YES) {
+        [self.arterialPresureValue setHidden:NO];
+    }else{
+        [self.arterialPresureValue setHidden:YES];
+    }
+    if (respiratoryRateIsVisible==YES) {
+        [self.respiratoryFrecuencyValue setHidden:NO];
+    }else{
+        [self.respiratoryFrecuencyValue setHidden:YES];
+    }
+    if (oxygenIsVisible==YES) {
+        [self.oxigenSaturationValue setHidden:NO];
+    }else{
+        [self.oxigenSaturationValue setHidden:YES];
+    }
+    
+    
 }
 
 // Update Chronometer
@@ -213,7 +257,7 @@ int minutes=0;
     // Send the array
     [self sendChronometerValue];
     
-    }
+}
 
 // Stop Chronometer
 
@@ -251,10 +295,10 @@ int minutes=0;
 - (void) askIfSimulationIsPaused{
     
     paussedCheckMonitor=[[GBCSimulator sharedSimulator] sendPausedOrNotMessage];
-
+    
     // Check answer from Simulator
     if (paussedCheckMonitor==YES) {
-       
+        
         // Stop Chronometer Timer
         [self.chronometer invalidate];
         self.chronometer = nil;
@@ -262,7 +306,7 @@ int minutes=0;
         // Stop Beep Timer
         [self.beepTimer invalidate];
         self.beepTimer = nil;
-
+        
         
     }else{
         if (self.chronometer.valid==NO) {
@@ -273,11 +317,11 @@ int minutes=0;
         }
         if (self.beepTimer.valid==NO) {
             
-            // Reinitializite Beep Timer 
+            // Reinitializite Beep Timer
             //[self setBeepFrecuency];
             
         }
-
+        
         
     }
     
@@ -286,10 +330,10 @@ int minutes=0;
 // Send Chronometer value time to Simulator
 
 - (void) sendChronometerValue{
- 
+    
     [[GBCSimulator sharedSimulator] getChronometerValue:self.chronometerArray];
     
-
+    
 }
 
 // Ask to Main Class: Simulator if simulation has finished
@@ -302,7 +346,7 @@ int minutes=0;
     if (finalizationCheckMonitor==YES) {
         [self simulationHasFinishedMonitor];
     }
-
+    
 }
 
 // End the Simulation Activity for this monitor
@@ -324,6 +368,13 @@ int minutes=0;
     // Close this View
     [self.view.window setIsVisible:NO];
     
+    // Reinit visible state variables
+    conscienceIsVisible=NO;
+    heartRateIsVisible=NO;
+    respiratoryRateIsVisible=NO;
+    oxygenIsVisible=NO;
+    arterialPressureIsVisible=NO;
+    
 }
 
 // Method to tell Main Class: Simulator that the Chronometer has Started
@@ -331,7 +382,7 @@ int minutes=0;
 - (void) sendMessageOfStartedChronometer{
     
     [[GBCSimulator sharedSimulator] receiveStartedChronometerMessage];
-
+    
 }
 
 // Method called when panel button is pressed
@@ -351,7 +402,7 @@ int minutes=0;
 // Method to ask to main class simulator for the state initial
 
 - (void) askForInitialStateAndSetInitialFrecuency{
-
+    
     self.currentStateMonitor=[[GBCSimulator sharedSimulator] sendCurrentState];
     
 }
@@ -404,7 +455,7 @@ int minutes=0;
         
         self.beepTimer=[NSTimer scheduledTimerWithTimeInterval:(0.7) target:self selector:@selector(playBeep) userInfo:nil repeats:YES];
     };
-
+    
 }
 
 // Play the beep for the Simulation
@@ -415,7 +466,7 @@ int minutes=0;
     //self.beepSound=[NSSound soundNamed:@"ECGbeep.mp3"];
     self.beepSound=[NSSound soundNamed:@"Tink.aiff"];
     [self.beepSound play];
-
+    
 }
 
 // Lazy Initializations
