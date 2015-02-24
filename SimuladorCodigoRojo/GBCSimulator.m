@@ -276,11 +276,9 @@ bool arterialPressureIsVisibleSimulator=NO;
     self.chronometerSimulator[2]=@"0";
     self.editedVariablesSimulator=self.initialEditedVariablesSimulator;
     self.editedVariablesSimulatorWhenStable=self.initialEditedVariablesSimulator;
-    conscienceIsVisibleSimulator=NO;
-    heartRateIsVisibleSimulator=NO;
-    respiratoryRateIsVisibleSimulator=NO;
-    oxygenIsVisibleSimulator=NO;
-    arterialPressureIsVisibleSimulator=NO;
+    
+    //Inform the app delegate that the simulation did finish. Change the state of the variables' visibility buttons
+    [(AppDelegate*)[NSApp delegate] simulationDidFinish];
     
 }
 

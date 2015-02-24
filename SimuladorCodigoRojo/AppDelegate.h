@@ -18,5 +18,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+-(void)simulationDidFinish;
+
 @end
 

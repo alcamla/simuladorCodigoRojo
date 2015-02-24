@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
@@ -89,12 +89,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Monitor" id="E7b-vh-8IC">
                                     <items>
-                                        <menuItem title="Presión Arterial" id="7fL-rR-J2b">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="variableChangedState:" target="Voe-Tx-rLC" id="M8N-w1-4bU"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Ritmo Cardiaco" tag="1" id="Ud2-vu-FVS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -111,6 +105,12 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="variableChangedState:" target="Voe-Tx-rLC" id="FwY-sE-Uq8"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Presión Arterial" id="7fL-rR-J2b">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="variableChangedState:" target="Voe-Tx-rLC" id="M8N-w1-4bU"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Consciencia" tag="4" id="fMr-tS-Sif">
@@ -714,6 +714,7 @@
                         <outlet property="arterialPressureButton" destination="7fL-rR-J2b" id="Mae-cn-IUq"/>
                         <outlet property="conscienceButton" destination="fMr-tS-Sif" id="uhI-9e-Ucu"/>
                         <outlet property="heartRateButton" destination="Ud2-vu-FVS" id="CO1-US-jex"/>
+                        <outlet property="monitor" destination="E7b-vh-8IC" id="YhD-3G-8qh"/>
                         <outlet property="oxygenButton" destination="V8m-Rm-4gW" id="hgz-tc-cg6"/>
                         <outlet property="respiratoryRateButton" destination="AUW-FV-mnV" id="sXJ-DE-3wx"/>
                     </connections>

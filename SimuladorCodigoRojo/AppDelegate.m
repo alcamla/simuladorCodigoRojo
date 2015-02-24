@@ -23,6 +23,8 @@
 @property (weak) IBOutlet NSMenuItem *respiratoryRateButton;
 @property (weak) IBOutlet NSMenuItem *conscienceButton;
 
+@property(weak)IBOutlet NSMenu *monitor;
+
 @end
 
 @implementation AppDelegate
@@ -71,53 +73,43 @@ bool arterialPressureIsVisibleAppDelegate=NO;
         [self.menuController showWindow:self];
         
     }
-    
-    // Reinit visible state variables
-    conscienceIsVisibleAppDelegate=NO;
-    heartRateIsVisibleAppDelegate=NO;
-    respiratoryRateIsVisibleAppDelegate=NO;
-    oxygenIsVisibleAppDelegate=NO;
-    arterialPressureIsVisibleAppDelegate=NO;
-    
-    // Reset the state
-    [self.arterialPressureButton setState:0];
-    [self.heartRateButton setState:0];
-    [self.oxygenButton setState:0];
-    [self.respiratoryRateButton setState:0];
-    [self.conscienceButton setState:0];
+    //Reset the state of the menuItems of the Monitor Menu, making all variables invisible
+    [self simulationDidFinish];
     
     return YES;
 }
 
 // Button to forget the bluetooth device identifier
 
+
+
 - (IBAction)forgetCurrentBluetoothDevice:(id)sender {
     [[GBCSimulator sharedSimulator] forgetBluetoothDevice];
 }
 
+#pragma mark -
+#pragma Monitory Variables Visibility Manipulation
 
 -(IBAction)variableChangedState:(id)sender{
     NSMenuItem *item = (NSMenuItem *)sender;
     NSInteger tag = [(NSMenuItem*)sender tag];
-    switch (tag) {
-        case GBC_ARTERIAL_PRESSURE_MENU_TAG:
-            break;
-        case GBC_CONSCIENCE_MENU_TAG:
-            break;
-        case GBC_HEART_RATE_MENU_TAG:
-            break;
-        case GBC_OXIGEN_SATURATION_MENU_TAG:
-            break;
-        case GBC_RESPIRATORY_FREQUENCY_MENU_TAG:
-            break;
-        default:
-            break;
-    }
     [item setState:!item.state];
     [[GBCSimulator sharedSimulator] monitoredVariableWithTag:tag changedVisibilityToState:[item state]];
 }
 
-// Button to enable or unable views
+
+-(void)simulationDidFinish{
+    //Reset the state of the menuItems under the monitor Menu, indicating that all variables are invisible
+    NSArray *variablesMenuItems = self.monitor.itemArray;
+    NSMenuItem *variableItem;
+    for (int i=0; i<[variablesMenuItems count]; i++) {
+        variableItem = variablesMenuItems[i];
+        [variableItem setState:0];
+        [[GBCSimulator sharedSimulator] monitoredVariableWithTag:variableItem.tag changedVisibilityToState:variableItem.state];
+        
+    }
+}
+
 
 
 @end
