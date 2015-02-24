@@ -119,6 +119,12 @@
                                                 <action selector="variableChangedState:" target="Voe-Tx-rLC" id="z4K-Rt-kFO"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Perfusión" tag="5" id="IJZ-NV-mqM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="variableChangedState:" target="Voe-Tx-rLC" id="BMO-ZA-Xtp"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -711,12 +717,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
                     <connections>
-                        <outlet property="arterialPressureButton" destination="7fL-rR-J2b" id="Mae-cn-IUq"/>
-                        <outlet property="conscienceButton" destination="fMr-tS-Sif" id="uhI-9e-Ucu"/>
-                        <outlet property="heartRateButton" destination="Ud2-vu-FVS" id="CO1-US-jex"/>
                         <outlet property="monitor" destination="E7b-vh-8IC" id="YhD-3G-8qh"/>
-                        <outlet property="oxygenButton" destination="V8m-Rm-4gW" id="hgz-tc-cg6"/>
-                        <outlet property="respiratoryRateButton" destination="AUW-FV-mnV" id="sXJ-DE-3wx"/>
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -964,7 +965,7 @@
                 </windowController>
                 <customObject id="jgU-CV-kBB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="701" y="492"/>
+            <point key="canvasLocation" x="669" y="497"/>
         </scene>
         <!--Confirmar-->
         <scene sceneID="vKX-0H-wg3">
@@ -1036,7 +1037,7 @@
                                 <rect key="frame" x="1472" y="668" width="185" height="119"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="78" id="Lf9-2C-fsp">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Hy4-qe-FCU"/>
-                                    <font key="font" size="105" name="HelveticaNeue"/>
+                                    <font key="font" size="105" name="HelveticaNeue-Bold"/>
                                     <color key="textColor" red="0.62496142450000003" green="1" blue="0.42853705959999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1053,7 +1054,7 @@
                                 <rect key="frame" x="1460" y="302" width="203" height="120"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="18" id="daf-ls-SPM">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="v8x-Ph-niw"/>
-                                    <font key="font" size="105" name="HelveticaNeue"/>
+                                    <font key="font" size="105" name="HelveticaNeue-Bold"/>
                                     <color key="textColor" red="0.90592321070000004" green="1" blue="0.35738511439999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1062,7 +1063,7 @@
                                 <rect key="frame" x="1394" y="68" width="335" height="123"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="110/70" id="RNc-kp-RRE">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="26x-dc-nxK"/>
-                                    <font key="font" size="70" name="HelveticaNeue"/>
+                                    <font key="font" size="70" name="HelveticaNeue-Bold"/>
                                     <color key="textColor" red="1" green="0.37516554892522858" blue="0.064642889200315801" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1073,7 +1074,7 @@
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="percent" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="NX0-Vt-wGp">
                                         <integer key="multiplier" value="100"/>
                                     </numberFormatter>
-                                    <font key="font" size="105" name="HelveticaNeue"/>
+                                    <font key="font" size="105" name="HelveticaNeue-Bold"/>
                                     <color key="textColor" red="0.1718475642" green="1" blue="0.92990373719999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1154,6 +1155,15 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hvh-Gc-tm9">
+                                <rect key="frame" x="610" y="86" width="710" height="123"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Fría" id="x6J-Ty-suu">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Qqu-Vz-QZm"/>
+                                    <font key="font" size="27" name="HelveticaNeue"/>
+                                    <color key="textColor" red="1" green="0.37516554889999998" blue="0.064642889199999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -1162,6 +1172,7 @@
                         <outlet property="conscienceValue" destination="qRz-cc-wS9" id="gM0-3C-qPp"/>
                         <outlet property="heartRateValue" destination="f5C-nb-NW7" id="6aD-yX-p4r"/>
                         <outlet property="oxigenSaturationValue" destination="LQU-Mg-gPs" id="Zw7-YR-IIl"/>
+                        <outlet property="perfusionValue" destination="Hvh-Gc-tm9" id="CMU-PC-s2g"/>
                         <outlet property="plotView" destination="i2h-Z8-j22" id="L3w-sm-Hyw"/>
                         <outlet property="respiratoryFrecuencyValue" destination="ZGr-jn-hI0" id="GVy-XS-WiJ"/>
                         <segue destination="gNm-pR-YI9" kind="show" identifier="fromMonitorToPanel" id="XuR-Rq-xVt"/>

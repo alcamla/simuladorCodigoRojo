@@ -15,6 +15,7 @@
 #define GBC_OXIGEN_SATURATION_MENU_TAG 2
 #define GBC_RESPIRATORY_FREQUENCY_MENU_TAG 3
 #define GBC_CONSCIENCE_MENU_TAG 4
+#define GBC_PERFUSION_MENU_TAG 5
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 

@@ -17,25 +17,12 @@
 
 @property NSWindowController *menuController;
 @property NSStoryboard *storyboard;
-@property (weak) IBOutlet NSMenuItem *arterialPressureButton;
-@property (weak) IBOutlet NSMenuItem *heartRateButton;
-@property (weak) IBOutlet NSMenuItem *oxygenButton;
-@property (weak) IBOutlet NSMenuItem *respiratoryRateButton;
-@property (weak) IBOutlet NSMenuItem *conscienceButton;
-
 @property(weak)IBOutlet NSMenu *monitor;
 
 @end
 
 @implementation AppDelegate
 
-
-
-bool conscienceIsVisibleAppDelegate=NO;
-bool heartRateIsVisibleAppDelegate=NO;
-bool respiratoryRateIsVisibleAppDelegate=NO;
-bool oxygenIsVisibleAppDelegate=NO;
-bool arterialPressureIsVisibleAppDelegate=NO;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application

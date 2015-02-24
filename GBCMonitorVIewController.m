@@ -20,12 +20,10 @@
 @property (strong) IBOutlet NSTextField *oxigenSaturationValue;
 @property (strong) IBOutlet NSTextField *respiratoryFrecuencyValue;
 @property (strong) IBOutlet NSTextField *arterialPresureValue;
+@property (strong) IBOutlet NSTextField *perfusionValue;
 @property (strong) IBOutlet NSTextField *chronometerTextField;
 
-
 @property (weak) IBOutlet PlotView *plotView;
-
-
 
 
 @property (strong, nonatomic) NSDictionary *vitalSingsMonitor;
@@ -53,6 +51,7 @@ bool heartRateIsVisible=NO;
 bool respiratoryRateIsVisible=NO;
 bool oxygenIsVisible=NO;
 bool arterialPressureIsVisible=NO;
+bool perfusionIsVisible=NO;
 
 int hours=0;
 int seconds=0;
@@ -101,6 +100,7 @@ int minutes=0;
     respiratoryRateIsVisible=NO;
     oxygenIsVisible=NO;
     arterialPressureIsVisible=NO;
+    perfusionIsVisible=NO;
     
 }
 
@@ -183,6 +183,7 @@ int minutes=0;
     arterialPressureIsVisible=[[GBCSimulator sharedSimulator] sendArterialPressureVisibility];
     respiratoryRateIsVisible=[[GBCSimulator sharedSimulator] sendRespiratoryFrecuencyVisibility];
     oxygenIsVisible=[[GBCSimulator sharedSimulator] sendOxygenVisibility];
+    perfusionIsVisible=[[GBCSimulator sharedSimulator] sendPerfusionVisibility];
     
     // Assing vital signs values variables from local dictionary to local variables
     [self.conscienceValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Consciencia"]];
@@ -190,6 +191,7 @@ int minutes=0;
     [self.arterialPresureValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Presión Arterial"]];
     [self.respiratoryFrecuencyValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Frecuencia Respiratoria"]];
     [self.oxigenSaturationValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Saturación de Oxígeno"]];
+    [self.perfusionValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Perfusión"]];
     
     // Set it or Not Visible
     
@@ -217,6 +219,11 @@ int minutes=0;
         [self.oxigenSaturationValue setHidden:NO];
     }else{
         [self.oxigenSaturationValue setHidden:YES];
+    }
+    if (perfusionIsVisible==YES) {
+        [self.perfusionValue setHidden:NO];
+    }else{
+        [self.perfusionValue setHidden:YES];
     }
     
     
@@ -373,6 +380,7 @@ int minutes=0;
     respiratoryRateIsVisible=NO;
     oxygenIsVisible=NO;
     arterialPressureIsVisible=NO;
+    perfusionIsVisible=NO;
     
 }
 

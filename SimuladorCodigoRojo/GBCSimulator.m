@@ -62,6 +62,7 @@ bool heartRateIsVisibleSimulator=NO;
 bool respiratoryRateIsVisibleSimulator=NO;
 bool oxygenIsVisibleSimulator=NO;
 bool arterialPressureIsVisibleSimulator=NO;
+bool perfusionIsVisibleSimulator=NO;
 
 // Define as a Singleton and call Init when a GBCSimulator object is created by other classes
 
@@ -442,6 +443,9 @@ bool arterialPressureIsVisibleSimulator=NO;
         case GBC_RESPIRATORY_FREQUENCY_MENU_TAG:
             respiratoryRateIsVisibleSimulator = state;
             break;
+        case GBC_PERFUSION_MENU_TAG:
+            perfusionIsVisibleSimulator = state;
+            break;
         default:
             break;
     }        
@@ -449,6 +453,11 @@ bool arterialPressureIsVisibleSimulator=NO;
 
 
 # pragma mark - Send the visibility state of Vital Signs
+
+-(BOOL)sendPerfusionVisibility{
+    
+    return perfusionIsVisibleSimulator;
+}
 
 -(BOOL)sendConscienceVisibility{
     
@@ -638,7 +647,7 @@ bool arterialPressureIsVisibleSimulator=NO;
 
 - (NSMutableArray *)bluetoothInitialValuesSimulator{
     if (!_bluetoothInitialValuesSimulator) {
-        _bluetoothInitialValuesSimulator = [[NSMutableArray alloc] initWithObjects:@"Yes", @"Yes", @"Yes", @"Yes", @"Yes",@"Yes", nil];
+        _bluetoothInitialValuesSimulator = [[NSMutableArray alloc] initWithObjects:@"No", @"No", @"No", @"No", @"No",@"No", nil];
     }
     return _bluetoothInitialValuesSimulator;
 }

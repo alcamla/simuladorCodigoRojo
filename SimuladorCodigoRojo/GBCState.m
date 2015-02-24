@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSString *arterialPresure;
 @property (strong, nonatomic) NSString *respiratoryRate;
 @property (strong, nonatomic) NSString *oxygenSaturation;
-//Este comentario está en el branch
+@property (strong, nonatomic) NSString *perfusion;
 
 @end
 
@@ -65,6 +65,7 @@
             self.arterialPresure=@"110/70";
             self.respiratoryRate=@"18";
             self.oxygenSaturation=@"96";
+            self.perfusion=@"Normal";
             break;
         case 1:
             self.conscience=@"Excitada";
@@ -72,6 +73,7 @@
             self.arterialPresure=@"86/50";
             self.respiratoryRate=@"20";
             self.oxygenSaturation=@"95";
+            self.perfusion=@"Pálida-Fría";
             break;
         case 2:
             self.conscience=@"NI";
@@ -79,6 +81,7 @@
             self.arterialPresure=@"110/70";
             self.respiratoryRate=@"18";
             self.oxygenSaturation=@"96";
+            self.perfusion=@"Normal";
             break;
         case 3:
             self.conscience=@"Obnubilada";
@@ -86,6 +89,7 @@
             self.arterialPresure=@"74/50";
             self.respiratoryRate=@"22";
             self.oxygenSaturation=@"90";
+            self.perfusion=@"Pálida-Fría-Sudorosa";
             break;
         case 4:
             self.conscience=@"Estupor";
@@ -93,6 +97,7 @@
             self.arterialPresure=@"60/40";
             self.respiratoryRate=@"30";
             self.oxygenSaturation=@"85";
+            self.perfusion=@"Pálida-Fría-Sudorosa-Llenado Capilar >3s";
             break;
         case 5:
             self.conscience=@"NI";
@@ -100,6 +105,7 @@
             self.arterialPresure=@"110/70";
             self.respiratoryRate=@"18";
             self.oxygenSaturation=@"96";
+            self.perfusion=@"Normal";
             break;
             
         default:
@@ -113,7 +119,8 @@
     [self.vitalSignDictionary setObject:self.arterialPresure forKey:@"Presión Arterial"];
     [self.vitalSignDictionary setObject:self.respiratoryRate forKey:@"Frecuencia Respiratoria"];
     [self.vitalSignDictionary setObject:self.oxygenSaturation forKey:@"Saturación de Oxígeno"];
-     
+    [self.vitalSignDictionary setObject:self.perfusion forKey:@"Perfusión"];
+    
     // Return Dictionary
     
     return self.vitalSignDictionary;

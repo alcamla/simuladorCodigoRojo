@@ -218,10 +218,10 @@ NSInteger moderedShockTime=4;
         if (minutesMachine+initTime<softShockTime) {
             
             // Steps Condition
-            if (([self.medicine isEqualToString:@"Yes"] && [self.massage isEqualToString:@"Yes"] && [self.crystalloid isEqualToString:@"Yes"] && [self.bleeding isEqualToString:@"Yes"] && [self.diagnostic isEqualToString:@"Yes"] && [self.venous isEqualToString:@"Yes"])==YES) {
+            if (([self.medicine isEqualToString:@"Yes"] && [self.massage isEqualToString:@"Yes"] && [self.crystalloid isEqualToString:@"Yes"] && [self.bleeding isEqualToString:@"Yes"] && [self.diagnostic isEqualToString:@"Yes"] && [self.venous isEqualToString:@"Yes"] && [self.vitalSigns isEqualToString:@"Yes"])==YES) {
                 
                 // Set Next State
-                self.currentStateMachine=@"Transitorio Leve";
+                self.currentStateMachine=@"Transitorio Leve"; 
             }
         }
         else if (minutesMachine+initTime>=softShockTime){
@@ -240,7 +240,7 @@ NSInteger moderedShockTime=4;
         if (minutesMachine+initTime<softTransitoryTime) {
             
             // Steps Condition
-            if (([self.medicine isEqualToString:@"Yes"] && [self.massage isEqualToString:@"Yes"] && [self.crystalloid isEqualToString:@"Yes"] && [self.bleeding isEqualToString:@"Yes"] && [self.diagnostic isEqualToString:@"Yes"] && [self.venous isEqualToString:@"Yes"] && [self.oxygen isEqualToString:@"Yes"] && [self.blanket isEqualToString:@"Yes"] && [self.probe isEqualToString:@"Yes"])==YES) {
+            if (([self.medicine isEqualToString:@"Yes"] && [self.massage isEqualToString:@"Yes"] && [self.crystalloid isEqualToString:@"Yes"] && [self.bleeding isEqualToString:@"Yes"] && [self.diagnostic isEqualToString:@"Yes"] && [self.venous isEqualToString:@"Yes"] && [self.oxygen isEqualToString:@"Yes"] && [self.blanket isEqualToString:@"Yes"] && [self.probe isEqualToString:@"Yes"] && [self.vitalSigns isEqualToString:@"Yes"])==YES) {
                 
                 // Set next State
                 self.currentStateMachine=@"Estable";
@@ -261,7 +261,7 @@ NSInteger moderedShockTime=4;
         if (minutesMachine+initTime<moderedShockTime) {
             
             // Steps Condition
-            if (([self.medicine isEqualToString:@"Yes"] && [self.massage isEqualToString:@"Yes"] && [self.crystalloid isEqualToString:@"Yes"] && [self.bleeding isEqualToString:@"Yes"] && [self.diagnostic isEqualToString:@"Yes"] && [self.venous isEqualToString:@"Yes"] && [self.oxygen isEqualToString:@"Yes"] && [self.blanket isEqualToString:@"Yes"] && [self.probe isEqualToString:@"Yes"])==YES) {
+            if (([self.medicine isEqualToString:@"Yes"] && [self.massage isEqualToString:@"Yes"] && [self.crystalloid isEqualToString:@"Yes"] && [self.bleeding isEqualToString:@"Yes"] && [self.diagnostic isEqualToString:@"Yes"] && [self.venous isEqualToString:@"Yes"] && [self.oxygen isEqualToString:@"Yes"] && [self.blanket isEqualToString:@"Yes"] && [self.probe isEqualToString:@"Yes"] && [self.vitalSigns isEqualToString:@"Yes"])==YES) {
                 
             // Set Next State
             self.currentStateMachine=@"Estable";
@@ -279,7 +279,7 @@ NSInteger moderedShockTime=4;
         
         NSLog(@"El Estado Actual es Choque Grave");
         // Steps Condition
-        if (([self.medicine isEqualToString:@"Yes"] && [self.massage isEqualToString:@"Yes"] && [self.crystalloid isEqualToString:@"Yes"] && [self.bleeding isEqualToString:@"Yes"] && [self.diagnostic isEqualToString:@"Yes"] && [self.venous isEqualToString:@"Yes"] && [self.oxygen isEqualToString:@"Yes"] && [self.blanket isEqualToString:@"Yes"] && [self.probe isEqualToString:@"Yes"])==YES) {
+        if (([self.medicine isEqualToString:@"Yes"] && [self.massage isEqualToString:@"Yes"] && [self.crystalloid isEqualToString:@"Yes"] && [self.bleeding isEqualToString:@"Yes"] && [self.diagnostic isEqualToString:@"Yes"] && [self.venous isEqualToString:@"Yes"] && [self.oxygen isEqualToString:@"Yes"] && [self.blanket isEqualToString:@"Yes"] && [self.probe isEqualToString:@"Yes"] && [self.vitalSigns isEqualToString:@"Yes"])==YES) {
             
             // Set Next State
             self.currentStateMachine=@"Estable";

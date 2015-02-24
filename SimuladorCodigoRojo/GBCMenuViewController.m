@@ -15,7 +15,6 @@
 @property (strong) IBOutlet NSButton *goToConfirmProperty;
 @property (strong) IBOutlet NSButton *goToSyncProperty;
 @property (strong,nonatomic) NSTimer *timerToUpdateMenuView;
-@property(assign) Class<NSWindowRestoration> restorationClass;
 
 @end
 

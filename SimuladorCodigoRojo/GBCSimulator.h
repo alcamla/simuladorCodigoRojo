@@ -60,6 +60,7 @@
 -(BOOL)sendArterialPressureVisibility;
 -(BOOL)sendRespiratoryFrecuencyVisibility;
 -(BOOL)sendOxygenVisibility;
+-(BOOL)sendPerfusionVisibility;
 -(void)monitoredVariableWithTag:(NSInteger)variableTag changedVisibilityToState:(BOOL)state;
 @end
 
