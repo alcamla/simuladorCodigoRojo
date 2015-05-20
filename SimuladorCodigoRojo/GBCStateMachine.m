@@ -54,21 +54,21 @@ NSInteger secondsMachine=0;
 
 // Trasition Times
 
-/*
+
 NSInteger initTime=0;
 NSInteger postpartoTime=2;
 NSInteger softShockTime=5;
 NSInteger softTransitoryTime=10;
 NSInteger moderedShockTime=12;
-*/
+
 
 // Initial Time Settings For Short Proofs
 
-NSInteger initTime=0;
-NSInteger postpartoTime=1;
-NSInteger softShockTime=2;
-NSInteger softTransitoryTime=3;
-NSInteger moderedShockTime=4;
+//NSInteger initTime=0;
+//NSInteger postpartoTime=1;
+//NSInteger softShockTime=2;
+//NSInteger softTransitoryTime=3;
+//NSInteger moderedShockTime=4;
 
  
 // Initialize Machine Timer to Update State
@@ -106,22 +106,22 @@ NSInteger moderedShockTime=4;
     }
     else if ([self.currentStateMachine isEqualToString:@"Choque Leve"]==YES) {
         
-        self.currentStateMachine=@"Choque Leve";
+        //self.currentStateMachine=@"Choque Leve";
         initTime=postpartoTime;
     }
     else if ([self.currentStateMachine isEqualToString:@"Choque Moderado"]==YES) {
         
-        self.currentStateMachine=@"Choque Moderado";
+        //self.currentStateMachine=@"Choque Moderado";
         initTime=softShockTime;
     }
     else if ([self.currentStateMachine isEqualToString:@"Choque Grave"]==YES) {
        
-        self.currentStateMachine=@"Choque Grave";
+        //self.currentStateMachine=@"Choque Grave";
         initTime=softTransitoryTime;
     }
     else if ([self.currentStateMachine isEqualToString:@"Estable"]==YES) {
         
-        self.currentStateMachine=@"Estable";
+        //self.currentStateMachine=@"Estable";
     }
     
 }
@@ -191,7 +191,7 @@ NSInteger moderedShockTime=4;
     // State Postparto
     if ([self.currentStateMachine isEqualToString:@"Postparto"]==YES) {
         
-        NSLog(@"El Estado Actual es Postparto");
+        //NSLog(@"El Estado Actual es Postparto");
         // Time Condition
         if (minutesMachine+initTime<postpartoTime) {
             
@@ -213,7 +213,7 @@ NSInteger moderedShockTime=4;
     // State Choque Leve
     else if ([self.currentStateMachine isEqualToString:@"Choque Leve"]==YES) {
         
-        NSLog(@"El Estado Actual es Choque Leve");
+        //NSLog(@"El Estado Actual es Choque Leve");
         // Time Condition
         if (minutesMachine+initTime<softShockTime) {
             
@@ -235,7 +235,7 @@ NSInteger moderedShockTime=4;
     // State Transitorio Leve
     else if ([self.currentStateMachine isEqualToString:@"Transitorio Leve"]==YES) {
         
-        NSLog(@"El Estado Actual es Transitorio Leve");
+        //NSLog(@"El Estado Actual es Transitorio Leve");
         // Time Condition
         if (minutesMachine+initTime<softTransitoryTime) {
             
@@ -256,7 +256,7 @@ NSInteger moderedShockTime=4;
     // State Choque Moderado
     else if ([self.currentStateMachine isEqualToString:@"Choque Moderado"]==YES) {
         
-        NSLog(@"El Estado Actual es Choque Moderado");
+        //NSLog(@"El Estado Actual es Choque Moderado");
         // Time Condition
         if (minutesMachine+initTime<moderedShockTime) {
             
@@ -277,7 +277,7 @@ NSInteger moderedShockTime=4;
     // State Choque Grave
     else if ([self.currentStateMachine isEqualToString:@"Choque Grave"]==YES) {
         
-        NSLog(@"El Estado Actual es Choque Grave");
+        //NSLog(@"El Estado Actual es Choque Grave");
         // Steps Condition
         if (([self.medicine isEqualToString:@"Yes"] && [self.massage isEqualToString:@"Yes"] && [self.crystalloid isEqualToString:@"Yes"] && [self.bleeding isEqualToString:@"Yes"] && [self.diagnostic isEqualToString:@"Yes"] && [self.venous isEqualToString:@"Yes"] && [self.oxygen isEqualToString:@"Yes"] && [self.blanket isEqualToString:@"Yes"] && [self.probe isEqualToString:@"Yes"] && [self.vitalSigns isEqualToString:@"Yes"])==YES) {
             
@@ -290,7 +290,7 @@ NSInteger moderedShockTime=4;
     
     // State Estable
     else if ([self.currentStateMachine isEqualToString:@"Estable"]==YES) {
-        NSLog(@"El Estado Actual es Estable");
+        //NSLog(@"El Estado Actual es Estable");
         
     }
 

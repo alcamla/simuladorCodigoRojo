@@ -193,6 +193,11 @@ int minutes=0;
     [self.oxigenSaturationValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Saturación de Oxígeno"]];
     [self.perfusionValue setStringValue:[self.vitalSingsMonitor objectForKey:@"Perfusión"]];
     
+    // Few Size adjustment
+    if ([self.conscienceValue.stringValue isEqualToString:@"Obnubilada"]==YES) {
+        [self.conscienceValue setFont:[NSFont fontWithName:@"Helvetica Neue"size:55]];
+    }
+    
     // Set it or Not Visible
     
     if (conscienceIsVisible==YES) {

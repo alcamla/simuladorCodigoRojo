@@ -37,8 +37,6 @@
 @property (strong, nonatomic) NSString *updatedKey;
 @property (strong, nonatomic) NSString *updatedValue;
 
-
-
 @end
 
 
@@ -647,7 +645,7 @@ bool perfusionIsVisibleSimulator=NO;
 
 - (NSMutableArray *)bluetoothInitialValuesSimulator{
     if (!_bluetoothInitialValuesSimulator) {
-        _bluetoothInitialValuesSimulator = [[NSMutableArray alloc] initWithObjects:@"No", @"No", @"No", @"No", @"No",@"No", nil];
+        _bluetoothInitialValuesSimulator = [[NSMutableArray alloc] initWithObjects:@"Yes", @"Yes", @"Yes", @"Yes", @"Yes",@"Yes", nil];
     }
     return _bluetoothInitialValuesSimulator;
 }

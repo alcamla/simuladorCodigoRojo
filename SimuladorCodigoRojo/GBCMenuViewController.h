@@ -17,7 +17,6 @@
 
 - (void) initializeMenuTimer;
 - (void) updateMenuView;
-- (void) getAndSendSelectedState;
 - (void) sendStartedMessage;
 - (void) stopTimer;
 

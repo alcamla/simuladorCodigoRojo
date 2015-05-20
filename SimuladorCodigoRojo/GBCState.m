@@ -97,7 +97,7 @@
             self.arterialPresure=@"60/40";
             self.respiratoryRate=@"30";
             self.oxygenSaturation=@"85";
-            self.perfusion=@"Pálida-Fría-Sudorosa-Llenado Capilar >3s";
+            self.perfusion=@"Pálida-Fría-Sudorosa-LC >3s";
             break;
         case 5:
             self.conscience=@"NI";

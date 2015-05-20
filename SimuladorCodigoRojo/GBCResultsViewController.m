@@ -109,12 +109,6 @@ NSNumber *minutesResulst=0;
     
     }
     
-    //Ask to Simulator for bluetooth Variables
-    self.bluetoothVariablesResults=[[GBCSimulator sharedSimulator] getBluetoothVariables];
-    
-    //Ask to Simulator for editable Variables
-    self.editableVariablesResults=[[GBCSimulator sharedSimulator] sendEditableVariables];
-    
     // Display Results
     [self displayResults];
     

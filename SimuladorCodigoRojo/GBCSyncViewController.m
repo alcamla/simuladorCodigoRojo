@@ -60,6 +60,9 @@ BOOL activeSyncMessage=NO;
     // Start with correct values for sensors
     [self updateSyncView];
     
+    // Add Observer to Notification Center
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endSync:) name:@"endSyncWindow" object:nil];
+    
 }
 
 -(void)viewDidAppear{
@@ -279,6 +282,13 @@ BOOL activeSyncMessage=NO;
     
     // Tells Main Class Simulator that View has became active
     [[GBCSimulator sharedSimulator] askIfSyncViewIsOpenedAndSetActive:NO];
+}
+
+// Dealoc Observer
+
+-(void)dealloc{
+    
+ [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 // Lazy initializations

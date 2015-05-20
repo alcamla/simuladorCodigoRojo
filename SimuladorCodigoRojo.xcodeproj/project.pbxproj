@@ -35,8 +35,6 @@
 		6F2D18151A8A75E40048281D /* monitorChronometer.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18131A8A75E40048281D /* monitorChronometer.png */; };
 		6F2D18171A8A75FB0048281D /* monitorNotepadNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18161A8A75FB0048281D /* monitorNotepadNew.png */; };
 		6F2D18181A8A75FB0048281D /* monitorNotepadNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18161A8A75FB0048281D /* monitorNotepadNew.png */; };
-		6F2D181D1A8A76050048281D /* monitor3GraphsLines.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D181C1A8A76050048281D /* monitor3GraphsLines.png */; };
-		6F2D181E1A8A76050048281D /* monitor3GraphsLines.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D181C1A8A76050048281D /* monitor3GraphsLines.png */; };
 		6F2D18231A8A761C0048281D /* monitorWoman.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18221A8A761C0048281D /* monitorWoman.png */; };
 		6F2D18241A8A761C0048281D /* monitorWoman.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18221A8A761C0048281D /* monitorWoman.png */; };
 		6F2D18261A8A76A40048281D /* monitorGraph.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2D18251A8A76A40048281D /* monitorGraph.png */; };
@@ -120,6 +118,9 @@
 		C58F97321A9138AC0082F25D /* dfour1.c in Sources */ = {isa = PBXBuildFile; fileRef = C58F972D1A9138AC0082F25D /* dfour1.c */; };
 		C58F97331A9138AC0082F25D /* ecgsyn.c in Sources */ = {isa = PBXBuildFile; fileRef = C58F972E1A9138AC0082F25D /* ecgsyn.c */; };
 		C58F97351A9138AC0082F25D /* ran1.c in Sources */ = {isa = PBXBuildFile; fileRef = C58F97311A9138AC0082F25D /* ran1.c */; };
+		F166ECC31A9E2E9C000BC0F8 /* monitor3GraphsLines.png in Resources */ = {isa = PBXBuildFile; fileRef = F166ECC21A9E2E9C000BC0F8 /* monitor3GraphsLines.png */; };
+		F166ECC41A9E2E9C000BC0F8 /* monitor3GraphsLines.png in Resources */ = {isa = PBXBuildFile; fileRef = F166ECC21A9E2E9C000BC0F8 /* monitor3GraphsLines.png */; };
+		F166ECC71A9E6B08000BC0F8 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F166ECC61A9E6B08000BC0F8 /* ScreenSaver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,7 +188,6 @@
 		6F2D18101A8A72CD0048281D /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
 		6F2D18131A8A75E40048281D /* monitorChronometer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorChronometer.png; sourceTree = "<group>"; };
 		6F2D18161A8A75FB0048281D /* monitorNotepadNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorNotepadNew.png; sourceTree = "<group>"; };
-		6F2D181C1A8A76050048281D /* monitor3GraphsLines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitor3GraphsLines.png; sourceTree = "<group>"; };
 		6F2D18221A8A761C0048281D /* monitorWoman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorWoman.png; sourceTree = "<group>"; };
 		6F2D18251A8A76A40048281D /* monitorGraph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorGraph.png; sourceTree = "<group>"; };
 		6F2D18281A8A76A70048281D /* monitorBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitorBackGround.png; sourceTree = "<group>"; };
@@ -267,6 +267,8 @@
 		C58F972E1A9138AC0082F25D /* ecgsyn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ecgsyn.c; path = ECGGenerator/ecgsyn.c; sourceTree = "<group>"; };
 		C58F972F1A9138AC0082F25D /* ecgsyn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecgsyn.h; path = ECGGenerator/ecgsyn.h; sourceTree = "<group>"; };
 		C58F97311A9138AC0082F25D /* ran1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ran1.c; path = ECGGenerator/ran1.c; sourceTree = "<group>"; };
+		F166ECC21A9E2E9C000BC0F8 /* monitor3GraphsLines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitor3GraphsLines.png; sourceTree = "<group>"; };
+		F166ECC61A9E6B08000BC0F8 /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +276,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F166ECC71A9E6B08000BC0F8 /* ScreenSaver.framework in Frameworks */,
 				6CFC4CDF1A8C08620022370F /* QuartzCore.framework in Frameworks */,
 				6CFC4CDB1A8C08320022370F /* CorePlot.framework in Frameworks */,
 			);
@@ -334,6 +337,7 @@
 		6CFC4CE01A8C08690022370F /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F166ECC61A9E6B08000BC0F8 /* ScreenSaver.framework */,
 				6CFC4CDE1A8C08620022370F /* QuartzCore.framework */,
 			);
 			name = "Linked Frameworks";
@@ -376,8 +380,8 @@
 				6F2D182B1A8A7CA10048281D /* panelFrontground.png */,
 				6F2D18281A8A76A70048281D /* monitorBackGround.png */,
 				6F2D18251A8A76A40048281D /* monitorGraph.png */,
+				F166ECC21A9E2E9C000BC0F8 /* monitor3GraphsLines.png */,
 				6F2D18221A8A761C0048281D /* monitorWoman.png */,
-				6F2D181C1A8A76050048281D /* monitor3GraphsLines.png */,
 				6F2D18161A8A75FB0048281D /* monitorNotepadNew.png */,
 				6F2D18131A8A75E40048281D /* monitorChronometer.png */,
 				6F54FC571A802DE6004B81E3 /* monitorSgSignal.jpg */,
@@ -654,7 +658,7 @@
 				6FCD42141A65E9DF0040C76C /* monitorPanel.png in Resources */,
 				6FC09AD21A43A89E0023B3FA /* configPauseButton.png in Resources */,
 				6F2D18111A8A72CD0048281D /* menuBackground.png in Resources */,
-				6F2D181D1A8A76050048281D /* monitor3GraphsLines.png in Resources */,
+				F166ECC31A9E2E9C000BC0F8 /* monitor3GraphsLines.png in Resources */,
 				6FC09AB21A437E320023B3FA /* menuCreatedByGibicText.png in Resources */,
 				6F54FC591A802DE6004B81E3 /* monitorSgSignal.jpg in Resources */,
 				6F2D18291A8A76A70048281D /* monitorBackGround.png in Resources */,
@@ -701,7 +705,6 @@
 				6FCD42121A65E9600040C76C /* monitorConfig2.png in Resources */,
 				6F2D18181A8A75FB0048281D /* monitorNotepadNew.png in Resources */,
 				6F2D18331A8A80930048281D /* resultsBackground.png in Resources */,
-				6F2D181E1A8A76050048281D /* monitor3GraphsLines.png in Resources */,
 				6F2D18361A8A80970048281D /* resultsFrontground.png in Resources */,
 				6FED8FB81A6D7B0200150438 /* monitorNotepad.png in Resources */,
 				6FCD42151A65E9DF0040C76C /* monitorPanel.png in Resources */,
@@ -713,6 +716,7 @@
 				6F2D18241A8A761C0048281D /* monitorWoman.png in Resources */,
 				6F2D18271A8A76A40048281D /* monitorGraph.png in Resources */,
 				6FBBB06C1A5C2A41008BB4BA /* menuMunecaDos.png in Resources */,
+				F166ECC41A9E2E9C000BC0F8 /* monitor3GraphsLines.png in Resources */,
 				6F6D95E81A8D10EA00E9A958 /* ECGbeep.mp3 in Resources */,
 				6FC453691A6D83450064E9F6 /* clock-308938_1280.png in Resources */,
 				6FC453661A6D7F300064E9F6 /* play-97626_640.png in Resources */,

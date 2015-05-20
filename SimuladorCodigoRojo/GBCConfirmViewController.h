@@ -10,6 +10,11 @@
 
 @interface GBCConfirmViewController : NSViewController
 
-- (IBAction)goToMenu:(id)sender;
+-(IBAction)goToMonitor:(id)sender;
+-(void) setScenaryToDisplay;
+-(void) setInstitutionalConditions;
+-(void) setExternConditions;
+-(void) setNoBirthYetConditions;
+-(void) sendShockStateSelected;
 
 @end

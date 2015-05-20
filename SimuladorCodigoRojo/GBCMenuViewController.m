@@ -11,7 +11,6 @@
 
 @interface GBCMenuViewController ()
 
-@property (strong) IBOutlet NSComboBox *stateComboBox;
 @property (strong) IBOutlet NSButton *goToConfirmProperty;
 @property (strong) IBOutlet NSButton *goToSyncProperty;
 @property (strong,nonatomic) NSTimer *timerToUpdateMenuView;
@@ -49,12 +48,6 @@ bool syncViewIsOpened=NO;
 
 - (IBAction)goToConfirm:(id)sender {
     
-    // Call getAndSendSelectedState Method
-    [self getAndSendSelectedState];
-    
-    // The App doesn't start if there's not any state selection
-    if (self.stateComboBox.indexOfSelectedItem != -1) {
-        
         // Send Starting Message to Simulator
         [self sendStartedMessage];
         
@@ -63,11 +56,14 @@ bool syncViewIsOpened=NO;
 
         // Hide Current Window
         [self.view.window setIsVisible:NO];
-        
+    
+        // Send Notification to Sync View Controller Class to finish its process
+    
+         NSNotification *notification = [NSNotification notificationWithName:@"endSyncWindow" object:self];
+         [[NSNotificationCenter defaultCenter] postNotification:notification];
+
         // Call Segue to go to next view controller
         [self performSegueWithIdentifier:@"fromMenuToConfirm" sender:(id)sender];
-        
-    }
    
 }
 
@@ -86,33 +82,6 @@ bool syncViewIsOpened=NO;
     
     [[GBCSimulator sharedSimulator] receiveStartedInitializationMessage];
    
-
-}
-
-// Send Selection from ComboBox to Main Class: Simulator Class Depending of selected State
-
-- (void) getAndSendSelectedState{
-    
-    switch (self.stateComboBox.indexOfSelectedItem) {
-        case 0:
-            [[GBCSimulator sharedSimulator] stateSelectedIs:@"Postparto"];
-            break;
-        case 1:
-            [[GBCSimulator sharedSimulator] stateSelectedIs:@"Choque Leve"];
-            break;
-        case 2:
-            [[GBCSimulator sharedSimulator] stateSelectedIs:@"Choque Moderado"];
-            break;
-        case 3:
-            [[GBCSimulator sharedSimulator] stateSelectedIs:@"Choque Grave"];
-            break;
-        case 4:
-            [[GBCSimulator sharedSimulator] stateSelectedIs:@"Estable"];
-            break;
-            
-        default:
-            break;
-    }
 
 }
 

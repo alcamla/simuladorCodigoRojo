@@ -16,6 +16,10 @@
 @property(nonatomic, strong)NSTimer *reconnectingTimer;
 @property (nonatomic,weak) IBOutlet NSArrayController *arrayController;
 @property(nonatomic, strong) NSMutableArray *redCodeBluetoothDevices;
+@property(nonatomic, strong) NSString *lastStateRegistered;
+@property(nonatomic) BOOL reconnectCheck;
+@property(nonatomic,strong) NSSound *reconnectBeep;
+
 @end
 
 @implementation GBCBluetoothManager
@@ -206,6 +210,14 @@
     } else if ([charactersArray[0] isEqualToString:@"g"]){
         isSensorData = NO;
         [self.delegate redCodeSensorsCheckedByBluetoothManager:self result:[charactersArray[1] boolValue]];
+        // Check if the connection was lost before to resend the state to doll
+        if (self.reconnectCheck==YES) {
+            // Send the state to doll
+            [self sendStringToConnectedPeripheric:self.lastStateRegistered];
+            self.reconnectCheck=NO;
+            
+            NSLog(@"Enviando Estado de Reconexión....%@",self.lastStateRegistered);
+        }
     }
     
     if (isSensorData) {
@@ -230,7 +242,14 @@
     } else if ([simulationState isEqualToString:@"Estable"]){
         simulationStateDataString = @"*h4,";
     }
+    // Save this state value as the last state value to resend when reconnect
+    self.lastStateRegistered=simulationStateDataString;
+    
+    // Send the state to doll
     [self sendStringToConnectedPeripheric:simulationStateDataString];
+    
+    // Send the state to doll again
+    //[self sendStringToConnectedPeripheric:simulationStateDataString];
 }
 
 -(void)sendCurrentStateOfVariable:(NSString *)variable state:(BOOL)state{
@@ -413,11 +432,12 @@
 }
 
 /*
- Invoked whenever an existing connection with the peripheral is torn down.
+ Invoked whenever an existing connection with the peripheral is turn down.
  Reset local variables
  */
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
 {
+    
     self.connected = @"Not connected";
     self.manufacturer = @"";
     if( _peripheral )
@@ -425,6 +445,13 @@
         [_peripheral setDelegate:nil];
         _peripheral = nil;
     }
+    
+    // Try to reconect
+    [self startScan];
+    
+    // Activate flag to reconnect
+    self.reconnectCheck=YES;
+
 }
 
 /*
@@ -527,6 +554,7 @@
 }
 
 -(void)sendCalibrationFlagToConnectedPeripheric{
+    
     [self sendStringToConnectedPeripheric:@"*start,"];
 }
 
